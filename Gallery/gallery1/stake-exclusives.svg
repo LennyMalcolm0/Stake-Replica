@@ -1,0 +1,3 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-stake-exclusive" viewBox="0 0 32 32">
+<path d="M27.693 1.333c0-0.736-0.597-1.333-1.333-1.333v0h-20.72c-0.736 0-1.333 0.597-1.333 1.333v0 30.667l11.693-5.467 11.693 5.467zM21.72 21.693l-5.72-3.027-5.72 3.027 1.093-6.36-4.627-4.507 6.4-0.933 2.853-5.787 2.853 5.787 6.4 0.933-4.627 4.507z"></path>
+</symbol></defs><use xlink:href="#icon-stake-exclusive" stroke="#B1BAD3" fill="#B1BAD3" stroke-width="0px"></use></svg>

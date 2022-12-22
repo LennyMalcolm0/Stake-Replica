@@ -1,0 +1,4 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-recent" viewBox="0 0 32 32">
+<path d="M17.427 1.427c-7.488 0.043-13.644 5.691-14.487 12.958l-0.006 0.068h-2.813l4.933 7 4.947-7h-2.6c0.787-4.881 4.969-8.563 10.011-8.563 5.596 0 10.133 4.537 10.133 10.133s-4.537 10.133-10.133 10.133c-2.545 0-4.87-0.938-6.65-2.487l0.012 0.010-2.893 3.333c2.542 2.212 5.885 3.56 9.544 3.56 8.049 0 14.573-6.525 14.573-14.573s-6.523-14.572-14.571-14.573h-0z"></path>
+<path d="M15.213 9.813v7.107l5.347 5.347 3.133-3.133-4.053-4.053v-5.267h-4.427z"></path>
+</symbol></defs><use xlink:href="#icon-recent" stroke="#B1BAD3" fill="#B1BAD3" stroke-width="0px"></use></svg>
