@@ -6,6 +6,8 @@ sports = document.querySelector(".sports-main"),
 sportsContainer = document.querySelector(".fl-sports"),
 promotions = document.querySelector(".promotions-main"),
 promotionsContainer = document.querySelector(".fl-promotions"),
+sponsorships = document.querySelector(".sponsorships-main"),
+sponsorshipsContainer = document.querySelector(".fl-sponsorships"),
 activeDropdown = document.querySelectorAll(".fl-dd-element");
 
 casino.addEventListener("click", function(){
@@ -20,9 +22,31 @@ promotions.addEventListener("click", function(){
     promotionsContainer.classList.toggle("fl-active");
 });
 
+sponsorships.addEventListener("click", function(){
+    sponsorshipsContainer.classList.toggle("fl-active");
+});
+
 activeDropdown.forEach(btn => {
     btn.addEventListener("click", function(){
         document.querySelector(".fl-dropdown .fl-dropdown-active").classList.remove("fl-dropdown-active");
         btn.classList.add("fl-dropdown-active");
     })
+});
+
+const selectLang = document.querySelector(".select-dropdown"),
+langToggle = document.querySelector(".select"),
+langChange = document.querySelector(".select .select-text"),
+langOptions = document.querySelectorAll(".lang-options");
+
+langToggle.addEventListener("click", function(){
+    selectLang.classList.toggle("lang-dd-active");
+});
+
+langOptions.forEach(lang => {
+    lang.addEventListener("click", function(){
+        langChange.innerHTML = lang.innerHTML;
+        document.querySelector(".select-dropdown .active-lang").classList.remove("active-lang");
+        lang.classList.add("active-lang");
+        selectLang.classList.toggle("lang-dd-active");
+    });
 });
