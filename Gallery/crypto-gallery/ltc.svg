@@ -1,0 +1,4 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-currency-ltc" viewBox="0 0 32 32">
+<path fill="#bfbbbb" style="fill: var(--color27, #bfbbbb)" d="M32 16c0 8.837-7.163 16-16 16s-16-7.163-16-16c0-8.837 7.163-16 16-16s16 7.163 16 16z"></path>
+<path fill="#fff" style="fill: var(--color3, #fff)" d="M10.425 19.215l-1.425 0.555 0.69-2.77 1.44-0.58 2.085-8.42h5.125l-1.5 6.195 1.41-0.57-0.68 2.75-1.43 0.57-0.845 3.5h7.705l-0.875 3.555h-12.875z"></path>
+</symbol></defs><use xlink:href="#icon-currency-ltc" stroke="#557086" fill="#557086" stroke-width="0px"></use></svg>

@@ -1,0 +1,4 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-currency-jpy" viewBox="0 0 32 32">
+<path fill="#eac749" style="fill: var(--color57, #eac749)" d="M32 16c0 8.837-7.163 16-16 16s-16-7.163-16-16c0-8.837 7.163-16 16-16s16 7.163 16 16z"></path>
+<path fill="#000" style="fill: var(--color61, #000)" d="M18.493 15.84h4.707v1.627h-5.773v2.227h5.773v1.627h-5.773v2.853h-2.84v-2.853h-5.733v-1.627h5.747v-2.227h-5.747v-1.627h4.68l-5.213-7.827h3.24l4.453 6.933 4.413-6.933h3.253l-5.187 7.827z"></path>
+</symbol></defs><use xlink:href="#icon-currency-jpy" stroke="#557086" fill="#557086" stroke-width="0px"></use></svg>

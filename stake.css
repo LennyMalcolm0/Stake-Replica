@@ -9,32 +9,68 @@
 
 body {
     background-color: #1B2D38;
+    display: flex;
     width: 100%;
     height: 100vh;
     overflow: hidden;
 }
 
-.stake-demo {
+
+/*CONSTANTS*/
+
+.display-flex-center {
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-flex-around {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.display-flex-btw {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.display-flex-even {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+i {
+    font-size: 12px;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+
+/*FIXED LEFT SIDE MENU*/
+
+.stake-side-bar {
+    display: flex;
+    width: 20%;
     color: white;
 }
 
-.stake-demo img {
+.stake-side-bar img {
     height: 14px;
     width: auto;
     margin-right: 5px;
 }
 
-/*FIXED LEFT SIDE BAR*/
-
 .fixed-left {
     background-color: #0F202F;
-    width: calc(20% - 20px);
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
+    width: 100%;
+    height: 100vh;
+    position: relative;
     display: flex;
     flex-direction: column;
 }
@@ -42,10 +78,10 @@ body {
 .fl-head {
     display: flex;
     width: 100%;
-    height: 70px;
+    height: 60px;
     justify-content: space-around;
     align-items: center;
-    box-shadow: -2px 3px 7px black;
+    box-shadow: -2px 3px 7px #071824;
     font-size: 14px;
 }
 
@@ -58,12 +94,11 @@ body {
     width: 92%;
     margin-left: 8%;
     font-size: 14px;
-    height: calc(100% - 70px);
+    height: calc(100% - 60px);
     overflow-y: auto;
 }
 
 .fl-body i {
-    font-size: 12px;
     transition: transform 0.3s linear;
     margin-right: 8%;
 }
@@ -131,7 +166,7 @@ body {
 }
 
 .fl-seperator {
-    width: 100%;
+    width: 92%;
     height: 2px;
     border-radius: 2px;
     background-color: #22333d;
@@ -150,6 +185,19 @@ body {
 .fl-body::-webkit-scrollbar-thumb {
     border-radius: 25px;
     background-color: #2E4552;
+}
+
+.live {
+    font-size: 10px;
+    font-weight: 600;
+    height: 16px;
+    width: 24px;
+    border-radius: 25px;
+    background-color: #4391E7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0F202F;
 }
 
 .fl-blog {
@@ -195,6 +243,11 @@ body {
 
 .select i {
     margin-left: 10px;
+    transition: transform 0.3s linear;
+}
+
+.lang-dd-active i {
+    transform: rotate(180deg);
 }
 
 .select-dropdown {
@@ -210,7 +263,7 @@ body {
     margin-top: 15px;
 }
 
-.lang-dd-active {
+.lang-dd-active .select-dropdown {
     display: block;
 }
 
@@ -234,6 +287,7 @@ body {
 
 .select-dropdown .active-lang {
     color: #1574E1;
+    background-color: white;
 }
 
 .select-dropdown::-webkit-scrollbar {
@@ -258,7 +312,79 @@ body {
 .odds-page {
     flex-grow: 1;
     background-color: #1B2D38;
-    width: 100%;
     height: 100vh;
-    margin-left: calc(20% - 20px);
+    font-size: 14px;
 }
+
+.odds-page img {
+    height: 14px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.fixed-top {
+    width: 100%;
+    height: 60px;
+    color: white;
+    box-shadow: -2px 3px 7px #071824;
+}
+
+.center-ft {
+    width: 92%;
+}
+
+.stake-logo img {
+    height: 32px;
+    width: auto;
+    margin: 0;
+}
+
+.ft-select-wallet {
+    height: 43px;
+    width: 110px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: #0F202F;
+    transition: all 0.1s ease;
+}
+
+.ft-select-wallet:hover {
+    background-color: #071824;
+}
+
+.ft-select-wallet img {
+    margin-left: 5px;
+}
+
+.stake-wallet {
+    display: flex;
+    align-items: center;
+}
+
+.sw-text {
+    height: 45px;
+    width: 70px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #2b78ca;
+    transition: all 0.1s ease;
+}
+
+.sw-text:hover {
+    background-color: #105FB5;
+}
+
+.ft-extra {
+    width: 150px;
+}
+
+.ft-search img {
+    margin-right: 10px;
+}
+
+
+/*.saas {
+    background-color: red;
+    width: 200px;
+    height: 100vh;
+}*/

@@ -1,0 +1,9 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-currency-eth" viewBox="0 0 32 32">
+<path fill="#627eea" style="fill: var(--color26, #627eea)" d="M32 16c0 8.837-7.163 16-16 16s-16-7.163-16-16c0-8.837 7.163-16 16-16s16 7.163 16 16z"></path>
+<path fill="#fff" style="fill: var(--color3, #fff)" opacity="0.6" d="M16.5 4v8.87l7.5 3.35z"></path>
+<path fill="#fff" style="fill: var(--color3, #fff)" d="M16.5 4l-7.5 12.22 7.5-3.35z"></path>
+<path fill="#fff" style="fill: var(--color3, #fff)" opacity="0.6" d="M16.5 21.97v6.030l7.5-10.385z"></path>
+<path fill="#fff" style="fill: var(--color3, #fff)" d="M16.5 28v-6.035l-7.5-4.35z"></path>
+<path fill="#fff" style="fill: var(--color3, #fff)" opacity="0.2" d="M16.5 20.575l7.5-4.355-7.5-3.35z"></path>
+<path fill="#fff" style="fill: var(--color3, #fff)" opacity="0.6" d="M9 16.22l7.5 4.355v-7.705z"></path>
+</symbol></defs><use xlink:href="#icon-currency-eth" stroke="#557086" fill="#557086" stroke-width="0px"></use></svg>

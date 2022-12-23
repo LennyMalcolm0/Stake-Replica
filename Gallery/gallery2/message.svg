@@ -1,0 +1,4 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-sidebar-select" viewBox="0 0 32 32">
+<path d="M30.5 4h-4.5v15.135c0 2.135-1.73 3.865-3.865 3.865v0h-10.135v9h2.5c0.215-1.372 1.352-2.421 2.747-2.5l0.008-0c1.4 0.082 2.532 1.13 2.743 2.483l0.002 0.017h4c0.214-1.373 1.351-2.423 2.747-2.5l0.008-0c1.41 0.070 2.555 1.122 2.768 2.483l0.002 0.017h2.5v-26.5c0-0 0-0 0-0 0-0.828-0.672-1.5-1.5-1.5-0.009 0-0.018 0-0.026 0l0.001-0z"></path>
+<path d="M21 0h-19.5c-0.828 0-1.5 0.672-1.5 1.5v0 16.5c0 0.828 0.672 1.5 1.5 1.5v0h0.5v5.5l8.25-5.5h10.75c0.828 0 1.5-0.672 1.5-1.5v0-16.5c0-0.828-0.672-1.5-1.5-1.5v0z"></path>
+</symbol></defs><use xlink:href="#icon-sidebar-select" stroke="#FFFFFF" fill="#FFFFFF" stroke-width="0px"></use></svg>
