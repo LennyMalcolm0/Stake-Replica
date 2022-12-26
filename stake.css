@@ -314,6 +314,7 @@ i {
     background-color: #1B2D38;
     height: 100vh;
     font-size: 14px;
+    position: relative;
 }
 
 .odds-page img {
@@ -339,7 +340,12 @@ i {
     margin: 0;
 }
 
-.ft-select-wallet {
+.center-wallets {
+    width: 220px;
+    position: relative;
+}
+
+.ft-current-wallet {
     height: 43px;
     width: 110px;
     border-top-left-radius: 4px;
@@ -348,17 +354,16 @@ i {
     transition: all 0.1s ease;
 }
 
-.ft-select-wallet:hover {
+.ft-current-wallet:hover {
     background-color: #071824;
 }
 
-.ft-select-wallet img {
+.ft-current-wallet img {
     margin-left: 5px;
 }
 
-.stake-wallet {
-    display: flex;
-    align-items: center;
+.ft-current-wallet i {
+    transition: all 0.3s linear;
 }
 
 .sw-text {
@@ -373,6 +378,98 @@ i {
 .sw-text:hover {
     background-color: #105FB5;
 }
+
+.wallet-dropdown {
+    display: none;
+    color: #1B2C39;
+    background-color: white;
+    width: 220px;
+    height: 300px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 5px;
+}
+
+.center-search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.wallet-search {
+    position: relative;
+}
+
+.wallet-search input {
+    width: 190px;
+    height: 35px;
+    border-radius: 5px;
+    padding-left: 30px;
+    font-weight: 500;
+}
+
+.wallet-search img {
+    position: absolute;
+    top: 10.5;
+    left: 10px;
+}
+
+.wallet-dropdown-options {
+    height: 205px;
+    overflow-y: auto;
+}
+
+.w-option {
+    height: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #213743;
+}
+
+.w-option span {
+    display: flex;
+    align-items: center;
+}
+
+.w-option:hover {
+    background-color: #E6EAF3;
+}
+
+.wallet-dropdown-options::-webkit-scrollbar {
+    width: 6px;
+    position: relative; left: 20px;
+}
+
+.wallet-dropdown-options::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 25px;
+}
+
+.wallet-dropdown-options::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: #B0BAD2;
+}
+
+.wallet-settings {
+    border-top: 2px solid #B0BAD2;
+    width: 100%;
+    height: 40px;
+}
+
+.sw-active .wallet-dropdown {
+    display: block;
+}
+
+.sw-active i {
+    transform: rotate(180deg);
+}
+
 
 .ft-extra {
     width: 150px;

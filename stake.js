@@ -56,7 +56,12 @@ function leftSideMenu() {
 leftSideMenu();
 
 
+const currentWallet = document.querySelector(".ft-current-wallet"),
+walletOptions = document.querySelector(".wallet-options");
 
+currentWallet.addEventListener("click", function(){
+    walletOptions.classList.toggle("sw-active");
+});
 
 
 
