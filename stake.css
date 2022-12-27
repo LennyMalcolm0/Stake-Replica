@@ -80,7 +80,6 @@ i {
     display: flex;
     width: 100%;
     height: 60px;
-    justify-content: space-around;
     align-items: center;
     box-shadow: -2px 3px 7px #071824;
     font-size: 14px;
@@ -89,6 +88,16 @@ i {
 .fl-head span {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    position: relative;
+    left: 10px;
+}
+
+.fl-head span:hover {
+    background-color: #071824;
 }
 
 .fl-body {
@@ -310,6 +319,8 @@ i {
 
 /*MAIN BETTING SECTION*/
 
+/*Fixed Header*/
+
 .odds-page {
     flex-grow: 1;
     background-color: #1B2D38;
@@ -512,6 +523,20 @@ i {
 
 .chat-active .chat-dropdown {
     display: block;
+}
+
+/*Body*/
+
+.betting-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bs-container {
+    width: 92%;
+    max-width: 1200px;
+    height: calc(100% - 60px);
 }
 
 
