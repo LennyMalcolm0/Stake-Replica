@@ -388,7 +388,7 @@ i {
     width: 220px;
     height: 300px;
     position: absolute;
-    top: 60px;
+    top: 55px;
     left: 0;
     border-radius: 5px;
 }
@@ -474,7 +474,6 @@ i {
     transform: rotate(180deg);
 }
 
-
 .ft-extra {
     width: 150px;
 }
@@ -482,6 +481,39 @@ i {
 .ft-search img {
     margin-right: 10px;
 }
+
+.chat-dropdown {
+    display: none;
+    height: 75px;
+    width: 100px;
+    background-color: white;
+    color: #1B2C39;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    right: 1px;
+    overflow: hidden;
+}
+
+.chat-option {
+    width: 100%;
+    height: 50%;
+    line-height: 14px;
+    font-weight: 600;
+}
+
+.chat-option span {
+    margin-left: 15px;
+}
+
+.chat-option:hover {
+    background-color: #E6EAF3;
+}
+
+.chat-active .chat-dropdown {
+    display: block;
+}
+
 
 
 /*.saas {

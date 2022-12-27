@@ -58,25 +58,32 @@ leftSideMenu();
 function walletDropdown() {
     const currentWallet = document.querySelector(".ft-current-wallet"),
     walletOptions = document.querySelector(".wallet-options"),
-    currentCrypto = document.querySelector(".select-text span"),
+    currentCrypto = document.querySelector(".current-v"),
     selectedCrypto = document.querySelectorAll("#crypto-balance"),
-    currentImage = document.getElementById("current-image"),
+    currentImage = document.getElementById(".current-image"),
     selectedImage = document.querySelectorAll("#selected-image"),
+    activeCrypto = document.querySelector(".active-crypto"),
     wDropdownOptions = document.querySelectorAll(".w-option");
 
     currentWallet.addEventListener("click", function(){
-    walletOptions.classList.toggle("sw-active");
+        walletOptions.classList.toggle("sw-active");
     });
 
-    // wDropdownOptions.forEach(element => {
-    //     element.addEventListener("click", () => {
-    //         selectedCrypto.forEach(sc => {
-    //             currentCrypto.innerHTML = sc.innerHTML;
-    //         })
-    //     });
-    // });
+    wDropdownOptions.forEach(element => {
+        element.addEventListener("click", () => {
+            currentCrypto.innerHTML = activeCrypto.innerHTML;
+            document.querySelector(".wallet-dropdown-options .active-crypto").classList.remove("active-crypto");
+            element.classList.add("active-crypto");
+        });
+    });
 
-    
+    const chatIcon = document.querySelector(".chat-icon"),
+    chatActive = document.querySelector(".chat");
+
+    chatIcon.addEventListener("click", function(){
+        chatActive.classList.toggle("chat-active");
+    });
+
 };
 
 walletDropdown();
