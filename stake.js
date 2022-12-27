@@ -55,13 +55,31 @@ function leftSideMenu() {
 
 leftSideMenu();
 
+function walletDropdown() {
+    const currentWallet = document.querySelector(".ft-current-wallet"),
+    walletOptions = document.querySelector(".wallet-options"),
+    currentCrypto = document.querySelector(".select-text span"),
+    selectedCrypto = document.querySelectorAll("#crypto-balance"),
+    currentImage = document.getElementById("current-image"),
+    selectedImage = document.querySelectorAll("#selected-image"),
+    wDropdownOptions = document.querySelectorAll(".w-option");
 
-const currentWallet = document.querySelector(".ft-current-wallet"),
-walletOptions = document.querySelector(".wallet-options");
-
-currentWallet.addEventListener("click", function(){
+    currentWallet.addEventListener("click", function(){
     walletOptions.classList.toggle("sw-active");
-});
+    });
+
+    // wDropdownOptions.forEach(element => {
+    //     element.addEventListener("click", () => {
+    //         selectedCrypto.forEach(sc => {
+    //             currentCrypto.innerHTML = sc.innerHTML;
+    //         })
+    //     });
+    // });
+
+    
+};
+
+walletDropdown();
 
 
 
