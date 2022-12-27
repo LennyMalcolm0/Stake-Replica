@@ -57,6 +57,7 @@ i {
 .stake-side-bar {
     display: flex;
     width: 20%;
+    max-width: 350px;
     color: white;
 }
 
@@ -332,6 +333,7 @@ i {
 
 .center-ft {
     width: 92%;
+    max-width: 1200px;
 }
 
 .stake-logo img {
