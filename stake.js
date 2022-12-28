@@ -88,7 +88,16 @@ function walletDropdown() {
 
 walletDropdown();
 
+const bsPopup = document.querySelector(".menu2-right img"),
+popupItem = document.querySelector(".menu2-right");
 
+bsPopup.addEventListener("mouseover", function() {
+    popupItem.classList.add("popup-hover");
+});
+
+bsPopup.addEventListener("mouseout", function() {
+    popupItem.classList.remove("popup-hover");
+});
 
 
 

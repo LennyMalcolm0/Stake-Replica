@@ -44,6 +44,7 @@ body {
 
 i {
     font-size: 12px;
+    transition: all 0.3s ease;
 }
 
 .align-center {
@@ -89,11 +90,12 @@ i {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 90px;
     height: 40px;
     border-radius: 25px;
     position: relative;
     left: 10px;
+    cursor: pointer;
 }
 
 .fl-head span:hover {
@@ -326,6 +328,7 @@ i {
     background-color: #1B2D38;
     height: 100vh;
     font-size: 14px;
+    font-weight: 500;
     position: relative;
 }
 
@@ -365,6 +368,7 @@ i {
     border-bottom-left-radius: 4px;
     background-color: #0F202F;
     transition: all 0.1s ease;
+    cursor: pointer;
 }
 
 .ft-current-wallet:hover {
@@ -386,6 +390,7 @@ i {
     border-bottom-right-radius: 4px;
     background-color: #2b78ca;
     transition: all 0.1s ease;
+    cursor: pointer;
 }
 
 .sw-text:hover {
@@ -496,7 +501,7 @@ i {
 .chat-dropdown {
     display: none;
     height: 75px;
-    width: 100px;
+    width: 90px;
     background-color: white;
     color: #1B2C39;
     border-radius: 5px;
@@ -525,12 +530,19 @@ i {
     display: block;
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 /*Body*/
+
+/*Top Section*/
 
 .betting-section {
     width: 100%;
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 .bs-container {
@@ -538,6 +550,186 @@ i {
     max-width: 1200px;
     height: calc(100% - 60px);
 }
+
+.bs-menu1 {
+    display: flex;
+    margin: 30px 0px;
+}
+
+.tm-exit {
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #0E212F;
+    transition: all 0.1s ease;
+}
+
+.tm-exit:hover {
+    background-color: #071824;
+}
+
+.tm-display {
+    display: flex;
+    height: 40px;
+    margin-left: 15px;
+}
+
+.tm-option {
+    width: 110px;
+    height: 100%;
+    background-color: #0E212F;
+}
+
+.tm-soccer {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.tm-england {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #7B858B;
+}
+
+.tm-line {
+    height: 60px;
+    width: 3px;
+    transform: rotate(30deg);
+    position: relative;
+    right: 110px;
+    bottom: 10px;
+    background-color: #1A2D39;
+}
+
+.bs-menu2 {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.menu2-left {
+    height: 50px;
+    width: 340px;
+    gap: 5px;
+    background-color: #0E212F;
+    border-radius: 25px;
+}
+
+.bs-menu-live {
+    width: 140px;
+    height: 40px;
+    border-radius: 25px;
+
+}
+
+.bs-menu-outright {
+    width: 90px;
+    height: 40px;
+    border-radius: 25px;
+}
+
+.bs-menu-as {
+    width: 90px;
+    height: 40px;
+    border-radius: 25px;
+}
+
+.menu2-option:hover, .menu2-active {
+    background-color: #2F4553;
+    cursor: pointer;
+}
+
+.bs-menu-winner {
+    height: 40px;
+    width: 110px;
+    border-radius: 5px;
+    background-color: #0E212F;
+    transition: all 0.1s ease;
+}
+
+.bs-menu-winner:hover {
+    background-color: #071824;
+}
+
+.bs-menu-winner i {
+    margin-right: 5px;
+}
+
+.menu2-right {
+    position: relative;
+}
+
+.menu2-right img {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.menu2-popup {
+    display: none;
+    width: 110px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    color: #0F212E;
+    position: absolute;
+    bottom: 50px;
+    right: 90px;
+}
+
+.menu2-popup span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-hover .menu2-popup {
+    display: block;
+} 
+
+/*Odds Section*/
+
+.premier-league {
+    width: 100%;
+    background-color: #203643;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.comp-head {
+    height: 40px;
+    width: 100%;
+    color: #D5DCEB;
+}
+
+.comp-head-content {
+    display: flex;
+    margin: 0 15px;
+}
+
+.available-match {
+    font-size: 10px;
+    font-weight: 600;
+    height: 16px;
+    width: 24px;
+    border-radius: 25px;
+    background-color: #2F4553;
+    margin-right: 20px;
+}
+
+.comp-date {
+    width: 100%;
+    height: 20px;
+    color: #b1bad3;
+    background-color: #2F4553;
+    font-size: 12px;
+}
+
+.comp-date span {
+    margin: 0 15px;
+}
+
 
 
 

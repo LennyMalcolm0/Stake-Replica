@@ -1,0 +1,8 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-viewtoggler2" viewBox="0 0 32 32">
+<path d="M0 7.5h8.42v7.285h-8.42v-7.285z"></path>
+<path d="M0 17.215h8.42v7.285h-8.42v-7.285z"></path>
+<path d="M11.79 7.5h8.42v7.285h-8.42v-7.285z"></path>
+<path d="M11.79 17.215h8.42v7.285h-8.42v-7.285z"></path>
+<path d="M23.58 7.5h8.42v7.285h-8.42v-7.285z"></path>
+<path d="M23.58 17.215h8.42v7.285h-8.42v-7.285z"></path>
+</symbol></defs><use xlink:href="#icon-viewtoggler2" stroke="#B1BAD3" fill="#B1BAD3" stroke-width="0px"></use></svg>
