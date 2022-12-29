@@ -88,16 +88,83 @@ function walletDropdown() {
 
 walletDropdown();
 
-const bsPopup = document.querySelector(".menu2-right img"),
-popupItem = document.querySelector(".menu2-right");
+const bsPopup = document.querySelectorAll(".menu2-right img"),
+popupItem = document.querySelector(".menu2-right"),
 
-bsPopup.addEventListener("mouseover", function() {
-    popupItem.classList.add("popup-hover");
+threewayImage = document.querySelector(".three-way img"),
+threeway = document.querySelector(".three-way"),
+standardImage = document.querySelector(".standard img"),
+standard = document.querySelector(".standard"),
+
+oddsDisplayType = document.querySelector(".odds-display-type"),
+oddsDisplayToggle = document.querySelectorAll(".menu-all"),
+odTotal = document.querySelector(".od-total"),
+odHandicap = document.querySelector(".od-handicap"),
+odWinner = document.querySelector(".od-winner");
+
+
+bsPopup.forEach(img => {
+    img.addEventListener("mouseover", function() {
+        popupItem.classList.add("popup-hover");
+    })
 });
 
-bsPopup.addEventListener("mouseout", function() {
-    popupItem.classList.remove("popup-hover");
+bsPopup.forEach(img => {
+    img.addEventListener("mouseout", function() {
+        popupItem.classList.remove("popup-hover");
+    })
 });
+
+threewayImage.addEventListener("click", function() {
+    threeway.style.display = "none";
+    standard.style.display = "block";
+});
+
+standardImage.addEventListener("click", function() {
+    standard.style.display = "none";
+    threeway.style.display = "block";
+});
+
+oddsDisplayToggle.forEach(odt => {
+    odt.addEventListener("click", function() {
+        oddsDisplayType.classList.toggle("odds-dd-active");
+    })
+})
+
+
+odTotal.addEventListener("click", function() {
+    document.querySelector(".bs-menu-winner").style.display = "none";
+    document.querySelector(".bs-menu-handicap").style.display = "none";
+    document.querySelector(".bs-menu-total").style.display = "flex";
+
+    odHandicap.classList.remove("od-option-active");
+    odWinner.classList.remove("od-option-active");
+    odTotal.classList.add("od-option-active");
+    oddsDisplayType.classList.toggle("odds-dd-active");
+});
+
+odHandicap.addEventListener("click", function() {
+    document.querySelector(".bs-menu-winner").style.display = "none";
+    document.querySelector(".bs-menu-handicap").style.display = "flex";
+    document.querySelector(".bs-menu-total").style.display = "none";
+
+    odHandicap.classList.add("od-option-active");
+    odWinner.classList.remove("od-option-active");
+    odTotal.classList.remove("od-option-active");
+    oddsDisplayType.classList.toggle("odds-dd-active");
+});
+
+odWinner.addEventListener("click", function() {
+    document.querySelector(".bs-menu-winner").style.display = "flex";
+    document.querySelector(".bs-menu-handicap").style.display = "none";
+    document.querySelector(".bs-menu-total").style.display = "none";
+
+    odHandicap.classList.remove("od-option-active");
+    odWinner.classList.add("od-option-active");
+    odTotal.classList.remove("od-option-active");
+    oddsDisplayType.classList.toggle("odds-dd-active");
+});
+
 
 
 

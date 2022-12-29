@@ -329,7 +329,6 @@ i {
     height: 100vh;
     font-size: 14px;
     font-weight: 500;
-    position: relative;
 }
 
 .odds-page img {
@@ -348,6 +347,7 @@ i {
 .center-ft {
     width: 92%;
     max-width: 1200px;
+    position: relative;
 }
 
 .stake-logo img {
@@ -507,7 +507,7 @@ i {
     border-radius: 5px;
     position: absolute;
     top: 50px;
-    right: 1px;
+    right: -4%;
     overflow: hidden;
 }
 
@@ -638,6 +638,10 @@ i {
     cursor: pointer;
 }
 
+.three-way {
+    display: block;
+}
+
 .bs-menu-winner {
     height: 40px;
     width: 110px;
@@ -650,7 +654,33 @@ i {
     background-color: #071824;
 }
 
-.bs-menu-winner i {
+.bs-menu-total {
+    display: none;
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    background-color: #0E212F;
+    transition: all 0.1s ease;
+}
+
+.bs-menu-total:hover {
+    background-color: #071824;
+}
+
+.bs-menu-handicap {
+    display: none;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: #0E212F;
+    transition: all 0.1s ease;
+}
+
+.bs-menu-handicap:hover {
+    background-color: #071824;
+}
+
+.menu2-right i {
     margin-right: 5px;
 }
 
@@ -686,6 +716,59 @@ i {
 .popup-hover .menu2-popup {
     display: block;
 } 
+
+.standard {
+    display: none;
+}
+
+.bs-menu-main {
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    background-color: #0E212F;
+    opacity: 0.6;
+}
+
+.popup-standard {
+    right: 50px;
+}
+
+.odds-dropdown {
+    display: none;
+    height: 120px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    right: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.od-option {
+    height: 40px;
+    width: 100%;
+    color: #0F212E;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.od-option:hover {
+    background-color: #E6EAF3;
+}
+
+.odds-dd-active .odds-dropdown {
+    display: block;
+}
+
+.odds-dd-active i {
+    transform: rotate(180deg);
+}
+
+.od-option-active:hover, .od-option-active {
+    background-color: white;
+    color: #1574E1;
+}
 
 /*Odds Section*/
 
