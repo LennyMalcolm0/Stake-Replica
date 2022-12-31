@@ -381,6 +381,8 @@ i {
 
 .ft-current-wallet i {
     transition: all 0.3s linear;
+    position: relative;
+    right: 5px;
 }
 
 .sw-text {
@@ -570,6 +572,7 @@ i {
 
 .tm-display {
     display: flex;
+    gap: 2px;
     height: 40px;
     margin-left: 15px;
 }
@@ -589,16 +592,6 @@ i {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: #7B858B;
-}
-
-.tm-line {
-    height: 60px;
-    width: 3px;
-    transform: rotate(30deg);
-    position: relative;
-    right: 110px;
-    bottom: 10px;
-    background-color: #1A2D39;
 }
 
 .bs-menu2 {
