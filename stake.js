@@ -1,26 +1,52 @@
 // VARIABLES AND FUNCTIONS FOR FIXED LEFT SIDE BAR
 function leftSideMenu() {
+    const minimize = document.querySelector(".fl-image-container .fl-head-image"),
+    expand = document.querySelector(".ssb-head .ssb-head-image");
+
+    minimize.addEventListener("mouseover", function() {
+        document.querySelector(".fl-head-tooltip").style.display = "flex";
+    })
+    minimize.addEventListener("mouseout", function() {
+        document.querySelector(".fl-head-tooltip").style.display = "none";
+    })
+
+    minimize.addEventListener("click", function() {
+        document.querySelector(".stake-side-bar").classList.add("minimize");
+        document.querySelector(".small-side-bar").style.display = "block";
+    });
+    expand.addEventListener("click", function() {
+        document.querySelector(".stake-side-bar").classList.remove("minimize");
+        document.querySelector(".small-side-bar").style.display = "none";
+    });
+
+
     const casino = document.querySelector(".casino-main"),
-    casinoContainer = document.querySelector(".fl-casino"),
-    sports = document.querySelector(".sports-main"),
-    sportsContainer = document.querySelector(".fl-sports"),
-    promotions = document.querySelector(".promotions-main"),
-    promotionsContainer = document.querySelector(".fl-promotions"),
-    sponsorships = document.querySelector(".sponsorships-main"),
-    sponsorshipsContainer = document.querySelector(".fl-sponsorships");
+    casinoContainer = document.querySelector(".fl-casino");
 
     casino.addEventListener("click", function(){
         casinoContainer.classList.toggle("fl-active");
     });
     
+
+    const sports = document.querySelector(".sports-main"),
+    sportsContainer = document.querySelector(".fl-sports");
+
     sports.addEventListener("click", function(){
         sportsContainer.classList.toggle("fl-active");
     });
     
+
+    const promotions = document.querySelector(".promotions-main"),
+    promotionsContainer = document.querySelector(".fl-promotions");
+
     promotions.addEventListener("click", function(){
         promotionsContainer.classList.toggle("fl-active");
     });
     
+
+    const sponsorships = document.querySelector(".sponsorships-main"),
+    sponsorshipsContainer = document.querySelector(".fl-sponsorships");
+
     sponsorships.addEventListener("click", function(){
         sponsorshipsContainer.classList.toggle("fl-active");
     });
@@ -169,43 +195,17 @@ function oddsType() {
         })
     })
 
+    
+    const odOption = document.querySelectorAll(".od-option");
 
-    const odTotal = document.querySelector(".od-total"),
-    odHandicap = document.querySelector(".od-handicap"),
-    odWinner = document.querySelector(".od-winner");
-
-    odTotal.addEventListener("click", function() {
-        document.querySelector(".bs-menu-winner").style.display = "none";
-        document.querySelector(".bs-menu-handicap").style.display = "none";
-        document.querySelector(".bs-menu-total").style.display = "flex";
-    
-        odHandicap.classList.remove("od-option-active");
-        odWinner.classList.remove("od-option-active");
-        odTotal.classList.add("od-option-active");
-        oddsDisplayType.classList.toggle("odds-dd-active");
-    });
-
-    odHandicap.addEventListener("click", function() {
-        document.querySelector(".bs-menu-winner").style.display = "none";
-        document.querySelector(".bs-menu-handicap").style.display = "flex";
-        document.querySelector(".bs-menu-total").style.display = "none";
-    
-        odHandicap.classList.add("od-option-active");
-        odWinner.classList.remove("od-option-active");
-        odTotal.classList.remove("od-option-active");
-        oddsDisplayType.classList.toggle("odds-dd-active");
-    });
-    
-    odWinner.addEventListener("click", function() {
-        document.querySelector(".bs-menu-winner").style.display = "flex";
-        document.querySelector(".bs-menu-handicap").style.display = "none";
-        document.querySelector(".bs-menu-total").style.display = "none";
-    
-        odHandicap.classList.remove("od-option-active");
-        odWinner.classList.add("od-option-active");
-        odTotal.classList.remove("od-option-active");
-        oddsDisplayType.classList.toggle("odds-dd-active");
-    });
+    odOption.forEach(option => {
+        option.addEventListener("click", function() {
+            document.querySelector(".bs-menu-odt span").innerHTML = option.innerHTML;
+            oddsDisplayType.classList.toggle("odds-dd-active");
+            document.querySelector(".odds-dropdown .od-option-active").classList.remove("od-option-active");
+            option.classList.add("od-option-active");
+        })
+    })
 };
 
 oddsType();
