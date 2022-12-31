@@ -56,7 +56,8 @@ i {
 /*FIXED LEFT SIDE MENU*/
 
 .stake-side-bar {
-    display: flex;
+    /*display: flex;*/
+    display: none;
     width: 20%;
     max-width: 350px;
     color: white;
@@ -318,6 +319,147 @@ i {
 }
 
 
+/*SMALL SIDE BAR ME*/
+
+.small-side-bar {
+    background-color: #0F202F;
+    width: 60px;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F202F;
+    position: relative;
+}
+
+.small-side-bar img {
+    height: 14px;
+    width: auto;
+}
+
+.ssb-head {
+    height: 60px;
+    width: 100%;
+    box-shadow: -2px 3px 7px #071824;
+    position: relative;
+}
+
+.ssb-head img {
+    transform: rotate(180deg);
+}
+
+.ssb-hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 40px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.ssb-hover:hover {
+    background-color: #071824;
+}
+
+.ssb-head-tooltip {
+    display: none;
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+
+.ssb-body {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.ssb-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ssb-body::-webkit-scrollbar-track {
+    background-color: #0F212E;
+}
+
+.ssb-body::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: #2E4552;
+}
+
+.ssb-center {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.ssb-line {
+    height: 2px;
+    width: 10px;
+    margin: 10px auto;
+    background-color: #2F4553;
+}
+
+.ssb-tooltip {
+    display: none;
+    white-space: nowrap;
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    left: 0px;
+}
+
+.ssm-1 {
+    top: 40px;
+}
+.ssm-2 {
+    top: 70px;
+}
+.ssm-3 {
+    top: 110px;
+}
+.ssm-4 {
+    top: 140px;
+}
+.ssm-5 {
+    top: 200px;
+}
+.ssm-6 {
+    top: 235px;
+}
+.ssm-7 {
+    top: 270px;
+}
+.ssm-8 {
+    top: 330px;
+}
+.ssm-9 {
+    top: 360px;
+}
+.ssm-10 {
+    top: 395px;
+}
+.ssm-11 {
+    top: 430px;
+}
+.ssm-12 {
+    top: 470px;
+}
+.ssm-13 {
+    top: 520px;
+}
+.ssm-14 {
+    top: 555px;
+}
+
 
 /*MAIN BETTING SECTION*/
 
@@ -341,7 +483,7 @@ i {
     width: 100%;
     height: 60px;
     color: white;
-    box-shadow: -2px 3px 7px #071824;
+    box-shadow: 0px 3px 7px #071824;
 }
 
 .center-ft {

@@ -56,6 +56,28 @@ function leftSideMenu() {
 
 leftSideMenu();
 
+function smallSideMenu() {
+    const expandMenu = document.querySelector(".ssb-head-image");
+    expandMenu.addEventListener("mouseover", function() {
+        document.querySelector(".ssb-head-tooltip").style.display = "flex";
+    })
+    expandMenu.addEventListener("mouseout", function() {
+        document.querySelector(".ssb-head-tooltip").style.display = "none";
+    })
+
+
+    const ssbItem = document.querySelectorAll(".ssb-items .ssb-hover");
+    ssbItem.forEach(item => {
+        item.addEventListener("mouseover", function() {
+            item.nextElementSibling.style.display = "flex";
+        })
+        item.addEventListener("mouseout", function() {
+            item.nextElementSibling.style.display = "none";
+        })
+    })
+}
+smallSideMenu();
+
 function walletDropdown() {
     const currentWallet = document.querySelector(".ft-current-wallet"),
     walletOptions = document.querySelector(".wallet-options");
