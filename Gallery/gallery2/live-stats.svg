@@ -1,0 +1,6 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-stats" viewBox="0 0 32 32">
+<path d="M32 0v0l-15.493 9.853-6.453-7.427-10.053 6.547v6.373l9.067-5.92 6.427 7.387 16.507-10.493v-6.32z"></path>
+<path d="M2.667 32h5.333v-17.893l-5.333 3.48v14.413z"></path>
+<path d="M14.853 21.173l-1.52-1.76v12.587h5.333v-13.253l-1.387 0.88-2.427 1.547z"></path>
+<path d="M24 32h5.333v-20.040l-5.333 3.4v16.64z"></path>
+</symbol></defs><use xlink:href="#icon-stats" stroke="#B1BAD3" fill="#B1BAD3" stroke-width="0px"></use></svg>

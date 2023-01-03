@@ -395,7 +395,7 @@ i {
     cursor: pointer;
 }
 
-.ssb-hover:hover {
+.ssb-hover:hover, .ssb-active {
     background-color: #071824;
 }
 
@@ -644,7 +644,6 @@ i {
 
 .wallet-dropdown-options::-webkit-scrollbar {
     width: 6px;
-    position: relative; left: 20px;
 }
 
 .wallet-dropdown-options::-webkit-scrollbar-track {
@@ -718,6 +717,25 @@ i {
 /*Body*/
 
 /*Top Section*/
+
+.main-page {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.main-page::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-page::-webkit-scrollbar-track {
+    background-color: #1B2D38;
+}
+
+.main-page::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: #2E4552;
+}
 
 .betting-section {
     width: 100%;
@@ -920,21 +938,22 @@ i {
 
 .premier-league {
     width: 100%;
-    background-color: #203643;
-    border: 1px solid black;
+    background-color: #213743;
+    border: 1px solid #0F212E;
     border-radius: 5px;
     overflow: hidden;
+    margin-bottom: 100px;
 }
 
 .comp-head {
     height: 40px;
     width: 100%;
     color: #D5DCEB;
+    padding: 0 15px;
 }
 
 .comp-head-content {
     display: flex;
-    margin: 0 15px;
 }
 
 .available-match {
@@ -949,7 +968,7 @@ i {
 
 .comp-date {
     width: 100%;
-    height: 20px;
+    height: 30px;
     color: #b1bad3;
     background-color: #2F4553;
     font-size: 12px;
@@ -957,6 +976,104 @@ i {
 
 .comp-date span {
     margin: 0 15px;
+}
+
+.football-match {
+    padding: 0 15px;
+    margin: 10px 0;
+}
+
+.md-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #b1bad3;
+    font-size: 12px;
+}
+
+.mdh-1x2 {
+    width: 80%;
+}
+
+.md-line1 {
+    width: 34%;
+    height: 2px;
+    border-radius: 3px;
+    background-color: #2F4553;
+}
+
+.md-line2 {
+    width: 22%;
+    height: 2px;
+    border-radius: 3px;
+    background-color: #2F4553;
+}
+
+.md-body {
+    margin-top: 10px;
+}
+
+.club-names {
+    width: 18%;
+    cursor: pointer;
+}
+
+.club {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+}
+
+.md-image {
+    margin-right: 10px;
+    margin-left: 17%;
+    opacity: 0.85;
+    cursor: pointer;
+}
+
+.md-image:hover {
+    opacity: 1;
+}
+
+.wd-odd {
+    height: 60px;
+    width: 17%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #040c12;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.odds-hover:hover {
+    background-color: #092F5B;
+}
+
+.wd-name {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+}
+
+.odd-value {
+    color: #218cff;
+    font-weight: 600;
+}
+
+.extra-odds {
+    color: #b1bad3;
+    margin-left: 3%;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.extra-odds:hover {
+    color: white;
 }
 
 
