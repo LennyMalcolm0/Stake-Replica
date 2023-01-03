@@ -209,3 +209,23 @@ function oddsType() {
 };
 
 oddsType();
+
+
+function competition() {
+    const compName = document.querySelectorAll(".comp-head");
+    compName.forEach(cn => {
+        cn.addEventListener("click", function() {
+            cn.parentElement.classList.toggle("deactivate");
+        })
+    });
+
+
+    const matchOdd = document.querySelectorAll(".match-odd");
+    matchOdd.forEach(mo => {
+        mo.addEventListener("click", function() {
+            mo.classList.toggle("md-active");
+        })
+    });
+};
+
+competition();

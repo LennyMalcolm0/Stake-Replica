@@ -149,7 +149,6 @@ i {
 }
 
 .fl-body i {
-    transition: transform 0.3s linear;
     margin-right: 8%;
 }
 
@@ -936,12 +935,16 @@ i {
 
 /*Odds Section*/
 
-.premier-league {
+.competition {
     width: 100%;
     background-color: #213743;
     border: 1px solid #0F212E;
     border-radius: 5px;
     overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.last-comp {
     margin-bottom: 100px;
 }
 
@@ -950,6 +953,7 @@ i {
     width: 100%;
     color: #D5DCEB;
     padding: 0 15px;
+    cursor: pointer;
 }
 
 .comp-head-content {
@@ -957,10 +961,10 @@ i {
 }
 
 .available-match {
+    display: none;
     font-size: 10px;
     font-weight: 600;
-    height: 16px;
-    width: 24px;
+    padding: 2px 10px;
     border-radius: 25px;
     background-color: #2F4553;
     margin-right: 20px;
@@ -1073,6 +1077,31 @@ i {
 }
 
 .extra-odds:hover {
+    color: white;
+}
+
+.deactivate .comp-body {
+    display: none;
+}
+
+.deactivate .comp-head i {
+    transform: rotate(90deg);
+}
+
+.deactivate .available-match {
+    display: block;
+}
+
+.md-active, .md-active:hover {
+    background-color: #1575E0;
+}
+
+.md-active .wd-name {
+    color: #071824;
+    font-weight: 600;
+}
+
+.md-active .odd-value {
     color: white;
 }
 
