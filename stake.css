@@ -47,6 +47,10 @@ i {
     transition: all 0.3s ease;
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 .align-center {
     display: flex;
     align-items: center;
@@ -87,7 +91,7 @@ i {
     width: 100%;
     height: 60px;
     align-items: center;
-    box-shadow: -2px 3px 7px #071824;
+    box-shadow: 0px 3px 7px #071824;
     font-size: 14px;
     position: relative;
 }
@@ -239,8 +243,7 @@ i {
 .live {
     font-size: 10px;
     font-weight: 600;
-    height: 16px;
-    width: 24px;
+    padding: 0px 6px;
     border-radius: 25px;
     background-color: #4391E7;
     display: flex;
@@ -500,7 +503,7 @@ i {
 
 /*MAIN BETTING SECTION*/
 
-/*Fixed Header*/
+/*FIXED HEADER*/
 
 .odds-page {
     flex-grow: 1;
@@ -524,7 +527,7 @@ i {
 }
 
 .center-ft {
-    width: 94%;
+    width: 92%;
     max-width: 1200px;
     position: relative;
 }
@@ -709,13 +712,9 @@ i {
     display: block;
 }
 
-.cursor {
-    cursor: pointer;
-}
+/*BODY*/
 
-/*Body*/
-
-/*Top Section*/
+/*TOP SECTION*/
 
 .main-page {
     width: 100%;
@@ -744,7 +743,7 @@ i {
 }
 
 .bs-container {
-    width: 94%;
+    width: 92%;
     max-width: 1200px;
     height: calc(100% - 60px);
 }
@@ -933,7 +932,7 @@ i {
     color: #1574E1;
 }
 
-/*Odds Section*/
+/*ODDS SECTION*/
 
 .competition {
     width: 100%;
@@ -1107,9 +1106,195 @@ i {
 
 
 
+/*BET LIST*/
 
-/*.saas {
-    background-color: red;
-    width: 200px;
+.cashier {
+    width: 350px;
     height: 100vh;
-}*/
+    background-color: #0E212F;
+    color: white;
+    font-size: 14px;
+}
+
+.cashier img {
+    height: 14px;
+    width: auto;
+}
+
+.bl-top {
+    height: 60px;
+    width: 100%;
+    box-shadow: 0px 3px 7px #071824;
+    position: relative;
+}
+
+.bet-menu {
+    width: 130px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.bet-count {
+    padding: 0px 8px;
+    border-radius: 20px;
+    background-color: #4290E7;
+    color: #071824;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.collapse-bl {
+    height: 30px;
+    width: 40px;
+    font-size: 18px;
+    border-radius: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.collapse-bl:hover {
+    background-color: #071824;
+}
+
+.blt-dropdown {
+    display: none;
+    height: 76px;
+    background-color: white;
+    color: #1B2C39;
+    border-radius: 5px;
+    position: absolute;
+    top: 55px;
+    left: 10px;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.blt-dropdown img {
+    margin-right: 5px;
+}
+
+.blt-dropdown .dd-item {
+    height: 38px;
+    padding: 0px 15px;
+    cursor: pointer;
+}
+
+.dd-item .bet-count {
+    margin-left: 10px;
+}
+
+.blt-dropdown .dd-item:hover {
+    background-color: #E6EAF3;
+}
+
+.blt-dropdown .blt-dd-active, .blt-dropdown .blt-dd-active:hover {
+    color: #1575E0;
+    background-color: white;
+}
+
+.bl-top-active .blt-dropdown {
+    display: block;
+}
+
+.bl-top-active .bet-menu i {
+    transform: rotate(180deg);
+}
+
+.bet-type-container {
+    height: 70px;
+    border-bottom: 2px solid #2F4553;
+}
+
+.bet-type {
+    height: 50px;
+    font-weight: 500;
+    gap: 5px;
+    padding: 5px;
+    margin-left: 7px;
+    border-radius: 25px;
+    background-color: #182B36;
+}
+
+.bt-item {
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.bt-item img {
+    margin-right: 5px;
+}
+
+.bt-item:hover, .bt-active {
+    background-color: #2F4553;
+}
+
+.bet-slip-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alter-bl {
+    width: 92%;
+}
+
+.odd-changes {
+    margin: 8px 0;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.odd-changes span, .odd-changes i {
+    opacity: 0.8;
+}
+
+.odd-changes:hover {
+    opacity: 1;
+}
+
+.odd-changes i {
+    margin-left: 5px;
+}
+
+.oc-dropdown {
+    display: none;
+    height: 120px;
+    line-height: 40px;
+    background-color: white;
+    color: #1B2C39;
+    white-space: nowrap;
+    border-radius: 5px;
+    position: absolute;
+    top: 30px;
+    left: -10px;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.oc-dropdown .oc-option {
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.oc-dropdown .oc-option:hover {
+    background-color: #E6EAF3;
+}
+
+.oc-dropdown .oc-active, .oc-dropdown .oc-active:hover {
+    background-color: white;
+    color: #1575E0;
+}
+
+.alter-active .oc-dropdown {
+    display: block;
+}
+
+.alter-active i {
+    transform: rotate(180deg);
+}

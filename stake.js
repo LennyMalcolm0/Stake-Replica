@@ -79,7 +79,6 @@ function leftSideMenu() {
         });
     });
 };
-
 leftSideMenu();
 
 function smallSideMenu() {
@@ -148,9 +147,7 @@ function walletDropdown() {
     chatIcon.addEventListener("click", function(){
         chatActive.classList.toggle("chat-active");
     });
-
 };
-
 walletDropdown();
 
 function oddsType() {
@@ -207,9 +204,7 @@ function oddsType() {
         })
     })
 };
-
 oddsType();
-
 
 function competition() {
     const compName = document.querySelectorAll(".comp-head");
@@ -227,5 +222,27 @@ function competition() {
         })
     });
 };
-
 competition();
+
+function cashier() {
+    const betMenu = document.querySelector(".bet-menu");
+    betMenu.addEventListener("click", function() {
+        document.querySelector(".bl-top").classList.toggle("bl-top-active");
+    });
+
+
+    const oddChanges = document.querySelector(".oc-text");
+    oddChanges.addEventListener("click", function() {
+        document.querySelector(".odd-changes").classList.toggle("alter-active");
+    });
+
+
+    const ocOption = querySelectorAll(".oc-dropdown .oc-option");
+    ocOption.forEach(oc => {
+        oc.addEventListener("click", function() {
+            document.querySelector(".oc-text span").textContent = oc.textContent;
+            document.querySelector(".oc-dropdown .oc-active").classList.remove("oc-active");
+        })
+    });
+};
+cashier();
