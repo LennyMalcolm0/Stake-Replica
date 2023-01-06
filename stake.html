@@ -1012,21 +1012,27 @@
 
     <div class="cashier">
         <div class="bl-top display-flex-btw">
-            <div class="bet-menu display-flex-btw">
-                <img src="Gallery\gallery1\my-bets.svg" alt="">
-                <span>Bet Slip</span>
-                <div class="bet-count">2</div>
+            <div class="bet-menu align-center">
+                <img src="Gallery\gallery1\my-bets.svg" id="cbm-img" alt="">
+                <div class="current-bm align-center">
+                    <span>Bet Slip</span>
+                    <div class="bet-count">2</div>
+                </div>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
             <div class="blt-dropdown">
                 <div class="dd-betslip blt-dd-active dd-item align-center">
-                    <img src="Gallery\gallery2\active-betslip.svg" alt="">
-                    <span>Bet Slip</span>
-                    <div class="bet-count">2</div>
+                    <img src="Gallery\gallery2\active-betslip.svg" id="bsm-img" alt="">
+                    <div class="dd-context align-center">
+                        <span>Bet Slip</span>
+                        <div class="bet-count">2</div>
+                    </div>
                 </div>
                 <div class="dd-mybets dd-item align-center">
-                    <img src="Gallery\gallery2\norm-mybet.svg" alt="">
-                    <span>My Bets</span>
+                    <img src="Gallery\gallery2\norm-mybet.svg" id="mbm-img" alt="">
+                    <div class="dd-context align-center">
+                        <span>My Bets</span>
+                    </div>
                 </div>
             </div>
             <div class="collapse-bl display-flex-center"><img src="Gallery\gallery2\collapse-bl.svg" alt=""></div>
@@ -1063,6 +1069,33 @@
                     </div>
                 </div>
                 <div class="clear-bl cursor">Clear All</div>
+            </div>
+            <div class="games-booked">
+                <div class="empty-betslip display-flex-center">
+                    <img src="Gallery\gallery1\empty-bs.svg" alt="">
+                    <div class="empty-bs">Bet Slip is Empty</div>
+                    <div>Start Beting Now!</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="check-out display-flex-center">
+            <div class="check-out-wrapper">
+                <div class="total-stake display-flex-btw">
+                    <span>Total Stake</span>
+                    <div class="ts-amount align-center">
+                        <span>$0.00</span>
+                        <img src="Gallery\crypto-gallery\btc.svg" alt="">
+                    </div>
+                </div>
+                <div class="est-payout display-flex-btw">
+                    <span>Est. Payout</span>
+                    <div class="est-amount align-center">
+                        <span>$0.00</span>
+                        <img src="Gallery\crypto-gallery\btc.svg" alt="">
+                    </div>
+                </div>
+                <button class="place-bet">Place Single Bet</button>
             </div>
         </div>
     </div>

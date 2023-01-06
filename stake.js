@@ -230,6 +230,36 @@ function cashier() {
         document.querySelector(".bl-top").classList.toggle("bl-top-active");
     });
 
+    const ddItem = document.querySelectorAll(".blt-dropdown .dd-item");
+    ddItem.forEach(item => {
+        item.addEventListener("click", () => {
+            document.querySelector(".bet-menu .current-bm").innerHTML = item.children[1].innerHTML;
+            document.querySelector(".blt-dropdown .blt-dd-active").classList.remove("blt-dd-active");
+            item.classList.add("blt-dd-active");
+
+            if (item.classList.contains("dd-betslip")) {
+                document.getElementById("cbm-img").src = "Gallery\\gallery1\\my-bets.svg";
+                item.firstElementChild.src = "Gallery\\gallery2\\active-betslip.svg";
+                item.nextElementSibling.firstElementChild.src = "Gallery\\gallery2\\norm-mybet.svg";
+            } else {
+                document.getElementById("cbm-img").src = "Gallery\\gallery2\\current-mybets.svg";
+                item.firstElementChild.src = "Gallery\\gallery2\\active-mybet.svg";
+                item.previousElementSibling.firstElementChild.src = "Gallery\\gallery2\\norm-betslip.svg";
+            };
+
+            document.querySelector(".bl-top").classList.toggle("bl-top-active");
+        });
+    })
+
+
+    const betType = document.querySelectorAll(".bet-type .bt-item");
+    betType.forEach(bt => {
+        bt.addEventListener("click", () => {
+            document.querySelector(".bet-type .bt-active").classList.remove("bt-active");
+            bt.classList.add("bt-active");
+        })
+    });
+
 
     const oddChanges = document.querySelector(".oc-text");
     oddChanges.addEventListener("click", function() {
@@ -237,11 +267,13 @@ function cashier() {
     });
 
 
-    const ocOption = querySelectorAll(".oc-dropdown .oc-option");
-    ocOption.forEach(oc => {
-        oc.addEventListener("click", function() {
-            document.querySelector(".oc-text span").textContent = oc.textContent;
-            document.querySelector(".oc-dropdown .oc-active").classList.remove("oc-active");
+    const ocOption = document.querySelectorAll(".odd-changes .oc-option");
+    ocOption.forEach(option => {
+        option.addEventListener("click", () => {
+            document.querySelector(".oc-text span").innerHTML = option.innerHTML;
+            document.querySelector(".odd-changes .oc-active").classList.remove("oc-active");
+            option.classList.add("oc-active");
+            document.querySelector(".odd-changes").classList.toggle("alter-active");
         })
     });
 };

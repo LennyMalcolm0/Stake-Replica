@@ -787,6 +787,7 @@ i {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: #7B858B;
+    cursor: not-allowed;
 }
 
 .bs-menu2 {
@@ -889,6 +890,7 @@ i {
     border-radius: 5px;
     background-color: #0E212F;
     opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .popup-standard {
@@ -1114,6 +1116,7 @@ i {
     background-color: #0E212F;
     color: white;
     font-size: 14px;
+    position: relative;
 }
 
 .cashier img {
@@ -1129,9 +1132,19 @@ i {
 }
 
 .bet-menu {
-    width: 130px;
     margin-left: 10px;
     cursor: pointer;
+}
+
+.current-bm * {
+    margin: 0 5px;
+}
+
+.bet-menu i {
+    margin: 0 5px;
+}
+.bet-menu img {
+    margin: 0 5px;
 }
 
 .bet-count {
@@ -1241,20 +1254,21 @@ i {
 
 .alter-bl {
     width: 92%;
+    height: 40px;
 }
 
 .odd-changes {
     margin: 8px 0;
-    transition: all 0.1s ease;
-    cursor: pointer;
     position: relative;
 }
 
-.odd-changes span, .odd-changes i {
+.odd-changes .oc-text {
+    transition: all 0.1s ease;
+    cursor: pointer;
     opacity: 0.8;
 }
 
-.odd-changes:hover {
+.odd-changes .oc-text:hover {
     opacity: 1;
 }
 
@@ -1297,4 +1311,62 @@ i {
 
 .alter-active i {
     transform: rotate(180deg);
+}
+
+.games-booked {
+    height: calc(100vh - 300px);
+    width: 100%;
+}
+
+.empty-betslip {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.empty-betslip img {
+    height: 110px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.empty-betslip div {
+    display: flex;
+    justify-content: center;
+}
+
+.empty-bs {
+    opacity: 0.7;
+    font-size: 13px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.check-out {
+    height: 130px;
+    width: 100%;
+    background-color: #2F4553;
+    position: absolute;
+    bottom: 0;
+}
+
+.check-out-wrapper {
+    width: 92%;
+}
+
+.ts-amount span, .est-amount span {
+    line-height: 14px;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.check-out button {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #1574E1;
+    border: none;
+    font-weight: 600px;
+    color: white;
+    margin-top: 10px;
 }
