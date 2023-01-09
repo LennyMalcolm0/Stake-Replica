@@ -113,6 +113,7 @@ function walletDropdown() {
 
 
     const currentCrypto = document.querySelector(".current-text .current-value"),
+    currentCryptoImage = document.querySelector(".current-text img"),
     wDropdownOptions = document.querySelectorAll(".wallet-dropdown-options .w-option");
     walletSearch = document.querySelector(".wallet-search input");
 
@@ -130,12 +131,18 @@ function walletDropdown() {
 
 
     currentCrypto.innerHTML = document.querySelector(".wallet-dropdown-options .cv").firstElementChild.innerHTML;
+    currentCryptoImage.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
     wDropdownOptions.forEach(element => {
         element.addEventListener("click", () => {
             currentCrypto.innerHTML = element.firstElementChild.innerHTML;
             document.querySelector(".current-text #current-image").src = element.children[1].firstElementChild.src;
             walletSearch.value = "";
             walletOptions.classList.toggle("sw-active");
+
+            const checkoutImage = document.querySelectorAll(".check-out img");
+            checkoutImage.forEach(img => {
+                img.src = document.querySelector(".current-text #current-image").src;
+            })
         });
     
     });
@@ -276,5 +283,11 @@ function cashier() {
             document.querySelector(".odd-changes").classList.toggle("alter-active");
         })
     });
+
+
+    const checkoutImage = document.querySelectorAll(".check-out img");
+    checkoutImage.forEach(img => {
+        img.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
+    })       
 };
 cashier();

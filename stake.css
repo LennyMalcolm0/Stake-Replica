@@ -1028,18 +1028,13 @@ i {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .md-image {
     margin-right: 10px;
     margin-left: 17%;
-    opacity: 0.85;
     cursor: pointer;
-}
-
-.md-image:hover {
-    opacity: 1;
 }
 
 .wd-odd {
@@ -1263,17 +1258,18 @@ i {
 }
 
 .odd-changes .oc-text {
-    transition: all 0.1s ease;
     cursor: pointer;
-    opacity: 0.8;
+    color: #b1bad3;
+    transition: all 0.2s ease;
 }
 
 .odd-changes .oc-text:hover {
-    opacity: 1;
+    color: white;
 }
 
 .odd-changes i {
     margin-left: 5px;
+    transition: all 0.2s ease;
 }
 
 .oc-dropdown {
@@ -1319,6 +1315,7 @@ i {
 }
 
 .empty-betslip {
+    display: none;
     width: 100%;
     height: 100%;
     flex-direction: column;
@@ -1369,4 +1366,112 @@ i {
     font-weight: 600px;
     color: white;
     margin-top: 10px;
+}
+
+
+.match-cards-container {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.match-card {
+    height: 150px;
+    width: 100%;
+    background-color: #203742;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.match-header {
+    width: 100%;
+    height: 40px;
+    background-color: #2E4552;
+}
+
+.mh-wrapper {
+    width: 92%;
+}
+
+.mh-title {
+    font-weight: 600;
+    color: #b1bad3;
+    transition: all 0.1s ease;
+}
+
+.mh-title:hover {
+    color: white;
+}
+
+.mc-content {
+    width: 92%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.mc-content .mc-type {
+    color: #b1bad3;
+}
+
+.mcc-info {
+    width: 100%;
+}
+
+.mcc-info .match-pick {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.mss-side1 {
+    width: 100%;
+}
+
+.stake-amount {
+    position: relative;
+}
+
+.stake-amount input {
+    height: 36px;
+    width: 150px;
+    border-radius: 5px;
+    border: 2px solid #5f6473;
+    background-color: #0F202F;
+    color: white;
+    padding-right: 30px;
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+.stake-amount input:focus {
+    border: none;
+}
+
+.mc-content .stake-amount img {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+}
+
+.mcc-info .mp-odd {
+    color: #218cff;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.singles-payout {
+    height: 36px;
+    color: #b1bad3;
+}
+
+.singles-payout .sp-est {
+    font-size: 12px;
+}
+
+.s-dollars {
+    line-height: 14px;
+}
+
+.s-dollars span {
+    margin-right: 5px;
 }
