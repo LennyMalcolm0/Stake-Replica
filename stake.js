@@ -222,12 +222,45 @@ function competition() {
     });
 
 
-    const matchOdd = document.querySelectorAll(".match-odd");
+    const matchOdd = document.querySelectorAll(".match-odd"),
+    betCount = document.querySelectorAll(".bl-top .bet-count");
+    let count = 0;
     matchOdd.forEach(mo => {
         mo.addEventListener("click", function() {
             mo.classList.toggle("md-active");
-        })
+
+            // Adjusting numbers of picks =>>
+            if (mo.classList.contains("md-active")) {
+                count++
+            } else {
+                count--
+            };
+
+            betCount.forEach(betC => {
+                betC.textContent = count;
+                betC.style.display = "block";
+
+                if (count == 0) {
+                    betC.style.display = "none";
+                }
+            })
+            
+            // Adding and removing Match Cards
+            let mdActive = document.getElementsByClassName("md-active"),
+            mdActiveCount = mdActive.length;
+
+            const emptyBetslip = document.querySelector(".games-booked .emptyBetslip"),
+            mcContainer = document.querySelector(".games-booked .match-cards-container"),
+            gamesBooked = document.querySelector(".games-booked");
+            if (!mdActiveCount == 0) {
+                gamesBooked.classList.add("gb-active");
+            } else {
+                gamesBooked.classList.remove("gb-active");
+            }
+        });
+
     });
+        
 };
 competition();
 
