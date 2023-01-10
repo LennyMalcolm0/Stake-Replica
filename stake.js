@@ -1,4 +1,4 @@
-// VARIABLES AND FUNCTIONS FOR FIXED LEFT SIDE BAR
+//VARIABLES AND FUNCTIONS FOR FIXED LEFT SIDE BAR
 function leftSideMenu() {
     const minimize = document.querySelector(".fl-image-container .fl-head-image"),
     expand = document.querySelector(".ssb-head .ssb-head-image");
@@ -142,7 +142,12 @@ function walletDropdown() {
             const checkoutImage = document.querySelectorAll(".check-out img");
             checkoutImage.forEach(img => {
                 img.src = document.querySelector(".current-text #current-image").src;
-            })
+            });
+
+            const mcImages = document.querySelectorAll(".mc-content .s-dollars img");
+            mcImages.forEach(mcImage => {
+            mcImage.src = document.querySelector(".current-text #current-image").src;
+            });  
         });
     
     });
@@ -226,10 +231,10 @@ function competition() {
     betCount = document.querySelectorAll(".bl-top .bet-count");
     let count = 0;
     matchOdd.forEach(mo => {
-        mo.addEventListener("click", function() {
+        mo.addEventListener("click", () => {
             mo.classList.toggle("md-active");
 
-            // Adjusting numbers of picks =>>
+            //Adjusting numbers of picks =>>
             if (mo.classList.contains("md-active")) {
                 count++
             } else {
@@ -245,21 +250,61 @@ function competition() {
                 }
             })
             
-            // Adding and removing Match Cards
+            //Adding and removing Match Cards =>>
             let mdActive = document.getElementsByClassName("md-active"),
             mdActiveCount = mdActive.length;
 
-            const emptyBetslip = document.querySelector(".games-booked .emptyBetslip"),
-            mcContainer = document.querySelector(".games-booked .match-cards-container"),
             gamesBooked = document.querySelector(".games-booked");
             if (!mdActiveCount == 0) {
                 gamesBooked.classList.add("gb-active");
             } else {
                 gamesBooked.classList.remove("gb-active");
-            }
+            };
+
+            if (mo.classList.contains("md-active")) {
+                const matchCard = document.querySelector(".match-card").cloneNode(true);
+                matchCard.classList.remove("hidden");
+                // let neClassName = mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("");
+                
+
+
+                newEntry = document.createElement("div");
+                newEntry.classList.add(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`);
+                newEntry.classList.add("new-entry");
+                newEntry.appendChild(matchCard);
+
+                const matchHeader = newEntry.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
+                matchPick = newEntry.firstElementChild.children[1].children[1].firstElementChild.firstElementChild,
+                matchPickOdd = newEntry.firstElementChild.children[1].children[1].children[1].firstElementChild,
+                newMatchPick = mo.firstElementChild,
+                newMatchHeader1 = mo.parentElement.firstElementChild.firstElementChild,
+                newMatchHeader2 = mo.parentElement.firstElementChild.children[1],
+                newMatchPickOdd = mo.children[1];
+
+                matchHeader.innerHTML = newMatchHeader1.innerHTML + " - " + newMatchHeader2.innerHTML;
+                matchPick.innerHTML = newMatchPick.innerHTML;
+                matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
+        
+                const mcContainer = document.querySelector(".games-booked .match-cards-container");
+                mcContainer.appendChild(newEntry);
+            } else {
+                const selectedMatch = document.querySelectorAll(".new-entry");
+                selectedMatch.forEach(ne => {
+                    if (ne.classList.contains(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`)) {
+                        ne.classList.add("hidden");
+                    }
+                })
+            };
+
         });
 
     });
+
+
+    const mcImages = document.querySelectorAll(".mc-content .s-dollars img");
+    mcImages.forEach(mcImage => {
+        mcImage.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
+    });  
         
 };
 competition();
@@ -321,6 +366,6 @@ function cashier() {
     const checkoutImage = document.querySelectorAll(".check-out img");
     checkoutImage.forEach(img => {
         img.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
-    })       
+    });      
 };
 cashier();

@@ -1409,6 +1409,10 @@ i {
 }
 
 .mh-title {
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: 600;
     color: #b1bad3;
     transition: all 0.1s ease;
@@ -1495,5 +1499,9 @@ i {
 }
 
 .gb-active .empty-betslip {
+    display: none;
+}
+
+.hidden {
     display: none;
 }
