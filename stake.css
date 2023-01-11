@@ -64,6 +64,8 @@ i {
     width: calc(20% - 20px);
     max-width: 350px;
     color: white;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .stake-side-bar img {
@@ -92,7 +94,6 @@ i {
     height: 60px;
     align-items: center;
     box-shadow: 0px 3px 7px #071824;
-    font-size: 14px;
     position: relative;
 }
 
@@ -139,15 +140,12 @@ i {
     background-color: white;
     position: absolute;
     top: 55px;
-    font-size: 14px;
-    font-weight: 600;
     color: #0F202F;
 }
 
 .fl-body {
     width: 92%;
     margin-left: 8%;
-    font-size: 14px;
     height: calc(100% - 60px);
     overflow-y: auto;
 }
@@ -304,8 +302,8 @@ i {
 
 .select-dropdown {
     display: none;
-    font-size: 14px;
     width: 135px;
+    font-weight: 500;
     height: 130px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -365,7 +363,7 @@ i {
     background-color: #0F202F;
     width: 60px;
     height: 100%;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #0F202F;
     position: relative;
@@ -509,8 +507,8 @@ i {
     flex-grow: 1;
     background-color: #1B2D38;
     height: 100vh;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .odds-page img {
@@ -976,7 +974,8 @@ i {
     height: 30px;
     color: #b1bad3;
     background-color: #2F4553;
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 400;
 }
 
 .comp-date span {
@@ -993,7 +992,8 @@ i {
     justify-content: space-between;
     align-items: center;
     color: #b1bad3;
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 400;
 }
 
 .mdh-1x2 {
@@ -1057,12 +1057,12 @@ i {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .odd-value {
-    color: #218cff;
-    font-weight: 600;
+    color: #4391e7;
+    font-weight: 700;
 }
 
 .extra-odds {
@@ -1103,14 +1103,16 @@ i {
 
 
 
-/*BET LIST*/
+/*CASHIER (VIEW SELECTED ODDS & CHECKOUT)*/
 
 .cashier {
+    display: none;
     width: 350px;
     height: 100vh;
     background-color: #0E212F;
     color: white;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 600;
     position: relative;
 }
 
@@ -1118,6 +1120,8 @@ i {
     height: 14px;
     width: auto;
 }
+
+/*Top Section*/
 
 .bl-top {
     height: 60px;
@@ -1241,6 +1245,8 @@ i {
     background-color: #2F4553;
 }
 
+/*Bet Slip Content*/
+
 .bet-slip-content {
     width: 100%;
     display: flex;
@@ -1261,7 +1267,7 @@ i {
 .odd-changes .oc-text {
     cursor: pointer;
     color: #b1bad3;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
 }
 
 .odd-changes .oc-text:hover {
@@ -1270,7 +1276,7 @@ i {
 
 .odd-changes i {
     margin-left: 5px;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
 }
 
 .oc-dropdown {
@@ -1310,10 +1316,16 @@ i {
     transform: rotate(180deg);
 }
 
+/*Selected Odds (Games Booked)*/
+
 .games-booked {
     height: calc(100vh - 300px);
     width: 100%;
     overflow-y: auto;
+}
+
+.games-booked-multi {
+    height: calc(100vh - 340px);
 }
 
 .games-booked::-webkit-scrollbar {
@@ -1353,34 +1365,7 @@ i {
     margin-bottom: 5px;
 }
 
-.check-out {
-    height: 130px;
-    width: 100%;
-    background-color: #2F4553;
-    position: absolute;
-    bottom: 0;
-}
-
-.check-out-wrapper {
-    width: 92%;
-}
-
-.ts-amount span, .est-amount span {
-    line-height: 14px;
-    margin-right: 5px;
-    font-weight: 600;
-}
-
-.check-out button {
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    background-color: #1574E1;
-    border: none;
-    font-weight: 600px;
-    color: white;
-    margin-top: 10px;
-}
+/*Match cards*/
 
 .match-cards-container {
     display: none;
@@ -1389,11 +1374,9 @@ i {
 }
 
 .match-card {
-    height: 150px;
     width: 100%;
     background-color: #203742;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 5px;
     overflow: hidden;
     margin-bottom: 10px;
 }
@@ -1413,7 +1396,7 @@ i {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: 600;
+    font-weight: 500;
     color: #b1bad3;
     transition: all 0.1s ease;
 }
@@ -1425,10 +1408,15 @@ i {
 .mc-content {
     width: 92%;
     margin: 0 auto;
+    padding: 15px 0;
+}
+
+.mc-content-multi {
     padding: 10px 0;
 }
 
 .mc-content .mc-type {
+    font-weight: 400;
     color: #b1bad3;
 }
 
@@ -1437,16 +1425,13 @@ i {
 }
 
 .mcc-info .match-pick {
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 5px;
 }
 
-.mss-side1 {
-    width: 100%;
-}
-
 .stake-amount {
-    position: relative;
+    height: 36px;
+    width: 150px;
 }
 
 .stake-amount input {
@@ -1465,25 +1450,37 @@ i {
     border: none;
 }
 
-.mc-content .stake-amount img {
+.input-image {
+    width: 20px;
+    height: 14px;
+    position: relative;
+}
+
+.stake-amount .input-image img {
     position: absolute;
-    top: 11px;
     right: 10px;
 }
 
+.ac-end {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .mcc-info .mp-odd {
-    color: #218cff;
-    font-weight: 600;
+    color: #4391e7;
     margin-bottom: 3px;
 }
 
 .singles-payout {
     height: 36px;
     color: #b1bad3;
+    font-weight: 500;
 }
 
 .singles-payout .sp-est {
-    font-size: 12px;
+    font-size: 11px;
+    margin-bottom: 3px;
 }
 
 .s-dollars {
@@ -1504,4 +1501,81 @@ i {
 
 .hidden {
     display: none;
+}
+
+/* Check out zone */
+
+/* Singles checkout */
+.check-out-singles {
+    height: 130px;
+    width: 100%;
+    background-color: #2F4553;
+    position: absolute;
+    bottom: 0;
+}
+
+.co-wrapper {
+    width: 92%;
+}
+
+.co-text {
+    color: #b1bad3;
+    font-weight: 500;
+}
+
+.ts-amount span, .est-amount span {
+    line-height: 14px;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.check-out button {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #1574E1;
+    border: none;
+    font-weight: 600px;
+    color: white;
+    margin-top: 10px;
+}
+
+/* Multi checkout */
+.check-out-multi {
+    display: none;
+    height: 170px;
+    width: 100%;
+    background-color: #2F4553;
+    position: absolute;
+    bottom: 0;
+}
+
+.multi-stake-amount {
+    height: 36px;
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.multi-stake-amount input {
+    height: 36px;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid #5f6473;
+    background-color: #0F202F;
+    color: white;
+    padding-right: 30px;
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+.multi-stake-amount img {
+    height: 16px;
+    position: absolute;
+    right: 10px;
+}
+
+.total-odds {
+    color: #218cff;
+    font-weight: 700;
 }

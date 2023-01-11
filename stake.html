@@ -1042,13 +1042,13 @@
 
         <div class="bet-type-container align-center">
             <div class="bet-type align-center">
-                <div class="bt-item bt-active">
+                <div class="bt-item bt-singles bt-active">
                     <div class="bt-center align-center">
                         <img src="Gallery\gallery1\single.svg" alt="">
                         <span>Single</span>
                     </div>
                 </div>
-                <div class="bt-item">
+                <div class="bt-item bt-multi">
                     <div class="bt-center align-center">
                         <img src="Gallery\gallery1\multi.svg" alt="">
                         <span>Multi</span>
@@ -1056,7 +1056,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="bet-slip-content">
             <div class="alter-bl display-flex-btw">
                 <div class="odd-changes">
@@ -1065,20 +1065,23 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </div>
                     <div class="oc-dropdown">
-                        <div class="oc-option oc-active">Accept Any Odds</div>
-                        <div class="oc-option">Accept Only Higher Odds</div>
-                        <div class="oc-option">No Odds Changes Accepted</div>
+                        <div class="oc-options">
+                            <div class="oc-option oc-active">Accept Any Odds</div>
+                            <div class="oc-option">Accept Only Higher Odds</div>
+                            <div class="oc-option">No Odds Changes Accepted</div>
+                        </div>
                     </div>
                 </div>
                 <div class="clear-bl cursor">Clear All</div>
             </div>
+            
             <div class="games-booked">
                 <div class="empty-betslip display-flex-center">
                     <img src="Gallery\gallery1\empty-bs.svg" alt="">
                     <div class="empty-bs">Bet Slip is Empty</div>
                     <div>Start Beting Now!</div>
                 </div>
-
+                
                 <div class="match-cards-container">
                     <div class="match-card hidden">
                         <div class="match-header display-flex-center">
@@ -1093,14 +1096,14 @@
                             <div class="mcc-info display-flex-btw">
                                 <div class="mcc-side1">
                                     <div class="match-pick">Manchester City FC</div>
-                                    <div class="stake-amount">
-                                        <input type="number" value="0.00">
-                                        <img src="Gallery\crypto-gallery\us-dollar.svg" alt="">
+                                    <div class="stake-amount align-center">
+                                        <input type="number" id="" value="0.00">
+                                        <div class="input-image"><img src="Gallery\crypto-gallery\us-dollar.svg" alt=""></div>
                                     </div>
                                 </div>
                                 <div class="mcc-side2">
-                                    <div class="mp-odd">1.65</div>
-                                    <div class="singles-payout">
+                                    <div class="mp-odd ac-end">1.65</div>
+                                    <div class="singles-payout ac-end">
                                         <span class="sp-est">Est. Payout</span>
                                         <div class="s-dollars align-center"><span>$0.00</span> <img src="Gallery\crypto-gallery\btc.svg" id="mc-image" alt=""></div>
                                     </div>
@@ -1112,23 +1115,46 @@
             </div>
         </div>
 
-        <div class="check-out display-flex-center">
-            <div class="check-out-wrapper">
-                <div class="total-stake display-flex-btw">
-                    <span>Total Stake</span>
-                    <div class="ts-amount align-center">
-                        <span>$0.00</span>
-                        <img src="" id="checkout-img" alt="">
+        <div class="check-out">
+            <div class="check-out-singles display-flex-center">
+                <div class="co-wrapper">
+                    <div class="total-stake display-flex-btw">
+                        <span class="co-text">Total Stake</span>
+                        <div class="ts-amount align-center">
+                            <span>$0.00</span>
+                            <img src="" id="checkout-img" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="est-payout display-flex-btw">
-                    <span>Est. Payout</span>
-                    <div class="est-amount align-center">
-                        <span>$0.00</span>
-                        <img src="Gallery\crypto-gallery\btc.svg" id="checkout-img" alt="">
+                    <div class="est-payout display-flex-btw">
+                        <span class="co-text">Est. Payout</span>
+                        <div class="est-amount align-center">
+                            <span>$0.00</span>
+                            <img src="Gallery\crypto-gallery\btc.svg" id="checkout-img" alt="">
+                        </div>
                     </div>
+                    <button class="place-sbet">Place Single Bet</button>
                 </div>
-                <button class="place-bet">Place Single Bet</button>
+            </div>
+
+            <div class="check-out-multi display-flex-center">
+                <div class="co-wrapper">
+                    <div class="multi-stake-amount align-center">
+                        <input type="number" id="" value="0.00">
+                        <img src="Gallery\crypto-gallery\us-dollar.svg" alt="">
+                    </div>
+                    <div class="total-stake display-flex-btw">
+                        <span class="co-text">Total Odds</span>
+                        <div class="total-odds">1.00</div>
+                    </div>
+                    <div class="est-payout display-flex-btw">
+                        <span class="co-text">Est. Payout</span>
+                        <div class="est-amount align-center">
+                            <span>$0.00</span>
+                            <img src="Gallery\crypto-gallery\btc.svg" id="checkout-img" alt="">
+                        </div>
+                    </div>
+                    <button class="place-mbet">Place Multi Bet</button>
+                </div>
             </div>
         </div>
     </div>

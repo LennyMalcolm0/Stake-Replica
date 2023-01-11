@@ -81,6 +81,7 @@ function leftSideMenu() {
 };
 leftSideMenu();
 
+
 function smallSideMenu() {
     const expandMenu = document.querySelector(".ssb-head-image");
     expandMenu.addEventListener("mouseover", function() {
@@ -102,6 +103,7 @@ function smallSideMenu() {
     })
 }
 smallSideMenu();
+
 
 function walletDropdown() {
     const currentWallet = document.querySelector(".ft-current-wallet"),
@@ -139,7 +141,7 @@ function walletDropdown() {
             walletSearch.value = "";
             walletOptions.classList.toggle("sw-active");
 
-            const checkoutImage = document.querySelectorAll(".check-out img");
+            const checkoutImage = document.querySelectorAll(".check-out #checkout-img");
             checkoutImage.forEach(img => {
                 img.src = document.querySelector(".current-text #current-image").src;
             });
@@ -161,6 +163,7 @@ function walletDropdown() {
     });
 };
 walletDropdown();
+
 
 function oddsType() {
     const bsPopup = document.querySelectorAll(".menu2-right img"),
@@ -218,6 +221,7 @@ function oddsType() {
 };
 oddsType();
 
+
 function competition() {
     const compName = document.querySelectorAll(".comp-head");
     compName.forEach(cn => {
@@ -234,7 +238,7 @@ function competition() {
         mo.addEventListener("click", () => {
             mo.classList.toggle("md-active");
 
-            //Adjusting numbers of picks =>>
+            //Adjusting numbers of picks
             if (mo.classList.contains("md-active")) {
                 count++
             } else {
@@ -250,51 +254,58 @@ function competition() {
                 }
             })
             
-            //Adding and removing Match Cards =>>
-            let mdActive = document.getElementsByClassName("md-active"),
-            mdActiveCount = mdActive.length;
+            //Adding and removing Match Cards
+            function addMatchCard() {
+                let mdActive = document.getElementsByClassName("md-active"),
+                mdActiveCount = mdActive.length;
 
-            gamesBooked = document.querySelector(".games-booked");
-            if (!mdActiveCount == 0) {
-                gamesBooked.classList.add("gb-active");
-            } else {
-                gamesBooked.classList.remove("gb-active");
+                //Adding Cashier zone & Toggling the empty betslip content 
+                const gamesBooked = document.querySelector(".games-booked"),
+                cashierDisplay = document.querySelector(".cashier");
+                if (!mdActiveCount == 0) {
+                    gamesBooked.classList.add("gb-active");
+                    cashierDisplay.style.display = "block";
+                } else {
+                    gamesBooked.classList.remove("gb-active");
+                };
+
+                // Adding match card content based on match info
+                if (mo.classList.contains("md-active")) {
+                    const matchCard = document.querySelector(".match-card").cloneNode(true);
+                    matchCard.classList.remove("hidden");
+                    
+
+                    newEntry = document.createElement("div");
+                    newEntry.classList.add(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`);
+                    newEntry.classList.add("new-entry");
+                    newEntry.appendChild(matchCard);
+
+                    const matchHeader = newEntry.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
+                    matchPick = newEntry.firstElementChild.children[1].children[1].firstElementChild.firstElementChild,
+                    matchPickOdd = newEntry.firstElementChild.children[1].children[1].children[1].firstElementChild,
+                    newMatchPick = mo.firstElementChild,
+                    newMatchHeader1 = mo.parentElement.firstElementChild.firstElementChild,
+                    newMatchHeader2 = mo.parentElement.firstElementChild.children[1],
+                    newMatchPickOdd = mo.children[1];
+
+                    matchHeader.innerHTML = newMatchHeader1.innerHTML + " - " + newMatchHeader2.innerHTML;
+                    matchPick.innerHTML = newMatchPick.innerHTML;
+                    matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
+            
+                    const mcContainer = document.querySelector(".games-booked .match-cards-container");
+                    mcContainer.appendChild(newEntry);
+                } else {
+                    // Removing each match-card once it's match-odd counterpart is clicked again
+                    const selectedMatch = document.querySelectorAll(".new-entry");
+                    selectedMatch.forEach(ne => {
+                        if (ne.classList.contains(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`)) {
+                            ne.classList.add("hidden");
+                        }
+                    })
+                };
             };
+            addMatchCard();
 
-            if (mo.classList.contains("md-active")) {
-                const matchCard = document.querySelector(".match-card").cloneNode(true);
-                matchCard.classList.remove("hidden");
-                // let neClassName = mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("");
-                
-
-
-                newEntry = document.createElement("div");
-                newEntry.classList.add(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`);
-                newEntry.classList.add("new-entry");
-                newEntry.appendChild(matchCard);
-
-                const matchHeader = newEntry.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
-                matchPick = newEntry.firstElementChild.children[1].children[1].firstElementChild.firstElementChild,
-                matchPickOdd = newEntry.firstElementChild.children[1].children[1].children[1].firstElementChild,
-                newMatchPick = mo.firstElementChild,
-                newMatchHeader1 = mo.parentElement.firstElementChild.firstElementChild,
-                newMatchHeader2 = mo.parentElement.firstElementChild.children[1],
-                newMatchPickOdd = mo.children[1];
-
-                matchHeader.innerHTML = newMatchHeader1.innerHTML + " - " + newMatchHeader2.innerHTML;
-                matchPick.innerHTML = newMatchPick.innerHTML;
-                matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
-        
-                const mcContainer = document.querySelector(".games-booked .match-cards-container");
-                mcContainer.appendChild(newEntry);
-            } else {
-                const selectedMatch = document.querySelectorAll(".new-entry");
-                selectedMatch.forEach(ne => {
-                    if (ne.classList.contains(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`)) {
-                        ne.classList.add("hidden");
-                    }
-                })
-            };
 
         });
 
@@ -308,6 +319,7 @@ function competition() {
         
 };
 competition();
+
 
 function cashier() {
     const betMenu = document.querySelector(".bet-menu");
@@ -337,13 +349,62 @@ function cashier() {
     })
 
 
-    const betType = document.querySelectorAll(".bet-type .bt-item");
-    betType.forEach(bt => {
-        bt.addEventListener("click", () => {
-            document.querySelector(".bet-type .bt-active").classList.remove("bt-active");
-            bt.classList.add("bt-active");
-        })
-    });
+    function multiSingle() {
+        const betType = document.querySelectorAll(".bet-type .bt-item");
+        betType.forEach(bt => {
+            bt.addEventListener("click", () => {
+                document.querySelector(".bet-type .bt-active").classList.remove("bt-active");
+                bt.classList.add("bt-active");
+            })
+        });
+
+
+        const betSingles = document.querySelector(".bet-type .bt-singles"),
+        betMulti = document.querySelector(".bet-type .bt-multi");
+
+        betSingles.addEventListener("click", () => {
+            document.querySelector(".check-out-singles").style.display = "flex";
+            document.querySelector(".check-out-multi").style.display = "none";
+
+            const stakeAmount = document.querySelectorAll(".match-card .stake-amount"),
+            singlesPayout = document.querySelectorAll(".match-card .singles-payout");
+            stakeAmount.forEach(sa => {
+                sa.style.display = "flex"
+            });
+            singlesPayout.forEach(sp => {
+                sp.style.display = "flex"
+            });
+
+            const mcContent = document.querySelectorAll(".match-card .mc-content");
+            mcContent.forEach(mcc => {
+                mcc.classList.remove("mc-content-multi");
+            });
+            gamesBooked = document.querySelector(".games-booked");
+            gamesBooked.classList.remove("games-booked-multi");
+        });
+
+        betMulti.addEventListener("click", () => {
+            document.querySelector(".check-out-singles").style.display = "none";
+            document.querySelector(".check-out-multi").style.display = "flex";
+
+            const stakeAmount = document.querySelectorAll(".match-card .stake-amount"),
+            singlesPayout = document.querySelectorAll(".match-card .singles-payout");
+            stakeAmount.forEach(sa => {
+                sa.style.display = "none"
+            });
+            singlesPayout.forEach(sp => {
+                sp.style.display = "none"
+            });
+
+            const mcContent = document.querySelectorAll(".match-card .mc-content");
+            mcContent.forEach(mcc => {
+                mcc.classList.add("mc-content-multi");
+            });
+            gamesBooked = document.querySelector(".games-booked");
+            gamesBooked.classList.add("games-booked-multi");
+        });
+    };
+    multiSingle();
 
 
     const oddChanges = document.querySelector(".oc-text");
@@ -363,7 +424,7 @@ function cashier() {
     });
 
 
-    const checkoutImage = document.querySelectorAll(".check-out img");
+    const checkoutImage = document.querySelectorAll(".check-out #checkout-img");
     checkoutImage.forEach(img => {
         img.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
     });      
