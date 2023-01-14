@@ -276,7 +276,10 @@ function competition() {
                     
 
                     newEntry = document.createElement("div");
-                    newEntry.classList.add(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`);
+                    newEntry.classList.add(`${mo.firstElementChild.innerHTML.split(" ").join("") 
+                        + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
+                        + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
+                    );
                     newEntry.classList.add("new-entry");
                     newEntry.appendChild(matchCard);
 
@@ -298,15 +301,48 @@ function competition() {
                     // Removing each match-card once it's match-odd counterpart is clicked again
                     const selectedMatch = document.querySelectorAll(".new-entry");
                     selectedMatch.forEach(ne => {
-                        if (ne.classList.contains(`${mo.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`)) {
+                        if (ne.classList.contains(`${mo.firstElementChild.innerHTML.split(" ").join("") 
+                            + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
+                            + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
+                        )) {
                             ne.classList.add("hidden");
                         }
                     })
                 };
+    
+                const inputStake = document.querySelectorAll(".new-entry input");
+                inputStake.forEach(ns => {
+                    let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
+                    mpOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
+
+                    ns.addEventListener("input", () => {
+                        payout.innerHTML = (ns.value * mpOdd.innerHTML).toFixed(2);
+
+                        // inputArray = [];
+                        // const totalStake = document.querySelector(".check-out-singles .ts-amount span");
+
+                        // let initial = (payout.innerHTML / mpOdd.innerHTML);
+                        // inputArray.push(initial);
+                        // console.log(inputArray);
+                        
+                        // let sum = inputArray.reduce(myFunction);
+                        // function myFunction(total, value) {
+                        // return total + value;
+                        // }
+
+                        // totalStake.innerHTML = (sum * 1).toFixed(2);
+                    });
+
+                    const inputArray = [];
+                    ns.addEventListener("focusout", () => {
+                        if (!ns.value) {
+                            ns.value = 0.00.toFixed(2);
+                        };
+                    });
+                });
+
             };
             addMatchCard();
-
-
         });
 
     });
@@ -427,6 +463,6 @@ function cashier() {
     const checkoutImage = document.querySelectorAll(".check-out #checkout-img");
     checkoutImage.forEach(img => {
         img.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
-    });      
+    }); 
 };
 cashier();

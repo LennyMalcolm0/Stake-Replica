@@ -587,6 +587,7 @@ i {
     position: absolute;
     top: 55px;
     left: 0;
+    z-index: 100;
     border-radius: 5px;
 }
 
@@ -688,6 +689,7 @@ i {
     position: absolute;
     top: 50px;
     right: -3%;
+    z-index: 100;
     overflow: hidden;
 }
 
@@ -904,6 +906,7 @@ i {
     position: absolute;
     right: 5px;
     margin-top: 10px;
+    z-index: 100;
     overflow: hidden;
 }
 
@@ -1178,6 +1181,7 @@ i {
     position: absolute;
     top: 55px;
     left: 10px;
+    z-index: 100;
     overflow: hidden;
     font-weight: 500;
 }
@@ -1290,6 +1294,7 @@ i {
     position: absolute;
     top: 30px;
     left: -10px;
+    z-index: 100;
     overflow: hidden;
     font-weight: 500;
 }
@@ -1476,6 +1481,7 @@ i {
     height: 36px;
     color: #b1bad3;
     font-weight: 500;
+    overflow: hidden;
 }
 
 .singles-payout .sp-est {
