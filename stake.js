@@ -1,4 +1,3 @@
-//VARIABLES AND FUNCTIONS FOR FIXED LEFT SIDE BAR
 function leftSideMenu() {
     const minimize = document.querySelector(".fl-image-container .fl-head-image"),
     expand = document.querySelector(".ssb-head .ssb-head-image");
@@ -86,10 +85,10 @@ function smallSideMenu() {
     const expandMenu = document.querySelector(".ssb-head-image");
     expandMenu.addEventListener("mouseover", function() {
         document.querySelector(".ssb-head-tooltip").style.display = "flex";
-    })
+    });
     expandMenu.addEventListener("mouseout", function() {
         document.querySelector(".ssb-head-tooltip").style.display = "none";
-    })
+    });
 
 
     const ssbItem = document.querySelectorAll(".ssb-items .ssb-hover");
@@ -100,7 +99,7 @@ function smallSideMenu() {
         item.addEventListener("mouseout", function() {
             item.nextElementSibling.style.display = "none";
         })
-    })
+    });
 }
 smallSideMenu();
 
@@ -228,8 +227,10 @@ function competition() {
         cn.addEventListener("click", function() {
             cn.parentElement.classList.toggle("deactivate");
         })
-    });
+    }); 
 
+    const oddArray = [],
+    inputArray = [];
 
     const matchOdd = document.querySelectorAll(".match-odd"),
     betCount = document.querySelectorAll(".bl-top .bet-count");
@@ -238,13 +239,14 @@ function competition() {
         mo.addEventListener("click", () => {
             mo.classList.toggle("md-active");
 
-            //Adjusting numbers of picks
+            // Adjusting numbers of picks
             if (mo.classList.contains("md-active")) {
                 count++
             } else {
                 count--
             };
-
+            
+            // Counting matches selected
             betCount.forEach(betC => {
                 betC.textContent = count;
                 betC.style.display = "block";
@@ -254,7 +256,7 @@ function competition() {
                 }
             })
             
-            //Adding and removing Match Cards
+            // Adding and removing Match Cards
             function addMatchCard() {
                 let mdActive = document.getElementsByClassName("md-active"),
                 mdActiveCount = mdActive.length;
@@ -297,6 +299,24 @@ function competition() {
             
                     const mcContainer = document.querySelector(".games-booked .match-cards-container");
                     mcContainer.appendChild(newEntry);
+
+                    // Deleting match card
+                    const deleteMatchcard = newEntry.firstElementChild.firstElementChild.firstElementChild.children[1];
+                    deleteMatchcard.addEventListener("click", () => {
+                        let matchCard = deleteMatchcard.parentElement.parentElement.parentElement.parentElement;
+                        matchCard.style.display = "none";
+                        mo.classList.remove("md-active");
+
+                        // Returning "empty betslip" content if all matches are deleted
+                        let mdActive = document.getElementsByClassName("md-active"),
+                        mdActiveCount = mdActive.length;
+ 
+                        const gamesBooked = document.querySelector(".games-booked");
+                        if (mdActiveCount == 0) {
+                            gamesBooked.classList.remove("gb-active");
+                        };
+        
+                    });
                 } else {
                     // Removing each match-card once it's match-odd counterpart is clicked again
                     const selectedMatch = document.querySelectorAll(".new-entry");
@@ -308,41 +328,69 @@ function competition() {
                             ne.classList.add("hidden");
                         }
                     })
-                };
-    
-                const inputStake = document.querySelectorAll(".new-entry input");
-                inputStake.forEach(ns => {
-                    let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
-                    mpOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
-
-                    ns.addEventListener("input", () => {
-                        payout.innerHTML = (ns.value * mpOdd.innerHTML).toFixed(2);
-
-                        // inputArray = [];
-                        // const totalStake = document.querySelector(".check-out-singles .ts-amount span");
-
-                        // let initial = (payout.innerHTML / mpOdd.innerHTML);
-                        // inputArray.push(initial);
-                        // console.log(inputArray);
-                        
-                        // let sum = inputArray.reduce(myFunction);
-                        // function myFunction(total, value) {
-                        // return total + value;
-                        // }
-
-                        // totalStake.innerHTML = (sum * 1).toFixed(2);
-                    });
-
-                    const inputArray = [];
-                    ns.addEventListener("focusout", () => {
-                        if (!ns.value) {
-                            ns.value = 0.00.toFixed(2);
-                        };
-                    });
-                });
-
+                }
             };
             addMatchCard();
+            
+            // Singles Est. Payout
+            const inputStakeSingles = document.querySelectorAll(".new-entry input");
+            inputStakeSingles.forEach(ns => {
+                let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
+                mpOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
+
+                ns.addEventListener("input", () => {
+                    payout.innerHTML = (ns.value * mpOdd.innerHTML).toFixed(2);
+                });
+
+                ns.addEventListener("focusout", () => {
+                    if (!ns.value) {
+                        ns.value = 0.00.toFixed(2);
+                    };
+
+                    // Suming up total stake for single bets
+                    const totalStake = document.querySelector(".check-out-singles .ts-amount span");
+
+                    let initial = Number((payout.innerHTML / mpOdd.innerHTML));
+                    inputArray.push(initial);
+                    console.log(inputArray);
+                    
+                    let sum = inputArray.reduce(myFunction);
+                    function myFunction(total, value) {
+                    return total + value;
+                    }
+
+                    totalStake.innerHTML = (sum * 1).toFixed(2);
+                });
+            });
+
+            // Multi Payout
+            function multiPayout() {
+                const inputStakeMulti = document.querySelector(".check-out-multi input"),
+                totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
+                payoutMulti = document.querySelector(".check-out-multi .est-amount span");
+
+                oddArray.push(Number(mo.children[1].innerHTML));
+
+                let oddSum = oddArray.reduce(addOdds)
+                function addOdds(total, value) {
+                    return total * value
+                };
+                totalMultiOdd.innerHTML = (oddSum * 1).toFixed(2);
+
+                inputStakeMulti.addEventListener("keyup", () => {
+                    payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
+                });
+
+                inputStakeMulti.addEventListener("focusout", () => {
+                    if (!inputStakeMulti.value) {
+                        inputStakeMulti.value = 0.00.toFixed(2);
+                    };
+                });
+            };
+            multiPayout();
+
+            // let zazu = [2, 4, 6, 8]
+            // console.log(zazu);
         });
 
     });
@@ -382,9 +430,21 @@ function cashier() {
 
             document.querySelector(".bl-top").classList.toggle("bl-top-active");
         });
+    });
+
+    // Collapse betslip code
+    const collapseBetslip = document.querySelector(".collapse-betslip .cb-image");
+    collapseBetslip.addEventListener("mouseover", function() {
+        document.querySelector(".collapse-betslip .cb-hover").style.display = "flex";
+    });
+    collapseBetslip.addEventListener("mouseout", function() {
+        document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
+    });
+    collapseBetslip.addEventListener("click", () => {
+        document.querySelector(".cashier").style.display = "none";
     })
 
-
+    // Multi & Singles code
     function multiSingle() {
         const betType = document.querySelectorAll(".bet-type .bt-item");
         betType.forEach(bt => {
