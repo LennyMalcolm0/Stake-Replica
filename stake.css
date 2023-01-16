@@ -403,8 +403,9 @@ i {
 
 .ssb-head-tooltip {
     display: none;
-    width: 140px;
+    padding: 0 15px;
     height: 40px;
+    white-space: nowrap;
     border-radius: 5px;
     background-color: white;
     position: absolute;
@@ -448,9 +449,9 @@ i {
 
 .ssb-tooltip {
     display: none;
-    white-space: nowrap;
     height: 40px;
     padding: 0 15px;
+    white-space: nowrap;
     border-radius: 5px;
     background-color: white;
     position: absolute;
