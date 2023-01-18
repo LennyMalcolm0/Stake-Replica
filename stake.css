@@ -58,6 +58,31 @@ i {
     align-items: center;
 }
 
+.align-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+.align-end {
+    display: flex;
+    align-items: flex-end;
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 /*DETAILED SIDE MENU*/
 
@@ -800,31 +825,19 @@ i {
 
 .menu2-left {
     height: 50px;
-    width: 340px;
+    padding: 0 5px;
     gap: 5px;
     background-color: #0E212F;
     border-radius: 25px;
 }
 
-.bs-menu-live {
-    width: 140px;
+.menu-option {
     height: 40px;
+    padding: 0 15px;
     border-radius: 25px;
 }
 
-.bs-menu-outright {
-    width: 90px;
-    height: 40px;
-    border-radius: 25px;
-}
-
-.bs-menu-as {
-    width: 90px;
-    height: 40px;
-    border-radius: 25px;
-}
-
-.menu2-option:hover, .menu2-active {
+.menu-option:hover, .menu-active {
     background-color: #2F4553;
     cursor: pointer;
 }
@@ -950,7 +963,7 @@ i {
 }
 
 .last-comp {
-    margin-bottom: 100px;
+    margin-bottom: 30px;
 }
 
 .comp-head {
@@ -1107,7 +1120,79 @@ i {
     color: white;
 }
 
+/* View Random Bets */
 
+.bs-menu3 {
+    margin-bottom: 100px;
+}
+
+.menu3-header {
+    height: 50px;
+    width: fit-content;
+    padding: 0 5px;
+    gap: 5px;
+    background-color: #0E212F;
+    border-radius: 25px;
+}
+
+.bs-menu-rl span {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #1FFE21;
+    margin-left: 3px;
+}
+
+.menu3-contents {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    height: fit-content;
+    margin-top: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #b1bad3;
+}
+
+thead {
+    width: 100%;
+    padding: 0 15px;
+}
+
+tbody tr {
+    height: 40px;
+    padding: 0 15px;
+}
+
+tr:nth-child(even) {
+    background-color: #213642;
+}
+
+table, th, td {
+    border:none;
+    border-collapse: collapse;
+}
+
+td {
+    white-space: nowrap;
+    border: none;
+}
+
+.mc-event {
+    text-align: left;
+    color: white;
+}
+
+.mc-bet {
+    text-align: right;
+}
+
+.mc-user, .mc-time, .mc-odd {
+    flex-grow: 1;
+    text-align: center;
+}
 
 /*CASHIER (VIEW SELECTED ODDS & CHECKOUT)*/
 
