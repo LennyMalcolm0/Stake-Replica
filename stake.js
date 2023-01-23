@@ -15,7 +15,9 @@ $(document).ready(function(){
             document.querySelector(".stake-side-bar").classList.add("minimize");
             document.querySelector(".small-side-bar").style.display = "block";
 
-            if ($(".cashier").css({"display": "block"})) {
+            // Toggling some contents in open bets section
+            const cashier = document.querySelector(".cashier");
+            if (cashier.style.display == "block") {
                 $(".mc-user").css({"display": ""});
                 $(".mc-time").css({"display": ""});
                 $(".mc-odd").css({"display": ""});
@@ -25,7 +27,9 @@ $(document).ready(function(){
             document.querySelector(".stake-side-bar").classList.remove("minimize");
             document.querySelector(".small-side-bar").style.display = "none";
 
-            if ($(".cashier").css({"display": "block"})) {
+            // Toggling some contents in open bets section
+            const cashier = document.querySelector(".cashier");
+            if (cashier.style.display == "block") {
                 $(".mc-user").css({"display": "none"});
                 $(".mc-time").css({"display": "none"});
                 $(".mc-odd").css({"display": "none"});
@@ -271,15 +275,18 @@ $(document).ready(function(){
                 };
                 
                 // Counting matches selected
-                betCount.forEach(betC => {
-                    betC.textContent = count;
-                    betC.style.display = "block";
+                function countOdds() {
+                    betCount.forEach(betC => {
+                        betC.textContent = count;
+                        betC.style.display = "block";
 
-                    if (count == 0) {
-                        betC.style.display = "none";
-                    }
-                })
-                
+                        if (count == 0) {
+                            betC.style.display = "none";
+                        }
+                    });
+                };
+                countOdds();
+
                 // Adding and removing Match Cards
                 function addMatchCard() {
                     let mdActive = document.getElementsByClassName("md-active"),
@@ -339,6 +346,7 @@ $(document).ready(function(){
                             };
             
                         });
+
                     } else {
                         // Removing each match-card once it's match-odd counterpart is clicked again
                         const selectedMatch = document.querySelectorAll(".new-entry");
@@ -354,39 +362,66 @@ $(document).ready(function(){
                 };
                 addMatchCard();
                 
-                // Singles Est. Payout
-                const inputStakeSingles = document.querySelectorAll(".new-entry input");
-                inputStakeSingles.forEach(ns => {
-                    let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
-                    mpOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
+                // Singles Section
+                function singlesSection() {
+                    const inputStakeSingles = document.querySelectorAll(".new-entry input");
+                    inputStakeSingles.forEach(ns => {
+                        let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
+                        mpOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
 
-                    ns.addEventListener("input", () => {
-                        payout.innerHTML = (ns.value * mpOdd.innerHTML).toFixed(2);
+                        ns.addEventListener("input", () => {
+                            payout.innerHTML = (ns.value * mpOdd.innerHTML).toFixed(2);
+                        });
+
+                        ns.addEventListener("focusout", () => {
+                            if (!ns.value) {
+                                ns.value = 0.00.toFixed(2);
+                            };
+                        });
+
+                        ns.addEventListener("change", () => {
+                            const totalStake = document.querySelector(".check-out-singles .ts-amount span");
+
+                            const inputArray = [];
+                            totalStake.innerHTML = 0
+                            const inputStakeSingles = document.querySelectorAll(".new-entry input");
+                            inputStakeSingles.forEach(nss => {
+                                inputArray.push(Number(nss.value))
+                            });
+                            console.log(inputArray);
+
+                            let sum = inputArray.reduce(myFunction);
+                            function myFunction(total, value) {
+                            return total + value;
+                            }
+
+                            totalStake.innerHTML = (sum * 1).toFixed(2);
+                        });
+
+                        ns.addEventListener("keyup", () => {
+                            const totalStake = document.querySelector(".check-out-singles .ts-amount span");
+
+                            const inputArray = [];
+                            totalStake.innerHTML = 0
+                            const inputStakeSingles = document.querySelectorAll(".new-entry input");
+                            inputStakeSingles.forEach(nss => {
+                                inputArray.push(Number(nss.value))
+                            });
+                            console.log(inputArray);
+
+                            let sum = inputArray.reduce(myFunction);
+                            function myFunction(total, value) {
+                            return total + value;
+                            }
+
+                            totalStake.innerHTML = (sum * 1).toFixed(2);
+                        });
                     });
+                };
+                singlesSection();
 
-                    ns.addEventListener("focusout", () => {
-                        if (!ns.value) {
-                            ns.value = 0.00.toFixed(2);
-                        };
-
-                        // Suming up total stake for single bets
-                        const totalStake = document.querySelector(".check-out-singles .ts-amount span");
-
-                        let initial = Number((payout.innerHTML / mpOdd.innerHTML));
-                        inputArray.push(initial);
-                        console.log(inputArray);
-                        
-                        let sum = inputArray.reduce(myFunction);
-                        function myFunction(total, value) {
-                        return total + value;
-                        }
-
-                        totalStake.innerHTML = (sum * 1).toFixed(2);
-                    });
-                });
-
-                // Multi Payout
-                function multiPayout() {
+                // Multi Section
+                function multiSection() {
                     const inputStakeMulti = document.querySelector(".check-out-multi input"),
                     totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
                     payoutMulti = document.querySelector(".check-out-multi .est-amount span");
@@ -409,12 +444,40 @@ $(document).ready(function(){
                         };
                     });
                 };
-                multiPayout();
+                multiSection();
 
                 // let zazu = [2, 4, 6, 8]
                 // console.log(zazu);
+
+                // Clearing all match/odds selected
+                const clearAll = document.querySelector(".alter-bl .clear-bl");
+                clearAll.addEventListener("click", () => {
+                    const matchOdds = document.querySelectorAll(".match-odd"),
+                    matchCards = document.querySelectorAll(".new-entry"),
+                    gamesBooked = document.querySelector(".games-booked");
+
+                    matchOdds.forEach(mo => {
+                        mo.classList.remove("md-active");
+                    });
+                    matchCards.forEach(matchCard => {
+                        matchCard.style.display = "none";
+                    });
+
+                    count = 0;
+                    countOdds();
+
+                    gamesBooked.classList.remove("gb-active");
+                });
             });
 
+        });
+
+        // Adding "help" cursor to hidden users
+        const mcUser = document.querySelectorAll("tbody .mc-user");
+        mcUser.forEach(user => {
+            if (!user.classList.contains("known-user")) {
+                user.style.cursor = "help"
+            };
         });
             
     };
@@ -463,6 +526,24 @@ $(document).ready(function(){
             $(".mc-time").css({"display": ""});
             $(".mc-odd").css({"display": ""});
         })
+
+        
+        // Accept odd changes code
+        const oddChanges = document.querySelector(".oc-text");
+        oddChanges.addEventListener("click", function() {
+            document.querySelector(".odd-changes").classList.toggle("alter-active");
+        });
+
+        const ocOption = document.querySelectorAll(".odd-changes .oc-option");
+        ocOption.forEach(option => {
+            option.addEventListener("click", () => {
+                document.querySelector(".oc-text span").innerHTML = option.innerHTML;
+                document.querySelector(".odd-changes .oc-active").classList.remove("oc-active");
+                option.classList.add("oc-active");
+                document.querySelector(".odd-changes").classList.toggle("alter-active");
+            })
+        });
+
 
         // Multi & Singles code
         function multiSingle() {
@@ -521,23 +602,6 @@ $(document).ready(function(){
             });
         };
         multiSingle();
-
-
-        const oddChanges = document.querySelector(".oc-text");
-        oddChanges.addEventListener("click", function() {
-            document.querySelector(".odd-changes").classList.toggle("alter-active");
-        });
-
-
-        const ocOption = document.querySelectorAll(".odd-changes .oc-option");
-        ocOption.forEach(option => {
-            option.addEventListener("click", () => {
-                document.querySelector(".oc-text span").innerHTML = option.innerHTML;
-                document.querySelector(".odd-changes .oc-active").classList.remove("oc-active");
-                option.classList.add("oc-active");
-                document.querySelector(".odd-changes").classList.toggle("alter-active");
-            })
-        });
 
 
         const checkoutImage = document.querySelectorAll(".check-out #checkout-img");

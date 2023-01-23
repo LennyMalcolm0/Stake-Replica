@@ -481,6 +481,7 @@ i {
     background-color: white;
     position: absolute;
     left: 0px;
+    z-index: 999;
 }
 
 .ssm-1 {
@@ -1122,11 +1123,11 @@ i {
 
 /* View Random Bets */
 
-.bs-menu3 {
+.open-bets {
     margin-bottom: 100px;
 }
 
-.menu3-header {
+.ob-header {
     height: 50px;
     width: fit-content;
     padding: 0 5px;
@@ -1143,7 +1144,7 @@ i {
     margin-left: 3px;
 }
 
-.menu3-contents {
+.ob-contents {
     width: 100%;
 }
 
@@ -1187,17 +1188,22 @@ td {
     border: none;
 }
 
+td span {
+    width: fit-content;
+}
+
 .mc-event {
     text-align: left;
     padding: 0 15px;
 }
 
-tbody .mc-event {
+tbody .mc-event, .known-user span {
     color: white;
+    cursor: pointer;
 }
 
 .mc-event span {
-    width: 100px;
+    max-width: 100px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1209,10 +1215,6 @@ tbody .mc-event {
 
 .mc-user span {
     width: 100%;
-}
-
-.known-user {
-    color: white;
 }
 
 .mc-bet {
@@ -1520,6 +1522,7 @@ tbody .mc-event {
 }
 
 .match-card {
+    display: block;
     width: 100%;
     background-color: #203742;
     border-radius: 5px;
