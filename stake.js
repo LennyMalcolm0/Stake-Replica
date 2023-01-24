@@ -247,6 +247,42 @@ $(document).ready(function(){
             })
         }); 
 
+        // Code to altering some elements in Singles section (Would be called when some events happen)
+        function singles() {
+            // Summing up all stake amount in singles session
+            totalStake = document.querySelector(".check-out-singles .ts-amount span");
+
+            const inputArray = [];
+            totalStake.innerHTML = 0
+            const inputStakeSingles = document.querySelectorAll(".new-entry input");
+            inputStakeSingles.forEach(nss => {
+                inputArray.push(Number(nss.value))
+            });
+
+            let sumStake = inputArray.reduce(myFunction);
+            function myFunction(total, value) {
+            return total + value;
+            };
+
+            totalStake.innerHTML = (sumStake).toFixed(2);
+
+            // Summing up all estimated payout value
+            const estPayoutSingles = document.querySelector(".check-out-singles .est-amount span");
+            singlesPayout = document.querySelectorAll(".new-entry .sd-amount span");
+
+            const payoutArray = [];
+            singlesPayout.forEach(sPay => {
+                payoutArray.push(Number(sPay.textContent));
+
+                let sumPayout = payoutArray.reduce(spFunction);
+                function spFunction(total, value) {
+                return total + value;
+                };
+
+                estPayoutSingles.innerHTML = (sumPayout).toFixed(2);
+            });
+        };
+
         // Events that'll occur when an odd(match) is clicked
         const oddArray = [],
         inputArray = [],
@@ -289,9 +325,8 @@ $(document).ready(function(){
 
                 // Adding and removing Match Cards
                 function addMatchCard() {
-                    let mdActive = document.getElementsByClassName("md-active"),
+                    const mdActive = document.getElementsByClassName("md-active"),
                     mdActiveCount = mdActive.length;
-
                     // Toggling the empty betslip content
                     const gamesBooked = document.querySelector(".games-booked");
                     if (!mdActiveCount == 0) {
@@ -314,6 +349,7 @@ $(document).ready(function(){
                         newEntry.classList.add("new-entry");
                         newEntry.appendChild(matchCard);
 
+                        // Setting Match Card values in accordance with the Match Odd selected 
                         const matchHeader = newEntry.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
                         matchPick = newEntry.firstElementChild.children[1].children[1].firstElementChild.firstElementChild,
                         matchPickOdd = newEntry.firstElementChild.children[1].children[1].children[1].firstElementChild,
@@ -332,19 +368,31 @@ $(document).ready(function(){
                         // Deleting match card
                         const deleteMatchcard = newEntry.firstElementChild.firstElementChild.firstElementChild.children[1];
                         deleteMatchcard.addEventListener("click", () => {
-                            let matchCard = deleteMatchcard.parentElement.parentElement.parentElement.parentElement;
+                            // Removing active status from equivalent match odd
+                            const matchCard = deleteMatchcard.parentElement.parentElement.parentElement.parentElement;
                             matchCard.style.display = "none";
                             mo.classList.remove("md-active");
 
+                            // Reseting betslip count value
+                            count--
+                            countOdds();
+
+                            // Setting input value as zero & calling Singles code
+                            let resetInput = matchCard.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                            resetPayout = matchCard.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                            resetInput.value = 0;
+                            resetPayout.innerHTML = 0;
+
+                            singles();
+
                             // Returning "empty betslip" content if all matches are deleted
-                            let mdActive = document.getElementsByClassName("md-active"),
+                            const mdActive = document.getElementsByClassName("md-active"),
                             mdActiveCount = mdActive.length;
     
                             const gamesBooked = document.querySelector(".games-booked");
                             if (mdActiveCount == 0) {
                                 gamesBooked.classList.remove("gb-active");
                             };
-            
                         });
 
                     } else {
@@ -356,9 +404,17 @@ $(document).ready(function(){
                                 + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
                             )) {
                                 ne.classList.add("hidden");
-                            }
-                        })
-                    }
+
+                                // Settting input value of equivalent Match Card as zero & calling Singles code
+                                let resetInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                                resetPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                                resetInput.value = 0;
+                                resetPayout.innerHTML = 0;
+
+                                singles();
+                            };
+                        });
+                    };
                 };
                 addMatchCard();
                 
@@ -367,54 +423,20 @@ $(document).ready(function(){
                     const inputStakeSingles = document.querySelectorAll(".new-entry input");
                     inputStakeSingles.forEach(ns => {
                         let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
-                        mpOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
+                        matchPickOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
 
                         ns.addEventListener("input", () => {
-                            payout.innerHTML = (ns.value * mpOdd.innerHTML).toFixed(2);
+                            // Returning payout for particular match
+                            payout.innerHTML = (ns.value * matchPickOdd.innerHTML).toFixed(2);
+
+                            // calling Singles code
+                            singles();
                         });
 
                         ns.addEventListener("focusout", () => {
                             if (!ns.value) {
                                 ns.value = 0.00.toFixed(2);
                             };
-                        });
-
-                        ns.addEventListener("change", () => {
-                            const totalStake = document.querySelector(".check-out-singles .ts-amount span");
-
-                            const inputArray = [];
-                            totalStake.innerHTML = 0
-                            const inputStakeSingles = document.querySelectorAll(".new-entry input");
-                            inputStakeSingles.forEach(nss => {
-                                inputArray.push(Number(nss.value))
-                            });
-                            console.log(inputArray);
-
-                            let sum = inputArray.reduce(myFunction);
-                            function myFunction(total, value) {
-                            return total + value;
-                            }
-
-                            totalStake.innerHTML = (sum * 1).toFixed(2);
-                        });
-
-                        ns.addEventListener("keyup", () => {
-                            const totalStake = document.querySelector(".check-out-singles .ts-amount span");
-
-                            const inputArray = [];
-                            totalStake.innerHTML = 0
-                            const inputStakeSingles = document.querySelectorAll(".new-entry input");
-                            inputStakeSingles.forEach(nss => {
-                                inputArray.push(Number(nss.value))
-                            });
-                            console.log(inputArray);
-
-                            let sum = inputArray.reduce(myFunction);
-                            function myFunction(total, value) {
-                            return total + value;
-                            }
-
-                            totalStake.innerHTML = (sum * 1).toFixed(2);
                         });
                     });
                 };
@@ -462,11 +484,25 @@ $(document).ready(function(){
                     matchCards.forEach(matchCard => {
                         matchCard.style.display = "none";
                     });
-
+;
+                    // Reseting betslip count value
                     count = 0;
                     countOdds();
 
+                    // Returning empty betslip content
                     gamesBooked.classList.remove("gb-active");
+
+                    // Resetting stake and payout values in Singles section
+                    const selectedMatch = document.querySelectorAll(".new-entry");
+                    selectedMatch.forEach(ne => {
+                        // Setting the input value of each Match Card as zero & calling Singles code
+                        let resetInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                        resetPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                        resetInput.value = 0;
+                        resetPayout.innerHTML = 0;
+
+                        singles();
+                    });
                 });
             });
 
