@@ -247,7 +247,7 @@ $(document).ready(function(){
             })
         }); 
 
-        // Code to altering some elements in Singles section (Would be called when some events happen)
+        // Code to alter some elements in Singles section (Would be called when some events happen)
         function singles() {
             // Summing up all stake amount in singles session
             totalStake = document.querySelector(".check-out-singles .ts-amount span");
@@ -283,10 +283,30 @@ $(document).ready(function(){
             });
         };
 
+        // Code to alter some elements in Multi section (Would be called when some events happen)
+        function multi() {
+            const inputStakeMulti = document.querySelector(".check-out-multi input"),
+            totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
+            payoutMulti = document.querySelector(".check-out-multi .est-amount span"),
+            matchPickOdds = document.querySelectorAll(".new-entry .mp-odd"),
+            oddArray = [];
+            matchPickOdds.forEach(mpOdd => {
+                oddArray.push(Number(mpOdd.innerHTML))
+            });
+
+            let sumOdds = oddArray.reduce(myFunction);
+            function myFunction(total, value) {
+            return total * value;
+            };
+
+            totalMultiOdd.innerHTML = (sumOdds).toFixed(2);
+
+            // Calculating Multi est payout
+            payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
+        };
+
         // Events that'll occur when an odd(match) is clicked
-        const oddArray = [],
-        inputArray = [],
-        matchOdd = document.querySelectorAll(".match-odd"),
+        const matchOdd = document.querySelectorAll(".match-odd"),
         betCount = document.querySelectorAll(".bl-top .bet-count");
         let count = 0;
         matchOdd.forEach(mo => {
@@ -323,7 +343,7 @@ $(document).ready(function(){
                 };
                 countOdds();
 
-                // Adding and removing Match Cards
+                // Adding and removing Match Cards & events attached to it
                 function addMatchCard() {
                     const mdActive = document.getElementsByClassName("md-active"),
                     mdActiveCount = mdActive.length;
@@ -378,12 +398,18 @@ $(document).ready(function(){
                             countOdds();
 
                             // Setting input value as zero & calling Singles code
-                            let resetInput = matchCard.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                            resetPayout = matchCard.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                            resetInput.value = 0;
-                            resetPayout.innerHTML = 0;
+                            let resetSinglesInput = matchCard.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                            resetSinglesPayout = matchCard.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                            resetSinglesInput.value = 0;
+                            resetSinglesPayout.innerHTML = 0;
 
                             singles();
+
+                            // Setting input value as zero in Multi section & calling Multi code
+                            let resetMultiOdd = matchCard.firstElementChild.children[1].children[1].children[1].firstElementChild;
+                            resetMultiOdd.innerHTML = 1;
+
+                            multi();
 
                             // Returning "empty betslip" content if all matches are deleted
                             const mdActive = document.getElementsByClassName("md-active"),
@@ -406,12 +432,18 @@ $(document).ready(function(){
                                 ne.classList.add("hidden");
 
                                 // Settting input value of equivalent Match Card as zero & calling Singles code
-                                let resetInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                                resetPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                                resetInput.value = 0;
-                                resetPayout.innerHTML = 0;
+                                let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                                resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                                resetSinglesInput.value = 0;
+                                resetSinglesPayout.innerHTML = 0;
 
                                 singles();
+
+                                // Setting input value as zero in Multi section & calling Multi code
+                                let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
+                                resetMultiOdd.innerHTML = 1;
+
+                                multi();
                             };
                         });
                     };
@@ -448,15 +480,10 @@ $(document).ready(function(){
                     totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
                     payoutMulti = document.querySelector(".check-out-multi .est-amount span");
 
-                    oddArray.push(Number(mo.children[1].innerHTML));
+                    // calling multi code
+                    multi();
 
-                    let oddSum = oddArray.reduce(addOdds)
-                    function addOdds(total, value) {
-                        return total * value
-                    };
-                    totalMultiOdd.innerHTML = (oddSum * 1).toFixed(2);
-
-                    inputStakeMulti.addEventListener("keyup", () => {
+                    inputStakeMulti.addEventListener("input", () => {
                         payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
                     });
 
@@ -467,9 +494,6 @@ $(document).ready(function(){
                     });
                 };
                 multiSection();
-
-                // let zazu = [2, 4, 6, 8]
-                // console.log(zazu);
 
                 // Clearing all match/odds selected
                 const clearAll = document.querySelector(".alter-bl .clear-bl");
@@ -492,16 +516,22 @@ $(document).ready(function(){
                     // Returning empty betslip content
                     gamesBooked.classList.remove("gb-active");
 
-                    // Resetting stake and payout values in Singles section
+                    // Resetting Singles Totals and Multi Totals values in Singles section
                     const selectedMatch = document.querySelectorAll(".new-entry");
                     selectedMatch.forEach(ne => {
                         // Setting the input value of each Match Card as zero & calling Singles code
-                        let resetInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                        resetPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                        resetInput.value = 0;
-                        resetPayout.innerHTML = 0;
+                        let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                        resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                        resetSinglesInput.value = 0;
+                        resetSinglesPayout.innerHTML = 0;
 
                         singles();
+
+                        // Setting input value as zero in Multi section & calling Multi code
+                        let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
+                        resetMultiOdd.innerHTML = 1;
+    
+                        multi();
                     });
                 });
             });
