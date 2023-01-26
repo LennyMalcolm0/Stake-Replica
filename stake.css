@@ -1679,15 +1679,24 @@ tbody .mc-event, .known-user span {
     font-weight: 600;
 }
 
+.above-balance {
+    display: none;
+    font-size: 12px;
+    font-weight: 400;
+    color: #ed4163;
+    margin-top: 5px;
+}
+
 .check-out button {
     width: 100%;
     height: 40px;
+    border: none;
     border-radius: 5px;
     background-color: #1574E1;
-    border: none;
-    font-weight: 600px;
     color: white;
+    font-weight: 600px;
     margin-top: 10px;
+    opacity: 0.5;
 }
 
 /* Multi checkout */

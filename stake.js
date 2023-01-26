@@ -121,133 +121,104 @@ $(document).ready(function(){
     }
     smallSideMenu();
 
+    
+    // Some Reusable Codes (Would be called when some events happen)
 
-    function walletDropdown() {
-        const currentWallet = document.querySelector(".ft-current-wallet"),
-        walletOptions = document.querySelector(".wallet-options");
+        // Checking if Crypto Balance and Total Singles Stake Amount are in sync
+        function eligibleSinglesBalance() {
+            const currentCrypto = document.querySelector(".current-text .current-value"),
+            totalStake = document.querySelector(".check-out-singles .ts-amount span"),
+            currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1)),
+            totalStakeAmount = Number(totalStake.innerHTML),
 
-        currentWallet.addEventListener("click", function(){
-            walletOptions.classList.toggle("sw-active");
-        });
+            aboveBalance = document.querySelector(".check-out-singles .above-balance"),
+            placeSinglesBet = document.querySelector(".check-out-singles button"),
 
+            checkOutSingles = document.querySelector(".check-out-singles"),
+            gamesBooked = document.querySelector(".games-booked");
 
-        const currentCrypto = document.querySelector(".current-text .current-value"),
-        currentCryptoImage = document.querySelector(".current-text img"),
-        wDropdownOptions = document.querySelectorAll(".wallet-dropdown-options .w-option");
-        walletSearch = document.querySelector(".wallet-search input");
+            if (totalStakeAmount > currentCryptoBalance) {
+                // Display warning
+                aboveBalance.style.display = "block";
 
-        walletSearch.addEventListener("keyup", function() {
-            wsvalue = walletSearch.value.toLowerCase();
-            wDropdownOptions.forEach(crypto => {
-                if(crypto.lastElementChild.textContent.toLowerCase().indexOf(wsvalue) != -1) {
-                    crypto.style.display = "flex"
-                }
-                else {
-                    crypto.style.display = "none"
-                }
-            })
-        });
+                // Decreasing button opacity
+                placeSinglesBet.style.opacity = 0.5;
 
+                // Adjusting height
+                checkOutSingles.style.height = "150px";
+                gamesBooked.style.height = "calc(100vh - 320px)";
+            } else if (totalStakeAmount <= currentCryptoBalance && totalStakeAmount > 0) {
+                // Remove warning
+                aboveBalance.style.display = "none";
+                
+                // Increasing button opacity
+                placeSinglesBet.style.opacity = 1.0;
 
-        currentCrypto.innerHTML = document.querySelector(".wallet-dropdown-options .cv").firstElementChild.innerHTML;
-        currentCryptoImage.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
-        wDropdownOptions.forEach(element => {
-            element.addEventListener("click", () => {
-                currentCrypto.innerHTML = element.firstElementChild.innerHTML;
-                document.querySelector(".current-text #current-image").src = element.children[1].firstElementChild.src;
-                walletSearch.value = "";
-                walletOptions.classList.toggle("sw-active");
+                // Returning height
+                checkOutSingles.style.height = "130px";
+                gamesBooked.style.height = "calc(100vh - 300px)";
+            } else if (totalStakeAmount == 0.00) {
+                // Remove warning
+                aboveBalance.style.display = "none";
 
-                const checkoutImage = document.querySelectorAll(".check-out #checkout-img");
-                checkoutImage.forEach(img => {
-                    img.src = document.querySelector(".current-text #current-image").src;
-                });
+                // Decreasing button opacity
+                placeSinglesBet.style.opacity = 0.5;
 
-                const mcImages = document.querySelectorAll(".mc-content .s-dollars img");
-                mcImages.forEach(mcImage => {
-                mcImage.src = document.querySelector(".current-text #current-image").src;
-                });  
-            });
-        
-        });
-
-
-        const chatIcon = document.querySelector(".chat-icon"),
-        chatActive = document.querySelector(".chat");
-
-        chatIcon.addEventListener("click", function(){
-            chatActive.classList.toggle("chat-active");
-        });
-    };
-    walletDropdown();
+                // Returning height
+                checkOutSingles.style.height = "130px";
+                gamesBooked.style.height = "calc(100vh - 300px)";
+            };
+        };
 
 
-    function oddsType() {
-        const bsPopup = document.querySelectorAll(".menu2-right img"),
-        popupItem = document.querySelector(".menu2-right");
+        // Checking if Crypto Balance and Total Multi Stake Amount are in sync
+        function eligibleMultiBalance() {
+            const currentCrypto = document.querySelector(".current-text .current-value"),
+            inputStakeMulti = document.querySelector(".check-out-multi input"),
+            currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1)),
+            multiStakeAmount = inputStakeMulti.value,
 
-        bsPopup.forEach(img => {
-            img.addEventListener("mouseover", function() {
-                popupItem.classList.add("popup-hover");
-            })
-        });
+            aboveBalance = document.querySelector(".check-out-multi .above-balance"),
+            placeMultiBet = document.querySelector(".check-out-multi button"),
 
-        bsPopup.forEach(img => {
-            img.addEventListener("mouseout", function() {
-                popupItem.classList.remove("popup-hover");
-            })
-        });
+            checkOutMulti = document.querySelector(".check-out-multi"),
+            gamesBooked = document.querySelector(".games-booked");
 
+            if (multiStakeAmount > currentCryptoBalance) {
+                // Display warning
+                aboveBalance.style.display = "block";
 
-        const threewayImage = document.querySelector(".three-way img"),
-        threeway = document.querySelector(".three-way"),
-        standardImage = document.querySelector(".standard img"),
-        standard = document.querySelector(".standard");
+                // Decreasing button opacity
+                placeMultiBet.style.opacity = 0.5;
 
-        threewayImage.addEventListener("click", function() {
-            threeway.style.display = "none";
-            standard.style.display = "block";
-        });
-        
-        standardImage.addEventListener("click", function() {
-            standard.style.display = "none";
-            threeway.style.display = "block";
-        });
+                // Adjusting height
+                checkOutMulti.style.height = "190px";
+                gamesBooked.style.height = "calc(100vh - 360px)";
+            } else if (multiStakeAmount < currentCryptoBalance && multiStakeAmount > 0) {
+                // Remove warning
+                aboveBalance.style.display = "none";
+                
+                // Increasing button opacity
+                placeMultiBet.style.opacity = 1.0;
 
+                // Returning height
+                checkOutMulti.style.height = "170px";
+                gamesBooked.style.height = "calc(100vh - 340px)";
+            } else if (multiStakeAmount == 0.00) {
+                // Remove warning
+                aboveBalance.style.display = "none";
 
-        const oddsDisplayToggle = document.querySelectorAll(".menu-all"),
-        oddsDisplayType = document.querySelector(".odds-display-type");
+                // Decreasing button opacity
+                placeMultiBet.style.opacity = 0.5;
 
-        oddsDisplayToggle.forEach(odt => {
-            odt.addEventListener("click", function() {
-            oddsDisplayType.classList.toggle("odds-dd-active");
-            })
-        })
-
-        
-        const odOption = document.querySelectorAll(".od-option");
-
-        odOption.forEach(option => {
-            option.addEventListener("click", function() {
-                document.querySelector(".bs-menu-odt span").innerHTML = option.innerHTML;
-                oddsDisplayType.classList.toggle("odds-dd-active");
-                document.querySelector(".odds-dropdown .od-option-active").classList.remove("od-option-active");
-                option.classList.add("od-option-active");
-            })
-        })
-    };
-    oddsType();
+                // Returning height
+                checkOutMulti.style.height = "170px";
+                gamesBooked.style.height = "calc(100vh - 340px)";
+            };
+        };
 
 
-    function competition() {
-        const compName = document.querySelectorAll(".comp-head");
-        compName.forEach(cn => {
-            cn.addEventListener("click", function() {
-                cn.parentElement.classList.toggle("deactivate");
-            })
-        }); 
-
-        // Code to alter some elements in Singles section (Would be called when some events happen)
+        // Code to alter some elements in Singles section 
         function singles() {
             // Summing up all stake amount in singles session
             totalStake = document.querySelector(".check-out-singles .ts-amount span");
@@ -283,7 +254,8 @@ $(document).ready(function(){
             });
         };
 
-        // Code to alter some elements in Multi section (Would be called when some events happen)
+
+        // Code to alter some elements in Multi section
         function multi() {
             const inputStakeMulti = document.querySelector(".check-out-multi input"),
             totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
@@ -305,249 +277,415 @@ $(document).ready(function(){
             payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
         };
 
-        // Events that'll occur when an odd(match) is clicked
-        const matchOdd = document.querySelectorAll(".match-odd"),
-        betCount = document.querySelectorAll(".bl-top .bet-count");
-        let count = 0;
-        matchOdd.forEach(mo => {
-            mo.addEventListener("click", () => {
-                mo.classList.toggle("md-active");
+    // Some Reusable Codes
 
-                // Adding Cashier zone & Altering Random bets section
-                const cashierDisplay = document.querySelector(".cashier");
-                if (mo.classList.contains("md-active")) {
-                    cashierDisplay.style.display = "block";
 
-                    $(".mc-user").css({"display": "none"});
-                    $(".mc-time").css({"display": "none"});
-                    $(".mc-odd").css({"display": "none"});
-                };
-
-                // Adjusting numbers of picks
-                if (mo.classList.contains("md-active")) {
-                    count++
-                } else {
-                    count--
-                };
-                
-                // Counting matches selected
-                function countOdds() {
-                    betCount.forEach(betC => {
-                        betC.textContent = count;
-                        betC.style.display = "block";
-
-                        if (count == 0) {
-                            betC.style.display = "none";
-                        }
+    function oddsPage() {
+        // Code for events in Odds Page fixed header
+        function stakeHeader() {
+            // Toggling Wallet Dropdown
+            const currentWallet = document.querySelector(".ft-current-wallet"),
+            walletOptions = document.querySelector(".wallet-options");
+    
+            currentWallet.addEventListener("click", function(){
+                walletOptions.classList.toggle("sw-active");
+            });
+    
+    
+            const currentCrypto = document.querySelector(".current-text .current-value"),
+            currentCryptoImage = document.querySelector(".current-text img"),
+            wDropdownOptions = document.querySelectorAll(".wallet-dropdown-options .w-option");
+            walletSearch = document.querySelector(".wallet-search input");
+    
+            // Searching for Crypto
+            walletSearch.addEventListener("keyup", function() {
+                wsvalue = walletSearch.value.toLowerCase();
+                wDropdownOptions.forEach(crypto => {
+                    if(crypto.lastElementChild.textContent.toLowerCase().indexOf(wsvalue) != -1) {
+                        crypto.style.display = "flex"
+                    }
+                    else {
+                        crypto.style.display = "none"
+                    }
+                })
+            });
+    
+    
+            // Updating Selected Crypto as Current Crypto
+            currentCrypto.innerHTML = document.querySelector(".wallet-dropdown-options .cv").firstElementChild.innerHTML;
+            currentCryptoImage.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;
+            wDropdownOptions.forEach(crypto => {
+                crypto.addEventListener("click", () => {
+                    currentCrypto.innerHTML = crypto.firstElementChild.innerHTML;
+                    document.querySelector(".current-text #current-image").src = crypto.children[1].firstElementChild.src;
+                    walletOptions.classList.toggle("sw-active");
+    
+                    const checkoutImage = document.querySelectorAll(".check-out #checkout-img");
+                    checkoutImage.forEach(img => {
+                        img.src = document.querySelector(".current-text #current-image").src;
                     });
-                };
-                countOdds();
+    
+                    const mcImages = document.querySelectorAll(".mc-content .s-dollars img");
+                    mcImages.forEach(mcImage => {
+                    mcImage.src = document.querySelector(".current-text #current-image").src;
+                    });  
+                    
+                    // Clearing search input
+                    walletSearch.value = "";
+        
+                    // Calling code for bet eligibility
+                    eligibleSinglesBalance();
+                    eligibleMultiBalance();
+                });
+            
+            });
+    
+    
+            // Toggling Chat Dropdown Menu
+            const chatIcon = document.querySelector(".chat-icon"),
+            chatActive = document.querySelector(".chat");
+    
+            chatIcon.addEventListener("click", function(){
+                chatActive.classList.toggle("chat-active");
+            });
+        };
+        stakeHeader();
 
-                // Adding and removing Match Cards & events attached to it
-                function addMatchCard() {
-                    const mdActive = document.getElementsByClassName("md-active"),
-                    mdActiveCount = mdActive.length;
-                    // Toggling the empty betslip content
-                    const gamesBooked = document.querySelector(".games-booked");
-                    if (!mdActiveCount == 0) {
-                        gamesBooked.classList.add("gb-active");
-                    } else {
-                        gamesBooked.classList.remove("gb-active");
+    
+        // Code for Odds Type
+        function oddsType() {
+            // Hover effect for Odds Type images
+            const bsPopup = document.querySelectorAll(".menu2-right img"),
+            popupItem = document.querySelector(".menu2-right");
+
+            bsPopup.forEach(img => {
+                img.addEventListener("mouseover", function() {
+                    popupItem.classList.add("popup-hover");
+                })
+            });
+            bsPopup.forEach(img => {
+                img.addEventListener("mouseout", function() {
+                    popupItem.classList.remove("popup-hover");
+                })
+            });
+    
+
+            // Switching Odds Type
+            const threewayImage = document.querySelector(".three-way img"),
+            threeway = document.querySelector(".three-way"),
+            standardImage = document.querySelector(".standard img"),
+            standard = document.querySelector(".standard");
+
+            threewayImage.addEventListener("click", function() {
+                threeway.style.display = "none";
+                standard.style.display = "block";
+            });
+            standardImage.addEventListener("click", function() {
+                standard.style.display = "none";
+                threeway.style.display = "block";
+            });
+
+
+            // Toggling Standard Odds Type values
+            const oddsDisplayToggle = document.querySelectorAll(".menu-all"),
+            oddsDisplayType = document.querySelector(".odds-display-type");
+            oddsDisplayToggle.forEach(odt => {
+                odt.addEventListener("click", function() {
+                oddsDisplayType.classList.toggle("odds-dd-active");
+                })
+            });
+    
+            const odOption = document.querySelectorAll(".od-option");
+            odOption.forEach(option => {
+                option.addEventListener("click", function() {
+                    document.querySelector(".bs-menu-odt span").innerHTML = option.innerHTML;
+                    oddsDisplayType.classList.toggle("odds-dd-active");
+                    document.querySelector(".odds-dropdown .od-option-active").classList.remove("od-option-active");
+                    option.classList.add("od-option-active");
+                })
+            });
+        };
+        oddsType();
+
+
+        // Code for Competition Section & it's effects on Cashier section
+        function competitionXbetslip() {
+            // Toggling matches for each competition
+            const compName = document.querySelectorAll(".comp-head");
+            compName.forEach(cn => {
+                cn.addEventListener("click", function() {
+                    cn.parentElement.classList.toggle("deactivate");
+                })
+            }); 
+
+
+            // Events that'll occur when a Match Odd is clicked
+            const matchOdd = document.querySelectorAll(".match-odd"),
+            betCount = document.querySelectorAll(".bl-top .bet-count");
+            let count = 0;
+            matchOdd.forEach(mo => {
+                mo.addEventListener("click", () => {
+                    mo.classList.toggle("md-active");
+
+                    // Adding Cashier zone & Altering Random bets section
+                    const cashierDisplay = document.querySelector(".cashier");
+                    if (mo.classList.contains("md-active")) {
+                        cashierDisplay.style.display = "block";
+
+                        $(".mc-user").css({"display": "none"});
+                        $(".mc-time").css({"display": "none"});
+                        $(".mc-odd").css({"display": "none"});
                     };
 
-                    // Adding match card content based on match info
+                    // Adjusting numbers of picks
                     if (mo.classList.contains("md-active")) {
-                        const matchCard = document.querySelector(".match-card").cloneNode(true);
-                        matchCard.classList.remove("hidden");
-                        
-
-                        newEntry = document.createElement("div");
-                        newEntry.classList.add(`${mo.firstElementChild.innerHTML.split(" ").join("") 
-                            + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
-                            + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
-                        );
-                        newEntry.classList.add("new-entry");
-                        newEntry.appendChild(matchCard);
-
-                        // Setting Match Card values in accordance with the Match Odd selected 
-                        const matchHeader = newEntry.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
-                        matchPick = newEntry.firstElementChild.children[1].children[1].firstElementChild.firstElementChild,
-                        matchPickOdd = newEntry.firstElementChild.children[1].children[1].children[1].firstElementChild,
-                        newMatchPick = mo.firstElementChild,
-                        newMatchHeader1 = mo.parentElement.firstElementChild.firstElementChild,
-                        newMatchHeader2 = mo.parentElement.firstElementChild.children[1],
-                        newMatchPickOdd = mo.children[1];
-
-                        matchHeader.innerHTML = newMatchHeader1.innerHTML + " - " + newMatchHeader2.innerHTML;
-                        matchPick.innerHTML = newMatchPick.innerHTML;
-                        matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
-                
-                        const mcContainer = document.querySelector(".games-booked .match-cards-container");
-                        mcContainer.appendChild(newEntry);
-
-                        // Deleting match card
-                        const deleteMatchcard = newEntry.firstElementChild.firstElementChild.firstElementChild.children[1];
-                        deleteMatchcard.addEventListener("click", () => {
-                            // Removing active status from equivalent match odd
-                            const matchCard = deleteMatchcard.parentElement.parentElement.parentElement.parentElement;
-                            matchCard.style.display = "none";
-                            mo.classList.remove("md-active");
-
-                            // Reseting betslip count value
-                            count--
-                            countOdds();
-
-                            // Setting input value as zero & calling Singles code
-                            let resetSinglesInput = matchCard.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                            resetSinglesPayout = matchCard.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                            resetSinglesInput.value = 0;
-                            resetSinglesPayout.innerHTML = 0;
-
-                            singles();
-
-                            // Setting input value as zero in Multi section & calling Multi code
-                            let resetMultiOdd = matchCard.firstElementChild.children[1].children[1].children[1].firstElementChild;
-                            resetMultiOdd.innerHTML = 1;
-
-                            multi();
-
-                            // Returning "empty betslip" content if all matches are deleted
-                            const mdActive = document.getElementsByClassName("md-active"),
-                            mdActiveCount = mdActive.length;
-    
-                            const gamesBooked = document.querySelector(".games-booked");
-                            if (mdActiveCount == 0) {
-                                gamesBooked.classList.remove("gb-active");
-                            };
-                        });
-
+                        count++
                     } else {
-                        // Removing each match-card once it's match-odd counterpart is clicked again
-                        const selectedMatch = document.querySelectorAll(".new-entry");
-                        selectedMatch.forEach(ne => {
-                            if (ne.classList.contains(`${mo.firstElementChild.innerHTML.split(" ").join("") 
+                        count--
+                    };
+                    
+                    // Counting matches selected
+                    function countOdds() {
+                        betCount.forEach(betC => {
+                            betC.textContent = count;
+                            betC.style.display = "block";
+
+                            if (count == 0) {
+                                betC.style.display = "none";
+                            }
+                        });
+                    };
+                    countOdds();
+
+
+                    // Adding and removing Match Cards & events attached to it
+                    function addMatchCard() {
+                        const mdActive = document.getElementsByClassName("md-active"),
+                        mdActiveCount = mdActive.length;
+                        // Toggling the empty betslip content
+                        const gamesBooked = document.querySelector(".games-booked");
+                        if (!mdActiveCount == 0) {
+                            gamesBooked.classList.add("gb-active");
+                        } else {
+                            gamesBooked.classList.remove("gb-active");
+                        };
+
+                        // Adding match card content based on match info
+                        if (mo.classList.contains("md-active")) {
+                            const matchCard = document.querySelector(".match-card").cloneNode(true);
+                            matchCard.classList.remove("hidden");
+                            
+
+                            newEntry = document.createElement("div");
+                            newEntry.classList.add(`${mo.firstElementChild.innerHTML.split(" ").join("") 
                                 + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
                                 + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
-                            )) {
-                                ne.classList.add("hidden");
+                            );
+                            newEntry.classList.add("new-entry");
+                            newEntry.appendChild(matchCard);
 
-                                // Settting input value of equivalent Match Card as zero & calling Singles code
-                                let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                                resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                            // Setting Match Card values in accordance with the Match Odd selected 
+                            const matchHeader = newEntry.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
+                            matchPick = newEntry.firstElementChild.children[1].children[1].firstElementChild.firstElementChild,
+                            matchPickOdd = newEntry.firstElementChild.children[1].children[1].children[1].firstElementChild,
+                            newMatchPick = mo.firstElementChild,
+                            newMatchHeader1 = mo.parentElement.firstElementChild.firstElementChild,
+                            newMatchHeader2 = mo.parentElement.firstElementChild.children[1],
+                            newMatchPickOdd = mo.children[1];
+
+                            matchHeader.innerHTML = newMatchHeader1.innerHTML + " - " + newMatchHeader2.innerHTML;
+                            matchPick.innerHTML = newMatchPick.innerHTML;
+                            matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
+                    
+                            const mcContainer = document.querySelector(".games-booked .match-cards-container");
+                            mcContainer.appendChild(newEntry);
+
+                            // Deleting match card
+                            const deleteMatchcard = newEntry.firstElementChild.firstElementChild.firstElementChild.children[1];
+                            deleteMatchcard.addEventListener("click", () => {
+                                // Removing active status from equivalent match odd
+                                const matchCard = deleteMatchcard.parentElement.parentElement.parentElement.parentElement;
+                                matchCard.style.display = "none";
+                                mo.classList.remove("md-active");
+
+                                // Reseting betslip count value
+                                count--
+                                countOdds();
+
+                                // Setting input value as zero & Calling Singles code
+                                let resetSinglesInput = matchCard.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                                resetSinglesPayout = matchCard.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
                                 resetSinglesInput.value = 0;
                                 resetSinglesPayout.innerHTML = 0;
 
                                 singles();
 
-                                // Setting input value as zero in Multi section & calling Multi code
-                                let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
+                                // Setting input value as zero in Multi section & Calling Multi code
+                                let resetMultiOdd = matchCard.firstElementChild.children[1].children[1].children[1].firstElementChild;
                                 resetMultiOdd.innerHTML = 1;
 
                                 multi();
+     
+                                // Calling code for bet eligibility
+                                eligibleSinglesBalance();
+                                eligibleMultiBalance();
+
+                                // Returning "empty betslip" content if all matches are deleted
+                                const mdActive = document.getElementsByClassName("md-active"),
+                                mdActiveCount = mdActive.length;
+        
+                                const gamesBooked = document.querySelector(".games-booked");
+                                if (mdActiveCount == 0) {
+                                    gamesBooked.classList.remove("gb-active");
+                                };
+                            });
+
+                        } else {
+                            // Removing each match-card once it's match-odd counterpart is clicked again
+                            const selectedMatch = document.querySelectorAll(".new-entry");
+                            selectedMatch.forEach(ne => {
+                                if (ne.classList.contains(`${mo.firstElementChild.innerHTML.split(" ").join("") 
+                                    + mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
+                                    + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
+                                )) {
+                                    ne.classList.add("hidden");
+
+                                    // Settting input value of equivalent Match Card as zero & Calling Singles code
+                                    let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                                    resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                                    resetSinglesInput.value = 0;
+                                    resetSinglesPayout.innerHTML = 0;
+
+                                    singles();
+
+                                    // Setting input value as zero in Multi section & Calling Multi code
+                                    let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
+                                    resetMultiOdd.innerHTML = 1;
+
+                                    multi();
+                                    
+                                    // Calling code for bet eligibility
+                                    eligibleSinglesBalance();
+                                    eligibleMultiBalance();
+                                };
+                            });
+                        };
+                    };
+                    addMatchCard();
+
+                    
+                    // Singles Section
+                    function singlesSection() {
+                        const inputStakeSingles = document.querySelectorAll(".new-entry input");
+                        inputStakeSingles.forEach(ns => {
+                            let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
+                            matchPickOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
+
+                            ns.addEventListener("input", () => {
+                                // Returning payout for particular match
+                                payout.innerHTML = (ns.value * matchPickOdd.innerHTML).toFixed(2);
+
+                                // Calling Singles code
+                                singles();
+
+                                
+                                // Calling code for bet eligibility
+                                eligibleSinglesBalance();
+                            });
+
+                            ns.addEventListener("focusout", () => {
+                                if (!ns.value) {
+                                    ns.value = 0.00.toFixed(2);
+                                };
+                            });
+                        });
+                    };
+                    singlesSection();
+
+
+                    // Multi Section
+                    function multiSection() {
+                        const inputStakeMulti = document.querySelector(".check-out-multi input"),
+                        totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
+                        payoutMulti = document.querySelector(".check-out-multi .est-amount span");
+
+                        // Calling multi code
+                        multi();
+
+                        inputStakeMulti.addEventListener("input", () => {
+                            payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
+
+                            // Calling code for bet eligibility
+                            eligibleMultiBalance();
+                        });
+
+                        inputStakeMulti.addEventListener("focusout", () => {
+                            if (!inputStakeMulti.value) {
+                                inputStakeMulti.value = 0.00.toFixed(2);
                             };
                         });
                     };
-                };
-                addMatchCard();
-                
-                // Singles Section
-                function singlesSection() {
-                    const inputStakeSingles = document.querySelectorAll(".new-entry input");
-                    inputStakeSingles.forEach(ns => {
-                        let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
-                        matchPickOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
+                    multiSection();
 
-                        ns.addEventListener("input", () => {
-                            // Returning payout for particular match
-                            payout.innerHTML = (ns.value * matchPickOdd.innerHTML).toFixed(2);
 
-                            // calling Singles code
+                    // Clearing all match/odds selected
+                    const clearAll = document.querySelector(".alter-bl .clear-bl");
+                    clearAll.addEventListener("click", () => {
+                        const matchOdds = document.querySelectorAll(".match-odd"),
+                        matchCards = document.querySelectorAll(".new-entry"),
+                        gamesBooked = document.querySelector(".games-booked");
+
+                        matchOdds.forEach(mo => {
+                            mo.classList.remove("md-active");
+                        });
+                        matchCards.forEach(matchCard => {
+                            matchCard.style.display = "none";
+                        });
+    ;
+                        // Reseting betslip count value
+                        count = 0;
+                        countOdds();
+
+                        // Returning empty betslip content
+                        gamesBooked.classList.remove("gb-active");
+
+                        // Resetting Singles Totals and Multi Totals values in Singles section
+                        const selectedMatch = document.querySelectorAll(".new-entry");
+                        selectedMatch.forEach(ne => {
+                            // Setting the input value of each Match Card as zero & Calling Singles code
+                            let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
+                            resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
+                            resetSinglesInput.value = 0;
+                            resetSinglesPayout.innerHTML = 0;
+
                             singles();
+
+                            // Setting input value as zero in Multi section & Calling Multi code
+                            let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
+                            resetMultiOdd.innerHTML = 1;
+        
+                            multi();
                         });
 
-                        ns.addEventListener("focusout", () => {
-                            if (!ns.value) {
-                                ns.value = 0.00.toFixed(2);
-                            };
-                        });
-                    });
-                };
-                singlesSection();
-
-                // Multi Section
-                function multiSection() {
-                    const inputStakeMulti = document.querySelector(".check-out-multi input"),
-                    totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
-                    payoutMulti = document.querySelector(".check-out-multi .est-amount span");
-
-                    // calling multi code
-                    multi();
-
-                    inputStakeMulti.addEventListener("input", () => {
-                        payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
-                    });
-
-                    inputStakeMulti.addEventListener("focusout", () => {
-                        if (!inputStakeMulti.value) {
-                            inputStakeMulti.value = 0.00.toFixed(2);
-                        };
-                    });
-                };
-                multiSection();
-
-                // Clearing all match/odds selected
-                const clearAll = document.querySelector(".alter-bl .clear-bl");
-                clearAll.addEventListener("click", () => {
-                    const matchOdds = document.querySelectorAll(".match-odd"),
-                    matchCards = document.querySelectorAll(".new-entry"),
-                    gamesBooked = document.querySelector(".games-booked");
-
-                    matchOdds.forEach(mo => {
-                        mo.classList.remove("md-active");
-                    });
-                    matchCards.forEach(matchCard => {
-                        matchCard.style.display = "none";
-                    });
-;
-                    // Reseting betslip count value
-                    count = 0;
-                    countOdds();
-
-                    // Returning empty betslip content
-                    gamesBooked.classList.remove("gb-active");
-
-                    // Resetting Singles Totals and Multi Totals values in Singles section
-                    const selectedMatch = document.querySelectorAll(".new-entry");
-                    selectedMatch.forEach(ne => {
-                        // Setting the input value of each Match Card as zero & calling Singles code
-                        let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                        resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                        resetSinglesInput.value = 0;
-                        resetSinglesPayout.innerHTML = 0;
-
-                        singles();
-
-                        // Setting input value as zero in Multi section & calling Multi code
-                        let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
-                        resetMultiOdd.innerHTML = 1;
-    
-                        multi();
+                        // Calling code for bet eligibility
+                        eligibleSinglesBalance();
+                        eligibleMultiBalance();
                     });
                 });
+
             });
 
-        });
-
-        // Adding "help" cursor to hidden users
-        const mcUser = document.querySelectorAll("tbody .mc-user");
-        mcUser.forEach(user => {
-            if (!user.classList.contains("known-user")) {
-                user.style.cursor = "help"
-            };
-        });
-            
+            // Adding "help" cursor to hidden users
+            const mcUser = document.querySelectorAll("tbody .mc-user");
+            mcUser.forEach(user => {
+                if (!user.classList.contains("known-user")) {
+                    user.style.cursor = "help"
+                };
+            });
+        };
+        competitionXbetslip();
     };
-    competition();
+    oddsPage();
 
 
     function cashier() {
