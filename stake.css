@@ -1738,3 +1738,15 @@ tbody .mc-event, .known-user span {
     color: #218cff;
     font-weight: 700;
 }
+
+.multiple-selections {
+    display: none;
+    font-size: 12px;
+    font-weight: 400;
+    color: #ed4163;
+    margin-top: 5px;
+}
+
+.multiple-selections-header {
+    background-color: #5D0619;
+}
