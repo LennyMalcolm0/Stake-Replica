@@ -222,8 +222,8 @@ $(document).ready(function(){
             // Summing up all stake amount in singles session
             totalStake = document.querySelector(".check-out-singles .ts-amount span");
 
-            const inputArray = [];
-            totalStake.innerHTML = 0
+            const inputArray = [0];
+            totalStake.innerHTML = 0;
             const inputStakeSingles = document.querySelectorAll(".new-entry input");
             inputStakeSingles.forEach(nss => {
                 inputArray.push(Number(nss.value))
@@ -240,17 +240,18 @@ $(document).ready(function(){
             const estPayoutSingles = document.querySelector(".check-out-singles .est-amount span");
             singlesPayout = document.querySelectorAll(".new-entry .sd-amount span");
 
-            const payoutArray = [];
+            const payoutArray = [0];
+            estPayoutSingles.innerHTML = 0;
             singlesPayout.forEach(sPay => {
                 payoutArray.push(Number(sPay.textContent));
-
-                let sumPayout = payoutArray.reduce(spFunction);
-                function spFunction(total, value) {
-                return total + value;
-                };
-
-                estPayoutSingles.innerHTML = (sumPayout).toFixed(2);
             });
+
+            let sumPayout = payoutArray.reduce(spFunction);
+            function spFunction(total, value) {
+            return total + value;
+            };
+
+            estPayoutSingles.innerHTML = (sumPayout).toFixed(2);
         };
 
 
@@ -259,7 +260,7 @@ $(document).ready(function(){
             totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
             payoutMulti = document.querySelector(".check-out-multi .est-amount span"),
             matchPickOdds = document.querySelectorAll(".new-entry .mp-odd"),
-            oddArray = [];
+            oddArray = [1];
             matchPickOdds.forEach(mpOdd => {
                 oddArray.push(Number(mpOdd.innerHTML))
             });
@@ -492,6 +493,7 @@ $(document).ready(function(){
                             matchPick.innerHTML = newMatchPick.innerHTML;
                             matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
                     
+                            // Adding Match Card to Bet Slip
                             const mcContainer = document.querySelector(".games-booked .match-cards-container");
                             mcContainer.appendChild(newEntry);
 
@@ -503,27 +505,21 @@ $(document).ready(function(){
                             // Deleting match card
                             const deleteMatchcard = newEntry.firstElementChild.firstElementChild.firstElementChild.children[1];
                             deleteMatchcard.addEventListener("click", () => {
-                                // Removing active status from equivalent match odd
+                                // Removing Match Card from Bet Slip
                                 const matchCard = deleteMatchcard.parentElement.parentElement.parentElement.parentElement;
-                                matchCard.style.display = "none";
+                                mcContainer.removeChild(matchCard);
+                                
+                                // Removing active status from equivalent match odd 
                                 mo.classList.remove("md-active");
 
                                 // Reseting betslip count value
                                 count--
                                 countOdds();
 
-                                // Setting input value as zero & Calling Singles code
-                                let resetSinglesInput = matchCard.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                                resetSinglesPayout = matchCard.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                                resetSinglesInput.value = 0;
-                                resetSinglesPayout.innerHTML = 0;
-
+                                // Calling Singles code
                                 singles();
 
-                                // Setting input value as zero in Multi section & Calling Multi code
-                                let resetMultiOdd = matchCard.firstElementChild.children[1].children[1].children[1].firstElementChild;
-                                resetMultiOdd.innerHTML = 1;
-
+                                // Calling Multi code
                                 multi();
      
                                 // Calling code for bet eligibility
@@ -554,18 +550,10 @@ $(document).ready(function(){
                                     const mcContainer = document.querySelector(".games-booked .match-cards-container");
                                     mcContainer.removeChild(ne);
 
-                                    // Settting input value of equivalent Match Card as zero & Calling Singles code
-                                    let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                                    resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                                    resetSinglesInput.value = 0;
-                                    resetSinglesPayout.innerHTML = 0;
-
+                                    // Calling Singles code
                                     singles();
 
-                                    // Setting input value as zero in Multi section & Calling Multi code
-                                    let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
-                                    resetMultiOdd.innerHTML = 1;
-
+                                    // Calling Multi code
                                     multi();
                                 };
                             });
@@ -592,7 +580,6 @@ $(document).ready(function(){
                                 // Calling Singles code
                                 singles();
 
-                                
                                 // Calling code for bet eligibility
                                 eligibleSinglesBalance();
                             });
@@ -694,7 +681,7 @@ $(document).ready(function(){
                                     multipleSelections.style.display = "none";
                                     
                                     eligibleMultiBalance();
-                                }
+                                };
                             });
                         } else {
                             sameEntry.forEach(entry => {
@@ -728,7 +715,8 @@ $(document).ready(function(){
                             mo.classList.remove("md-active");
                         });
                         matchCards.forEach(matchCard => {
-                            matchCard.style.display = "none";
+                            const mcContainer = document.querySelector(".games-booked .match-cards-container");
+                            mcContainer.removeChild(matchCard);
                         });
                         
                         // Reseting betslip count value
@@ -738,23 +726,11 @@ $(document).ready(function(){
                         // Returning empty betslip content
                         gamesBooked.classList.remove("gb-active");
 
-                        // Resetting Singles Totals and Multi Totals values in Singles section
-                        const selectedMatch = document.querySelectorAll(".new-entry");
-                        selectedMatch.forEach(ne => {
-                            // Setting the input value of each Match Card as zero & Calling Singles code
-                            let resetSinglesInput = ne.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
-                            resetSinglesPayout = ne.firstElementChild.children[1].children[1].children[1].children[1].children[1].firstElementChild.firstElementChild;
-                            resetSinglesInput.value = 0;
-                            resetSinglesPayout.innerHTML = 0;
+                        // Calling Singles code
+                        singles();
 
-                            singles();
-
-                            // Setting input value as zero in Multi section & Calling Multi code
-                            let resetMultiOdd = ne.firstElementChild.children[1].children[1].children[1].firstElementChild;
-                            resetMultiOdd.innerHTML = 1;
-        
-                            multi();
-                        });
+                        // Calling Multi code
+                        multi();
 
                         // Calling code for bet eligibility
                         eligibleSinglesBalance();
