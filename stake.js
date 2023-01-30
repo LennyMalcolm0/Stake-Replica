@@ -124,8 +124,8 @@ $(document).ready(function(){
 
     // Some Reusable Codes (Would be called when some events happen)
 
-        function eligibleSinglesBalance() {
         // Checking if Crypto Balance and Total Singles Stake Amount are in sync
+        function eligibleSinglesBalance() {
             const currentCrypto = document.querySelector(".current-text .current-value"),
             totalStake = document.querySelector(".check-out-singles .ts-amount span"),
             currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1)),
@@ -141,8 +141,9 @@ $(document).ready(function(){
                 // Display warning
                 aboveBalance.style.display = "block";
 
-                // Decreasing button opacity
+                // Decreasing button opacity & changing cursor type
                 placeSinglesBet.style.opacity = 0.5;
+                placeSinglesBet.style.cursor = "not-allowed";
 
                 // Adjusting height
                 checkOutSingles.style.height = "150px";
@@ -151,8 +152,9 @@ $(document).ready(function(){
                 // Remove warning
                 aboveBalance.style.display = "none";
                 
-                // Increasing button opacity
-                placeSinglesBet.style.opacity = 1.0;
+                // Increasing button opacity & changing cursor type
+                placeSinglesBet.style.opacity = 1;
+                placeSinglesBet.style.cursor = "pointer";
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
@@ -161,8 +163,9 @@ $(document).ready(function(){
                 // Remove warning
                 aboveBalance.style.display = "none";
 
-                // Decreasing button opacity
+                // Decreasing button opacity & changing cursor type
                 placeSinglesBet.style.opacity = 0.5;
+                placeSinglesBet.style.cursor = "not-allowed";
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
@@ -171,8 +174,8 @@ $(document).ready(function(){
         };
 
 
+        // Checking if Crypto Balance and Total Multi Stake Amount are in sync
         function eligibleMultiBalance() {
-            // Checking if Crypto Balance and Total Multi Stake Amount are in sync
             const currentCrypto = document.querySelector(".current-text .current-value"),
             inputStakeMulti = document.querySelector(".check-out-multi input"),
             currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1)),
@@ -188,8 +191,9 @@ $(document).ready(function(){
                 // Display warning
                 aboveBalance.style.display = "block";
 
-                // Decreasing button opacity
+                // Decreasing button opacity & changing cursor type
                 placeMultiBet.style.opacity = 0.5;
+                placeMultiBet.style.cursor = "not-allowed";
 
                 // Adjusting height
                 checkOutMulti.style.height = "190px";
@@ -198,8 +202,9 @@ $(document).ready(function(){
                 // Remove warning
                 aboveBalance.style.display = "none";
                 
-                // Increasing button opacity
-                placeMultiBet.style.opacity = 1.0;
+                // Increasing button opacity & changing cursor type
+                placeMultiBet.style.opacity = 1;
+                placeMultiBet.style.cursor = "pointer";
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
@@ -208,8 +213,9 @@ $(document).ready(function(){
                 // Remove warning
                 aboveBalance.style.display = "none";
 
-                // Decreasing button opacity
+                // Decreasing button opacity & changing cursor type
                 placeMultiBet.style.opacity = 0.5;
+                placeMultiBet.style.cursor = "not-allowed";
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
@@ -218,6 +224,7 @@ $(document).ready(function(){
         };
 
 
+        // Code to run in Singles section
         function singles() {
             // Summing up all stake amount in singles session
             totalStake = document.querySelector(".check-out-singles .ts-amount span");
@@ -255,6 +262,7 @@ $(document).ready(function(){
         };
 
 
+        // Code to run in Multi section
         function multi() {
             const inputStakeMulti = document.querySelector(".check-out-multi input"),
             totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
@@ -670,8 +678,9 @@ $(document).ready(function(){
                                     aboveBalance.style.display = "none";
                                     multipleSelections.style.display = "block";
                     
-                                    // Decreasing button opacity
+                                    // Decreasing button opacity & changing cursor type
                                     placeMultiBet.style.opacity = 0.5;
+                                    placeMultiBet.style.cursor = "not-allowed";
                     
                                     // Adjusting height
                                     checkOutMulti.style.height = "210px";
