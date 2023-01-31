@@ -136,10 +136,29 @@ $(document).ready(function(){
 
         // Checking if Crypto Balance and Total Singles Stake Amount are in sync
         function eligibleSinglesBalance() {
+            // Summing up all stake amount in singles session
+            function estimatedPayout() {
+                totalStake = document.querySelector(".check-out-singles .ts-amount span");
+
+                const inputArray = [0];
+                totalStake.innerHTML = 0;
+                const inputStakeSingles = document.querySelectorAll(".new-entry input");
+                inputStakeSingles.forEach(nss => {
+                    inputArray.push(Number(nss.value))
+                });
+    
+                let sumStake = inputArray.reduce(myFunction);
+                function myFunction(total, value) {
+                return total + value;
+                };
+    
+                totalStakeAmount = sumStake;
+            };
+            estimatedPayout();
+
             const currentCrypto = document.querySelector(".current-text .current-value"),
-            totalStake = document.querySelector(".check-out-singles .ts-amount span"),
-            currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1)),
-            totalStakeAmount = Number(totalStake.innerHTML),
+            currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1));
+
 
             aboveBalance = document.querySelector(".check-out-singles .above-balance"),
             placeSinglesBet = document.querySelector(".check-out-singles button"),
@@ -251,16 +270,19 @@ $(document).ready(function(){
             return total + value;
             };
 
-            totalStake.innerHTML = (sumStake).toFixed(2);
+            totalStake.innerHTML = (sumStake).toLocaleString("en-US", {style:"currency", currency:"USD"});
 
             // Summing up all estimated payout value
             const estPayoutSingles = document.querySelector(".check-out-singles .est-amount span");
-            singlesPayout = document.querySelectorAll(".new-entry .sd-amount span");
 
             const payoutArray = [0];
             estPayoutSingles.innerHTML = 0;
-            singlesPayout.forEach(sPay => {
-                payoutArray.push(Number(sPay.textContent));
+            inputStakeSingles.forEach(nss => {
+                let payout = nss.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
+                matchPickOdd = nss.parentElement.parentElement.parentElement.children[1].firstElementChild;
+
+                payout = (nss.value * matchPickOdd.innerHTML);
+                payoutArray.push(Number(payout));
             });
 
             let sumPayout = payoutArray.reduce(spFunction);
@@ -268,7 +290,7 @@ $(document).ready(function(){
             return total + value;
             };
 
-            estPayoutSingles.innerHTML = (sumPayout).toFixed(2);
+            estPayoutSingles.innerHTML = (sumPayout).toLocaleString("en-US", {style:"currency", currency:"USD"});
         };
 
 
@@ -291,7 +313,7 @@ $(document).ready(function(){
             totalMultiOdd.innerHTML = (sumOdds).toFixed(2);
 
             // Calculating Multi est payout
-            payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
+            payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toLocaleString("en-US", {style:"currency", currency:"USD"});
         };
 
 
@@ -593,7 +615,7 @@ $(document).ready(function(){
 
                             ns.addEventListener("input", () => {
                                 // Returning payout for particular match
-                                payout.innerHTML = (ns.value * matchPickOdd.innerHTML).toFixed(2);
+                                payout.innerHTML = (ns.value * matchPickOdd.innerHTML).toLocaleString("en-US", {style:"currency", currency:"USD"});
 
                                 // Calling Singles code
                                 singles();
@@ -619,7 +641,7 @@ $(document).ready(function(){
                         payoutMulti = document.querySelector(".check-out-multi .est-amount span");
 
                         inputStakeMulti.addEventListener("input", () => {
-                            payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toFixed(2);
+                            payoutMulti.innerHTML = (inputStakeMulti.value * totalMultiOdd.innerHTML).toLocaleString("en-US", {style:"currency", currency:"USD"});;
 
                             // Calling code for bet eligibility
                             eligibleMultiBalance();

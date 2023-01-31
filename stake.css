@@ -1768,6 +1768,9 @@ tbody .mc-event, .known-user span {
 
 .s-dollars span {
     margin-right: 5px;
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .gb-active .match-cards-container {
@@ -1803,9 +1806,12 @@ tbody .mc-event, .known-user span {
 }
 
 .ts-amount span, .est-amount span {
+    max-width: 90px;
     line-height: 14px;
-    margin-right: 5px;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px;
 }
 
 .above-balance {
