@@ -1,125 +1,135 @@
 $(document).ready(function(){
 
-    function leftSideMenu() {
-        const minimize = document.querySelector(".fl-image-container .fl-head-image"),
-        expand = document.querySelector(".ssb-head .ssb-head-image");
+    function sideBars() {
+        function leftSideMenu() {
+            const minimize = document.querySelector(".fl-image-container .fl-head-image");
 
-        minimize.addEventListener("mouseover", function() {
-            document.querySelector(".fl-head-tooltip").style.display = "flex";
-        })
-        minimize.addEventListener("mouseout", function() {
-            document.querySelector(".fl-head-tooltip").style.display = "none";
-        })
-
-        minimize.addEventListener("click", function() {
-            document.querySelector(".stake-side-bar").classList.add("minimize");
-            document.querySelector(".small-side-bar").style.display = "block";
-
-            // Toggling some contents in open bets section
-            const cashier = document.querySelector(".cashier");
-            if (cashier.style.display == "block") {
-                $(".mc-user").css({"display": ""});
-                $(".mc-time").css({"display": ""});
-                $(".mc-odd").css({"display": ""});
-            };
-        });
-        expand.addEventListener("click", function() {
-            document.querySelector(".stake-side-bar").classList.remove("minimize");
-            document.querySelector(".small-side-bar").style.display = "none";
-
-            // Toggling some contents in open bets section
-            const cashier = document.querySelector(".cashier");
-            if (cashier.style.display == "block") {
-                $(".mc-user").css({"display": "none"});
-                $(".mc-time").css({"display": "none"});
-                $(".mc-odd").css({"display": "none"});
-            };
-        });
-
-
-        const casino = document.querySelector(".casino-main"),
-        casinoContainer = document.querySelector(".fl-casino");
-
-        casino.addEventListener("click", function(){
-            casinoContainer.classList.toggle("fl-active");
-        });
-        
-
-        const sports = document.querySelector(".sports-main"),
-        sportsContainer = document.querySelector(".fl-sports");
-
-        sports.addEventListener("click", function(){
-            sportsContainer.classList.toggle("fl-active");
-        });
-        
-
-        const promotions = document.querySelector(".promotions-main"),
-        promotionsContainer = document.querySelector(".fl-promotions");
-
-        promotions.addEventListener("click", function(){
-            promotionsContainer.classList.toggle("fl-active");
-        });
-        
-
-        const sponsorships = document.querySelector(".sponsorships-main"),
-        sponsorshipsContainer = document.querySelector(".fl-sponsorships");
-
-        sponsorships.addEventListener("click", function(){
-            sponsorshipsContainer.classList.toggle("fl-active");
-        });
-
-
-        const activeDropdown = document.querySelectorAll(".fl-dd-element");
-        activeDropdown.forEach(btn => {
-            btn.addEventListener("click", function(){
-                document.querySelector(".fl-dropdown .fl-dropdown-active").classList.remove("fl-dropdown-active");
-                btn.classList.add("fl-dropdown-active");
+            // Hover Effect for Minimize button
+            minimize.addEventListener("mouseover", function() {
+                document.querySelector(".fl-head-tooltip").style.display = "flex";
             })
-        });
+            minimize.addEventListener("mouseout", function() {
+                document.querySelector(".fl-head-tooltip").style.display = "none";
+            })
+
+            // Click Effect for Expand button
+            minimize.addEventListener("click", function() {
+                document.querySelector(".stake-side-bar").classList.add("minimize");
+                document.querySelector(".small-side-bar").style.display = "block";
+
+                // Toggling some contents in open bets section
+                const cashier = document.querySelector(".cashier");
+                if (cashier.style.display == "block") {
+                    $(".mc-user").css({"display": ""});
+                    $(".mc-time").css({"display": ""});
+                    $(".mc-odd").css({"display": ""});
+                };
+            });
 
 
-        const selectLang = document.querySelector(".fl-select-lang"),
-        langToggle = document.querySelector(".select"),
-        langChange = document.querySelector(".select .select-text"),
-        langOptions = document.querySelectorAll(".lang-options");
+            // Toggling Side Menu Items by clicking on their Headers
+            const casino = document.querySelector(".casino-main"),
+            casinoContainer = document.querySelector(".fl-casino");
 
-        langToggle.addEventListener("click", function(){
-            selectLang.classList.toggle("lang-dd-active");
-        });
-        
-        langOptions.forEach(lang => {
-            lang.addEventListener("click", function(){
-                langChange.innerHTML = lang.innerHTML;
-                document.querySelector(".select-dropdown .active-lang").classList.remove("active-lang");
-                lang.classList.add("active-lang");
+            casino.addEventListener("click", function(){
+                casinoContainer.classList.toggle("fl-active");
+            });
+            
+
+            const sports = document.querySelector(".sports-main"),
+            sportsContainer = document.querySelector(".fl-sports");
+
+            sports.addEventListener("click", function(){
+                sportsContainer.classList.toggle("fl-active");
+            });
+            
+
+            const promotions = document.querySelector(".promotions-main"),
+            promotionsContainer = document.querySelector(".fl-promotions");
+
+            promotions.addEventListener("click", function(){
+                promotionsContainer.classList.toggle("fl-active");
+            });
+            
+
+            const sponsorships = document.querySelector(".sponsorships-main"),
+            sponsorshipsContainer = document.querySelector(".fl-sponsorships");
+
+            sponsorships.addEventListener("click", function(){
+                sponsorshipsContainer.classList.toggle("fl-active");
+            });
+
+
+            const activeDropdown = document.querySelectorAll(".fl-dd-element");
+            activeDropdown.forEach(btn => {
+                btn.addEventListener("click", function(){
+                    document.querySelector(".fl-dropdown .fl-dropdown-active").classList.remove("fl-dropdown-active");
+                    btn.classList.add("fl-dropdown-active");
+                })
+            });
+
+
+            // Selecting Language
+            const selectLang = document.querySelector(".fl-select-lang"),
+            langToggle = document.querySelector(".select"),
+            langChange = document.querySelector(".select .select-text"),
+            langOptions = document.querySelectorAll(".lang-options");
+
+            langToggle.addEventListener("click", function(){
                 selectLang.classList.toggle("lang-dd-active");
             });
-        });
+            
+            langOptions.forEach(lang => {
+                lang.addEventListener("click", function(){
+                    langChange.innerHTML = lang.innerHTML;
+                    document.querySelector(".select-dropdown .active-lang").classList.remove("active-lang");
+                    lang.classList.add("active-lang");
+                    selectLang.classList.toggle("lang-dd-active");
+                });
+            });
+        };
+        leftSideMenu();
+
+
+        function smallSideMenu() {
+            // Hover Effect for Expand button
+            const expandMenu = document.querySelector(".ssb-head-image");
+            expandMenu.addEventListener("mouseover", function() {
+                document.querySelector(".ssb-head-tooltip").style.display = "flex";
+            });
+            expandMenu.addEventListener("mouseout", function() {
+                document.querySelector(".ssb-head-tooltip").style.display = "none";
+            });
+            
+            // Click Effect for Expand button
+            expandMenu.addEventListener("click", function() {
+                document.querySelector(".stake-side-bar").classList.remove("minimize");
+                document.querySelector(".small-side-bar").style.display = "none";
+
+                // Toggling some contents in open bets section
+                const cashier = document.querySelector(".cashier");
+                if (cashier.style.display == "block") {
+                    $(".mc-user").css({"display": "none"});
+                    $(".mc-time").css({"display": "none"});
+                    $(".mc-odd").css({"display": "none"});
+                };
+            });
+
+
+            // Hover Effect for Small Side Bar Menu Items
+            const ssbItem = document.querySelectorAll(".ssb-items .ssb-hover");
+            ssbItem.forEach(item => {
+                item.addEventListener("mouseover", function() {
+                    item.nextElementSibling.style.display = "flex";
+                })
+                item.addEventListener("mouseout", function() {
+                    item.nextElementSibling.style.display = "none";
+                })
+            });
+        }
+        smallSideMenu();
     };
-    leftSideMenu();
-
-
-    function smallSideMenu() {
-        const expandMenu = document.querySelector(".ssb-head-image");
-        expandMenu.addEventListener("mouseover", function() {
-            document.querySelector(".ssb-head-tooltip").style.display = "flex";
-        });
-        expandMenu.addEventListener("mouseout", function() {
-            document.querySelector(".ssb-head-tooltip").style.display = "none";
-        });
-
-
-        const ssbItem = document.querySelectorAll(".ssb-items .ssb-hover");
-        ssbItem.forEach(item => {
-            item.addEventListener("mouseover", function() {
-                item.nextElementSibling.style.display = "flex";
-            })
-            item.addEventListener("mouseout", function() {
-                item.nextElementSibling.style.display = "none";
-            })
-        });
-    }
-    smallSideMenu();
+    sideBars();
 
 
     // Some Reusable Codes (Would be called when some events happen)
@@ -765,6 +775,7 @@ $(document).ready(function(){
 
 
     function cashier() {
+        // Toggling between Betslip and My-Bets section
         const betMenu = document.querySelector(".bet-menu");
         betMenu.addEventListener("click", function() {
             document.querySelector(".bl-top").classList.toggle("bl-top-active");
@@ -808,7 +819,7 @@ $(document).ready(function(){
         })
 
         
-        // Accept odd changes code
+        // Chosing odd changes code
         const oddChanges = document.querySelector(".oc-text");
         oddChanges.addEventListener("click", function() {
             document.querySelector(".odd-changes").classList.toggle("alter-active");
@@ -884,6 +895,7 @@ $(document).ready(function(){
         multiSingle();
 
 
+        // Setting Checkout Images to Current Crypto Image 
         const checkoutImage = document.querySelectorAll(".check-out #checkout-img");
         checkoutImage.forEach(img => {
             img.src = document.querySelector(".wallet-dropdown-options .cv").children[1].firstElementChild.src;

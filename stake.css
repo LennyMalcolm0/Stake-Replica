@@ -84,6 +84,8 @@ i {
 }
 
 
+
+
 /*DETAILED SIDE MENU*/
 
 .stake-side-bar {
@@ -383,6 +385,9 @@ i {
 }
 
 
+
+
+
 /*SMALL SIDE BAR ME*/
 
 .small-side-bar {
@@ -526,6 +531,9 @@ i {
 .ssm-14 {
     top: 555px;
 }
+
+
+
 
 
 /*MAIN BETTING SECTION*/
@@ -741,6 +749,7 @@ i {
     display: block;
 }
 
+
 /*BODY*/
 
 /*TOP SECTION*/
@@ -767,7 +776,8 @@ i {
 .betting-section {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     color: white;
 }
 
@@ -952,6 +962,7 @@ i {
     color: #1574E1;
 }
 
+
 /*ODDS SECTION*/
 
 .competition {
@@ -1124,7 +1135,7 @@ i {
 /* View Random Bets */
 
 .open-bets {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 .ob-header {
@@ -1230,6 +1241,124 @@ tbody .mc-event, .known-user span {
     width: 100%;
     justify-content: end;
 }
+
+/* Footer Section */
+
+.footer {
+    flex-direction: column;
+    width: 100%;
+    height:fit-content;
+    background-color: #071C2B;
+}
+
+.footer-container {
+    width: 92%;
+    max-width: 1200px;
+    position: relative;
+}
+
+.footer-container-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.footer-section1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
+.fm-header {
+    font-size: 15px;
+}
+
+.fm-body {
+    margin-top: 10px;
+    color: #B0BAD2;
+}
+
+.fmb-item {
+    transition: all 0.1s ease;
+}
+
+.fmb-item:hover {
+    color: white;
+}
+
+.fmb-item img {
+    margin-left: 5px;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #203643;
+}
+
+.footer-section2 {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.fs2-item {
+    margin-top: 40px;
+    padding: 0 15px;
+}
+
+.fs2-item img {
+    height: 40px;
+    width: auto;
+}
+
+.footer-section3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 40px 0;
+}
+
+.main-partners img {
+    height: 60px;
+}
+
+.verified-op img {
+    height: 70px;
+}
+
+.footer-section4 {
+    margin: 40px 0;
+    color: #b1bad3;
+    text-align: center;
+}
+
+.footer-section4 img {
+    height: 32px;
+}
+
+.part1-text {
+    margin: 5px 0;
+}
+
+.section4-part2, .section4-part3 {
+    font-size: 11px;
+}
+
+.section4-part2 {
+    margin: 30px 0;
+}
+
+.section4-part3 span {
+    color: white;
+}
+
+
+
+
 
 /*CASHIER (VIEW SELECTED ODDS & CHECKOUT)*/
 
