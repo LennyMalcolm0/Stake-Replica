@@ -135,7 +135,7 @@ i {
     border-radius: 25px;
     position: relative;
     left: 10px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .fl-head span:hover {
@@ -227,7 +227,7 @@ i {
     border-radius: 25px;
     display: flex;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
 }
 
 .fl-dd-element:is(:hover, .fl-dropdown-active) {
@@ -289,7 +289,7 @@ i {
     border-radius: 25px;
     display: flex;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
 }
 
 .fl-extra:hover {
@@ -313,6 +313,7 @@ i {
 .select {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .select span {
@@ -424,6 +425,10 @@ i {
     height: 35px;
     width: 40px;
     border-radius: 25px;
+    cursor: default;
+}
+
+.ssb-head .ssb-hover {
     cursor: pointer;
 }
 
@@ -608,7 +613,7 @@ i {
     border-bottom-right-radius: 4px;
     background-color: #2b78ca;
     transition: all 0.1s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 .sw-text:hover {
@@ -850,7 +855,7 @@ i {
 
 .menu-option:hover, .menu-active {
     background-color: #2F4553;
-    cursor: pointer;
+    cursor: default;
 }
 
 .three-way {
@@ -1051,7 +1056,7 @@ i {
 
 .club-names {
     width: 18%;
-    cursor: pointer;
+    cursor: default;
 }
 
 .club {
@@ -1065,7 +1070,7 @@ i {
 .md-image {
     margin-right: 10px;
     margin-left: 17%;
-    cursor: pointer;
+    cursor: default;
 }
 
 .wd-odd {
@@ -1099,7 +1104,7 @@ i {
 .extra-odds {
     color: #b1bad3;
     margin-left: 3%;
-    cursor: pointer;
+    cursor: default;
     transition: all 0.1s ease;
 }
 
@@ -1832,9 +1837,6 @@ tbody .mc-event, .known-user span {
     font-weight: 600px;
     margin-top: 10px;
     opacity: 0.5;
-}
-
-.check-out-singles button {
     cursor: not-allowed;
 }
 

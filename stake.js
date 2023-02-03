@@ -163,8 +163,7 @@ $(document).ready(function(){
             estimatedPayout();
 
             const currentCrypto = document.querySelector(".current-text .current-value"),
-            currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1));
-
+            currentCryptoBalance = Number(currentCrypto.innerHTML.slice(1)),
 
             aboveBalance = document.querySelector(".check-out-singles .above-balance"),
             placeSinglesBet = document.querySelector(".check-out-singles button"),
@@ -262,41 +261,48 @@ $(document).ready(function(){
         // Code to run in Singles section
         function singles() {
             // Summing up all stake amount in singles session
-            totalStake = document.querySelector(".check-out-singles .ts-amount span");
+            function totalSinglesStake() {
+                totalStake = document.querySelector(".check-out-singles .ts-amount span");
 
-            const inputArray = [0];
-            totalStake.innerHTML = 0;
-            const inputStakeSingles = document.querySelectorAll(".new-entry input");
-            inputStakeSingles.forEach(nss => {
-                inputArray.push(Number(nss.value))
-            });
+                const inputArray = [0];
+                totalStake.innerHTML = 0;
+                const inputStakeSingles = document.querySelectorAll(".new-entry input");
+                inputStakeSingles.forEach(nss => {
+                    inputArray.push(Number(nss.value))
+                });
 
-            let sumStake = inputArray.reduce(myFunction);
-            function myFunction(total, value) {
-            return total + value;
+                let sumStake = inputArray.reduce(myFunction);
+                function myFunction(total, value) {
+                return total + value;
+                };
+
+                totalStake.innerHTML = (sumStake).toLocaleString("en-US", {style:"currency", currency:"USD"});
             };
-
-            totalStake.innerHTML = (sumStake).toLocaleString("en-US", {style:"currency", currency:"USD"});
+            totalSinglesStake();
 
             // Summing up all estimated payout value
-            const estPayoutSingles = document.querySelector(".check-out-singles .est-amount span");
+            function totalPayoutSingles() {
+                const estPayoutSingles = document.querySelector(".check-out-singles .est-amount span");
 
-            const payoutArray = [0];
-            estPayoutSingles.innerHTML = 0;
-            inputStakeSingles.forEach(nss => {
-                let payout = nss.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
-                matchPickOdd = nss.parentElement.parentElement.parentElement.children[1].firstElementChild;
+                const payoutArray = [0];
+                estPayoutSingles.innerHTML = 0;
+                const inputStakeSingles = document.querySelectorAll(".new-entry input");
+                inputStakeSingles.forEach(nss => {
+                    let payout = nss.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
+                    matchPickOdd = nss.parentElement.parentElement.parentElement.children[1].firstElementChild;
 
-                payout = (nss.value * matchPickOdd.innerHTML);
-                payoutArray.push(Number(payout));
-            });
+                    payout = (nss.value * matchPickOdd.innerHTML);
+                    payoutArray.push(Number(payout));
+                });
 
-            let sumPayout = payoutArray.reduce(spFunction);
-            function spFunction(total, value) {
-            return total + value;
+                let sumPayout = payoutArray.reduce(spFunction);
+                function spFunction(total, value) {
+                return total + value;
+                };
+
+                estPayoutSingles.innerHTML = (sumPayout).toLocaleString("en-US", {style:"currency", currency:"USD"});
             };
-
-            estPayoutSingles.innerHTML = (sumPayout).toLocaleString("en-US", {style:"currency", currency:"USD"});
+            totalPayoutSingles();
         };
 
 
