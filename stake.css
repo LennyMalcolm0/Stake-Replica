@@ -1247,7 +1247,7 @@ tbody .mc-event, .known-user span {
 .footer {
     flex-direction: column;
     width: 100%;
-    height:fit-content;
+    height: 920px;
     background-color: #071C2B;
 }
 
