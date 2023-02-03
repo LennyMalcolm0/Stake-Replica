@@ -78,7 +78,16 @@ $(document).ready(function(){
             langToggle.addEventListener("click", function(){
                 selectLang.classList.toggle("lang-dd-active");
             });
+
+            // Closing Language Menu if any other part of the Document is clicked
+            $(document).click(function(e){
+                let outside = $(".fl-select-lang");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    selectLang.classList.remove("lang-dd-active");
+                };
+            });
             
+            // Changing Selected Language feel
             langOptions.forEach(lang => {
                 lang.addEventListener("click", function(){
                     langChange.innerHTML = lang.innerHTML;
@@ -138,10 +147,7 @@ $(document).ready(function(){
         function eligibleSinglesBalance() {
             // Summing up all stake amount in singles session
             function estimatedPayout() {
-                totalStake = document.querySelector(".check-out-singles .ts-amount span");
-
                 const inputArray = [0];
-                totalStake.innerHTML = 0;
                 const inputStakeSingles = document.querySelectorAll(".new-entry input");
                 inputStakeSingles.forEach(nss => {
                     inputArray.push(Number(nss.value))
@@ -319,15 +325,22 @@ $(document).ready(function(){
 
     function oddsPage() {
         // Code for events in Odds Page fixed header
-        function stakeHeader() {
-            // Toggling Wallet Dropdown
+        function stakeFixedHeader() {
+            // Toggling Wallet Dropdown Menu
             const currentWallet = document.querySelector(".ft-current-wallet"),
             walletOptions = document.querySelector(".wallet-options");
     
             currentWallet.addEventListener("click", function(){
                 walletOptions.classList.toggle("sw-active");
             });
-    
+
+            // Closing Wallet Dropdow Menu if any other part of the Document is clicked
+            $(document).click(function(e){
+                let outside = $(".wallet-options");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    walletOptions.classList.remove("sw-active");
+                };
+            });
     
             const currentCrypto = document.querySelector(".current-text .current-value"),
             currentCryptoImage = document.querySelector(".current-text img"),
@@ -385,8 +398,16 @@ $(document).ready(function(){
             chatIcon.addEventListener("click", function(){
                 chatActive.classList.toggle("chat-active");
             });
+
+            // Closing Chat Dropdown Menu if any other part of the Document is clicked
+            $(document).click(function(e){
+                let outside = $(".chat-icon");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    chatActive.classList.remove("chat-active");
+                };
+            });
         };
-        stakeHeader();
+        stakeFixedHeader();
 
     
         // Code for Odds Type
@@ -423,15 +444,24 @@ $(document).ready(function(){
             });
 
 
-            // Toggling Standard Odds Type values
+            // Toggling Standard Odds Type Menu
             const oddsDisplayToggle = document.querySelectorAll(".menu-all"),
             oddsDisplayType = document.querySelector(".odds-display-type");
             oddsDisplayToggle.forEach(odt => {
                 odt.addEventListener("click", function() {
-                oddsDisplayType.classList.toggle("odds-dd-active");
+                    oddsDisplayType.classList.toggle("odds-dd-active");
                 })
             });
+
+            // Closing Standard Odds Type Menu if any other part of the Document is clicked
+            $(document).click(function(e){
+                let outside = $(".menu-all");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    oddsDisplayType.classList.remove("odds-dd-active");
+                };
+            });
     
+            // Chosing Standard Odds Type
             const odOption = document.querySelectorAll(".od-option");
             odOption.forEach(option => {
                 option.addEventListener("click", function() {
@@ -776,6 +806,10 @@ $(document).ready(function(){
                         // Calling code for bet eligibility
                         eligibleSinglesBalance();
 
+                        const multipleSelections = document.querySelector(".check-out-multi .multiple-selections");
+                        multipleSelections.style.display = "none"; // Clearing Multiple Selections warning
+                        eligibleMultiBalance();
+
                         // Checking if more than one odd is selected from a single match when a Match odd or Singles/Multi button is clicked
                         sameMatch();
                     });
@@ -797,12 +831,23 @@ $(document).ready(function(){
 
 
     function cashier() {
-        // Toggling between Betslip and My-Bets section
-        const betMenu = document.querySelector(".bet-menu");
+        // Toggling Betslip Options (between Betslip and My-Bets section)
+        const betMenu = document.querySelector(".bet-menu"),
+        currentBetMenu = document.querySelector(".bl-top");
+
         betMenu.addEventListener("click", function() {
-            document.querySelector(".bl-top").classList.toggle("bl-top-active");
+            currentBetMenu.classList.toggle("bl-top-active");
         });
 
+        // Closing Betslip Options Menu if any other part of the Document is clicked
+        $(document).click(function(e){
+            let outside = $(".bet-menu");
+            if (outside !== e.target && !outside.has(e.target).length) {
+                currentBetMenu.classList.remove("bl-top-active");
+            };
+        });
+
+        // Chosing Betslip Options (between Betslip and My-Bets section
         const ddItem = document.querySelectorAll(".blt-dropdown .dd-item");
         ddItem.forEach(item => {
             item.addEventListener("click", () => {
@@ -824,6 +869,7 @@ $(document).ready(function(){
             });
         });
 
+
         // Collapse betslip code
         const collapseBetslip = document.querySelector(".collapse-betslip .cb-image");
         collapseBetslip.addEventListener("mouseover", function() {
@@ -841,12 +887,14 @@ $(document).ready(function(){
         })
 
         
-        // Chosing odd changes code
-        const oddChanges = document.querySelector(".oc-text");
+        // Toggling Odd Changes Menu
+        const oddChanges = document.querySelector(".oc-text"),
+        currentOC = document.querySelector(".odd-changes");
         oddChanges.addEventListener("click", function() {
-            document.querySelector(".odd-changes").classList.toggle("alter-active");
+            currentOC.classList.toggle("alter-active");
         });
 
+        // Chosing Odd Changes type
         const ocOption = document.querySelectorAll(".odd-changes .oc-option");
         ocOption.forEach(option => {
             option.addEventListener("click", () => {
@@ -855,6 +903,14 @@ $(document).ready(function(){
                 option.classList.add("oc-active");
                 document.querySelector(".odd-changes").classList.toggle("alter-active");
             })
+        });
+
+        // Closing Odd Changes Menu if any other part of the Document is clicked
+        $(document).click(function(e){
+            let outside = $(".oc-text");
+            if (outside !== e.target && !outside.has(e.target).length) {
+                currentOC.classList.remove("alter-active");
+            };
         });
 
 
