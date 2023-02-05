@@ -1215,11 +1215,11 @@ td span {
 
 tbody .mc-event, .known-user span {
     color: white;
-    cursor: pointer;
+    cursor: default;
 }
 
-.mc-event span {
-    max-width: 100px;
+.mc-event span span {
+    max-width: 80px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1727,10 +1727,6 @@ tbody .mc-event, .known-user span {
     padding-right: 30px;
     padding-left: 10px;
     font-weight: 600;
-}
-
-.stake-amount input:focus {
-    border: none;
 }
 
 .input-image {
