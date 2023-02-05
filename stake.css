@@ -764,7 +764,7 @@ i {
 
 /*BODY*/
 
-/*TOP SECTION*/
+/*Top Section*/
 
 .main-page {
     width: 100%;
@@ -975,7 +975,7 @@ i {
 }
 
 
-/*ODDS SECTION*/
+/*Odds Section*/
 
 .competition {
     width: 100%;
@@ -1144,6 +1144,7 @@ i {
     color: white;
 }
 
+
 /* View Random Bets */
 
 .open-bets {
@@ -1253,6 +1254,201 @@ tbody .mc-event, .known-user span {
     width: 100%;
     justify-content: end;
 }
+
+
+/* Random Bets Popup */
+
+.view-open-bets {
+    position: absolute;
+    left: 0;
+    z-index: 99999;
+}
+
+.view-open-bets img {
+    height: 14px;
+    width: auto;
+}
+
+.popup-background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #040c12;
+    opacity: 0.4;
+}
+
+.obe-container { 
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;  
+}
+
+.open-bet-event {
+    height: 90vh;
+    width: min(500px, 90vw);
+    background-color: #0F202F;
+    color: white;
+    border-radius: 10px;
+    font-size: 13px;
+    overflow: hidden;
+}
+
+.obe-header {
+    position: fixed;
+    height: 60px;
+    width: min(500px, 90vw);
+    padding: 0 25px;
+    background-color: #213642;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+}
+
+.obe-header img {
+    height: 17px;
+}
+
+.obe-header span {
+    margin-left: 8px;
+}
+
+.obe-body {
+    position: relative;
+    top: 60px;
+    height: calc(90vh - 60px);
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.obe-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.obe-body::-webkit-scrollbar-track {
+    background-color: #213642;
+}
+
+.obe-body::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: #2E4453;
+}
+
+.section1 {
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 25px;
+    background-color: #213642;
+}
+
+.section1 div {
+    margin-top: 10px;
+}
+
+.section1 div:nth-child(1), .section1 div:nth-child(2) {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.section1 div:nth-child(3) img {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.section1 img {
+    margin-left: 5px;
+}
+
+.obe-color-ash {
+    color: #b1bad3;
+    font-weight: 500;
+}
+
+.section2 {
+    padding: 25px;
+}
+
+.booking-time {
+    width: 100%;
+    padding: 10px;
+    background-color: #2F4553;
+    border-radius: 5px 5px 0 0;
+}
+
+.obe-match-card {
+    width: 100%;
+    padding: 10px;
+    background-color: #203742;
+    font-weight: 600;
+}
+
+.obe-mc-first {
+    border-radius: 0 0 5px 5px;
+}
+
+.obe-mc-next {
+    margin-top: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.obe-match-card .obe-color-ash {
+    font-weight: 400;
+}
+
+.obe-mc-title img, .time-left img {
+    margin-right: 7px;
+}
+
+#live-stream {
+    margin-right: 7px;
+}
+
+.obe-mc-base {
+    padding: 10px 0;
+    background-color: #203742;
+    border-radius: 0 0 5px 5px;
+}
+
+.line-logo span {
+    width: 39%;
+    height: 3px;
+    background-color: #2E4552;
+} 
+
+.line-logo img {
+    height: 32px;
+}
+
+.obe-totals {
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+.obe-totals img {
+    margin-left: 3px;
+}
+
+.obe-body button {
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #2E4552;
+    color: #b1bad3;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0.5px 0.5px 0.5px #071824;
+}
+
+.obe-body button:hover {
+    background-color: #3d5562;
+    color: white;
+}
+
+
+
+
+
+
 
 /* Footer Section */
 
@@ -1535,6 +1731,7 @@ tbody .mc-event, .known-user span {
     background-color: #2F4553;
 }
 
+
 /*Bet Slip Content*/
 
 .bet-slip-content {
@@ -1607,6 +1804,7 @@ tbody .mc-event, .known-user span {
     transform: rotate(180deg);
 }
 
+
 /*Selected Odds (Games Booked)*/
 
 .games-booked {
@@ -1656,7 +1854,8 @@ tbody .mc-event, .known-user span {
     margin-bottom: 5px;
 }
 
-/*Match cards*/
+
+/* Match cards */
 
 .match-cards-container {
     display: none;
@@ -1798,6 +1997,7 @@ tbody .mc-event, .known-user span {
 /* Check out zone */
 
 /* Singles checkout */
+
 .check-out-singles {
     height: 130px;
     width: 100%;
@@ -1844,6 +2044,7 @@ tbody .mc-event, .known-user span {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
 
 /* Multi checkout */
 .check-out-multi {
