@@ -500,7 +500,7 @@ $(document).ready(function(){
                 mo.addEventListener("click", () => {
                     mo.classList.toggle("md-active");
 
-                    // Adding Cashier zone & Altering Random bets section
+                    // Adding Cashier zone, Altering Random bets section, and increasing Footer height
                     const cashierDisplay = document.querySelector(".cashier");
                     if (mo.classList.contains("md-active")) {
                         cashierDisplay.style.display = "block";
@@ -508,6 +508,8 @@ $(document).ready(function(){
                         $(".mc-user").css({"display": "none"});
                         $(".mc-time").css({"display": "none"});
                         $(".mc-odd").css({"display": "none"});
+
+                        $(".footer").css({"height": "1100px"});
                     };
 
                     // Adjusting numbers of picks
