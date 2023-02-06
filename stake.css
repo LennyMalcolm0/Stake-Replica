@@ -1284,7 +1284,6 @@ tbody .mc-event, .known-user span {
 }
 
 .open-bet-event {
-    height: 90vh;
     width: min(500px, 90vw);
     background-color: #0F202F;
     color: white;
@@ -1444,6 +1443,163 @@ tbody .mc-event, .known-user span {
     color: white;
 }
 
+
+
+/* ANIMATION */
+
+.obe-body {
+    display: none;
+}
+
+.loading-animation {
+    height: calc(45vh - 60px);
+    width: 100%;
+    margin-top: 60px;
+    background-color: #213642;
+}
+
+.la-image-wrapper {
+    width: 105px;
+}
+
+.la-minors {
+    position: relative;
+    top: 7px;
+}
+.la-majors {
+    position: relative;
+    bottom: 7px;
+}
+
+.la-img1 img {
+    animation: img1 0.8s ease-in-out 0s infinite;
+}
+.la-img2 img {
+    animation: img2 0.8s ease-in-out 0s infinite;
+}
+.la-img3 img {
+    animation: img3 0.8s ease-in-out 0s infinite;
+}
+.la-img4 img {
+    transform: rotate(20deg);
+    animation: img4 0.8s ease-in-out 0s infinite;
+}
+.la-img5 img {
+    animation: img5 0.8s ease-in-out 0s infinite;
+}
+.la-img6 img {
+    animation: img6 0.8s ease-in-out 0s infinite;
+}
+
+@keyframes img1 {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes img2 {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes img3 {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes img4 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+        scale: 1.7;
+    }
+    75% {
+        opacity: 1;
+        scale: 1.7;
+    }
+    100% {
+        opacity: 1;
+        scale: 1.7;
+    }
+}
+@keyframes img5 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+        scale: 1.7;
+    }
+    100% {
+        opacity: 1;
+        scale: 1.7;
+    }
+}
+@keyframes img6 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        scale: 1.7;
+    }
+}
 
 
 

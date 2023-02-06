@@ -837,6 +837,12 @@ $(document).ready(function(){
     };
     oddsPage();
 
+    setTimeout(() => {
+        $(".loading-animation").css({"display": "none"});
+        $(".open-bet-event").css({"height": "90vh"});
+        $(".obe-body").css({"display": "block"});
+    }, 3000)
+
 
     function cashier() {
         // Toggling Betslip Options (between Betslip and My-Bets section)
