@@ -1444,7 +1444,6 @@ tbody .mc-event, .known-user span {
 }
 
 
-
 /* ANIMATION */
 
 .obe-body {
@@ -1466,6 +1465,7 @@ tbody .mc-event, .known-user span {
     position: relative;
     top: 7px;
 }
+
 .la-majors {
     position: relative;
     bottom: 7px;
@@ -1600,10 +1600,6 @@ tbody .mc-event, .known-user span {
         scale: 1.7;
     }
 }
-
-
-
-
 
 
 /* Footer Section */
