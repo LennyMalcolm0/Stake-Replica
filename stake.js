@@ -574,6 +574,7 @@ $(document).ready(function(){
                             // Adding Match Card to Bet Slip
                             const mcContainer = document.querySelector(".games-booked .match-cards-container");
                             mcContainer.appendChild(newEntry);
+                            newEntry.style = "animation: matchCard 0.5s ease 0s 1";
 
 
                             newEntry.classList.add(`${mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
@@ -866,7 +867,7 @@ $(document).ready(function(){
                 let outside = $(".open-bet-event");
                 if (outside !== e.target && !outside.has(e.target).length) {
                     $(".view-open-bets").css({"display": "none"});
-                    
+
                     clearTimeout(animationTimeout);
                     
                     $(".view-open-bets").css({"display": "none"});

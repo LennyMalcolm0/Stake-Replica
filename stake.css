@@ -1216,8 +1216,7 @@ td span {
     width: fit-content;
 }
 
-.mc-event {
-    text-align: left;
+.mc-event-header, .mc-event {
     padding: 0 15px;
 }
 
@@ -1961,6 +1960,7 @@ tbody .mc-event, .known-user span {
 .games-booked {
     height: calc(100vh - 300px);
     width: 100%;
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -2017,10 +2017,10 @@ tbody .mc-event, .known-user span {
 .match-card {
     display: block;
     width: 100%;
+    margin-bottom: 10px;
     background-color: #203742;
     border-radius: 5px;
     overflow: hidden;
-    margin-bottom: 10px;
 }
 
 .match-header {
@@ -2144,6 +2144,21 @@ tbody .mc-event, .known-user span {
 .hidden {
     display: none;
 }
+
+/* Match Card Animation */
+
+@keyframes matchCard {
+   0% {
+        transform: translateX(8%);
+    }
+    50% {
+        transform: translateX(-4%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 
 /* Check out zone */
 
