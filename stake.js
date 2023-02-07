@@ -837,11 +837,47 @@ $(document).ready(function(){
     };
     oddsPage();
 
-    setTimeout(() => {
-        $(".loading-animation").css({"display": "none"});
-        $(".open-bet-event").css({"height": "90vh"});
-        $(".obe-body").css({"display": "block"});
-    }, 3000)
+    // Open Bets Popup Section
+    $(".mc-event").each(function() {
+        $(this).click(function() {
+            $(".loading-animation").css({"display": "flex"});
+            $(".view-open-bets").css({"display": "block"});
+
+            const animationTimeout = setTimeout(() => {
+                $(".loading-animation").css({"display": "none"});
+                $(".open-bet-event").css({"height": "90vh"});
+                $(".obe-body").css({"display": "block"});
+            }, 3000);
+            
+
+            // Closing Open Bet if Cancel is clicked
+            $(".close-open-bet").click(function() {
+                clearTimeout(animationTimeout);
+                
+                $(".view-open-bets").css({"display": "none"});
+                $(".open-bet-event").css({"height": "fit-content"});
+                $(".loading-animation").css({"display": "none"});
+                $(".obe-body").css({"display": "none"});
+            });
+
+      
+            // Closing Open Bet if any other part of the Document is clicked
+            $(".obe-container").click(function(e){
+                let outside = $(".open-bet-event");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    $(".view-open-bets").css({"display": "none"});
+                    
+                    clearTimeout(animationTimeout);
+                    
+                    $(".view-open-bets").css({"display": "none"});
+                    $(".open-bet-event").css({"height": "fit-content"});
+                    $(".loading-animation").css({"display": "none"});
+                    $(".obe-body").css({"display": "none"});
+                };
+            });
+        });
+    });
+
 
 
     function cashier() {

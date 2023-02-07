@@ -1259,6 +1259,7 @@ tbody .mc-event, .known-user span {
 /* Random Bets Popup */
 
 .view-open-bets {
+    display: none;
     position: absolute;
     left: 0;
     z-index: 99999;
@@ -1312,6 +1313,7 @@ tbody .mc-event, .known-user span {
 }
 
 .obe-body {
+    display: none;
     position: relative;
     top: 60px;
     height: calc(90vh - 60px);
@@ -1446,11 +1448,8 @@ tbody .mc-event, .known-user span {
 
 /* ANIMATION */
 
-.obe-body {
-    display: none;
-}
-
 .loading-animation {
+    display: none;
     height: calc(45vh - 60px);
     width: 100%;
     margin-top: 60px;
