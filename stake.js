@@ -848,7 +848,7 @@ $(document).ready(function(){
                 $(".loading-animation").css({"display": "none"});
                 $(".open-bet-event").css({"height": "90vh"});
                 $(".obe-body").css({"display": "block"});
-            }, 3000);
+            }, 1000);
             
 
             // Closing Open Bet if Cancel is clicked
@@ -878,6 +878,157 @@ $(document).ready(function(){
             });
         });
     });
+
+
+    const obEvents = [
+        {
+            name: "WOL - LFC",
+            id: " ID 63,445,021",
+            timeDate: "on 2/5/2023 at 8:30PM",
+            bookingTime: "8:30PM 2/5/2023",
+            matchTitle: "Wolvehampton Wanderers - Liverpool FC",
+            oddType: "Both Teams to Score",
+            matchPick: "Yes",
+            mpOdd:(2.40).toFixed(2)
+        },
+        {
+            name: "CRY - LEE",
+            id: " ID 63,445,387",
+            timeDate: "on 2/5/2023 at 8:20PM",
+            bookingTime: "8:20PM 2/5/2023",
+            matchTitle: "Crystal Palace - Leeds United",
+            oddType: "Draw No Bet",
+            matchPick: "Crystal Palace",
+            mpOdd: (1.90).toFixed(2)
+        },
+        {
+            name: "BRI - TOT",
+            id: " ID 63,465,821",
+            timeDate: "on 2/5/2023 at 8:20PM",
+            bookingTime: "8:20PM 2/5/2023",
+            matchTitle: "Brighton & Hove Albion - Tottenham Hotspur",
+            oddType: "1st Half - 1x2",
+            matchPick: "Tottenham Hotspur",
+            mpOdd: (2.85).toFixed(2)
+        },
+        {
+            name: "GSW - LAL",
+            id: " ID 63,945,111",
+            timeDate: "on 2/5/2023 at 8:15PM",
+            bookingTime: "8:15PM 2/5/2023",
+            matchTitle: "Golden State Warriors - Los Angeles Lakers",
+            oddType: "Winner & Total (Incl. Overtime)",
+            matchPick: "Los Angeles Lakers & Over 239.5",
+            mpOdd: (2.68).toFixed(2)
+        },
+        {
+            name: "BAR - GIR",
+            id: " ID 63,945,111",
+            timeDate: "on 2/5/2023 at 8:15PM",
+            bookingTime: "8:15PM 2/5/2023",
+            matchTitle: "Barcelona FC - Girona FC",
+            oddType: "1x2",
+            matchPick: "Barcelona FC",
+            mpOdd: (1.30).toFixed(2)
+        },
+        {
+            name: "PSV - VIT",
+            id: " ID 63,978,576",
+            timeDate: "on 2/5/2023 at 8:15PM",
+            bookingTime: "8:15PM 2/5/2023",
+            matchTitle: "PSV Eindoven - Vitesse FC",
+            oddType: "Over 2.5",
+            matchPick: "Yes",
+            mpOdd: (1.75).toFixed(2)
+        },
+        {
+            name: "GWC - DAF",
+            id: " ID 63,995,236",
+            timeDate: "on 2/5/2023 at 8:15PM",
+            bookingTime: "8:15PM 2/5/2023",
+            matchTitle: "George Washington Colonials - Dayton Flyers",
+            oddType: "Winner (Incl. Overtime)",
+            matchPick: "Dayton Flyers",
+            mpOdd: (3.10).toFixed(2)
+        },
+        {
+            name: "PSG - CHE",
+            id: " ID 63,945,111",
+            timeDate: "on 2/5/2023 at 8:00PM",
+            bookingTime: "8:00PM 2/5/2023",
+            matchTitle: "Paris Saint German - Chelsea FC",
+            oddType: "1x2",
+            matchPick: "Paris Saint German",
+            mpOdd: (1.55).toFixed(2)
+        },
+        {
+            name: "BAY - DOR",
+            id: " ID 63,945,771",
+            timeDate: "on 2/5/2023 at 8:00PM",
+            bookingTime: "8:00PM 2/5/2023",
+            matchTitle: "Bayern Munchen FC - Borussia Dortmund FC",
+            oddType: "Highest Soring Half",
+            matchPick: "2nd Half",
+            mpOdd: (1.99).toFixed(2)
+        },
+    ];
+
+    const openEvents = document.querySelectorAll(".open-bets .mc-event");
+    openEvents.forEach(openEvent => {
+        openEvent.addEventListener("click", () => {
+            for (let i = 0; i < obEvents.length; i++) {
+                if (obEvents[i].name == openEvent.children[0].children[1].textContent) {
+                    const openEventId = document.querySelector(".open-bet-event .obe-id"),
+                    dateTime = document.querySelector(".open-bet-event .obe-date-time"),
+                    bookingTime = document.querySelector(".open-bet-event .booking-time"),
+                    matchTitle = document.querySelectorAll(".open-bet-event .obe-mc-title span"),
+                    oddType = document.querySelectorAll(".open-bet-event .obe-mc-type"),
+                    matchPick = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .pick"),
+                    odds = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .odd"),
+                    firstMatchcard = document.querySelector(".open-bet-event .obe-mc-first"),
+                    matchCardContainer = document.querySelector(".obe-match-card-container");
+
+                    // Removing first Match Card
+                    matchCardContainer.removeChild(firstMatchcard);
+
+                    openEventId.textContent = obEvents[i].id;
+                    dateTime.innerHTML = obEvents[i].timeDate;
+                    bookingTime.innerHTML = obEvents[i].bookingTime;
+
+                    matchTitle.forEach(title => {
+                        title.innerHTML = obEvents[i].matchTitle;
+                    });
+
+                    oddType.forEach(type => {
+                        type.innerHTML = obEvents[i].oddType;
+                    });
+
+                    matchPick.forEach(pick => {
+                        pick.innerHTML = obEvents[i].matchPick;
+                    });
+
+                    odds.forEach(odd => {
+                        odd.innerHTML = obEvents[i].mpOdd;
+                    });
+
+                    const lastMatchcard = document.querySelector(".open-bet-event .obe-mc-last");
+                    lastMatchcard.style = ("margin-top: 0");
+                    lastMatchcard.style = ("border-radius: 0");
+                };
+            };
+        });
+    });
+
+    // $(".mc-event").each(function() {
+    //     $(this).click(function() {
+    //         for (let i = 0; i < obEvents.length; i++) {
+    //             if ()
+    //         }
+    //     });
+    // });
+
+
+
 
 
 
