@@ -1220,9 +1220,9 @@ td span {
     padding: 0 15px;
 }
 
-tbody .mc-event, .known-user span {
+tbody .mc-event {
     color: white;
-    cursor: default;
+    cursor: pointer;
 }
 
 .mc-event span span {
@@ -1383,11 +1383,11 @@ tbody .mc-event, .known-user span {
 }
 
 .obe-mc-first {
+    margin-bottom: 5px;
     border-radius: 0 0 5px 5px;
 }
 
 .obe-mc-last {
-    margin-top: 5px;
     border-radius: 5px 5px 0 0;
 }
 

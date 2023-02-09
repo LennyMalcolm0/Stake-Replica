@@ -838,48 +838,8 @@ $(document).ready(function(){
     };
     oddsPage();
 
-    // Open Bets Popup Section
-    $(".mc-event").each(function() {
-        $(this).click(function() {
-            $(".loading-animation").css({"display": "flex"});
-            $(".view-open-bets").css({"display": "block"});
 
-            const animationTimeout = setTimeout(() => {
-                $(".loading-animation").css({"display": "none"});
-                $(".open-bet-event").css({"height": "90vh"});
-                $(".obe-body").css({"display": "block"});
-            }, 1000);
-            
-
-            // Closing Open Bet if Cancel is clicked
-            $(".close-open-bet").click(function() {
-                clearTimeout(animationTimeout);
-                
-                $(".view-open-bets").css({"display": "none"});
-                $(".open-bet-event").css({"height": "fit-content"});
-                $(".loading-animation").css({"display": "none"});
-                $(".obe-body").css({"display": "none"});
-            });
-
-      
-            // Closing Open Bet if any other part of the Document is clicked
-            $(".obe-container").click(function(e){
-                let outside = $(".open-bet-event");
-                if (outside !== e.target && !outside.has(e.target).length) {
-                    $(".view-open-bets").css({"display": "none"});
-
-                    clearTimeout(animationTimeout);
-                    
-                    $(".view-open-bets").css({"display": "none"});
-                    $(".open-bet-event").css({"height": "fit-content"});
-                    $(".loading-animation").css({"display": "none"});
-                    $(".obe-body").css({"display": "none"});
-                };
-            });
-        });
-    });
-
-
+    // Object containing Open Bets Events information
     const obEvents = [
         {
             name: "WOL - LFC",
@@ -976,8 +936,16 @@ $(document).ready(function(){
     const openEvents = document.querySelectorAll(".open-bets .mc-event");
     openEvents.forEach(openEvent => {
         openEvent.addEventListener("click", () => {
+            // Creating new Open Bet Event
+            const viewOpenBet = document.querySelector(".view-open-bets").cloneNode(true);
+            openBetWrapper = document.createElement("div");
+            openBetWrapper.classList.add("new-ob");
+            openBetWrapper.appendChild(viewOpenBet);
+
+            // Updating Event Information
             for (let i = 0; i < obEvents.length; i++) {
                 if (obEvents[i].name == openEvent.children[0].children[1].textContent) {
+
                     const openEventId = document.querySelector(".open-bet-event .obe-id"),
                     dateTime = document.querySelector(".open-bet-event .obe-date-time"),
                     bookingTime = document.querySelector(".open-bet-event .booking-time"),
@@ -985,16 +953,19 @@ $(document).ready(function(){
                     oddType = document.querySelectorAll(".open-bet-event .obe-mc-type"),
                     matchPick = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .pick"),
                     odds = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .odd"),
-                    firstMatchcard = document.querySelector(".open-bet-event .obe-mc-first"),
+                    totalOdds = document.querySelector(".open-bet-event .total-odds"),
+                    totalStake = document.querySelector(".open-bet-event .total-stake span"),
+                    estPayout = document.querySelector(".open-bet-event .est-payout span"),
+                    totalsImages = document.querySelectorAll(".open-bet-event .obe-totals img"),
+                    addBets = document.querySelector(".open-bet-event button span"),
                     matchCardContainer = document.querySelector(".obe-match-card-container");
 
-                    // Removing first Match Card
-                    matchCardContainer.removeChild(firstMatchcard);
-
+                    // Updating Event Header Information values
                     openEventId.textContent = obEvents[i].id;
                     dateTime.innerHTML = obEvents[i].timeDate;
                     bookingTime.innerHTML = obEvents[i].bookingTime;
 
+                    // Updating Event Match Card values
                     matchTitle.forEach(title => {
                         title.innerHTML = obEvents[i].matchTitle;
                     });
@@ -1009,13 +980,75 @@ $(document).ready(function(){
 
                     odds.forEach(odd => {
                         odd.innerHTML = obEvents[i].mpOdd;
+
+                        // Updating Total Odds value
+                        totalOdds.innerHTML = odd.innerHTML;
                     });
 
+                    // Updating Event Totals values
+                    totalStake.innerHTML = openEvent.parentElement.children[4].children[0].textContent;
+
+                    const tStake = Number((totalStake.innerHTML).replace(/\D/g,"") * Math.pow(10, -2));
+                    estPayout.innerHTML = (Number(totalOdds.innerHTML) * tStake).toLocaleString("en-US", {style:"currency", currency:"USD"});
+
+                    totalsImages.forEach(img => {
+                        img.src = openEvent.parentElement.children[4].children[0].firstElementChild.src
+                    });
+
+                    addBets.innerHTML = "1 bet";
+
+                    // Removing other Match Cards when Bet contains just one Match
+                    if (!matchCardContainer.firstElementChild.classList.contains("obe-mc-last")) {
+                        const firstMatchcard = matchCardContainer.firstElementChild;
+                        matchCardContainer.removeChild(firstMatchcard);
+                    };
+
+                    // Changing border radius as only Match
                     const lastMatchcard = document.querySelector(".open-bet-event .obe-mc-last");
-                    lastMatchcard.style = ("margin-top: 0");
                     lastMatchcard.style = ("border-radius: 0");
                 };
             };
+        });
+    });
+
+    // Open Bets Popup Section
+    $(".mc-event").each(function() {
+        $(this).click(function() {
+            $(".loading-animation").css({"display": "flex"});
+            $(".view-open-bets").css({"display": "block"});
+
+            const animationTimeout = setTimeout(() => {
+                $(".loading-animation").css({"display": "none"});
+                $(".open-bet-event").css({"height": "90vh"});
+                $(".obe-body").css({"display": "block"});
+            }, 1000);
+            
+
+            // Closing Open Bet if Cancel is clicked
+            $(".close-open-bet").click(function() {
+                clearTimeout(animationTimeout);
+                
+                $(".view-open-bets").css({"display": "none"});
+                $(".open-bet-event").css({"height": "fit-content"});
+                $(".loading-animation").css({"display": "none"});
+                $(".obe-body").css({"display": "none"});
+            });
+
+      
+            // Closing Open Bet if any other part of the Document is clicked
+            $(".obe-container").click(function(e){
+                let outside = $(".open-bet-event");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    $(".view-open-bets").css({"display": "none"});
+
+                    clearTimeout(animationTimeout);
+                    
+                    $(".view-open-bets").css({"display": "none"});
+                    $(".open-bet-event").css({"height": "fit-content"});
+                    $(".loading-animation").css({"display": "none"});
+                    $(".obe-body").css({"display": "none"});
+                };
+            });
         });
     });
 
