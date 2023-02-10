@@ -839,11 +839,11 @@ $(document).ready(function(){
     oddsPage();
 
 
-    // Object containing Open Bets Events information
-    const obEvents = [
+    // Object containing Singles Open Bets Events information
+    const obEventSingles = [
         {
             name: "WOL - LFC",
-            id: " ID 63,445,021",
+            id: " ID 63,495,121",
             timeDate: "on 2/5/2023 at 8:30PM",
             bookingTime: "8:30PM 2/5/2023",
             matchTitle: "Wolvehampton Wanderers - Liverpool FC",
@@ -873,7 +873,7 @@ $(document).ready(function(){
         },
         {
             name: "GSW - LAL",
-            id: " ID 63,945,111",
+            id: " ID 63,745,765",
             timeDate: "on 2/5/2023 at 8:15PM",
             bookingTime: "8:15PM 2/5/2023",
             matchTitle: "Golden State Warriors - Los Angeles Lakers",
@@ -883,7 +883,7 @@ $(document).ready(function(){
         },
         {
             name: "BAR - GIR",
-            id: " ID 63,945,111",
+            id: " ID 63,965,229",
             timeDate: "on 2/5/2023 at 8:15PM",
             bookingTime: "8:15PM 2/5/2023",
             matchTitle: "Barcelona FC - Girona FC",
@@ -913,7 +913,7 @@ $(document).ready(function(){
         },
         {
             name: "PSG - CHE",
-            id: " ID 63,945,111",
+            id: " ID 63,888,551",
             timeDate: "on 2/5/2023 at 8:00PM",
             bookingTime: "8:00PM 2/5/2023",
             matchTitle: "Paris Saint German - Chelsea FC",
@@ -933,53 +933,84 @@ $(document).ready(function(){
         },
     ];
 
+
+    // Object containing Multi Open Bets Events information
+    const obEventMulti = [
+        [
+            {
+                name: "Multi (2)",
+                id: " ID 63,445,021",
+                timeDate: "on 2/5/2023 at 8:30PM",
+                bookingTime: "8:30PM 2/5/2023"
+            },
+            [
+                {
+                    matchTitle: "FC Inter Milano - AC Milan",
+                    oddType: "Both Teams to Score",
+                    matchPick: "Yes",
+                    mpOdd:(1.85).toFixed(2)
+                },
+                {
+                    matchTitle: "Athletic Bilbao - Sevilla FC",
+                    oddType: "1x2",
+                    matchPick: "Athletic Bilbao",
+                    mpOdd:(1.70).toFixed(2)
+                }
+            ]
+        ]
+    ];
+
+
+    // Poping up Events Details when an (High Rollers) Open Bet Event is clicked
     const openEvents = document.querySelectorAll(".open-bets .mc-event");
     openEvents.forEach(openEvent => {
         openEvent.addEventListener("click", () => {
             // Creating new Open Bet Event
             const viewOpenBet = document.querySelector(".view-open-bets").cloneNode(true);
             openBetWrapper = document.createElement("div");
-            openBetWrapper.classList.add("new-ob");
             openBetWrapper.appendChild(viewOpenBet);
 
             // Updating Event Information
-            for (let i = 0; i < obEvents.length; i++) {
-                if (obEvents[i].name == openEvent.children[0].children[1].textContent) {
+            const openEventId = document.querySelector(".open-bet-event .obe-id"),
+            dateTime = document.querySelector(".open-bet-event .obe-date-time"),
+            bookingTime = document.querySelector(".open-bet-event .booking-time"),
+            matchTitle = document.querySelectorAll(".open-bet-event .obe-mc-title span"),
+            oddType = document.querySelectorAll(".open-bet-event .obe-mc-type"),
+            matchPick = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .pick"),
+            odds = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .odd"),
+            totalOdds = document.querySelector(".open-bet-event .total-odds"),
+            totalStake = document.querySelector(".open-bet-event .total-stake span"),
+            estPayout = document.querySelector(".open-bet-event .est-payout span"),
+            totalsImages = document.querySelectorAll(".open-bet-event .obe-totals img"),
+            addBets = document.querySelector(".open-bet-event button span"),
+            lastMatchcard = document.querySelector(".open-bet-event .obe-mc-last"),
+            firstMatchcard = document.querySelector(".open-bet-event .obe-mc-first"),
+            matchCardContainer = document.querySelector(".obe-match-card-container");
 
-                    const openEventId = document.querySelector(".open-bet-event .obe-id"),
-                    dateTime = document.querySelector(".open-bet-event .obe-date-time"),
-                    bookingTime = document.querySelector(".open-bet-event .booking-time"),
-                    matchTitle = document.querySelectorAll(".open-bet-event .obe-mc-title span"),
-                    oddType = document.querySelectorAll(".open-bet-event .obe-mc-type"),
-                    matchPick = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .pick"),
-                    odds = document.querySelectorAll(".open-bet-event .obe-mc-pick-odd .odd"),
-                    totalOdds = document.querySelector(".open-bet-event .total-odds"),
-                    totalStake = document.querySelector(".open-bet-event .total-stake span"),
-                    estPayout = document.querySelector(".open-bet-event .est-payout span"),
-                    totalsImages = document.querySelectorAll(".open-bet-event .obe-totals img"),
-                    addBets = document.querySelector(".open-bet-event button span"),
-                    matchCardContainer = document.querySelector(".obe-match-card-container");
+            // For Singles Event
+            for (let i = 0; i < obEventSingles.length; i++) {
+                if (obEventSingles[i].name == openEvent.children[0].children[1].textContent) {
 
                     // Updating Event Header Information values
-                    openEventId.textContent = obEvents[i].id;
-                    dateTime.innerHTML = obEvents[i].timeDate;
-                    bookingTime.innerHTML = obEvents[i].bookingTime;
+                    openEventId.textContent = obEventSingles[i].id;
+                    dateTime.innerHTML = obEventSingles[i].timeDate;
+                    bookingTime.innerHTML = obEventSingles[i].bookingTime;
 
                     // Updating Event Match Card values
                     matchTitle.forEach(title => {
-                        title.innerHTML = obEvents[i].matchTitle;
+                        title.innerHTML = obEventSingles[i].matchTitle;
                     });
 
                     oddType.forEach(type => {
-                        type.innerHTML = obEvents[i].oddType;
+                        type.innerHTML = obEventSingles[i].oddType;
                     });
 
                     matchPick.forEach(pick => {
-                        pick.innerHTML = obEvents[i].matchPick;
+                        pick.innerHTML = obEventSingles[i].matchPick;
                     });
 
                     odds.forEach(odd => {
-                        odd.innerHTML = obEvents[i].mpOdd;
+                        odd.innerHTML = obEventSingles[i].mpOdd;
 
                         // Updating Total Odds value
                         totalOdds.innerHTML = odd.innerHTML;
@@ -991,11 +1022,10 @@ $(document).ready(function(){
                     const tStake = Number((totalStake.innerHTML).replace(/\D/g,"") * Math.pow(10, -2));
                     estPayout.innerHTML = (Number(totalOdds.innerHTML) * tStake).toLocaleString("en-US", {style:"currency", currency:"USD"});
 
+                    // Updating Event Images
                     totalsImages.forEach(img => {
                         img.src = openEvent.parentElement.children[4].children[0].firstElementChild.src
                     });
-
-                    addBets.innerHTML = "1 bet";
 
                     // Removing other Match Cards when Bet contains just one Match
                     if (!matchCardContainer.firstElementChild.classList.contains("obe-mc-last")) {
@@ -1004,12 +1034,76 @@ $(document).ready(function(){
                     };
 
                     // Changing border radius as only Match
-                    const lastMatchcard = document.querySelector(".open-bet-event .obe-mc-last");
                     lastMatchcard.style = ("border-radius: 0");
+                    
+                    // Updating Add Bets value
+                    addBets.innerHTML = "1 bet";
+                };
+            };
+
+            // For Multi Event
+            for (let i = 0; i < obEventMulti.length; i++) {
+                if (obEventMulti[i][0].name == openEvent.children[0].children[1].textContent && !firstMatchcard) {
+
+                    // Returning previous Match Card's
+                    const firstMatchcard = document.querySelector(".obe-mc-last").cloneNode(true);
+                    firstMatchcard.classList.remove("obe-mc-last");
+                    firstMatchcard.classList.add("obe-mc-first");
+                    $(".obe-mc-last").before(firstMatchcard);
+
+                    // Updating Event Header Information values
+                    openEventId.textContent = obEventMulti[i][0].id;
+                    dateTime.innerHTML = obEventMulti[i][0].timeDate;
+                    bookingTime.innerHTML = obEventMulti[i][0].bookingTime;
+
+                    // Updating Event Match Card's values
+                    firstMatchcard.children[0].children[1].innerHTML = obEventMulti[i][1][0].matchTitle;
+                    lastMatchcard.children[0].children[1].innerHTML = obEventMulti[i][1][1].matchTitle;
+
+                    firstMatchcard.children[1].innerHTML = obEventMulti[i][1][0].oddType;
+                    lastMatchcard.children[1].innerHTML = obEventMulti[i][1][1].oddType;
+
+                    firstMatchcard.children[2].children[0].innerHTML = obEventMulti[i][1][0].matchPick;
+                    lastMatchcard.children[2].children[0].innerHTML = obEventMulti[i][1][1].matchPick;
+
+                    firstMatchcard.children[2].children[1].innerHTML = obEventMulti[i][1][0].mpOdd;
+                    lastMatchcard.children[2].children[1].innerHTML = obEventMulti[i][1][1].mpOdd;
+
+                    // Updating Total Odds value
+                    const oddArray = [];
+                    odds.forEach(odd => {
+                        oddArray.push(Number(firstMatchcard.children[2].children[1].innerHTML));
+                        oddArray.push(Number(lastMatchcard.children[2].children[1].innerHTML));
+                    });
+                    
+                    let sumOdds = oddArray.reduce(myFunction);
+                    function myFunction(total, value) {
+                    return total + value;
+                    };
+                    totalOdds.innerHTML = sumOdds.toFixed(2);
+
+                    // Updating Event Totals values
+                    totalStake.innerHTML = openEvent.parentElement.children[4].children[0].textContent;
+
+                    const tStake = Number((totalStake.innerHTML).replace(/\D/g,"") * Math.pow(10, -2));
+                    estPayout.innerHTML = (Number(totalOdds.innerHTML) * tStake).toLocaleString("en-US", {style:"currency", currency:"USD"});
+                    
+                    // Updating Event Images
+                    totalsImages.forEach(img => {
+                        img.src = openEvent.parentElement.children[4].children[0].firstElementChild.src
+                    });
+                    
+                    // Setting border radius of Match Card's
+                    firstMatchcard.style = ("border-radius: 0 0 5px 5px");
+                    lastMatchcard.style = ("border-radius: 5px 5px 0 0");
+                    
+                    // Updating Add Bets value
+                    addBets.innerHTML = "2 bet";
                 };
             };
         });
     });
+
 
     // Open Bets Popup Section
     $(".mc-event").each(function() {
@@ -1021,7 +1115,7 @@ $(document).ready(function(){
                 $(".loading-animation").css({"display": "none"});
                 $(".open-bet-event").css({"height": "90vh"});
                 $(".obe-body").css({"display": "block"});
-            }, 1000);
+            }, 2400);
             
 
             // Closing Open Bet if Cancel is clicked
@@ -1051,18 +1145,6 @@ $(document).ready(function(){
             });
         });
     });
-
-    // $(".mc-event").each(function() {
-    //     $(this).click(function() {
-    //         for (let i = 0; i < obEvents.length; i++) {
-    //             if ()
-    //         }
-    //     });
-    // });
-
-
-
-
 
 
     function cashier() {
