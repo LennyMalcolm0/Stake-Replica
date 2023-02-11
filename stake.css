@@ -1315,7 +1315,7 @@ tbody .mc-event {
     display: none;
     position: relative;
     top: 60px;
-    height: calc(90vh - 60px);
+    height: 510px;
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -1449,7 +1449,7 @@ tbody .mc-event {
 
 .loading-animation {
     display: none;
-    height: calc(45vh - 60px);
+    height: 250px;
     width: 100%;
     margin-top: 60px;
     background-color: #213642;
