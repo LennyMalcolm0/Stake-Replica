@@ -1238,6 +1238,7 @@ tbody .mc-event {
 
 .mc-user span {
     width: 100%;
+    cursor: help;
 }
 
 .mc-bet {
@@ -2012,12 +2013,13 @@ tbody .mc-event {
     display: none;
     width: 92%;
     margin: 0 auto;
+    padding-bottom: 10px;
 }
 
 .match-card {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
+    margin-top: 10px;
     background-color: #203742;
     border-radius: 5px;
     overflow: hidden;
