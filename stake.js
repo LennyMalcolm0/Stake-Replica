@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // Code for Side Bars
     function sideBars() {
         function leftSideMenu() {
             const minimize = document.querySelector(".fl-image-container .fl-head-image");
@@ -121,6 +122,10 @@ $(document).ready(function(){
                     $(".mc-user").css({"display": "none"});
                     $(".mc-time").css({"display": "none"});
                     $(".mc-odd").css({"display": "none"});
+                } else {
+                    $(".mc-user").css({"display": ""});
+                    $(".mc-time").css({"display": ""});
+                    $(".mc-odd").css({"display": ""});
                 };
             });
 
@@ -329,6 +334,7 @@ $(document).ready(function(){
         };
 
 
+    // Code for Main Page
     function oddsPage() {
         // Code for events in Odds Page fixed header
         function stakeFixedHeader() {
@@ -503,9 +509,16 @@ $(document).ready(function(){
                     if (mo.classList.contains("md-active")) {
                         cashierDisplay.style.display = "block";
 
-                        $(".mc-user").css({"display": "none"});
-                        $(".mc-time").css({"display": "none"});
-                        $(".mc-odd").css({"display": "none"});
+                        const smallSideMenu = document.querySelector(".small-side-bar");
+                        if (smallSideMenu.style.display == "block") {
+                            $(".mc-user").css({"display": ""});
+                            $(".mc-time").css({"display": ""});
+                            $(".mc-odd").css({"display": ""});
+                        } else {
+                            $(".mc-user").css({"display": "none"});
+                            $(".mc-time").css({"display": "none"});
+                            $(".mc-odd").css({"display": "none"});
+                        };
 
                         $(".footer").css({"height": "1100px"});
                     };
@@ -555,7 +568,7 @@ $(document).ready(function(){
                             matchHeader.innerHTML = newMatchHeader1.innerHTML + " - " + newMatchHeader2.innerHTML;
                             matchPick.innerHTML = newMatchPick.innerHTML;
                             matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
-                            matchInput.value = 0.00.toFixed(2)
+                            matchInput.value = 0.00.toFixed(2);
                     
                             // Adding Match Card to Bet Slip
                             const mcContainer = document.querySelector(".games-booked .match-cards-container");
@@ -568,7 +581,7 @@ $(document).ready(function(){
                             newEntry.classList.add(`${mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
                             + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
                             );
-
+                            
                             // Deleting match card
                             const deleteMatchcard = document.querySelectorAll(".match-card .mh-cancel");
                             deleteMatchcard.forEach(dmc => {
@@ -819,6 +832,7 @@ $(document).ready(function(){
     oddsPage();
 
 
+    // Code High Rollers Open Bets
     function highRollers() {
         // Object containing Singles Open Bets Events information
         const obEventSingles = [
@@ -1103,10 +1117,10 @@ $(document).ready(function(){
                             // Adding functionality to Match card input
                             const inputStake = document.querySelector(".new-entry input");
                             inputStake.addEventListener("input", () => {
-                                let payout = ns.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
-                                matchPickOdd = ns.parentElement.parentElement.parentElement.children[1].firstElementChild;
+                                let payout = inputStake.parentElement.parentElement.parentElement.children[1].children[1].children[1].firstElementChild.firstElementChild,
+                                matchPickOdd = inputStake.parentElement.parentElement.parentElement.children[1].firstElementChild;
                                 // Returning payout for particular match
-                                payout.innerHTML = (ns.value * matchPickOdd.innerHTML).toLocaleString("en-US", {style:"currency", currency:"USD"});
+                                payout.innerHTML = (inputStake.value * matchPickOdd.innerHTML).toLocaleString("en-US", {style:"currency", currency:"USD"});
 
                                 // Calling Totals Code
                                 singles();
@@ -1116,8 +1130,8 @@ $(document).ready(function(){
                             });
 
                             inputStake.addEventListener("focusout", () => {
-                                if (!ns.value) {
-                                    ns.value = 0.00.toFixed(2);
+                                if (!inputStake.value) {
+                                    inputStake.value = 0.00.toFixed(2);
                                 };
                             });
 
@@ -1210,25 +1224,27 @@ $(document).ready(function(){
                         dateTime.innerHTML = obEventMulti[i][0].timeDate;
                         bookingTime.innerHTML = obEventMulti[i][0].bookingTime;
 
+                        // Selecting each Match Card
+                        const object1 = obEventMulti[i][1][0],
+                        object2 = obEventMulti[i][1][1];
+
                         // Updating Event Match Card's values
-                        firstMatchcard.children[0].children[1].innerHTML = obEventMulti[i][1][0].matchTitle;
-                        lastMatchcard.children[0].children[1].innerHTML = obEventMulti[i][1][1].matchTitle;
+                        firstMatchcard.children[0].children[1].innerHTML = object1.matchTitle;
+                        lastMatchcard.children[0].children[1].innerHTML = object2.matchTitle;
 
-                        firstMatchcard.children[1].innerHTML = obEventMulti[i][1][0].oddType;
-                        lastMatchcard.children[1].innerHTML = obEventMulti[i][1][1].oddType;
+                        firstMatchcard.children[1].innerHTML = object1.oddType;
+                        lastMatchcard.children[1].innerHTML = object2.oddType;
 
-                        firstMatchcard.children[2].children[0].innerHTML = obEventMulti[i][1][0].matchPick;
-                        lastMatchcard.children[2].children[0].innerHTML = obEventMulti[i][1][1].matchPick;
+                        firstMatchcard.children[2].children[0].innerHTML = object1.matchPick;
+                        lastMatchcard.children[2].children[0].innerHTML = object2.matchPick;
 
-                        firstMatchcard.children[2].children[1].innerHTML = obEventMulti[i][1][0].mpOdd;
-                        lastMatchcard.children[2].children[1].innerHTML = obEventMulti[i][1][1].mpOdd;
+                        firstMatchcard.children[2].children[1].innerHTML = object1.mpOdd;
+                        lastMatchcard.children[2].children[1].innerHTML = object2.mpOdd;
 
                         // Updating Total Odds value
                         const oddArray = [];
-                        odds.forEach(odd => {
-                            oddArray.push(Number(firstMatchcard.children[2].children[1].innerHTML));
-                            oddArray.push(Number(lastMatchcard.children[2].children[1].innerHTML));
-                        });
+                        oddArray.push(Number(firstMatchcard.children[2].children[1].innerHTML));
+                        oddArray.push(Number(lastMatchcard.children[2].children[1].innerHTML));
                         
                         let sumOdds = oddArray.reduce(myFunction);
                         function myFunction(total, value) {
@@ -1257,16 +1273,21 @@ $(document).ready(function(){
                         
                         // Adding Event Matches to Bet Slip
                         addMatches.addEventListener("click", () => {
-                            const matchCard = document.querySelector(".match-card").cloneNode(true);
-                            matchCard.classList.remove("hidden");
+                            // Getting Match Card blueprint for Event Matchcard1
+                            const matchCard1 = document.querySelector(".match-card").cloneNode(true);
+                            matchCard1.classList.remove("hidden");
                             
                             newEntry1 = document.createElement("div");
                             newEntry1.classList.add("new-entry");
+                            newEntry1.appendChild(matchCard1);
+                            
+                            // Getting Match Card blueprint for Event Matchcard2
+                            const matchCard2 = document.querySelector(".match-card").cloneNode(true);
+                            matchCard2.classList.remove("hidden");
+
                             newEntry2 = document.createElement("div");
                             newEntry2.classList.add("new-entry");
-                            // newEntry.classList.add("obe-new-entry");
-                            newEntry1.appendChild(matchCard);
-                            newEntry2.appendChild(matchCard);
+                            newEntry2.appendChild(matchCard2);
         
                             // Setting Match Card values in accordance with the Match Odd selected
                             // First Match Card
@@ -1275,10 +1296,10 @@ $(document).ready(function(){
                             blMatchPick1 = newEntry1.children[0].children[1].children[1].children[0].children[0],
                             blMatchPickOdd1 = newEntry1.children[0].children[1].children[1].children[1].children[0];
 
-                            blMatchTitle1.innerHTML = obEventMulti[i][1][0].matchTitle;
-                            blOddType1.innerHTML = obEventMulti[i][1][0].oddType;
-                            blMatchPick1.innerHTML = obEventMulti[i][1][0].matchPick;
-                            blMatchPickOdd1.innerHTML = obEventMulti[i][1][0].mpOdd;
+                            blMatchTitle1.innerHTML = object1.matchTitle;
+                            blOddType1.innerHTML = object1.oddType;
+                            blMatchPick1.innerHTML = object1.matchPick;
+                            blMatchPickOdd1.innerHTML = object1.mpOdd;
 
                             // Second Match Card
                             const blMatchTitle2 = newEntry2.children[0].children[0].children[0].children[0],
@@ -1286,10 +1307,10 @@ $(document).ready(function(){
                             blMatchPick2 = newEntry2.children[0].children[1].children[1].children[0].children[0],
                             blMatchPickOdd2 = newEntry2.children[0].children[1].children[1].children[1].children[0];
 
-                            blMatchTitle2.innerHTML = obEventMulti[i][1][1].matchTitle;
-                            blOddType2.innerHTML = obEventMulti[i][1][1].oddType;
-                            blMatchPick2.innerHTML = obEventMulti[i][1][1].matchPick;
-                            blMatchPickOdd2.innerHTML = obEventMulti[i][1][1].mpOdd;
+                            blMatchTitle2.innerHTML = object2.matchTitle;
+                            blOddType2.innerHTML = object2.oddType;
+                            blMatchPick2.innerHTML = object2.matchPick;
+                            blMatchPickOdd2.innerHTML = object2.mpOdd;
 
                             // Closing Open Bet and Opening Cashier Section(Bet Slip) 
                             $(".cashier").css({"display": "block"});
@@ -1373,12 +1394,12 @@ $(document).ready(function(){
                             });
 
                             // Running Delete Match Card function
-                            const deleteMatchcard = document.querySelectorAll(".new-entry");
+                            const deleteMatchcard = document.querySelectorAll(".match-card .mh-cancel");
                             deleteMatchcard.forEach(dmc => {
                                 dmc.addEventListener("click", () => {
                                     // Removing Match Card from Bet Slip
-                                    const matchCard = dmc.parentElement.parentElement.parentElement.parentElement;
-                                    mcContainer.removeChild(matchCard);
+                                    const mCard = dmc.parentElement.parentElement.parentElement.parentElement;
+                                    mcContainer.removeChild(mCard);
 
                                     // Reseting betslip count value
                                     count--
@@ -1408,6 +1429,9 @@ $(document).ready(function(){
                             multi();
                             eligibleSinglesBalance();
                             eligibleMultiBalance();
+
+                            // Correcting width of Gamebooked in Singles section
+                            gamesBooked.style.height = "calc(100vh - 300px)";
                             
                             // Clearing all match/odds selected
                             const clearAll = document.querySelector(".alter-bl .clear-bl");
@@ -1498,6 +1522,7 @@ $(document).ready(function(){
     highRollers();
 
 
+    // Code for cashier Section (Placing Bets and Viewing Bets)
     function cashier() {
         // Toggling Betslip Options (between Betslip and My-Bets section)
         const betMenu = document.querySelector(".bet-menu"),
@@ -1552,7 +1577,7 @@ $(document).ready(function(){
             $(".mc-user").css({"display": ""});
             $(".mc-time").css({"display": ""});
             $(".mc-odd").css({"display": ""});
-        })
+        });
 
         
         // Toggling Odd Changes Menu

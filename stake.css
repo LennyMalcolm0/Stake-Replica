@@ -142,6 +142,12 @@ i {
     background-color: #071824;
 }
 
+.fl-image-container {
+    position: absolute;
+    right: -20px;
+    top: 12.5px;
+}
+
 .fl-head-image {
     display: flex;
     justify-content: center;
@@ -150,9 +156,6 @@ i {
     width: 40px;
     background-color: #2F4553;
     border-radius: 25px;
-    position: absolute;
-    right: -20px;
-    top: 12.5px;
     cursor: pointer;
     transition: all 0.1s ease;
 }
@@ -167,9 +170,11 @@ i {
     height: 40px;
     border-radius: 5px;
     background-color: white;
-    position: absolute;
-    top: 55px;
     color: #0F202F;
+    position: absolute;
+    top: 45px;
+    right: -52px;
+    z-index: 99999;
 }
 
 .fl-body {
@@ -445,7 +450,7 @@ i {
     background-color: white;
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 55px;
 }
 
 .ssb-body {
@@ -491,7 +496,7 @@ i {
     background-color: white;
     position: absolute;
     left: 0px;
-    z-index: 999;
+    z-index: 99999;
 }
 
 .ssm-1 {
@@ -1443,6 +1448,7 @@ tbody .mc-event {
 .obe-body button:hover {
     background-color: #3d5562;
     color: white;
+    cursor: pointer;
 }
 
 
