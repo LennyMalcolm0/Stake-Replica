@@ -1675,8 +1675,8 @@ $(document).ready(function(){
     // Code for Responsiveness
     function responsiveCode() {
         // Changing the look of each Match Day
+        const leftSideMenu = document.querySelector(".stake-side-bar");
         function verticalMatchDay() {
-            const leftSideMenu = document.querySelector(".stake-side-bar");
             if (!leftSideMenu.classList.contains("minimize")) {
                 $(".md-body").css({"display": "block", "padding": "0"});
 
@@ -1700,23 +1700,24 @@ $(document).ready(function(){
         };
 
         
-        if (window.matchMedia("(max-width: 1250px)").matches) {
+        window.addEventListener("resize", () => {
             const cashierSection = document.querySelector(".cashier");
-            window.addEventListener("resize", () => {
-                if (cashierSection.style.display == "none" && !leftSideMenu.classList.contains("minimize")) {
-                    verticalMatchDay();
-                };
-            });
+            // const stakeBody = document.querySelector("body");
+            if (count > 0 && window.matchMedia("(max-width: 1250px)").matches) {
+                verticalMatchDay();
+            }; 
+        });
 
-            const matchOdd = document.querySelectorAll(".match-odd");
-            matchOdd.forEach(mo => {
-                mo.addEventListener("click", () => {
-                    if (mo.classList.contains("md-active")) {
+        const matchOdd = document.querySelectorAll(".match-odd");
+        matchOdd.forEach(mo => {
+            mo.addEventListener("click", () => {
+                if (mo.classList.contains("md-active")) {
+                    if (window.matchMedia("(max-width: 1250px)").matches) {
                         verticalMatchDay();
-                    }
-                });
+                    };
+                }
             });
-        };
+        });
     };
     responsiveCode();
 
