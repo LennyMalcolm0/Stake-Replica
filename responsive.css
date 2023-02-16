@@ -1,0 +1,72 @@
+@media only screen and (max-width: 1000px) {
+    .stake-side-bar {
+        display: none;
+    }
+    .small-side-bar {
+        display: block;
+        min-width: none;
+    }
+    .mc-user, .mc-time, .mc-odd {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    
+}
+
+@media only screen and (max-width: 1250px) {
+    /* .md-body {
+        padding: 0;
+    }
+    .md-body .club-names, .md-body .md-image, .md-body .extra-odds {
+        display: none;
+    }
+    .md-body .res-club-name, .md-body .res-odd-type {
+        display: block;
+    }
+
+    /* .mdh-odd-type {
+        display: none;
+    }
+
+    .football-match {
+        display: block;
+    } */
+
+    .res-stats-extra {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .res-stats-extra .md-image {
+        margin: 0;
+        margin-right: 5px;
+    }
+
+    .res-odd-type {
+        width: 100%;
+        margin: 5px 0;
+        color: #b1bad3;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    /* .winners-odd-type {
+        width: 100%;
+        padding: 0 16px;
+    } */
+
+    .res-match-line {
+        width: 100%;
+        height: 2px;
+        margin-top: 15px;
+        background-color: #2F4553;
+    }
+
+    .md-head, .res-club-name {
+        padding: 0 20px;
+    }
+}
+

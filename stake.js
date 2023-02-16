@@ -777,12 +777,8 @@ $(document).ready(function(){
                     };
                     sameMatch();
 
-                    betMulti.addEventListener("click", () => {
-                        sameMatch();
-                    });
-                    betSingles.addEventListener("click", () => {
-                        sameMatch();
-                    });
+                    betMulti.addEventListener("click", sameMatch);
+                    betSingles.addEventListener("click", sameMatch);
 
 
                     // Clearing all match/odds selected
@@ -1673,5 +1669,55 @@ $(document).ready(function(){
         }); 
     };
     cashier();
+
+
+
+    // Code for Responsiveness
+    function responsiveCode() {
+        // Changing the look of each Match Day
+        function verticalMatchDay() {
+            const leftSideMenu = document.querySelector(".stake-side-bar");
+            if (!leftSideMenu.classList.contains("minimize")) {
+                $(".md-body").css({"display": "block", "padding": "0"});
+
+                $(".md-body").children(".club-names").css({"display": "none"});
+                $(".md-body").children(".md-image").css({"display": "none"});
+                $(".md-body").children(".extra-odds").css({"display": "none"});
+
+                $(".md-body").children(".res-club-name").css({"display": "block", "padding": "0 20px"});
+                $(".md-body").children(".res-odd-type").css({"display": "block"});
+                
+                $(".mdh-odd-type").css({"display": "none"});
+                $(".football-match").css({"display": "block"});
+
+                $(".res-stats-extra").css({"display": "flex"});
+                $(".res-stats-extra").children(".md-image").css({"display": "block"});
+                
+                $(".res-odd-type").css({"display": "block"});
+                $(".winners-odd-type").css({"width": "100%", "padding": "0 16px"});
+                $(".res-match-line").css({"display": "block"});
+            };
+        };
+
+        
+        if (window.matchMedia("(max-width: 1250px)").matches) {
+            const cashierSection = document.querySelector(".cashier");
+            window.addEventListener("resize", () => {
+                if (cashierSection.style.display == "none" && !leftSideMenu.classList.contains("minimize")) {
+                    verticalMatchDay();
+                };
+            });
+
+            const matchOdd = document.querySelectorAll(".match-odd");
+            matchOdd.forEach(mo => {
+                mo.addEventListener("click", () => {
+                    if (mo.classList.contains("md-active")) {
+                        verticalMatchDay();
+                    }
+                });
+            });
+        };
+    };
+    responsiveCode();
 
 });

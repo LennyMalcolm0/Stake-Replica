@@ -1,3 +1,6 @@
+@import "responsive.css";
+/* @import "mobstyle.css" screen and (max-width: 768px); */
+
 * {
     margin: 0;
     padding: 0;
@@ -90,7 +93,8 @@ i {
 
 .stake-side-bar {
     display: flex;
-    width: calc(20% - 20px);
+    width: 240px;
+    min-width: 240px;
     max-width: 350px;
     color: white;
     font-size: 13px;
@@ -337,7 +341,7 @@ i {
 
 .select-dropdown {
     display: none;
-    width: 135px;
+    width: 125px;
     font-weight: 500;
     height: 130px;
     overflow-y: auto;
@@ -400,6 +404,7 @@ i {
     display: none;
     background-color: #0F202F;
     width: 60px;
+    min-width: 60px;
     height: 100%;
     font-size: 13px;
     font-weight: 600;
@@ -441,7 +446,7 @@ i {
     background-color: #071824;
 }
 
-.ssb-head-tooltip {
+.ssb-head-tooltip { 
     display: none;
     padding: 0 15px;
     height: 40px;
@@ -451,6 +456,7 @@ i {
     position: absolute;
     left: 0;
     top: 55px;
+    z-index: 99999;
 }
 
 .ssb-body {
@@ -554,6 +560,7 @@ i {
     flex-grow: 1;
     background-color: #1B2D38;
     height: 100vh;
+    min-width: calc(100% - (350px + 240px));
     font-size: 13px;
     font-weight: 600;
 }
@@ -1020,18 +1027,14 @@ i {
 .comp-date {
     width: 100%;
     height: 30px;
+    padding: 0 15px;
     color: #b1bad3;
     background-color: #2F4553;
     font-size: 11px;
     font-weight: 400;
 }
 
-.comp-date span {
-    margin: 0 15px;
-}
-
 .football-match {
-    padding: 0 15px;
     margin: 10px 0;
 }
 
@@ -1039,12 +1042,13 @@ i {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 15px;
     color: #b1bad3;
     font-size: 11px;
     font-weight: 400;
 }
 
-.mdh-1x2 {
+.mdh-odd-type {
     width: 80%;
 }
 
@@ -1064,6 +1068,8 @@ i {
 
 .md-body {
     margin-top: 10px;
+    padding: 0 15px;
+    width: 100%;
 }
 
 .club-names {
@@ -1113,6 +1119,17 @@ i {
     font-weight: 700;
 }
 
+.winners-odd-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(51% + 24px);
+}
+
+.winners-odd-type .wd-odd {
+    width: calc((100% / 3) - 8px);
+}
+
 .extra-odds {
     color: #b1bad3;
     margin-left: 3%;
@@ -1149,6 +1166,25 @@ i {
     color: white;
 }
 
+/* Responsive Contents */
+
+.res-stats-extra {
+    display: none;
+}
+
+.res-match-line {
+    display: none;
+}
+
+.res-club-name {
+    display: none;
+    width: 100%;
+    font-weight: 500;
+}
+
+.res-odd-type {
+    display: none;
+}
 
 /* View Random Bets */
 
@@ -1732,6 +1768,7 @@ tbody .mc-event {
 .cashier {
     display: none;
     width: 350px;
+    min-width: 350px;
     height: 100vh;
     background-color: #0E212F;
     color: white;
