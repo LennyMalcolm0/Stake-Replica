@@ -870,6 +870,7 @@ i {
     height: 40px;
     padding: 0 15px;
     border-radius: 25px;
+    white-space: nowrap;
 }
 
 .menu-option:hover, .menu-active {
@@ -1091,9 +1092,16 @@ i {
     cursor: default;
 }
 
+.winners-odd-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(51% + 24px);
+}
+
 .wd-odd {
     height: 60px;
-    width: 17%;
+    width: calc((100% / 3) - 8px);
     padding: 10px;
     border-radius: 5px;
     background-color: #040c12;
@@ -1117,17 +1125,6 @@ i {
 .odd-value {
     color: #4391e7;
     font-weight: 700;
-}
-
-.winners-odd-type {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(51% + 24px);
-}
-
-.winners-odd-type .wd-odd {
-    width: calc((100% / 3) - 8px);
 }
 
 .extra-odds {
@@ -1766,7 +1763,6 @@ tbody .mc-event {
 /*CASHIER (VIEW SELECTED ODDS & CHECKOUT)*/
 
 .cashier {
-    display: none;
     width: 350px;
     min-width: 350px;
     height: 100vh;
@@ -1775,6 +1771,11 @@ tbody .mc-event {
     font-size: 13px;
     font-weight: 600;
     position: relative;
+}
+
+.minimize-cashier {
+    position: absolute;
+    left: 100%;
 }
 
 .cashier img {

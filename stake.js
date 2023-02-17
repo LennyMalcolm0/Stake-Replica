@@ -507,7 +507,7 @@ $(document).ready(function(){
                     // Adding Cashier zone, Altering Random bets section, and increasing Footer height
                     const cashierDisplay = document.querySelector(".cashier");
                     if (mo.classList.contains("md-active")) {
-                        cashierDisplay.style.display = "block";
+                        cashierDisplay.classList.remove("minimize-cashier");
 
                         const smallSideMenu = document.querySelector(".small-side-bar");
                         if (smallSideMenu.style.display == "block") {
@@ -1055,7 +1055,7 @@ $(document).ready(function(){
                             blMatchPickOdd.innerHTML = obEventSingles[i].mpOdd;
 
                             // Closing Open Bet and Opening Cashier Section(Bet Slip) 
-                            $(".cashier").css({"display": "block"});
+                            $(".cashier").removeClass("minimize-cashier");
                             $(".view-open-bets").css({"display": "none"});
 
                             // Reseting Animation
@@ -1309,7 +1309,7 @@ $(document).ready(function(){
                             blMatchPickOdd2.innerHTML = object2.mpOdd;
 
                             // Closing Open Bet and Opening Cashier Section(Bet Slip) 
-                            $(".cashier").css({"display": "block"});
+                            $(".cashier").removeClass("minimize-cashier");
                             $(".view-open-bets").css({"display": "none"});
 
                             // Reseting Animation
@@ -1568,7 +1568,7 @@ $(document).ready(function(){
             document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
         });
         collapseBetslip.addEventListener("click", () => {
-            document.querySelector(".cashier").style.display = "none";
+            document.querySelector(".cashier").classList.add("minimize-cashier");
 
             $(".mc-user").css({"display": ""});
             $(".mc-time").css({"display": ""});
@@ -1675,47 +1675,81 @@ $(document).ready(function(){
     // Code for Responsiveness
     function responsiveCode() {
         // Changing the look of each Match Day
-        const leftSideMenu = document.querySelector(".stake-side-bar");
+        const leftSideMenu = document.querySelector(".stake-side-bar"),
+        cashierSection = document.querySelector(".cashier");
         function verticalMatchDay() {
-            if (!leftSideMenu.classList.contains("minimize")) {
-                $(".md-body").css({"display": "block", "padding": "0"});
+            $(".md-body").css({"display": "block", "padding": "0"});
 
-                $(".md-body").children(".club-names").css({"display": "none"});
-                $(".md-body").children(".md-image").css({"display": "none"});
-                $(".md-body").children(".extra-odds").css({"display": "none"});
+            $(".md-body").children(".club-names").css({"display": "none"});
+            $(".md-body").children(".md-image").css({"display": "none"});
+            $(".md-body").children(".extra-odds").css({"display": "none"});
 
-                $(".md-body").children(".res-club-name").css({"display": "block", "padding": "0 20px"});
-                $(".md-body").children(".res-odd-type").css({"display": "block"});
-                
-                $(".mdh-odd-type").css({"display": "none"});
-                $(".football-match").css({"display": "block"});
+            $(".md-body").children(".res-club-name").css({"display": "block", "padding": "0 20px"});
+            $(".md-body").children(".res-odd-type").css({"display": "block"});
+            $(".mdh-odd-type").css({"display": "none"});
 
-                $(".res-stats-extra").css({"display": "flex"});
-                $(".res-stats-extra").children(".md-image").css({"display": "block"});
-                
-                $(".res-odd-type").css({"display": "block"});
-                $(".winners-odd-type").css({"width": "100%", "padding": "0 16px"});
-                $(".res-match-line").css({"display": "block"});
-            };
+            $(".res-stats-extra").css({"display": "flex"});
+            $(".res-stats-extra").children(".md-image").css({"display": "block"});
+            
+            $(".winners-odd-type").css({"width": "100%", "padding": "0 16px"});
+            $(".res-match-line").css({"display": "block"});
+        };
+
+        function horizontalMatchDay() {
+            $(".md-body").css({"display": "flex", "padding": "0 15px"});
+
+            $(".md-body").children(".club-names").css({"display": "block"});
+            $(".md-body").children(".md-image").css({"display": "block"});
+            $(".md-body").children(".extra-odds").css({"display": "block"});
+
+            $(".md-body").children(".res-club-name").css({"display": "none"});
+            $(".md-body").children(".res-odd-type").css({"display": "none"});
+            $(".mdh-odd-type").css({"display": "flex"});
+
+            $(".res-stats-extra").css({"display": "none"});
+            $(".res-stats-extra").children(".md-image").css({"display": "block"});
+            
+            $(".winners-odd-type").css({"width": "calc(51% + 24px)"});
+            $(".res-match-line").css({"display": "none"});
         };
 
         
         window.addEventListener("resize", () => {
-            const cashierSection = document.querySelector(".cashier");
-            // const stakeBody = document.querySelector("body");
-            if (count > 0 && window.matchMedia("(max-width: 1250px)").matches) {
+            if (!cashierSection.classList.contains("minimize-cashier") 
+            && !leftSideMenu.classList.contains("minimize") 
+            && window.matchMedia("(max-width: 1300px)").matches) {
                 verticalMatchDay();
-            }; 
+            } 
+            else if (cashierSection.classList.contains("minimize-cashier") 
+            && !leftSideMenu.classList.contains("minimize") 
+            && window.matchMedia("(max-width: 1300px)").matches) {
+                horizontalMatchDay();
+            } 
+            else if (!cashierSection.classList.contains("minimize-cashier") 
+            && leftSideMenu.classList.contains("minimize") 
+            && window.matchMedia("(max-width: 1300px)").matches) {
+                horizontalMatchDay();
+            }
+            else if (cashierSection.classList.contains("minimize-cashier") 
+            && leftSideMenu.classList.contains("minimize") 
+            && window.matchMedia("(max-width: 1300px)").matches) {
+                horizontalMatchDay();
+            }
+            else if (!cashierSection.classList.contains("minimize-cashier") 
+            && !leftSideMenu.classList.contains("minimize") 
+            && window.matchMedia("(min-width: 1300px)").matches) {
+                horizontalMatchDay();
+            } 
         });
 
         const matchOdd = document.querySelectorAll(".match-odd");
         matchOdd.forEach(mo => {
             mo.addEventListener("click", () => {
-                if (mo.classList.contains("md-active")) {
-                    if (window.matchMedia("(max-width: 1250px)").matches) {
-                        verticalMatchDay();
-                    };
-                }
+                if (mo.classList.contains("md-active") 
+                && !leftSideMenu.classList.contains("minimize") 
+                && window.matchMedia("(max-width: 1300px)").matches) {
+                    verticalMatchDay();
+                };
             });
         });
     };
