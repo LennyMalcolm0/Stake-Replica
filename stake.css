@@ -586,10 +586,14 @@ i {
     position: relative;
 }
 
-.stake-logo img {
+.stake-big-logo img {
     height: 32px;
     width: auto;
     margin: 0;
+}
+
+.stake-mini-logo {
+    display: none;
 }
 
 .center-wallets {
@@ -637,6 +641,10 @@ i {
 
 .sw-text:hover {
     background-color: #105FB5;
+}
+
+.sw-image {
+    display: none;
 }
 
 .wallet-dropdown {
@@ -860,6 +868,7 @@ i {
 
 .menu2-left {
     height: 50px;
+    width: fit-content;
     padding: 0 5px;
     gap: 5px;
     background-color: #0E212F;
@@ -898,25 +907,27 @@ i {
     margin-left: 15px;
 }
 
-.menu2-right {
-    position: relative;
-}
-
 .menu2-right img {
     margin-right: 20px;
     cursor: pointer;
 }
 
+.menu2-image {
+    position: relative;
+}
+
 .menu2-popup {
     display: none;
-    width: 110px;
     height: 40px;
-    border-radius: 5px;
+    line-height: 40px;
+    padding: 15px;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 40px;
     background-color: white;
     color: #0F212E;
-    position: absolute;
-    bottom: 50px;
-    right: 90px;
+    border-radius: 5px;
+    z-index: 1000;
 }
 
 .menu2-popup span {
@@ -937,16 +948,11 @@ i {
 
 .bs-menu-main {
     height: 40px;
-    width: 80px;
     padding: 15px;
     border-radius: 5px;
     background-color: #0E212F;
     opacity: 0.6;
     cursor: not-allowed;
-}
-
-.popup-standard {
-    right: 50px;
 }
 
 .odds-dropdown {

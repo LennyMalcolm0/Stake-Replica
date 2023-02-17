@@ -3,18 +3,18 @@ $(document).ready(function(){
     // Code for Side Bars
     function sideBars() {
         function leftSideMenu() {
-            const minimize = document.querySelector(".fl-image-container .fl-head-image");
+            const minimizeMenu = document.querySelector(".fl-image-container .fl-head-image");
 
             // Hover Effect for Minimize button
-            minimize.addEventListener("mouseover", function() {
+            minimizeMenu.addEventListener("mouseover", function() {
                 document.querySelector(".fl-head-tooltip").style.display = "flex";
             })
-            minimize.addEventListener("mouseout", function() {
+            minimizeMenu.addEventListener("mouseout", function() {
                 document.querySelector(".fl-head-tooltip").style.display = "none";
             })
 
             // Click Effect for Expand button
-            minimize.addEventListener("click", function() {
+            minimizeMenu.addEventListener("click", function() {
                 document.querySelector(".stake-side-bar").classList.add("minimize");
                 document.querySelector(".small-side-bar").style.display = "block";
 
@@ -1675,11 +1675,18 @@ $(document).ready(function(){
     // Code for Responsiveness
     function responsiveCode() {
         // Changing the look of each Match Day
-        const leftSideMenu = document.querySelector(".stake-side-bar"),
-        cashierSection = document.querySelector(".cashier");
-        function verticalMatchDay() {
-            $(".md-body").css({"display": "block", "padding": "0"});
 
+        // Shorter Width Match Day
+        function verticalMatchDay() {
+            $(".stake-mini-logo").css({"display": "block"});
+            $(".stake-big-logo").css({"display": "none"});
+            $(".sw-image").css({"display": "flex"});
+            $(".sw-text").css({"display": "none"});
+
+            $(".bs-menu2").css({"display": "block", "width": "fit-content"});
+            $(".menu2-right").css({"margin-top": "30px"});
+
+            $(".md-body").css({"display": "block", "padding": "0"});
             $(".md-body").children(".club-names").css({"display": "none"});
             $(".md-body").children(".md-image").css({"display": "none"});
             $(".md-body").children(".extra-odds").css({"display": "none"});
@@ -1695,9 +1702,17 @@ $(document).ready(function(){
             $(".res-match-line").css({"display": "block"});
         };
 
+        // Longer Width Match Day
         function horizontalMatchDay() {
-            $(".md-body").css({"display": "flex", "padding": "0 15px"});
+            $(".stake-mini-logo").css({"display": "none"});
+            $(".stake-big-logo").css({"display": "block"});
+            $(".sw-image").css({"display": "none"});
+            $(".sw-text").css({"display": "flex"});
 
+            $(".bs-menu2").css({"display": "flex", "width": "100%"});
+            $(".menu2-right").css({"margin-top": "0"});
+
+            $(".md-body").css({"display": "flex", "padding": "0 15px"});
             $(".md-body").children(".club-names").css({"display": "block"});
             $(".md-body").children(".md-image").css({"display": "block"});
             $(".md-body").children(".extra-odds").css({"display": "block"});
@@ -1714,27 +1729,36 @@ $(document).ready(function(){
         };
 
         
+        // Adjustments to Elements as the browser undergoes resizing
+        const leftSideMenu = document.querySelector(".stake-side-bar"),
+        cashierSection = document.querySelector(".cashier");
+
         window.addEventListener("resize", () => {
+            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
             if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
             && window.matchMedia("(max-width: 1300px)").matches) {
                 verticalMatchDay();
             } 
+            // if Detailed(Bigger) Side Menu is Visible and Cashier Section is not Visible and width is 1300px or less
             else if (cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
             && window.matchMedia("(max-width: 1300px)").matches) {
                 horizontalMatchDay();
             } 
+            // if Detailed(Bigger) Side Menu is not Visible and Cashier Section is Visible are Visible and width is 1300px or less
             else if (!cashierSection.classList.contains("minimize-cashier") 
             && leftSideMenu.classList.contains("minimize") 
             && window.matchMedia("(max-width: 1300px)").matches) {
                 horizontalMatchDay();
             }
+            // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1300px or less
             else if (cashierSection.classList.contains("minimize-cashier") 
             && leftSideMenu.classList.contains("minimize") 
             && window.matchMedia("(max-width: 1300px)").matches) {
                 horizontalMatchDay();
             }
+            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or more
             else if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
             && window.matchMedia("(min-width: 1300px)").matches) {
@@ -1742,6 +1766,7 @@ $(document).ready(function(){
             } 
         });
 
+        // Adjustments to Elements when a Match Odd is Clicked and both Detailed Side Menu and Cashier Section are Visible
         const matchOdd = document.querySelectorAll(".match-odd");
         matchOdd.forEach(mo => {
             mo.addEventListener("click", () => {
@@ -1751,6 +1776,34 @@ $(document).ready(function(){
                     verticalMatchDay();
                 };
             });
+        });
+
+        // Adjustments to Elements when a Minimize Side Menu is Clicked
+        const minimizeMenu = document.querySelector(".fl-image-container .fl-head-image");
+        minimizeMenu.addEventListener("click", function() {
+            if (window.matchMedia("(max-width: 1300px)").matches) {
+                horizontalMatchDay();
+            };
+        });
+
+        // Adjustments to Elements when a Expand Side Menu is Clicked
+        const expandMenu = document.querySelector(".ssb-head-image");
+        expandMenu.addEventListener("click", function() {
+            if (!cashierSection.classList.contains("minimize-cashier")
+            && window.matchMedia("(max-width: 1300px)").matches) {
+                verticalMatchDay();
+            } else if (cashierSection.classList.contains("minimize-cashier")
+            && window.matchMedia("(max-width: 1300px)").matches) {
+                horizontalMatchDay();
+            }
+        });
+
+        // Adjustments to Elements when a Collapse Bet Slip is Clicked
+        const collapseBetslip = document.querySelector(".collapse-betslip .cb-image");
+        collapseBetslip.addEventListener("click", () => {
+            if (window.matchMedia("(max-width: 1300px)").matches) {
+                horizontalMatchDay();
+            };
         });
     };
     responsiveCode();

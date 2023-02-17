@@ -21,6 +21,30 @@
 
 }
 
+.stake-mini-logo img {
+    height: 32px;
+    width: auto;
+    margin: 0;
+}
+
+.sw-image {
+    height: 45px;
+    width: 45px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #2b78ca;
+    transition: all 0.1s ease;
+    cursor: default;
+}
+
+.sw-image img {
+    margin: 0;
+}
+
+.sw-image:hover {
+    background-color: #105FB5;
+}
+
 .md-head, .res-club-name {
     padding: 0 20px;
 }
