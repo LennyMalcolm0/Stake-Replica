@@ -25,6 +25,8 @@ $(document).ready(function(){
                     $(".mc-time").css({"display": ""});
                     $(".mc-odd").css({"display": ""});
                 };
+
+                $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
             });
 
 
@@ -117,8 +119,8 @@ $(document).ready(function(){
                 document.querySelector(".small-side-bar").style.display = "none";
 
                 // Toggling some contents in open bets section
-                const cashier = document.querySelector(".cashier");
-                if (cashier.style.display == "block") {
+                const cashierSection = document.querySelector(".cashier");
+                if (cashierSection.style.display == "block") {
                     $(".mc-user").css({"display": "none"});
                     $(".mc-time").css({"display": "none"});
                     $(".mc-odd").css({"display": "none"});
@@ -126,6 +128,12 @@ $(document).ready(function(){
                     $(".mc-user").css({"display": ""});
                     $(".mc-time").css({"display": ""});
                     $(".mc-odd").css({"display": ""});
+                };
+
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
+                } else {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
                 };
             });
 
@@ -504,10 +512,18 @@ $(document).ready(function(){
                 mo.addEventListener("click", () => {
                     mo.classList.toggle("md-active");
 
-                    // Adding Cashier zone, Altering Random bets section, and increasing Footer height
-                    const cashierDisplay = document.querySelector(".cashier");
+                    // Adding Cashier zone, Altering High Rollers(Open Bets) section, and increasing Footer height
+                    const cashierDisplay = document.querySelector(".cashier"),
+                    leftSideMenu = document.querySelector(".stake-side-bar");
                     if (mo.classList.contains("md-active")) {
                         cashierDisplay.classList.remove("minimize-cashier");
+   
+                        if (!cashierDisplay.classList.contains("minimize-cashier") 
+                        && !leftSideMenu.classList.contains("minimize")) {
+                            $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
+                        } else {
+                            $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+                        };
 
                         const smallSideMenu = document.querySelector(".small-side-bar");
                         if (smallSideMenu.style.display == "block") {
@@ -520,7 +536,7 @@ $(document).ready(function(){
                             $(".mc-odd").css({"display": "none"});
                         };
 
-                        $(".footer").css({"height": "1100px"});
+                        $(".footer").css({"height": "1150px"});
                     };
 
                     // Counting matches selected
@@ -561,11 +577,10 @@ $(document).ready(function(){
                             matchPickOdd = newEntry.firstElementChild.children[1].children[1].children[1].firstElementChild,
                             matchInput = newEntry.firstElementChild.children[1].children[1].firstElementChild.children[1].firstElementChild,
                             newMatchPick = mo.firstElementChild,
-                            newMatchHeader1 = mo.parentElement.firstElementChild.firstElementChild,
-                            newMatchHeader2 = mo.parentElement.firstElementChild.children[1],
+                            newMatchHeader = mo.parentElement.parentElement.children[2],
                             newMatchPickOdd = mo.children[1];
 
-                            matchHeader.innerHTML = newMatchHeader1.innerHTML + " - " + newMatchHeader2.innerHTML;
+                            matchHeader.innerHTML = newMatchHeader.innerHTML;
                             matchPick.innerHTML = newMatchPick.innerHTML;
                             matchPickOdd.innerHTML = newMatchPickOdd.innerHTML;
                             matchInput.value = 0.00.toFixed(2);
@@ -1573,6 +1588,8 @@ $(document).ready(function(){
             $(".mc-user").css({"display": ""});
             $(".mc-time").css({"display": ""});
             $(".mc-odd").css({"display": ""});
+            
+            $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
         });
 
         
@@ -1684,7 +1701,7 @@ $(document).ready(function(){
             $(".sw-text").css({"display": "none"});
 
             $(".bs-menu2").css({"display": "block", "width": "fit-content"});
-            $(".menu2-right").css({"margin-top": "30px"});
+            $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
 
             $(".md-body").css({"display": "block", "padding": "0"});
             $(".md-body").children(".club-names").css({"display": "none"});
@@ -1710,7 +1727,7 @@ $(document).ready(function(){
             $(".sw-text").css({"display": "flex"});
 
             $(".bs-menu2").css({"display": "flex", "width": "100%"});
-            $(".menu2-right").css({"margin-top": "0"});
+            $(".menu2-right").css({"margin": "0"});
 
             $(".md-body").css({"display": "flex", "padding": "0 15px"});
             $(".md-body").children(".club-names").css({"display": "block"});
@@ -1722,9 +1739,8 @@ $(document).ready(function(){
             $(".mdh-odd-type").css({"display": "flex"});
 
             $(".res-stats-extra").css({"display": "none"});
-            $(".res-stats-extra").children(".md-image").css({"display": "block"});
             
-            $(".winners-odd-type").css({"width": "calc(51% + 24px)"});
+            $(".winners-odd-type").css({"width": "calc(51% + 24px)", "padding": "0"});
             $(".res-match-line").css({"display": "none"});
         };
 
@@ -1735,14 +1751,18 @@ $(document).ready(function(){
         matchOdd = document.querySelectorAll(".match-odd"),
         min1300 = window.matchMedia("(min-width: 1300px)"),
         max1300 = window.matchMedia("(max-width: 1300px)"),
-        min1100 = window.matchMedia("(min-width: 1300px)"),
-        max1100 = window.matchMedia("(max-width: 1100px)");
+        min1150 = window.matchMedia("(min-width: 1150px)"),
+        max1150 = window.matchMedia("(max-width: 1150px)"),
+        min1050 = window.matchMedia("(min-width: 1050px)"),
+        max1050 = window.matchMedia("(max-width: 1050px)");
+        
+        // $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
 
         function responsiveDarkBG() {
-            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1100px or less
+            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1150px or less
             if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
-            && max1100.matches) {
+            && max1150.matches) {
                 $(".stake-side-bar").addClass("res-stake-lb");
                 $(".stake-side-bar").removeClass("res-minimize");
                 $(".small-side-bar").css({"display": "block"});
@@ -1751,10 +1771,10 @@ $(document).ready(function(){
                 $(".tablet-dark-bg").children(".popup-background").css({"width": "calc(100vw - 590px)"});
             } 
 
-            // if Detailed(Bigger) Side Menu is Visible and Cashier Section is not Visible and width is 1100px or less
+            // if Detailed(Bigger) Side Menu is Visible and Cashier Section is not Visible and width is 1150px or less
             else if (cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
-            && max1100.matches) {
+            && max1150.matches) {
                 $(".stake-side-bar").addClass("res-stake-lb");
                 $(".stake-side-bar").removeClass("res-minimize");
                 $(".small-side-bar").css({"display": "block"});
@@ -1763,28 +1783,28 @@ $(document).ready(function(){
                 $(".tablet-dark-bg").children(".popup-background").css({"width": "calc(100vw - 240px)"});
             } 
 
-            // if Detailed(Bigger) Side Menu is not Visible and Cashier Section is Visible are Visible and width is 1100px or less
+            // if Detailed(Bigger) Side Menu is not Visible and Cashier Section is Visible are Visible and width is 1150px or less
             else if (!cashierSection.classList.contains("minimize-cashier") 
             && leftSideMenu.classList.contains("minimize") 
-            && max1100.matches) {
+            && max1150.matches) {
                 $(".stake-side-bar").removeClass("res-stake-lb");
                 $(".stake-side-bar").addClass("res-minimize");
                 $(".tablet-dark-bg").css({"display": "none"});
             }
 
-            // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1100px or less
+            // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1150px or less
             else if (cashierSection.classList.contains("minimize-cashier") 
             && leftSideMenu.classList.contains("minimize") 
-            && max1100.matches) {
+            && max1150.matches) {
                 $(".stake-side-bar").removeClass("res-stake-lb");
                 $(".stake-side-bar").addClass("res-minimize");
                 $(".tablet-dark-bg").css({"display": "none"});
             }
 
-            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1100px or more
+            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1150px or more
             else if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
-            && min1100.matches) {
+            && min1150.matches) {
                 $(".tablet-dark-bg").css({"display": "none"});
             };
 
@@ -1792,8 +1812,11 @@ $(document).ready(function(){
             // Removing Dark-background when it is clicked
             $(".tablet-dark-bg").children(".popup-background").click(function(e){
                 $(".tablet-dark-bg").css({"display": "none"});
+
                 $(".stake-side-bar").removeClass("res-stake-lb");
-                $(".stake-side-bar").addClass("res-minimize");
+                $(".stake-side-bar").removeClass("res-minimize");
+                $(".stake-side-bar").addClass("minimize");
+
                 $(".small-side-bar").css({"display": "block"});
             });
         };
@@ -1803,11 +1826,11 @@ $(document).ready(function(){
 
             if (!leftSideMenu.classList.contains("minimize")) {
                 $(".small-side-bar").css({"display": "none"});
-            }
+            };
 
             $(".stake-side-bar").removeClass("res-stake-lb");
             $(".stake-side-bar").removeClass("res-minimize");
-        }
+        };
 
 
         window.addEventListener("resize", () => {
@@ -1832,25 +1855,29 @@ $(document).ready(function(){
                 && leftSideMenu.classList.contains("minimize")) {
                     horizontalMatchDay();
                 }
+            } 
+            else if (min1300.matches) {
+                horizontalMatchDay();
             };
 
-            if (min1300.matches) {
-                // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or more
-                if (!cashierSection.classList.contains("minimize-cashier") 
-                && !leftSideMenu.classList.contains("minimize")) {
-                    horizontalMatchDay();
-                };
-            };
-
-            if (max1100.matches) {
+            if (max1150.matches) {
                 responsiveDarkBG();
                 horizontalMatchDay();
-            } else {
+            } else if (min1150.matches) {
                 removeDarkBG();
             };
 
-            if (min1100.matches) {
-                removeDarkBG();
+            if (max1050.matches) {
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    verticalMatchDay();
+                } else {
+                    horizontalMatchDay();
+                };
+
+                // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1150px or less
+                if (cashierSection.classList.contains("minimize-cashier") 
+                && leftSideMenu.classList.contains("minimize")) {
+                }
             };
         });
 
@@ -1858,19 +1885,29 @@ $(document).ready(function(){
         // Adjustments to Elements when a Match Odd is Clicked and both Detailed Side Menu and Cashier Section are Visible
         matchOdd.forEach(mo => {
             mo.addEventListener("click", () => {
-                if (mo.classList.contains("active")) {
+                if (mo.classList.contains("md-active")) {
                     if (max1300.matches) {
                         if (!cashierSection.classList.contains("minimize-cashier") 
                         && !leftSideMenu.classList.contains("minimize")) {
                             verticalMatchDay();
                         } else {
                             horizontalMatchDay();
-                        }
+                        };
+
+                        $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
                     };
     
-                    if (max1100.matches) {
+                    if (max1150.matches) {
                         responsiveDarkBG();
                         horizontalMatchDay();
+                    };
+
+                    if (max1050.matches) {
+                        if (!cashierSection.classList.contains("minimize-cashier")) {
+                            verticalMatchDay();
+                        } else {
+                            horizontalMatchDay();
+                        }
                     };
                 };
             });
@@ -1881,25 +1918,48 @@ $(document).ready(function(){
         $(".fl-head-image").click(function() {
             if (max1300.matches) {
                horizontalMatchDay();
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
+                } else {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+                };
             };
                 
-            if (max1100.matches) {
+            if (max1150.matches) {
                 responsiveDarkBG();
+            };
+
+            if (max1050.matches) {
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    verticalMatchDay();
+                } else {
+                    horizontalMatchDay();
+                }
             };
         });
 
 
         // Adjustments to Elements when a Expand Side Menu is Clicked
         $(".ssb-head-image").click(function() {
-            if (!cashierSection.classList.contains("minimize-cashier")) {
-                verticalMatchDay();
-            } else {
-                horizontalMatchDay();
+            if (max1300.matches) {
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    verticalMatchDay();
+                } else {
+                    horizontalMatchDay();
+                }
             }
 
-            if (max1100.matches) {
+            if (max1150.matches) {
                 responsiveDarkBG();
                 horizontalMatchDay();
+            };
+
+            if (max1050.matches) {
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    verticalMatchDay();
+                } else {
+                    horizontalMatchDay();
+                }
             };
         });
 
@@ -1910,9 +1970,17 @@ $(document).ready(function(){
                horizontalMatchDay();
             };
                 
-            if (max1100.matches) {
+            if (max1150.matches) {
                 responsiveDarkBG();
                 horizontalMatchDay();
+            };
+
+            if (max1050.matches) {
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    verticalMatchDay();
+                } else {
+                    horizontalMatchDay();
+                }
             };
         });
     };
