@@ -1731,77 +1731,187 @@ $(document).ready(function(){
         
         // Adjustments to Elements as the browser undergoes resizing
         const leftSideMenu = document.querySelector(".stake-side-bar"),
-        cashierSection = document.querySelector(".cashier");
+        cashierSection = document.querySelector(".cashier"),
+        matchOdd = document.querySelectorAll(".match-odd"),
+        min1300 = window.matchMedia("(min-width: 1300px)"),
+        max1300 = window.matchMedia("(max-width: 1300px)"),
+        min1100 = window.matchMedia("(min-width: 1300px)"),
+        max1100 = window.matchMedia("(max-width: 1100px)");
 
-        window.addEventListener("resize", () => {
-            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
+        function responsiveDarkBG() {
+            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1100px or less
             if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
-            && window.matchMedia("(max-width: 1300px)").matches) {
-                verticalMatchDay();
+            && max1100.matches) {
+                $(".stake-side-bar").addClass("res-stake-lb");
+                $(".stake-side-bar").removeClass("res-minimize");
+                $(".small-side-bar").css({"display": "block"});
+
+                $(".tablet-dark-bg").css({"display": "block"});
+                $(".tablet-dark-bg").children(".popup-background").css({"width": "calc(100vw - 590px)"});
             } 
-            // if Detailed(Bigger) Side Menu is Visible and Cashier Section is not Visible and width is 1300px or less
+
+            // if Detailed(Bigger) Side Menu is Visible and Cashier Section is not Visible and width is 1100px or less
             else if (cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
-            && window.matchMedia("(max-width: 1300px)").matches) {
-                horizontalMatchDay();
+            && max1100.matches) {
+                $(".stake-side-bar").addClass("res-stake-lb");
+                $(".stake-side-bar").removeClass("res-minimize");
+                $(".small-side-bar").css({"display": "block"});
+                
+                $(".tablet-dark-bg").css({"display": "block"});
+                $(".tablet-dark-bg").children(".popup-background").css({"width": "calc(100vw - 240px)"});
             } 
-            // if Detailed(Bigger) Side Menu is not Visible and Cashier Section is Visible are Visible and width is 1300px or less
+
+            // if Detailed(Bigger) Side Menu is not Visible and Cashier Section is Visible are Visible and width is 1100px or less
             else if (!cashierSection.classList.contains("minimize-cashier") 
             && leftSideMenu.classList.contains("minimize") 
-            && window.matchMedia("(max-width: 1300px)").matches) {
-                horizontalMatchDay();
+            && max1100.matches) {
+                $(".stake-side-bar").removeClass("res-stake-lb");
+                $(".stake-side-bar").addClass("res-minimize");
+                $(".tablet-dark-bg").css({"display": "none"});
             }
-            // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1300px or less
+
+            // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1100px or less
             else if (cashierSection.classList.contains("minimize-cashier") 
             && leftSideMenu.classList.contains("minimize") 
-            && window.matchMedia("(max-width: 1300px)").matches) {
-                horizontalMatchDay();
+            && max1100.matches) {
+                $(".stake-side-bar").removeClass("res-stake-lb");
+                $(".stake-side-bar").addClass("res-minimize");
+                $(".tablet-dark-bg").css({"display": "none"});
             }
-            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or more
+
+            // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1100px or more
             else if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
-            && window.matchMedia("(min-width: 1300px)").matches) {
+            && min1100.matches) {
+                $(".tablet-dark-bg").css({"display": "none"});
+            };
+
+
+            // Removing Dark-background when it is clicked
+            $(".tablet-dark-bg").children(".popup-background").click(function(e){
+                $(".tablet-dark-bg").css({"display": "none"});
+                $(".stake-side-bar").removeClass("res-stake-lb");
+                $(".stake-side-bar").addClass("res-minimize");
+                $(".small-side-bar").css({"display": "block"});
+            });
+        };
+
+        function removeDarkBG() {
+            $(".tablet-dark-bg").css({"display": "none"});
+
+            if (!leftSideMenu.classList.contains("minimize")) {
+                $(".small-side-bar").css({"display": "none"});
+            }
+
+            $(".stake-side-bar").removeClass("res-stake-lb");
+            $(".stake-side-bar").removeClass("res-minimize");
+        }
+
+
+        window.addEventListener("resize", () => {
+            if (max1300.matches) {
+                // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
+                if (!cashierSection.classList.contains("minimize-cashier") 
+                && !leftSideMenu.classList.contains("minimize")) {
+                    verticalMatchDay();
+                } 
+                // if Detailed(Bigger) Side Menu is Visible and Cashier Section is not Visible and width is 1300px or less
+                else if (cashierSection.classList.contains("minimize-cashier") 
+                && !leftSideMenu.classList.contains("minimize")) {
+                    horizontalMatchDay();
+                } 
+                // if Detailed(Bigger) Side Menu is not Visible and Cashier Section is Visible are Visible and width is 1300px or less
+                else if (!cashierSection.classList.contains("minimize-cashier") 
+                && leftSideMenu.classList.contains("minimize")) {
+                    horizontalMatchDay();
+                }
+                // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1300px or less
+                else if (cashierSection.classList.contains("minimize-cashier") 
+                && leftSideMenu.classList.contains("minimize")) {
+                    horizontalMatchDay();
+                }
+            };
+
+            if (min1300.matches) {
+                // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or more
+                if (!cashierSection.classList.contains("minimize-cashier") 
+                && !leftSideMenu.classList.contains("minimize")) {
+                    horizontalMatchDay();
+                };
+            };
+
+            if (max1100.matches) {
+                responsiveDarkBG();
                 horizontalMatchDay();
-            } 
+            } else {
+                removeDarkBG();
+            };
+
+            if (min1100.matches) {
+                removeDarkBG();
+            };
         });
 
+
         // Adjustments to Elements when a Match Odd is Clicked and both Detailed Side Menu and Cashier Section are Visible
-        const matchOdd = document.querySelectorAll(".match-odd");
         matchOdd.forEach(mo => {
             mo.addEventListener("click", () => {
-                if (mo.classList.contains("md-active") 
-                && !leftSideMenu.classList.contains("minimize") 
-                && window.matchMedia("(max-width: 1300px)").matches) {
-                    verticalMatchDay();
+                if (mo.classList.contains("active")) {
+                    if (max1300.matches) {
+                        if (!cashierSection.classList.contains("minimize-cashier") 
+                        && !leftSideMenu.classList.contains("minimize")) {
+                            verticalMatchDay();
+                        } else {
+                            horizontalMatchDay();
+                        }
+                    };
+    
+                    if (max1100.matches) {
+                        responsiveDarkBG();
+                        horizontalMatchDay();
+                    };
                 };
             });
         });
 
+
         // Adjustments to Elements when a Minimize Side Menu is Clicked
-        const minimizeMenu = document.querySelector(".fl-image-container .fl-head-image");
-        minimizeMenu.addEventListener("click", function() {
-            if (window.matchMedia("(max-width: 1300px)").matches) {
+        $(".fl-head-image").click(function() {
+            if (max1300.matches) {
+               horizontalMatchDay();
+            };
+                
+            if (max1100.matches) {
+                responsiveDarkBG();
+            };
+        });
+
+
+        // Adjustments to Elements when a Expand Side Menu is Clicked
+        $(".ssb-head-image").click(function() {
+            if (!cashierSection.classList.contains("minimize-cashier")) {
+                verticalMatchDay();
+            } else {
+                horizontalMatchDay();
+            }
+
+            if (max1100.matches) {
+                responsiveDarkBG();
                 horizontalMatchDay();
             };
         });
 
-        // Adjustments to Elements when a Expand Side Menu is Clicked
-        const expandMenu = document.querySelector(".ssb-head-image");
-        expandMenu.addEventListener("click", function() {
-            if (!cashierSection.classList.contains("minimize-cashier")
-            && window.matchMedia("(max-width: 1300px)").matches) {
-                verticalMatchDay();
-            } else if (cashierSection.classList.contains("minimize-cashier")
-            && window.matchMedia("(max-width: 1300px)").matches) {
-                horizontalMatchDay();
-            }
-        });
 
         // Adjustments to Elements when a Collapse Bet Slip is Clicked
-        const collapseBetslip = document.querySelector(".collapse-betslip .cb-image");
-        collapseBetslip.addEventListener("click", () => {
-            if (window.matchMedia("(max-width: 1300px)").matches) {
+        $(".cb-image").click(function() {
+            if (max1300.matches) {
+               horizontalMatchDay();
+            };
+                
+            if (max1100.matches) {
+                responsiveDarkBG();
                 horizontalMatchDay();
             };
         });

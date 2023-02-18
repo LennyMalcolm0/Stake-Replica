@@ -1,13 +1,6 @@
 /* STYLES FOR ALL ELEMENTS DISPLAYED ON SCREENS SMALLER THAN A DESKTOP SCREEN*/
 
 @media only screen and (max-width: 1000px) {
-    .stake-side-bar {
-        display: none;
-    }
-    .small-side-bar {
-        display: block;
-        min-width: none;
-    }
     .mc-user, .mc-time, .mc-odd {
         display: none;
     }
@@ -73,5 +66,30 @@
     height: 2px;
     margin-top: 15px;
     background-color: #2F4553;
+}
+
+.tablet-dark-bg {
+    position: absolute;
+    top: 0;
+    left: 240px;
+    z-index: 9999;
+}
+
+.tablet-dark-bg .popup-background {
+    height: 100vh;
+    width: calc(100vw - 240px);
+    background-color: #161d2c;
+    opacity: 0.6;
+}
+
+.res-stake-lb {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.res-minimize {
+    position: absolute;
+    left: -100%;
 }
 
