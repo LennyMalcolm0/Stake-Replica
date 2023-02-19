@@ -1,126 +1,31 @@
 $(document).ready(function(){
 
-    // Code for Side Bars
-    function sideBars() {
-        function leftSideMenu() {
-            const minimizeMenu = document.querySelector(".fl-image-container .fl-head-image");
+    // Reusable Codes
 
-            // Hover Effect for Minimize button
-            minimizeMenu.addEventListener("mouseover", function() {
-                document.querySelector(".fl-head-tooltip").style.display = "flex";
-            })
-            minimizeMenu.addEventListener("mouseout", function() {
-                document.querySelector(".fl-head-tooltip").style.display = "none";
-            })
+        // Changing Stake Logo Image and removing Search Text to free up space at the Top Section of the Stake Main Page
+        function clearTopSpace() {
+            const cashierSection = document.querySelector(".cashier"),
+            leftSideMenu = document.querySelector(".stake-side-bar");
 
-            // Click Effect for Expand button
-            minimizeMenu.addEventListener("click", function() {
-                document.querySelector(".stake-side-bar").classList.add("minimize");
-                document.querySelector(".small-side-bar").style.display = "block";
-
-                // Toggling some contents in open bets section
-                const cashier = document.querySelector(".cashier");
-                if (cashier.style.display == "block") {
-                    $(".mc-user").css({"display": ""});
-                    $(".mc-time").css({"display": ""});
-                    $(".mc-odd").css({"display": ""});
-                };
-
-                $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
-            });
-
-
-            // Toggling Side Menu Items by clicking on their Headers
-            const casino = document.querySelector(".casino-main"),
-            casinoContainer = document.querySelector(".fl-casino");
-
-            casino.addEventListener("click", function(){
-                casinoContainer.classList.toggle("fl-active");
-            });
-            
-
-            const sports = document.querySelector(".sports-main"),
-            sportsContainer = document.querySelector(".fl-sports");
-
-            sports.addEventListener("click", function(){
-                sportsContainer.classList.toggle("fl-active");
-            });
-            
-
-            const promotions = document.querySelector(".promotions-main"),
-            promotionsContainer = document.querySelector(".fl-promotions");
-
-            promotions.addEventListener("click", function(){
-                promotionsContainer.classList.toggle("fl-active");
-            });
-            
-
-            const sponsorships = document.querySelector(".sponsorships-main"),
-            sponsorshipsContainer = document.querySelector(".fl-sponsorships");
-
-            sponsorships.addEventListener("click", function(){
-                sponsorshipsContainer.classList.toggle("fl-active");
-            });
-
-
-            const activeDropdown = document.querySelectorAll(".fl-dd-element");
-            activeDropdown.forEach(btn => {
-                btn.addEventListener("click", function(){
-                    document.querySelector(".fl-dropdown .fl-dropdown-active").classList.remove("fl-dropdown-active");
-                    btn.classList.add("fl-dropdown-active");
-                })
-            });
-
-
-            // Selecting Language
-            const selectLang = document.querySelector(".fl-select-lang"),
-            langToggle = document.querySelector(".select"),
-            langChange = document.querySelector(".select .select-text"),
-            langOptions = document.querySelectorAll(".lang-options");
-
-            langToggle.addEventListener("click", function(){
-                selectLang.classList.toggle("lang-dd-active");
-            });
-
-            // Closing Language Menu if any other part of the Document is clicked
-            $(document).click(function(e){
-                let outside = $(".fl-select-lang");
-                if (outside !== e.target && !outside.has(e.target).length) {
-                    selectLang.classList.remove("lang-dd-active");
-                };
-            });
-            
-            // Changing Selected Language feel
-            langOptions.forEach(lang => {
-                lang.addEventListener("click", function(){
-                    langChange.innerHTML = lang.innerHTML;
-                    document.querySelector(".select-dropdown .active-lang").classList.remove("active-lang");
-                    lang.classList.add("active-lang");
-                    selectLang.classList.toggle("lang-dd-active");
-                });
-            });
+            if (!cashierSection.classList.contains("minimize-cashier") 
+            && !leftSideMenu.classList.contains("minimize")) {
+                $(".sw-image").css({"display": "flex"});
+                $(".sw-text").css({"display": "none"});
+                $(".ft-search").children("span").css({"display": "none"});
+            } else {
+                $(".sw-image").css({"display": "none"});
+                $(".sw-text").css({"display": "flex"});
+                $(".ft-search").children("span").css({"display": "block"});
+            };
         };
-        leftSideMenu();
 
 
-        function smallSideMenu() {
-            // Hover Effect for Expand button
-            const expandMenu = document.querySelector(".ssb-head-image");
-            expandMenu.addEventListener("mouseover", function() {
-                document.querySelector(".ssb-head-tooltip").style.display = "flex";
-            });
-            expandMenu.addEventListener("mouseout", function() {
-                document.querySelector(".ssb-head-tooltip").style.display = "none";
-            });
-            
-            // Click Effect for Expand button
-            expandMenu.addEventListener("click", function() {
-                document.querySelector(".stake-side-bar").classList.remove("minimize");
-                document.querySelector(".small-side-bar").style.display = "none";
-
-                // Toggling some contents in open bets section
-                const cashierSection = document.querySelector(".cashier");
-                if (cashierSection.style.display == "block") {
+        // Checking if the Width of the Main page can contain the full details of the High Rollers Section
+        function viewHighRollers() {
+            setTimeout(() => {
+                const bookingPage = document.querySelector(".odds-page"),
+                bookingPageWidth = bookingPage.offsetWidth;
+                if (bookingPageWidth < 800) {
                     $(".mc-user").css({"display": "none"});
                     $(".mc-time").css({"display": "none"});
                     $(".mc-odd").css({"display": "none"});
@@ -129,32 +34,10 @@ $(document).ready(function(){
                     $(".mc-time").css({"display": ""});
                     $(".mc-odd").css({"display": ""});
                 };
+            }, 10);
+        };
+        viewHighRollers();
 
-                if (!cashierSection.classList.contains("minimize-cashier")) {
-                    $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
-                } else {
-                    $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
-                };
-            });
-
-
-            // Hover Effect for Small Side Bar Menu Items
-            const ssbItem = document.querySelectorAll(".ssb-items .ssb-hover");
-            ssbItem.forEach(item => {
-                item.addEventListener("mouseover", function() {
-                    item.nextElementSibling.style.display = "flex";
-                })
-                item.addEventListener("mouseout", function() {
-                    item.nextElementSibling.style.display = "none";
-                })
-            });
-        }
-        smallSideMenu();
-    };
-    sideBars();
-
-
-    // Some Reusable Codes (Would be called when some events happen)
 
         // Checking if Crypto Balance and Total Singles Stake Amount are in sync
         function eligibleSinglesBalance() {
@@ -256,7 +139,7 @@ $(document).ready(function(){
         };
 
 
-        // Code to run in Singles section
+        // For Calculating Total Stake & Payout in Singles Bets
         function singles() {
             // Summing up all stake amount in singles session
             function totalSinglesStake() {
@@ -304,7 +187,7 @@ $(document).ready(function(){
         };
 
 
-        // Code to run in Multi section
+        // For Calculating Total Stake & Payout in Multiple Bets
         function multi() {
             const inputStakeMulti = document.querySelector(".check-out-multi input"),
             totalMultiOdd = document.querySelector(".check-out-multi .total-odds"),
@@ -327,7 +210,7 @@ $(document).ready(function(){
         };
 
 
-        // Counting matches in Cashier Section
+        // For Counting Matches Selected
         let count = 0;
         function countOdds() {
             betCount = document.querySelectorAll(".bl-top .bet-count");
@@ -340,6 +223,141 @@ $(document).ready(function(){
                 }
             });
         };
+
+
+    
+    // Code for Side Bars
+    function sideBars() {
+        function leftSideMenu() {
+            const minimizeMenu = document.querySelector(".fl-image-container .fl-head-image");
+            // Hover Effect for Minimize button
+            minimizeMenu.addEventListener("mouseover", function() {
+                document.querySelector(".fl-head-tooltip").style.display = "flex";
+            });
+            minimizeMenu.addEventListener("mouseout", function() {
+                document.querySelector(".fl-head-tooltip").style.display = "none";
+            });
+            // Click Effect for Expand button
+            minimizeMenu.addEventListener("click", function() {
+                document.querySelector(".stake-side-bar").classList.add("minimize");
+                document.querySelector(".small-side-bar").style.display = "block";
+
+                $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+              
+                clearTopSpace();
+
+                viewHighRollers();
+            });
+
+
+            // Toggling Side Menu Items by clicking on their Headers
+            const casino = document.querySelector(".casino-main"),
+            casinoContainer = document.querySelector(".fl-casino");
+            casino.addEventListener("click", function(){
+                casinoContainer.classList.toggle("fl-active");
+            });
+            
+            const sports = document.querySelector(".sports-main"),
+            sportsContainer = document.querySelector(".fl-sports");
+            sports.addEventListener("click", function(){
+                sportsContainer.classList.toggle("fl-active");
+            });
+            
+            const promotions = document.querySelector(".promotions-main"),
+            promotionsContainer = document.querySelector(".fl-promotions");
+            promotions.addEventListener("click", function(){
+                promotionsContainer.classList.toggle("fl-active");
+            });
+            
+            const sponsorships = document.querySelector(".sponsorships-main"),
+            sponsorshipsContainer = document.querySelector(".fl-sponsorships");
+            sponsorships.addEventListener("click", function(){
+                sponsorshipsContainer.classList.toggle("fl-active");
+            });
+
+
+            const activeDropdown = document.querySelectorAll(".fl-dd-element");
+            activeDropdown.forEach(btn => {
+                btn.addEventListener("click", function(){
+                    document.querySelector(".fl-dropdown .fl-dropdown-active").classList.remove("fl-dropdown-active");
+                    btn.classList.add("fl-dropdown-active");
+                })
+            });
+
+
+            // Selecting Language
+            const selectLang = document.querySelector(".fl-select-lang"),
+            langToggle = document.querySelector(".select"),
+            langChange = document.querySelector(".select .select-text"),
+            langOptions = document.querySelectorAll(".lang-options");
+
+            langToggle.addEventListener("click", function(){
+                selectLang.classList.toggle("lang-dd-active");
+            });
+
+            // Closing Language Menu if any other part of the Document is clicked
+            $(document).click(function(e){
+                let outside = $(".fl-select-lang");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    selectLang.classList.remove("lang-dd-active");
+                };
+            });
+            
+            // Changing Selected Language feel
+            langOptions.forEach(lang => {
+                lang.addEventListener("click", function(){
+                    langChange.innerHTML = lang.innerHTML;
+                    document.querySelector(".select-dropdown .active-lang").classList.remove("active-lang");
+                    lang.classList.add("active-lang");
+                    selectLang.classList.toggle("lang-dd-active");
+                });
+            });
+        };
+        leftSideMenu();
+
+
+        function smallSideMenu() {
+            // Hover Effect for Expand button
+            const expandMenu = document.querySelector(".ssb-head-image");
+            expandMenu.addEventListener("mouseover", function() {
+                document.querySelector(".ssb-head-tooltip").style.display = "flex";
+            });
+            expandMenu.addEventListener("mouseout", function() {
+                document.querySelector(".ssb-head-tooltip").style.display = "none";
+            });
+            
+            // Click Effect for Expand button
+            expandMenu.addEventListener("click", function() {
+                document.querySelector(".stake-side-bar").classList.remove("minimize");
+                document.querySelector(".small-side-bar").style.display = "none";
+
+                const cashierSection = document.querySelector(".cashier");
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
+                } else {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+                };
+
+                clearTopSpace();
+
+                viewHighRollers();
+            });
+
+
+            // Hover Effect for Small Side Bar Menu Items
+            const ssbItem = document.querySelectorAll(".ssb-items .ssb-hover");
+            ssbItem.forEach(item => {
+                item.addEventListener("mouseover", function() {
+                    item.nextElementSibling.style.display = "flex";
+                })
+                item.addEventListener("mouseout", function() {
+                    item.nextElementSibling.style.display = "none";
+                })
+            });
+        }
+        smallSideMenu();
+    };
+    sideBars();
 
 
     // Code for Main Page
@@ -512,29 +530,22 @@ $(document).ready(function(){
                 mo.addEventListener("click", () => {
                     mo.classList.toggle("md-active");
 
-                    // Adding Cashier zone, Altering High Rollers(Open Bets) section, and increasing Footer height
-                    const cashierDisplay = document.querySelector(".cashier"),
+                    // Adding Cashier zone, Altering High Rollers(Open Bets) section, changing the styles of some Elements and increasing Footer height
+                    const cashierSection = document.querySelector(".cashier"),
                     leftSideMenu = document.querySelector(".stake-side-bar");
                     if (mo.classList.contains("md-active")) {
-                        cashierDisplay.classList.remove("minimize-cashier");
+                        cashierSection.classList.remove("minimize-cashier");
    
-                        if (!cashierDisplay.classList.contains("minimize-cashier") 
+                        if (!cashierSection.classList.contains("minimize-cashier") 
                         && !leftSideMenu.classList.contains("minimize")) {
                             $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
                         } else {
                             $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
                         };
 
-                        const smallSideMenu = document.querySelector(".small-side-bar");
-                        if (smallSideMenu.style.display == "block") {
-                            $(".mc-user").css({"display": ""});
-                            $(".mc-time").css({"display": ""});
-                            $(".mc-odd").css({"display": ""});
-                        } else {
-                            $(".mc-user").css({"display": "none"});
-                            $(".mc-time").css({"display": "none"});
-                            $(".mc-odd").css({"display": "none"});
-                        };
+                        clearTopSpace();
+
+                        viewHighRollers();
 
                         $(".footer").css({"height": "1150px"});
                     };
@@ -1589,6 +1600,19 @@ $(document).ready(function(){
             $(".mc-time").css({"display": ""});
             $(".mc-odd").css({"display": ""});
             
+            const leftSideMenu = document.querySelector(".stake-side-bar"),
+            cashierSection = document.querySelector(".cashier");
+            if (!cashierSection.classList.contains("minimize-cashier") 
+            && !leftSideMenu.classList.contains("minimize")) {
+                $(".sw-image").css({"display": "flex"});
+                $(".sw-text").css({"display": "none"});
+                $(".ft-search").children("span").css({"display": "none"});
+            } else {
+                $(".sw-image").css({"display": "none"});
+                $(".sw-text").css({"display": "flex"});
+                $(".ft-search").children("span").css({"display": "block"});
+            };
+            
             $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
         });
 
@@ -1697,8 +1721,6 @@ $(document).ready(function(){
         function verticalMatchDay() {
             $(".stake-mini-logo").css({"display": "block"});
             $(".stake-big-logo").css({"display": "none"});
-            $(".sw-image").css({"display": "flex"});
-            $(".sw-text").css({"display": "none"});
 
             $(".bs-menu2").css({"display": "block", "width": "fit-content"});
             $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
@@ -1723,8 +1745,6 @@ $(document).ready(function(){
         function horizontalMatchDay() {
             $(".stake-mini-logo").css({"display": "none"});
             $(".stake-big-logo").css({"display": "block"});
-            $(".sw-image").css({"display": "none"});
-            $(".sw-text").css({"display": "flex"});
 
             $(".bs-menu2").css({"display": "flex", "width": "100%"});
             $(".menu2-right").css({"margin": "0"});
@@ -1833,6 +1853,11 @@ $(document).ready(function(){
         };
 
 
+        if (max1150.matches) {
+            responsiveDarkBG();
+        };
+
+
         window.addEventListener("resize", () => {
             if (max1300.matches) {
                 // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
@@ -1854,10 +1879,30 @@ $(document).ready(function(){
                 else if (cashierSection.classList.contains("minimize-cashier") 
                 && leftSideMenu.classList.contains("minimize")) {
                     horizontalMatchDay();
-                }
+                };
+
+
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".sw-image").css({"display": "flex"});
+                    $(".sw-text").css({"display": "none"});
+                    $(".ft-search").children("span").css({"display": "none"});
+                };
             } 
             else if (min1300.matches) {
                 horizontalMatchDay();
+
+                if (!cashierSection.classList.contains("minimize-cashier") 
+                && !leftSideMenu.classList.contains("minimize")) {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
+                } else {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+                };
+
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".sw-image").css({"display": "none"});
+                    $(".sw-text").css({"display": "flex"});
+                    $(".ft-search").children("span").css({"display": "block"});
+                };
             };
 
             if (max1150.matches) {
@@ -1873,12 +1918,9 @@ $(document).ready(function(){
                 } else {
                     horizontalMatchDay();
                 };
-
-                // if Detailed(Bigger) Side Menu and Cashier Section are not Visible and width is 1150px or less
-                if (cashierSection.classList.contains("minimize-cashier") 
-                && leftSideMenu.classList.contains("minimize")) {
-                }
             };
+
+            viewHighRollers();
         });
 
 
@@ -1892,6 +1934,16 @@ $(document).ready(function(){
                             verticalMatchDay();
                         } else {
                             horizontalMatchDay();
+                        };
+
+                        if (!cashierSection.classList.contains("minimize-cashier")) {
+                            $(".sw-image").css({"display": "flex"});
+                            $(".sw-text").css({"display": "none"});
+                            $(".ft-search").children("span").css({"display": "none"});
+                        } else {
+                            $(".sw-image").css({"display": "none"});
+                            $(".sw-text").css({"display": "flex"});
+                            $(".ft-search").children("span").css({"display": "block"});
                         };
 
                         $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
@@ -1923,6 +1975,17 @@ $(document).ready(function(){
                 } else {
                     $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
                 };
+
+
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".sw-image").css({"display": "flex"});
+                    $(".sw-text").css({"display": "none"});
+                    $(".ft-search").children("span").css({"display": "none"});
+                } else {
+                    $(".sw-image").css({"display": "none"});
+                    $(".sw-text").css({"display": "flex"});
+                    $(".ft-search").children("span").css({"display": "block"});
+                };
             };
                 
             if (max1150.matches) {
@@ -1946,8 +2009,8 @@ $(document).ready(function(){
                     verticalMatchDay();
                 } else {
                     horizontalMatchDay();
-                }
-            }
+                };
+            };
 
             if (max1150.matches) {
                 responsiveDarkBG();

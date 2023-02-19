@@ -617,6 +617,7 @@ i {
 }
 
 .ft-current-wallet i {
+    margin-left: 5px;
     transition: all 0.3s linear;
 }
 
@@ -733,8 +734,8 @@ i {
     transform: rotate(180deg);
 }
 
-.ft-extra {
-    width: 150px;
+.user-profile {
+    margin: 0 15px;
 }
 
 .ft-search img {

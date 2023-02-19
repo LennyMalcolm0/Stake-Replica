@@ -1,20 +1,16 @@
 /* STYLES FOR ALL ELEMENTS DISPLAYED ON SCREENS SMALLER THAN A DESKTOP SCREEN*/
 
-@media only screen and (max-width: 1000px) {
+@media screen and (max-width: 820px) {
+    .md-body .extra-odds {
+        margin-left: 5px;
+    }
+}
+
+/* @media only screen and (max-width: 1000px) {
     .mc-user, .mc-time, .mc-odd {
         display: none;
     }
-}
-
-@media screen and (max-width: 1150px) {
-    .md-body .extra-odds {
-        margin-left: 1%;
-    }
-}
-
-@media only screen and (max-width: 1500px) {
-
-}
+} */
 
 .stake-mini-logo img {
     height: 32px;
