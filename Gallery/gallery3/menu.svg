@@ -1,0 +1,5 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-menu" viewBox="0 0 32 32">
+<path d="M0 0h32v6.5h-32z"></path>
+<path d="M0 12.75h32v6.5h-32z"></path>
+<path d="M0 25.5h32v6.5h-32z"></path>
+</symbol></defs><use xlink:href="#icon-menu" stroke="#B1BAD3" fill="#B1BAD3" stroke-width="0px"></use></svg>

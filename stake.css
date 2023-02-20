@@ -1195,6 +1195,10 @@ i {
     display: none;
 }
 
+.tablet-mobile-menu {
+    display: none;
+}
+
 
 /* View Random Bets */
 
@@ -1261,10 +1265,6 @@ td {
     width: 20%;
     white-space: nowrap;
     border: none;
-}
-
-td span {
-    width: fit-content;
 }
 
 .mc-event-header, .mc-event {
@@ -1658,7 +1658,8 @@ tbody .mc-event {
 .footer {
     flex-direction: column;
     width: 100%;
-    height: 1000px;
+    height: max-content;
+    padding-bottom: 40px;
     background-color: #071C2B;
 }
 
@@ -1671,7 +1672,6 @@ tbody .mc-event {
 .footer-container-wrapper {
     width: 100%;
     height: 100%;
-    position: absolute;
 }
 
 .footer-section1 {
@@ -1767,6 +1767,11 @@ tbody .mc-event {
 
 .section4-part3 span {
     color: white;
+}
+
+.xmc-group {
+    width: 100%;
+    margin: 25px 0;
 }
 
 

@@ -546,8 +546,6 @@ $(document).ready(function(){
                         clearTopSpace();
 
                         viewHighRollers();
-
-                        $(".footer").css({"height": "1150px"});
                     };
 
                     // Counting matches selected
@@ -1712,7 +1710,6 @@ $(document).ready(function(){
     cashier();
 
 
-
     // Code for Responsiveness
     function responsiveCode() {
         // Changing the look of each Match Day
@@ -1766,17 +1763,42 @@ $(document).ready(function(){
 
         
         // Adjustments to Elements as the browser undergoes resizing
+
         const leftSideMenu = document.querySelector(".stake-side-bar"),
         cashierSection = document.querySelector(".cashier"),
         matchOdd = document.querySelectorAll(".match-odd"),
         min1300 = window.matchMedia("(min-width: 1300px)"),
-        max1300 = window.matchMedia("(max-width: 1300px)"),
+        max1300 = window.matchMedia("(max-width: 1300px) and (min-width: 760px)"),
         min1150 = window.matchMedia("(min-width: 1150px)"),
-        max1150 = window.matchMedia("(max-width: 1150px)"),
+        max1150 = window.matchMedia("(max-width: 1150px) and (min-width: 760px)"),
         min1050 = window.matchMedia("(min-width: 1050px)"),
-        max1050 = window.matchMedia("(max-width: 1050px)");
+        max1050 = window.matchMedia("(max-width: 1050px) and (min-width: 760px)"),
+        max760 = window.matchMedia("(max-width: 760px)"),
+        max700 = window.matchMedia("(max-width: 700px)"),
+        max640 = window.matchMedia("(max-width: 640px)");
         
-        // $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+        if (max1150.matches) {
+            responsiveDarkBG();
+        };
+
+        if (max640.matches) {
+            verticalMatchDay();
+        };
+
+        function window820() {
+            const max820 = window.matchMedia("(max-width: 820px)");
+            if (max820.matches) {
+                $(".sw-image").css({"display": "flex"});
+                $(".sw-text").css({"display": "none"});
+                $(".ft-search").children("span").css({"display": "none"});
+                $(".md-body").children(".extra-odds").css({"margin-left": "5px"});
+            } else {
+                $(".sw-image").css({"display": "none"});
+                $(".sw-text").css({"display": "flex"});
+                $(".ft-search").children("span").css({"display": ""});
+                $(".md-body").children(".extra-odds").css({"margin-left": ""});
+            }
+        };
 
         function responsiveDarkBG() {
             // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1150px or less
@@ -1853,11 +1875,6 @@ $(document).ready(function(){
         };
 
 
-        if (max1150.matches) {
-            responsiveDarkBG();
-        };
-
-
         window.addEventListener("resize", () => {
             if (max1300.matches) {
                 // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
@@ -1921,6 +1938,32 @@ $(document).ready(function(){
             };
 
             viewHighRollers();
+
+            window820();
+
+            if (max760.matches) {
+                $(".small-side-bar").css({"display": "none"});
+                $(".tablet-dark-bg").css({"display": "none"});
+                $(".cashier").addClass("minimize-cashier");
+            } else {
+                $(".small-side-bar").css({"display": "block"});
+            }
+
+            if (max700.matches) {
+                $(".bs-menu2").css({"display": "block", "width": "fit-content"});
+                $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
+            } else {
+                $(".bs-menu2").css({"display": "flex", "width": "100%"});
+                $(".menu2-right").css({"margin": "0"});
+            }
+
+            if (max640.matches) {
+                verticalMatchDay();
+            } else if (!max640.matches && max700.matches) {
+                horizontalMatchDay();
+                $(".bs-menu2").css({"display": "block", "width": "fit-content"});
+                $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
+            }
         });
 
 
@@ -1961,6 +2004,12 @@ $(document).ready(function(){
                             horizontalMatchDay();
                         }
                     };
+
+                    window820();
+
+                    if (max760.matches) {
+                        $(".cashier").addClass("minimize-cashier");
+                    };
                 };
             });
         });
@@ -1999,6 +2048,8 @@ $(document).ready(function(){
                     horizontalMatchDay();
                 }
             };
+
+            window820();
         });
 
 
@@ -2024,6 +2075,8 @@ $(document).ready(function(){
                     horizontalMatchDay();
                 }
             };
+
+            window820();
         });
 
 
@@ -2045,6 +2098,8 @@ $(document).ready(function(){
                     horizontalMatchDay();
                 }
             };
+
+            window820();
         });
     };
     responsiveCode();

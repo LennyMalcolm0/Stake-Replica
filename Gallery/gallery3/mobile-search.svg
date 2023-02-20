@@ -1,0 +1,4 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="svg-icon svelte-10mcogx" width="32"  height="32" ><defs><symbol id="icon-search" viewBox="0 0 32 32">
+<path d="M23.165 19.275c-1.043 1.552-2.338 2.847-3.84 3.858l-0.050 0.032 8.835 8.835 3.89-3.89z"></path>
+<path d="M11.55 0c-6.379 0-11.55 5.171-11.55 11.55s5.171 11.55 11.55 11.55c6.379 0 11.55-5.171 11.55-11.55v0c0-6.379-5.171-11.55-11.55-11.55v0zM11.55 18.5c-3.838 0-6.95-3.112-6.95-6.95s3.112-6.95 6.95-6.95c3.838 0 6.95 3.112 6.95 6.95v0c0 3.838-3.112 6.95-6.95 6.95v0z"></path>
+</symbol></defs><use xlink:href="#icon-search" stroke="#B1BAD3" fill="#B1BAD3" stroke-width="0px"></use></svg>
