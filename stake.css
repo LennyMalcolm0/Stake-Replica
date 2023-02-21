@@ -11,12 +11,13 @@
 }
 
 body {
-    background-color: #1B2D38;
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
+    position: relative;
+    background-color: #1B2D38;
     overflow: hidden;
 }
 
@@ -92,7 +93,6 @@ i {
 /*DETAILED SIDE MENU*/
 
 .stake-side-bar {
-    display: flex;
     width: 240px;
     min-width: 240px;
     max-width: 350px;
@@ -124,22 +124,21 @@ i {
 
 .fl-head {
     display: flex;
+    align-items: center;
     width: 100%;
     height: 60px;
-    align-items: center;
-    box-shadow: 0px 3px 7px #071824;
     position: relative;
+    box-shadow: 0px 3px 7px #071824;
 }
 
 .fl-head span {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90px;
     height: 40px;
+    padding: 0 15px;
+    margin-left: 10px;
     border-radius: 25px;
-    position: relative;
-    left: 10px;
     cursor: default;
 }
 
@@ -183,9 +182,9 @@ i {
 }
 
 .fl-body {
+    height: calc(100% - 60px);
     width: 92%;
     margin-left: 8%;
-    height: calc(100% - 60px);
     overflow-y: auto;
 }
 
@@ -783,6 +782,7 @@ i {
 .main-page {
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 
@@ -1164,6 +1164,10 @@ i {
 }
 
 /* Responsive Contents */
+
+.close-menu {
+    display: none;
+}
 
 .stake-mini-logo {
     display: none;
@@ -1781,9 +1785,9 @@ tbody .mc-event {
 /*CASHIER (VIEW SELECTED ODDS & CHECKOUT)*/
 
 .cashier {
+    height: 100vh;
     width: 350px;
     min-width: 350px;
-    height: 100vh;
     position: relative;
     background-color: #0E212F;
     color: white;

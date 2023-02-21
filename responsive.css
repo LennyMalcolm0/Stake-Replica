@@ -102,7 +102,7 @@
     .stake-side-bar, .small-side-bar, .tablet-dark-bg {
         display: none;
     }
-    .ft-search, .chat-icon {
+    .ft-search, .chat-icon, .fl-image-container {
         display: none;
     }
 
@@ -123,9 +123,11 @@
 
     .tmm-item {
         flex-grow: 1;
+        position: relative;
         text-align: center;
         font-size: 11px;
         font-weight: 600;
+        cursor: pointer;
     }
     
     .tmm-item img {
@@ -137,6 +139,74 @@
         justify-content: center;
         width: 100%;
         margin-bottom: 5px;
+    }
+
+    .tmm-bet-count {
+        position: absolute;
+        top: -30%;
+        right: 15%;
+    }
+
+    .stake-side-bar {
+        min-width: 100vw;
+    }
+    .res-stake-lb {
+        top: 60px;
+    }
+
+    .close-menu {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 23px;
+    }
+    .close-menu-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 40px;
+        font-size: 18px;
+        border-radius: 25px;
+        cursor: pointer;
+    }
+    .close-menu-image:hover {
+        background-color: #071824;
+    }
+    .close-menu-tooltip {
+        display: none;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        border-radius: 5px;
+        background-color: white;
+        color: #0E212F;
+        white-space: nowrap;
+    }
+
+    .fl-body {
+        height: calc(100% - 120px);
+        width: 96%;
+        margin-left: 4%;
+    }
+    .fl-body i {
+        margin-right: 4%;
+    }
+
+    .show-cashier {
+        position: absolute;
+        left: 0;
+        width: 100vw;
+        min-width: 100vw;
+    }
+
+    @keyframes resMinimize {
+        from {
+            
+        }
     }
 }
 

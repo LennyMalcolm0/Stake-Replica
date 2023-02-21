@@ -213,7 +213,7 @@ $(document).ready(function(){
         // For Counting Matches Selected
         let count = 0;
         function countOdds() {
-            betCount = document.querySelectorAll(".bl-top .bet-count");
+            betCount = document.querySelectorAll(".bet-count");
             betCount.forEach(betC => {
                 betC.textContent = count;
                 betC.style.display = "block";
@@ -1767,23 +1767,40 @@ $(document).ready(function(){
         const leftSideMenu = document.querySelector(".stake-side-bar"),
         cashierSection = document.querySelector(".cashier"),
         matchOdd = document.querySelectorAll(".match-odd"),
-        min1300 = window.matchMedia("(min-width: 1300px)"),
         max1300 = window.matchMedia("(max-width: 1300px) and (min-width: 760px)"),
-        min1150 = window.matchMedia("(min-width: 1150px)"),
         max1150 = window.matchMedia("(max-width: 1150px) and (min-width: 760px)"),
-        min1050 = window.matchMedia("(min-width: 1050px)"),
         max1050 = window.matchMedia("(max-width: 1050px) and (min-width: 760px)"),
+        max765 = window.matchMedia("(max-width: 765px) and (min-width: 760px)"),
         max760 = window.matchMedia("(max-width: 760px)"),
         max700 = window.matchMedia("(max-width: 700px)"),
         max640 = window.matchMedia("(max-width: 640px)");
         
-        if (max1150.matches) {
-            responsiveDarkBG();
-        };
+        function resOnload() {
+            if (max1150.matches) {
+                responsiveDarkBG();
+            };
+    
+            if (max640.matches) {
+                verticalMatchDay();
+            };
 
-        if (max640.matches) {
-            verticalMatchDay();
+            if (max760.matches) {
+                $(".footer").css({"padding-bottom": "100px"});
+                $(".cashier").css({"display": "none"});
+
+                window.addEventListener("resize", () => {
+                    if (max765.matches) {
+                        $(".small-side-bar").css({"display": "block"});
+                        $(".stake-side-bar").addClass("minimize");
+                        $(".tablet-dark-bg").css({"display": "none"});
+                        $(".footer").css({"padding-bottom": "40px"});
+                    }
+                });
+            } else {
+                $(".footer").css({"padding-bottom": "40px"});
+            };
         };
+        resOnload();
 
         function window820() {
             const max820 = window.matchMedia("(max-width: 820px)");
@@ -1797,7 +1814,7 @@ $(document).ready(function(){
                 $(".sw-text").css({"display": "flex"});
                 $(".ft-search").children("span").css({"display": ""});
                 $(".md-body").children(".extra-odds").css({"margin-left": ""});
-            }
+            };
         };
 
         function responsiveDarkBG() {
@@ -1846,7 +1863,7 @@ $(document).ready(function(){
             // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1150px or more
             else if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize") 
-            && min1150.matches) {
+            && !max1150.matches) {
                 $(".tablet-dark-bg").css({"display": "none"});
             };
 
@@ -1904,8 +1921,7 @@ $(document).ready(function(){
                     $(".sw-text").css({"display": "none"});
                     $(".ft-search").children("span").css({"display": "none"});
                 };
-            } 
-            else if (min1300.matches) {
+            } else {
                 horizontalMatchDay();
 
                 if (!cashierSection.classList.contains("minimize-cashier") 
@@ -1925,7 +1941,7 @@ $(document).ready(function(){
             if (max1150.matches) {
                 responsiveDarkBG();
                 horizontalMatchDay();
-            } else if (min1150.matches) {
+            } else {
                 removeDarkBG();
             };
 
@@ -1942,12 +1958,21 @@ $(document).ready(function(){
             window820();
 
             if (max760.matches) {
+                $(".stake-side-bar").addClass("res-stake-lb");
                 $(".small-side-bar").css({"display": "none"});
                 $(".tablet-dark-bg").css({"display": "none"});
                 $(".cashier").addClass("minimize-cashier");
-            } else {
-                $(".small-side-bar").css({"display": "block"});
-            }
+                $(".footer").css({"padding-bottom": "100px"});
+
+                window.addEventListener("resize", () => {
+                    if (max765.matches) {
+                        $(".small-side-bar").css({"display": "block"});
+                        $(".stake-side-bar").addClass("minimize");
+                        $(".tablet-dark-bg").css({"display": "none"});
+                        $(".footer").css({"padding-bottom": "40px"});
+                    };
+                });
+            };
 
             if (max700.matches) {
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
@@ -1955,7 +1980,7 @@ $(document).ready(function(){
             } else {
                 $(".bs-menu2").css({"display": "flex", "width": "100%"});
                 $(".menu2-right").css({"margin": "0"});
-            }
+            };
 
             if (max640.matches) {
                 verticalMatchDay();
@@ -1963,7 +1988,7 @@ $(document).ready(function(){
                 horizontalMatchDay();
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
                 $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
-            }
+            };
         });
 
 
@@ -2000,6 +2025,9 @@ $(document).ready(function(){
                     if (max1050.matches) {
                         if (!cashierSection.classList.contains("minimize-cashier")) {
                             verticalMatchDay();
+                            $(".sw-image").css({"display": "flex"});
+                            $(".sw-text").css({"display": "none"});
+                            $(".ft-search").children("span").css({"display": "none"});
                         } else {
                             horizontalMatchDay();
                         }
@@ -2013,7 +2041,6 @@ $(document).ready(function(){
                 };
             });
         });
-
 
         // Adjustments to Elements when a Minimize Side Menu is Clicked
         $(".fl-head-image").click(function() {
@@ -2052,7 +2079,6 @@ $(document).ready(function(){
             window820();
         });
 
-
         // Adjustments to Elements when a Expand Side Menu is Clicked
         $(".ssb-head-image").click(function() {
             if (max1300.matches) {
@@ -2079,7 +2105,6 @@ $(document).ready(function(){
             window820();
         });
 
-
         // Adjustments to Elements when a Collapse Bet Slip is Clicked
         $(".cb-image").click(function() {
             if (max1300.matches) {
@@ -2101,6 +2126,43 @@ $(document).ready(function(){
 
             window820();
         });
+
+
+        function mobileTablet() {
+            $(".tmm-menu").click(function() {
+                $(".stake-side-bar").css({"display": "block"});
+                $(".stake-side-bar").addClass("res-stake-lb");
+                $(".stake-side-bar").removeClass("res-minimize");
+            });
+
+            $(".close-menu-image").mouseover(function() {
+                $(".close-menu-tooltip").css({"display": "block"});
+            });
+            $(".close-menu-image").mouseout(function() {
+                $(".close-menu-tooltip").css({"display": "none"});
+            });
+
+            $(".close-menu-image").click(function() {
+                $(".stake-side-bar").removeClass("res-stake-lb");
+                $(".stake-side-bar").addClass("res-minimize");
+            });
+
+            $(".tmm-betslip").click(function() {
+                $(".cashier").css({"display": "block"});
+                $(".cashier").removeClass("minimize-cashier");
+                $(".cashier").addClass("show-cashier");
+            });
+
+            $(".cb-image").click(function() {
+                $(".cashier").css({"display": "none"});
+                $(".cashier").addClass("minimize-cashier");
+                $(".cashier").removeClass("show-cashier");
+                
+                viewHighRollers();
+            });
+        };
+        mobileTablet();
+
     };
     responsiveCode();
 
