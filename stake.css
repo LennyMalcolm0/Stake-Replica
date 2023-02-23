@@ -19,7 +19,7 @@ body {
 }
 
 
-/*CONSTANTS*/
+/* REUSABLES */
 
 .display-flex-center {
     display: flex;
@@ -738,10 +738,21 @@ i {
     margin-right: 10px;
 }
 
+/* .user-profile-dropdown {
+    padding: 5px 0;
+    background-color: white;
+    color: #1B2C39;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    right: -2%;
+    z-index: 100;
+    overflow: hidden;
+} */
+
 .chat-dropdown {
     display: none;
-    height: 75px;
-    width: 90px;
+    padding: 5px 0;
     background-color: white;
     color: #1B2C39;
     border-radius: 5px;
@@ -752,18 +763,15 @@ i {
     overflow: hidden;
 }
 
-.chat-option {
+.dropdown-option {
     width: 100%;
-    height: 50%;
+    height: 35px;
+    padding: 0 13px;
     line-height: 14px;
     font-weight: 600;
 }
 
-.chat-option span {
-    margin-left: 15px;
-}
-
-.chat-option:hover {
+.dropdown-option:hover {
     background-color: #E6EAF3;
 }
 

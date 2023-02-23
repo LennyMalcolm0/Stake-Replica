@@ -1568,13 +1568,13 @@ $(document).ready(function(){
                 item.classList.add("blt-dd-active");
 
                 if (item.classList.contains("dd-betslip")) {
-                    document.getElementById("cbm-img").src = "Gallery\\gallery1\\my-bets.svg";
-                    item.firstElementChild.src = "Gallery\\gallery2\\active-betslip.svg";
-                    item.nextElementSibling.firstElementChild.src = "Gallery\\gallery2\\norm-mybet.svg";
+                    document.getElementById("cbm-img").src = "Gallery/gallery1/my-bets.svg";
+                    item.firstElementChild.src = "Gallery/gallery2/active-betslip.svg";
+                    item.nextElementSibling.firstElementChild.src = "Gallery/gallery2/norm-mybet.svg";
                 } else {
-                    document.getElementById("cbm-img").src = "Gallery\\gallery2\\current-mybets.svg";
-                    item.firstElementChild.src = "Gallery\\gallery2\\active-mybet.svg";
-                    item.previousElementSibling.firstElementChild.src = "Gallery\\gallery2\\norm-betslip.svg";
+                    document.getElementById("cbm-img").src = "Gallery/gallery2/current-mybets.svg";
+                    item.firstElementChild.src = "Gallery/gallery2/active-mybet.svg";
+                    item.previousElementSibling.firstElementChild.src = "Gallery/gallery2/norm-betslip.svg";
                 };
 
                 document.querySelector(".bl-top").classList.toggle("bl-top-active");
