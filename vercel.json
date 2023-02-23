@@ -1,19 +1,2 @@
-{
-    "builds": [
-      {
-        "src": "stake.html",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/Gallery/(.*)",
-        "dest": "/Gallery/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/stake.html"
-      }
-    ]
-  }
+{}
   
