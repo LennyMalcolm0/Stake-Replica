@@ -3,12 +3,23 @@ $(document).ready(function(){
     // Reusable Codes
 
         // Changing Stake Logo Image and removing Search Text to free up space at the Top Section of the Stake Main Page
+        const cashierSection = document.querySelector(".cashier"),
+        leftSideMenu = document.querySelector(".stake-side-bar");
         function clearTopSpace() {
-            const cashierSection = document.querySelector(".cashier"),
-            leftSideMenu = document.querySelector(".stake-side-bar");
-
             if (!cashierSection.classList.contains("minimize-cashier") 
             && !leftSideMenu.classList.contains("minimize")) {
+                $(".sw-image").css({"display": "flex"});
+                $(".sw-text").css({"display": "none"});
+                $(".ft-search").children("span").css({"display": "none"});
+            } else {
+                $(".sw-image").css({"display": "none"});
+                $(".sw-text").css({"display": "flex"});
+                $(".ft-search").children("span").css({"display": "block"});
+            };
+        };
+
+        function clearTopSpace2() {
+            if (!cashierSection.classList.contains("minimize-cashier")) {
                 $(".sw-image").css({"display": "flex"});
                 $(".sw-text").css({"display": "none"});
                 $(".ft-search").children("span").css({"display": "none"});
@@ -1309,28 +1320,19 @@ $(document).ready(function(){
                             newEntry2.classList.add("new-entry");
                             newEntry2.appendChild(matchCard2);
         
-                            // Setting Match Card values in accordance with the Match Odd selected
-                            // First Match Card
-                            const blMatchTitle1 = newEntry1.children[0].children[0].children[0].children[0],
-                            blOddType1 = newEntry1.children[0].children[1].children[0],
-                            blMatchPick1 = newEntry1.children[0].children[1].children[1].children[0].children[0],
-                            blMatchPickOdd1 = newEntry1.children[0].children[1].children[1].children[1].children[0];
-
-                            blMatchTitle1.innerHTML = object1.matchTitle;
-                            blOddType1.innerHTML = object1.oddType;
-                            blMatchPick1.innerHTML = object1.matchPick;
-                            blMatchPickOdd1.innerHTML = object1.mpOdd;
-
-                            // Second Match Card
-                            const blMatchTitle2 = newEntry2.children[0].children[0].children[0].children[0],
-                            blOddType2 = newEntry2.children[0].children[1].children[0],
-                            blMatchPick2 = newEntry2.children[0].children[1].children[1].children[0].children[0],
-                            blMatchPickOdd2 = newEntry2.children[0].children[1].children[1].children[1].children[0];
-
-                            blMatchTitle2.innerHTML = object2.matchTitle;
-                            blOddType2.innerHTML = object2.oddType;
-                            blMatchPick2.innerHTML = object2.matchPick;
-                            blMatchPickOdd2.innerHTML = object2.mpOdd;
+                            function setMatchCardValue(newEntry, object) {
+                                const blMatchTitle = newEntry.children[0].children[0].children[0].children[0],
+                                blOddType = newEntry.children[0].children[1].children[0],
+                                blMatchPick = newEntry.children[0].children[1].children[1].children[0].children[0],
+                                blMatchPickOdd = newEntry.children[0].children[1].children[1].children[1].children[0];
+    
+                                blMatchTitle.innerHTML = object.matchTitle;
+                                blOddType.innerHTML = object.oddType;
+                                blMatchPick.innerHTML = object.matchPick;
+                                blMatchPickOdd.innerHTML = object.mpOdd;
+                            }
+                            setMatchCardValue(newEntry1, object1);
+                            setMatchCardValue(newEntry2, object2);
 
                             // Closing Open Bet and Opening Cashier Section(Bet Slip) 
                             $(".cashier").removeClass("minimize-cashier");
@@ -1384,10 +1386,7 @@ $(document).ready(function(){
                                 gamesBooked.classList.remove("gb-active");
                             };
 
-                            // Removing Open Bet User, Time and Odds from page
-                            $(".mc-user").css({"display": "none"});
-                            $(".mc-time").css({"display": "none"});
-                            $(".mc-odd").css({"display": "none"});
+                            viewHighRollers();
 
                             // Adding functionality to Match card input
                             const inputStakeSingles = document.querySelectorAll(".new-entry input");
@@ -1598,18 +1597,7 @@ $(document).ready(function(){
             $(".mc-time").css({"display": ""});
             $(".mc-odd").css({"display": ""});
             
-            const leftSideMenu = document.querySelector(".stake-side-bar"),
-            cashierSection = document.querySelector(".cashier");
-            if (!cashierSection.classList.contains("minimize-cashier") 
-            && !leftSideMenu.classList.contains("minimize")) {
-                $(".sw-image").css({"display": "flex"});
-                $(".sw-text").css({"display": "none"});
-                $(".ft-search").children("span").css({"display": "none"});
-            } else {
-                $(".sw-image").css({"display": "none"});
-                $(".sw-text").css({"display": "flex"});
-                $(".ft-search").children("span").css({"display": "block"});
-            };
+            clearTopSpace();
             
             $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
         });
@@ -1770,7 +1758,6 @@ $(document).ready(function(){
         max1300 = window.matchMedia("(max-width: 1300px) and (min-width: 760px)"),
         max1150 = window.matchMedia("(max-width: 1150px) and (min-width: 760px)"),
         max1050 = window.matchMedia("(max-width: 1050px) and (min-width: 760px)"),
-        max765 = window.matchMedia("(max-width: 765px) and (min-width: 760px)"),
         max760 = window.matchMedia("(max-width: 760px)"),
         max700 = window.matchMedia("(max-width: 700px)"),
         max640 = window.matchMedia("(max-width: 640px)");
@@ -1787,15 +1774,6 @@ $(document).ready(function(){
             if (max760.matches) {
                 $(".footer").css({"padding-bottom": "100px"});
                 $(".cashier").css({"display": "none"});
-
-                window.addEventListener("resize", () => {
-                    if (max765.matches) {
-                        $(".small-side-bar").css({"display": "block"});
-                        $(".stake-side-bar").addClass("minimize");
-                        $(".tablet-dark-bg").css({"display": "none"});
-                        $(".footer").css({"padding-bottom": "40px"});
-                    }
-                });
             } else {
                 $(".footer").css({"padding-bottom": "40px"});
             };
@@ -1809,12 +1787,10 @@ $(document).ready(function(){
                 $(".sw-text").css({"display": "none"});
                 $(".ft-search").children("span").css({"display": "none"});
                 $(".md-body").children(".extra-odds").css({"margin-left": "5px"});
-            } else {
-                $(".sw-image").css({"display": "none"});
-                $(".sw-text").css({"display": "flex"});
-                $(".ft-search").children("span").css({"display": ""});
-                $(".md-body").children(".extra-odds").css({"margin-left": ""});
-            };
+            } else if (!max820 && max1300) {
+                clearTopSpace2();
+                $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+            }
         };
 
         function responsiveDarkBG() {
@@ -1823,7 +1799,6 @@ $(document).ready(function(){
             && !leftSideMenu.classList.contains("minimize") 
             && max1150.matches) {
                 $(".stake-side-bar").addClass("res-stake-lb");
-                $(".stake-side-bar").removeClass("res-minimize");
                 $(".small-side-bar").css({"display": "block"});
 
                 $(".tablet-dark-bg").css({"display": "block"});
@@ -1835,7 +1810,6 @@ $(document).ready(function(){
             && !leftSideMenu.classList.contains("minimize") 
             && max1150.matches) {
                 $(".stake-side-bar").addClass("res-stake-lb");
-                $(".stake-side-bar").removeClass("res-minimize");
                 $(".small-side-bar").css({"display": "block"});
                 
                 $(".tablet-dark-bg").css({"display": "block"});
@@ -1847,7 +1821,7 @@ $(document).ready(function(){
             && leftSideMenu.classList.contains("minimize") 
             && max1150.matches) {
                 $(".stake-side-bar").removeClass("res-stake-lb");
-                $(".stake-side-bar").addClass("res-minimize");
+                $(".stake-side-bar").addClass("minimize");
                 $(".tablet-dark-bg").css({"display": "none"});
             }
 
@@ -1856,7 +1830,6 @@ $(document).ready(function(){
             && leftSideMenu.classList.contains("minimize") 
             && max1150.matches) {
                 $(".stake-side-bar").removeClass("res-stake-lb");
-                $(".stake-side-bar").addClass("res-minimize");
                 $(".tablet-dark-bg").css({"display": "none"});
             }
 
@@ -1873,7 +1846,6 @@ $(document).ready(function(){
                 $(".tablet-dark-bg").css({"display": "none"});
 
                 $(".stake-side-bar").removeClass("res-stake-lb");
-                $(".stake-side-bar").removeClass("res-minimize");
                 $(".stake-side-bar").addClass("minimize");
 
                 $(".small-side-bar").css({"display": "block"});
@@ -1888,7 +1860,6 @@ $(document).ready(function(){
             };
 
             $(".stake-side-bar").removeClass("res-stake-lb");
-            $(".stake-side-bar").removeClass("res-minimize");
         };
 
 
@@ -1916,11 +1887,7 @@ $(document).ready(function(){
                 };
 
 
-                if (!cashierSection.classList.contains("minimize-cashier")) {
-                    $(".sw-image").css({"display": "flex"});
-                    $(".sw-text").css({"display": "none"});
-                    $(".ft-search").children("span").css({"display": "none"});
-                };
+                clearTopSpace2();
             } else {
                 horizontalMatchDay();
 
@@ -1931,11 +1898,7 @@ $(document).ready(function(){
                     $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
                 };
 
-                if (!cashierSection.classList.contains("minimize-cashier")) {
-                    $(".sw-image").css({"display": "none"});
-                    $(".sw-text").css({"display": "flex"});
-                    $(".ft-search").children("span").css({"display": "block"});
-                };
+                clearTopSpace();
             };
 
             if (max1150.matches) {
@@ -1961,18 +1924,47 @@ $(document).ready(function(){
                 $(".stake-side-bar").addClass("res-stake-lb");
                 $(".small-side-bar").css({"display": "none"});
                 $(".tablet-dark-bg").css({"display": "none"});
-                $(".cashier").addClass("minimize-cashier");
+
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".cashier").css({"display": "block"});
+                    $(".cashier").addClass("show-cashier");
+                } else {
+                    $(".cashier").css({"display": "none"});
+                    $(".cashier").addClass("minimize-cashier");
+                };
+                
+                if (!leftSideMenu.classList.contains("minimize")) {
+                    $(".stake-side-bar").css({"display": "block"});
+                } else {
+                    $(".stake-side-bar").css({"display": "none"});
+                }
+
                 $(".footer").css({"padding-bottom": "100px"});
 
                 window.addEventListener("resize", () => {
-                    if (max765.matches) {
-                        $(".small-side-bar").css({"display": "block"});
-                        $(".stake-side-bar").addClass("minimize");
-                        $(".tablet-dark-bg").css({"display": "none"});
-                        $(".footer").css({"padding-bottom": "40px"});
-                    };
+                    if (!max760.matches) {
+                        $(".stake-side-bar").css({"display": "block"});
+                        
+                        if (!leftSideMenu.classList.contains("res-stake-lb")) {
+                            $(".small-side-bar").css({"display": "block"});
+                            $(".stake-side-bar").addClass("minimize");
+                            removeDarkBG();
+                        } else {
+                            $(".small-side-bar").css({"display": "block"});
+                            $(".stake-side-bar").removeClass("minimize");
+                            responsiveDarkBG();
+                        };
+
+                        if (cashierSection.classList.contains("show-cashier")) {
+                            $(".cashier").removeClass("minimize-cashier");
+                            $(".cashier").removeClass("show-cashier");
+                        };
+                    }
                 });
-            };
+            } else {
+                $(".cashier").css({"display": "block"});
+                $(".footer").css({"padding-bottom": "40px"});
+            }
 
             if (max700.matches) {
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
@@ -2004,15 +1996,7 @@ $(document).ready(function(){
                             horizontalMatchDay();
                         };
 
-                        if (!cashierSection.classList.contains("minimize-cashier")) {
-                            $(".sw-image").css({"display": "flex"});
-                            $(".sw-text").css({"display": "none"});
-                            $(".ft-search").children("span").css({"display": "none"});
-                        } else {
-                            $(".sw-image").css({"display": "none"});
-                            $(".sw-text").css({"display": "flex"});
-                            $(".ft-search").children("span").css({"display": "block"});
-                        };
+                        clearTopSpace2();
 
                         $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
                     };
@@ -2052,16 +2036,7 @@ $(document).ready(function(){
                     $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
                 };
 
-
-                if (!cashierSection.classList.contains("minimize-cashier")) {
-                    $(".sw-image").css({"display": "flex"});
-                    $(".sw-text").css({"display": "none"});
-                    $(".ft-search").children("span").css({"display": "none"});
-                } else {
-                    $(".sw-image").css({"display": "none"});
-                    $(".sw-text").css({"display": "flex"});
-                    $(".ft-search").children("span").css({"display": "block"});
-                };
+                clearTopSpace2();
             };
                 
             if (max1150.matches) {
@@ -2124,6 +2099,14 @@ $(document).ready(function(){
                 }
             };
 
+            if (max760.matches) {
+                $(".cashier").css({"display": "none"});
+                $(".cashier").addClass("minimize-cashier");
+                $(".cashier").removeClass("show-cashier");
+            }
+            
+            viewHighRollers();
+
             window820();
         });
 
@@ -2132,7 +2115,7 @@ $(document).ready(function(){
             $(".tmm-menu").click(function() {
                 $(".stake-side-bar").css({"display": "block"});
                 $(".stake-side-bar").addClass("res-stake-lb");
-                $(".stake-side-bar").removeClass("res-minimize");
+                $(".stake-side-bar").removeClass("minimize");
             });
 
             $(".close-menu-image").mouseover(function() {
@@ -2143,22 +2126,15 @@ $(document).ready(function(){
             });
 
             $(".close-menu-image").click(function() {
+                $(".stake-side-bar").css({"display": "none"});
                 $(".stake-side-bar").removeClass("res-stake-lb");
-                $(".stake-side-bar").addClass("res-minimize");
+                $(".stake-side-bar").addClass("minimize");
             });
 
             $(".tmm-betslip").click(function() {
                 $(".cashier").css({"display": "block"});
                 $(".cashier").removeClass("minimize-cashier");
                 $(".cashier").addClass("show-cashier");
-            });
-
-            $(".cb-image").click(function() {
-                $(".cashier").css({"display": "none"});
-                $(".cashier").addClass("minimize-cashier");
-                $(".cashier").removeClass("show-cashier");
-                
-                viewHighRollers();
             });
         };
         mobileTablet();

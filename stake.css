@@ -1,6 +1,3 @@
-@import "responsive.css";
-/* @import "mobstyle.css" screen and (max-width: 768px); */
-
 * {
     margin: 0;
     padding: 0;
@@ -1275,7 +1272,7 @@ td {
     padding: 0 15px;
 }
 
-tbody .mc-event {
+tbody .mc-event span {
     color: white;
     cursor: pointer;
 }
@@ -1449,6 +1446,17 @@ tbody .mc-event {
 
 .obe-match-card .obe-color-ash {
     font-weight: 400;
+}
+
+.obe-mc-title {
+    width: 100%;
+}
+
+.obe-mc-title span {
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .obe-mc-title img, .time-left img {

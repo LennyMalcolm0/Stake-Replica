@@ -92,11 +92,6 @@
     left: 0;
 }
 
-.res-minimize {
-    position: absolute;
-    left: -100%;
-}
-
 
 @media screen and (max-width: 760px) {
     .stake-side-bar, .small-side-bar, .tablet-dark-bg {
@@ -151,14 +146,14 @@
         min-width: 100vw;
     }
     .res-stake-lb {
-        top: 60px;
+        top: 59px;
     }
 
     .close-menu {
         display: block;
         position: absolute;
         right: 0;
-        top: 23px;
+        top: 15px;
     }
     .close-menu-image {
         display: flex;
@@ -203,10 +198,8 @@
         min-width: 100vw;
     }
 
-    @keyframes resMinimize {
-        from {
-            
-        }
+    .main-page::-webkit-scrollbar {
+        display: none;
     }
 }
 
