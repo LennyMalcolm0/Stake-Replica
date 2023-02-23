@@ -101,8 +101,12 @@
         display: none;
     }
 
-    .user-profile {
+    .user-profile-icon {
         margin: 0;
+    }
+
+    .user-profile-dropdown {
+        right: -2%;
     }
 
     .tablet-mobile-menu {

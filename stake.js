@@ -455,6 +455,21 @@ $(document).ready(function(){
                     chatActive.classList.remove("chat-active");
                 };
             });
+
+            const userProfileIcon = document.querySelector(".user-profile-icon"),
+            userProfileActive = document.querySelector(".user-profile");
+    
+            userProfileIcon.addEventListener("click", function(){
+                userProfileActive.classList.toggle("user-profile-active");
+            });
+
+            // Closing Chat Dropdown Menu if any other part of the Document is clicked
+            $(document).click(function(e){
+                let outside = $(".user-profile-icon");
+                if (outside !== e.target && !outside.has(e.target).length) {
+                    userProfileActive.classList.remove("user-profile-active");
+                };
+            });
         };
         stakeFixedHeader();
 
