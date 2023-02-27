@@ -73,7 +73,7 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutSingles.style.height = "150px";
-                gamesBooked.style.height = "calc(100% - 320px)";
+                gamesBooked.style.height = "calc(100vh - 320px)";
             } else if (totalStakeAmount <= currentCryptoBalance && totalStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -84,7 +84,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100% - 300px)";
+                gamesBooked.style.height = "calc(100vh - 300px)";
             } else if (totalStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -95,7 +95,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100% - 300px)";
+                gamesBooked.style.height = "calc(100vh - 300px)";
             };
         };
 
@@ -123,7 +123,7 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutMulti.style.height = "190px";
-                gamesBooked.style.height = "calc(100% - 360px)";
+                gamesBooked.style.height = "calc(100vh - 360px)";
             } else if (multiStakeAmount < currentCryptoBalance && multiStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -134,7 +134,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100% - 340px)";
+                gamesBooked.style.height = "calc(100vh - 340px)";
             } else if (multiStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -145,7 +145,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100% - 340px)";
+                gamesBooked.style.height = "calc(100vh - 340px)";
             };
         };
 
@@ -810,7 +810,7 @@ $(document).ready(function(){
                     
                                     // Adjusting height
                                     checkOutMulti.style.height = "210px";
-                                    gamesBooked.style.height = "calc(100% - 380px)";
+                                    gamesBooked.style.height = "calc(100vh - 380px)";
                                 } else {
                                     // Remove warning
                                     multipleSelections.style.display = "none";
@@ -826,7 +826,7 @@ $(document).ready(function(){
 
                             // Returning width of Gamebooked in Singles section
                             const gamesBooked = document.querySelector(".games-booked");
-                            gamesBooked.style.height = "calc(100% - 300px)";
+                            gamesBooked.style.height = "calc(100vh - 300px)";
                         };
                     };
                     sameMatch();
@@ -1469,7 +1469,7 @@ $(document).ready(function(){
                             eligibleMultiBalance();
 
                             // Correcting width of Gamebooked in Singles section
-                            gamesBooked.style.height = "calc(100% - 300px)";
+                            gamesBooked.style.height = "calc(100vh - 300px)";
                             
                             // Clearing all match/odds selected
                             const clearAll = document.querySelector(".alter-bl .clear-bl");

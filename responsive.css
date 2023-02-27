@@ -112,7 +112,7 @@
     .tablet-mobile-menu {
         display: flex;
         height: 60px;
-        width: 100%;
+        width: 100vw;
         padding: 0 2%;
         position: absolute;
         bottom: 0;
@@ -147,7 +147,7 @@
     }
 
     .stake-side-bar {
-        min-width: 100%;
+        min-width: 100vw;
     }
     .res-stake-lb {
         top: 59px;
@@ -198,8 +198,8 @@
     .show-cashier {
         position: absolute;
         left: 0;
-        width: 100%;
-        min-width: 100%;
+        width: 100vw;
+        min-width: 100vw;
     }
 
     .main-page::-webkit-scrollbar {
