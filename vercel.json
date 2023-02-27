@@ -1,0 +1,35 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "stake.html",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "public"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/stake.html"
+      },
+      {
+        "src": "/Gallery/(.*)",
+        "dest": "/Gallery/$1"
+      },
+      {
+        "src": "/(.*)\\.css",
+        "dest": "/$1.css"
+      },
+      {
+        "src": "/(.*)\\.js",
+        "dest": "/$1.js"
+      },
+      {
+        "src": "/README.md",
+        "dest": "/README.md"
+      }
+    ]
+  }
+  
