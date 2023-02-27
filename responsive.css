@@ -112,7 +112,7 @@
     .tablet-mobile-menu {
         display: flex;
         height: 60px;
-        width: 100vw;
+        width: 100%;
         padding: 0 2%;
         position: absolute;
         bottom: 0;
@@ -147,7 +147,7 @@
     }
 
     .stake-side-bar {
-        min-width: 100vw;
+        min-width: 100%;
     }
     .res-stake-lb {
         top: 59px;
@@ -198,8 +198,8 @@
     .show-cashier {
         position: absolute;
         left: 0;
-        width: 100vw;
-        min-width: 100vw;
+        width: 100%;
+        min-width: 100%;
     }
 
     .main-page::-webkit-scrollbar {
@@ -216,5 +216,15 @@
     .menu2-right {
         margin-top: 30px;
         margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer-section1 {
+        margin-bottom: 30px;
+    }
+
+    .footer-menu {
+        margin-top: 30px;
     }
 }

@@ -73,7 +73,7 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutSingles.style.height = "150px";
-                gamesBooked.style.height = "calc(100vh - 320px)";
+                gamesBooked.style.height = "calc(100% - 320px)";
             } else if (totalStakeAmount <= currentCryptoBalance && totalStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -84,7 +84,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100vh - 300px)";
+                gamesBooked.style.height = "calc(100% - 300px)";
             } else if (totalStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -95,7 +95,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100vh - 300px)";
+                gamesBooked.style.height = "calc(100% - 300px)";
             };
         };
 
@@ -123,7 +123,7 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutMulti.style.height = "190px";
-                gamesBooked.style.height = "calc(100vh - 360px)";
+                gamesBooked.style.height = "calc(100% - 360px)";
             } else if (multiStakeAmount < currentCryptoBalance && multiStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -134,7 +134,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100vh - 340px)";
+                gamesBooked.style.height = "calc(100% - 340px)";
             } else if (multiStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -145,7 +145,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100vh - 340px)";
+                gamesBooked.style.height = "calc(100% - 340px)";
             };
         };
 
@@ -478,19 +478,22 @@ $(document).ready(function(){
         // Code for Odds Type
         function oddsType() {
             // Hover effect for Odds Type images
-            const bsPopup = document.querySelectorAll(".menu2-right img"),
-            popupItem = document.querySelector(".menu2-right");
-
-            bsPopup.forEach(img => {
-                img.addEventListener("mouseover", function() {
-                    popupItem.classList.add("popup-hover");
-                })
-            });
-            bsPopup.forEach(img => {
-                img.addEventListener("mouseout", function() {
-                    popupItem.classList.remove("popup-hover");
-                })
-            });
+            const min700 = window.matchMedia("(min-width: 700px)");
+            if (min700.matches) {
+                const bsPopup = document.querySelectorAll(".menu2-right img"),
+                popupItem = document.querySelector(".menu2-right");
+    
+                bsPopup.forEach(img => {
+                    img.addEventListener("mouseover", function() {
+                        popupItem.classList.add("popup-hover");
+                    })
+                });
+                bsPopup.forEach(img => {
+                    img.addEventListener("mouseout", function() {
+                        popupItem.classList.remove("popup-hover");
+                    })
+                });
+            };
     
 
             // Switching Odds Type
@@ -807,7 +810,7 @@ $(document).ready(function(){
                     
                                     // Adjusting height
                                     checkOutMulti.style.height = "210px";
-                                    gamesBooked.style.height = "calc(100vh - 380px)";
+                                    gamesBooked.style.height = "calc(100% - 380px)";
                                 } else {
                                     // Remove warning
                                     multipleSelections.style.display = "none";
@@ -823,7 +826,7 @@ $(document).ready(function(){
 
                             // Returning width of Gamebooked in Singles section
                             const gamesBooked = document.querySelector(".games-booked");
-                            gamesBooked.style.height = "calc(100vh - 300px)";
+                            gamesBooked.style.height = "calc(100% - 300px)";
                         };
                     };
                     sameMatch();
@@ -1466,7 +1469,7 @@ $(document).ready(function(){
                             eligibleMultiBalance();
 
                             // Correcting width of Gamebooked in Singles section
-                            gamesBooked.style.height = "calc(100vh - 300px)";
+                            gamesBooked.style.height = "calc(100% - 300px)";
                             
                             // Clearing all match/odds selected
                             const clearAll = document.querySelector(".alter-bl .clear-bl");
@@ -1793,6 +1796,14 @@ $(document).ready(function(){
             } else {
                 $(".footer").css({"padding-bottom": "40px"});
             };
+
+            const mainPageMenu = document.querySelector(".scroll-menu"),
+            mainPageContainer = document.querySelector(".bs-container");
+            if (max700.matches) {
+                mainPageMenu.style.width = `${mainPageContainer.offsetWidth}px`;
+            } else {
+                mainPageMenu.style.width = "fit-content";
+            }
         };
         resOnload();
 
@@ -1812,6 +1823,7 @@ $(document).ready(function(){
                 };
             }
         };
+
 
         // Showing a Dark Background to cover the Main Page any time the Detailed Side Menu is in View 
         function responsiveDarkBG() {
@@ -1987,12 +1999,46 @@ $(document).ready(function(){
                 $(".footer").css({"padding-bottom": "40px"});
             }
 
+            const mainPageMenu = document.querySelector(".scroll-menu"),
+            mainPageContainer = document.querySelector(".bs-container");
             if (max700.matches) {
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
                 $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
+
+                // Adjusting Menu width to make it Scrollable
+                mainPageMenu.style.width = `${mainPageContainer.offsetWidth}px`;
+
+                // Removing Standard and Threeway Hover Effect
+                const bsPopup = document.querySelectorAll(".menu2-right img"),
+                popupItem = document.querySelector(".menu2-right");
+                bsPopup.forEach(img => {
+                    img.addEventListener("mouseover", function() {
+                        popupItem.classList.remove("popup-hover");
+                    })
+                });
+                bsPopup.forEach(img => {
+                    img.addEventListener("mouseout", function() {
+                        popupItem.classList.remove("popup-hover");
+                    })
+                });
             } else {
                 $(".bs-menu2").css({"display": "flex", "width": "100%"});
                 $(".menu2-right").css({"margin": "0"});
+                mainPageMenu.style.width = "fit-content";
+
+                // Adding Standard and Threeway Hover Effect back
+                const bsPopup = document.querySelectorAll(".menu2-right img"),
+                popupItem = document.querySelector(".menu2-right");
+                bsPopup.forEach(img => {
+                    img.addEventListener("mouseover", function() {
+                        popupItem.classList.add("popup-hover");
+                    })
+                });
+                bsPopup.forEach(img => {
+                    img.addEventListener("mouseout", function() {
+                        popupItem.classList.remove("popup-hover");
+                    })
+                });
             };
 
             if (max640.matches) {
