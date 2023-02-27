@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "stake.html",
+        "src": "build.sh",
         "use": "@vercel/static-build",
         "config": {
           "distDir": "public"
