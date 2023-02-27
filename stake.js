@@ -456,6 +456,7 @@ $(document).ready(function(){
                 };
             });
 
+            // Toggling User Profile Dropdown Menu
             const userProfileIcon = document.querySelector(".user-profile-icon"),
             userProfileActive = document.querySelector(".user-profile");
     
@@ -463,7 +464,7 @@ $(document).ready(function(){
                 userProfileActive.classList.toggle("user-profile-active");
             });
 
-            // Closing Chat Dropdown Menu if any other part of the Document is clicked
+            // Closing User Profile Dropdown Menu if any other part of the Document is clicked
             $(document).click(function(e){
                 let outside = $(".user-profile-icon");
                 if (outside !== e.target && !outside.has(e.target).length) {
@@ -1802,12 +1803,17 @@ $(document).ready(function(){
                 $(".sw-text").css({"display": "none"});
                 $(".ft-search").children("span").css({"display": "none"});
                 $(".md-body").children(".extra-odds").css({"margin-left": "5px"});
-            } else if (!max820 && max1300) {
+            } else if (!max820.matches && max1300.matches) {
                 clearTopSpace2();
-                $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "5px"});
+                } else {
+                    $(".md-body").children(".extra-odds").css({"margin-left": "3%"});
+                };
             }
         };
 
+        // Showing a Dark Background to cover the Main Page any time the Detailed Side Menu is in View 
         function responsiveDarkBG() {
             // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1150px or less
             if (!cashierSection.classList.contains("minimize-cashier") 
@@ -2126,6 +2132,7 @@ $(document).ready(function(){
         });
 
 
+        // Opening Side Menu and Bet Slip on Tablets/Mobile devices
         function mobileTablet() {
             $(".tmm-menu").click(function() {
                 $(".stake-side-bar").css({"display": "block"});
