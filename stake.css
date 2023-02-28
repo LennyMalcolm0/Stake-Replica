@@ -404,7 +404,7 @@ i {
     background-color: #0F202F;
     width: 60px;
     min-width: 60px;
-    height: 100%;
+    height: 100vh;
     font-size: 13px;
     font-weight: 600;
     color: #0F202F;
@@ -1773,6 +1773,9 @@ tbody .mc-event span {
 .fs2-item {
     margin-top: 40px;
     padding: 0 15px;
+    font-size: 25px;
+    font-weight: 400;
+    color: #b1bad3;
 }
 
 .fs2-item img {
