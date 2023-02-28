@@ -1824,19 +1824,6 @@ $(document).ready(function(){
             }
         };
 
-        // Resetting the Height of some key elements to prevent distortion in mobile devices
-        function elementHeight() {
-            const winHeight = window.innerHeight;
-            $(".fixed-left").css({"height": "100vh"});
-            $(".small-side-bar").css({"height": "100vh"});
-            $(".odds-page").css({"height": "100vh"});
-            $(".cashier").css({"height": "100vh"});
-            $(".popup-background").css({"height": "100vh"});
-            $(".games-booked").css({"height": "calc(100vh - 300px)"});
-            $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
-        };
-
-
         // Showing a Dark Background to cover the Main Page any time the Detailed Side Menu is in View 
         function responsiveDarkBG() {
             // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1150px or less
@@ -2060,8 +2047,6 @@ $(document).ready(function(){
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
                 $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
             };
-
-            elementHeight();
         });
 
 

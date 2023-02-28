@@ -81,6 +81,7 @@
 
 .tablet-dark-bg .popup-background {
     height: 100vh;
+    min-height: 100%;
     width: calc(100vw - 240px);
     background-color: #161d2c;
     opacity: 0.6;
@@ -226,5 +227,9 @@
 
     .footer-menu {
         margin-top: 30px;
+    }
+
+    .loading-animation {
+        height: 200px;
     }
 }
