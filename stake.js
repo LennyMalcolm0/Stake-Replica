@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    const winHeight = window.innerHeight;
+    $("body").css({"height": `${winHeight}px`});
+    $(".popup-background").css({"height": `${winHeight}px`});
 
     // Reusable Codes
 
@@ -73,7 +76,7 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutSingles.style.height = "150px";
-                gamesBooked.style.height = "calc(100vh - 320px)";
+                gamesBooked.style.height = "calc(100% - 320px)";
             } else if (totalStakeAmount <= currentCryptoBalance && totalStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -84,7 +87,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100vh - 300px)";
+                gamesBooked.style.height = "calc(100% - 300px)";
             } else if (totalStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -95,7 +98,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100vh - 300px)";
+                gamesBooked.style.height = "calc(100% - 300px)";
             };
         };
 
@@ -123,7 +126,7 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutMulti.style.height = "190px";
-                gamesBooked.style.height = "calc(100vh - 360px)";
+                gamesBooked.style.height = "calc(100% - 360px)";
             } else if (multiStakeAmount < currentCryptoBalance && multiStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -134,7 +137,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100vh - 340px)";
+                gamesBooked.style.height = "calc(100% - 340px)";
             } else if (multiStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
@@ -145,7 +148,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100vh - 340px)";
+                gamesBooked.style.height = "calc(100% - 340px)";
             };
         };
 
@@ -810,7 +813,7 @@ $(document).ready(function(){
                     
                                     // Adjusting height
                                     checkOutMulti.style.height = "210px";
-                                    gamesBooked.style.height = "calc(100vh - 380px)";
+                                    gamesBooked.style.height = "calc(100% - 380px)";
                                 } else {
                                     // Remove warning
                                     multipleSelections.style.display = "none";
@@ -826,7 +829,7 @@ $(document).ready(function(){
 
                             // Returning width of Gamebooked in Singles section
                             const gamesBooked = document.querySelector(".games-booked");
-                            gamesBooked.style.height = "calc(100vh - 300px)";
+                            gamesBooked.style.height = "calc(100% - 300px)";
                         };
                     };
                     sameMatch();
@@ -1469,7 +1472,7 @@ $(document).ready(function(){
                             eligibleMultiBalance();
 
                             // Correcting width of Gamebooked in Singles section
-                            gamesBooked.style.height = "calc(100vh - 300px)";
+                            gamesBooked.style.height = "calc(100% - 300px)";
                             
                             // Clearing all match/odds selected
                             const clearAll = document.querySelector(".alter-bl .clear-bl");
@@ -1896,6 +1899,10 @@ $(document).ready(function(){
 
 
         window.addEventListener("resize", () => {
+            const winHeight = window.innerHeight;
+            $("body").css({"height": `${winHeight}px`});
+            $(".popup-background").css({"height": `${winHeight}px`});
+            
             if (max1300.matches) {
                 // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
                 if (!cashierSection.classList.contains("minimize-cashier") 
@@ -1976,15 +1983,26 @@ $(document).ready(function(){
                 window.addEventListener("resize", () => {
                     if (!max760.matches) {
                         $(".stake-side-bar").css({"display": "block"});
-                        
-                        if (!leftSideMenu.classList.contains("res-stake-lb")) {
-                            $(".small-side-bar").css({"display": "block"});
-                            $(".stake-side-bar").addClass("minimize");
-                            removeDarkBG();
+
+                        if (max1150.matches) {
+                            if (!leftSideMenu.classList.contains("res-stake-lb")) {
+                                $(".small-side-bar").css({"display": "block"});
+                                $(".stake-side-bar").addClass("minimize");
+                                removeDarkBG();
+                            } else {
+                                $(".small-side-bar").css({"display": "block"});
+                                $(".stake-side-bar").removeClass("minimize");
+                                responsiveDarkBG();
+                            };
                         } else {
-                            $(".small-side-bar").css({"display": "block"});
-                            $(".stake-side-bar").removeClass("minimize");
-                            responsiveDarkBG();
+                            if (!leftSideMenu.classList.contains("res-stake-lb")) {
+                                $(".small-side-bar").css({"display": "block"});
+                                $(".stake-side-bar").addClass("minimize");
+                            } else {
+                                $(".small-side-bar").css({"display": "none"});
+                                $(".stake-side-bar").removeClass("minimize");
+                                $(".stake-side-bar").removeClass("res-stake-lb");
+                            }
                         };
 
                         if (cashierSection.classList.contains("show-cashier")) {
@@ -1994,7 +2012,6 @@ $(document).ready(function(){
                     }
                 });
             } else {
-                $(".cashier").css({"display": "block"});
                 $(".footer").css({"padding-bottom": "40px"});
             }
 
@@ -2166,7 +2183,6 @@ $(document).ready(function(){
             };
 
             if (max760.matches) {
-                $(".cashier").css({"display": "none"});
                 $(".cashier").addClass("minimize-cashier");
                 $(".cashier").removeClass("show-cashier");
             }
