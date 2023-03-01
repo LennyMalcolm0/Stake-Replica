@@ -11,6 +11,7 @@
 
 body {
     display: flex;
+    height: 100vh;
     width: 100vw;
     margin: 0;
     padding: 0;
@@ -114,8 +115,7 @@ i {
 .fixed-left {
     background-color: #0F202F;
     width: 100%;
-    height: 100%;
-    min-height: 100%;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -404,8 +404,7 @@ i {
     background-color: #0F202F;
     width: 60px;
     min-width: 60px;
-    height: 100%;
-    min-height: 100%;
+    height: 100vh;
     font-size: 13px;
     font-weight: 600;
     color: #0F202F;
@@ -559,8 +558,7 @@ i {
 .odds-page {
     flex-grow: 1;
     background-color: #1B2D38;
-    height: 100%;
-    min-height: 100%;
+    height: 100vh;
     min-width: calc(100% - 590px);
     font-size: 13px;
     font-weight: 600;
@@ -1362,18 +1360,16 @@ tbody .mc-event span {
 
 .view-open-bets .popup-background {
     width: 100vw;
-    height: 100%;
-    min-height: 100%;
-    background-color: #040c12;
-    opacity: 0.4;
+    height: 100vh;
+    background-color: #161d2c;
+    opacity: 0.6;
 }
 
 .obe-container { 
     position: absolute;
     top: 0;
     width: 100vw;
-    height: 100%; 
-    min-height: 100%; 
+    height: 100vh;
 }
 
 .open-bet-event {
@@ -1840,8 +1836,7 @@ tbody .mc-event span {
 /*CASHIER (VIEW SELECTED ODDS & CHECKOUT)*/
 
 .cashier {
-    height: 100%;
-    min-height: 100%;
+    height: 100vh;
     width: 350px;
     min-width: 350px;
     position: relative;
@@ -2083,16 +2078,14 @@ tbody .mc-event span {
 /*Selected Odds (Games Booked)*/
 
 .games-booked {
-    height: calc(100% - 300px);
-    min-height: calc(100% - 300px);
+    height: calc(100vh - 300px);
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .games-booked-multi {
-    height: calc(100% - 340px);
-    min-height: calc(100% - 340px);
+    height: calc(100vh - 340px);
 }
 
 .games-booked::-webkit-scrollbar {
