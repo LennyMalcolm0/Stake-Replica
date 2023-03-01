@@ -1470,7 +1470,7 @@ $(document).ready(function(){
                             eligibleMultiBalance();
 
                             // Correcting width of Gamebooked in Singles section
-                            gamesBooked.style.height = "calc(100% - 300px)";
+                            gamesBooked.style.height = "calc(100vh - 300px)";
                             
                             // Clearing all match/odds selected
                             const clearAll = document.querySelector(".alter-bl .clear-bl");
@@ -1780,7 +1780,8 @@ $(document).ready(function(){
         max1050 = window.matchMedia("(max-width: 1050px) and (min-width: 760px)"),
         max760 = window.matchMedia("(max-width: 760px)"),
         max700 = window.matchMedia("(max-width: 700px)"),
-        max640 = window.matchMedia("(max-width: 640px)");
+        max640 = window.matchMedia("(max-width: 640px)"),
+        max400 = window.matchMedia("(max-width: 400px)");
         
         function resOnload() {
             if (max1150.matches) {
@@ -1798,13 +1799,14 @@ $(document).ready(function(){
                 $(".footer").css({"padding-bottom": "40px"});
             };
 
+
             const mainPageMenu = document.querySelector(".scroll-menu"),
             mainPageContainer = document.querySelector(".bs-container");
             if (max700.matches) {
                 mainPageMenu.style.width = `${mainPageContainer.offsetWidth}px`;
             } else {
                 mainPageMenu.style.width = "fit-content";
-            }
+            };
         };
         resOnload();
 
@@ -1824,6 +1826,33 @@ $(document).ready(function(){
                 };
             }
         };
+
+        // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
+        function window400() {
+            const winHeight = window.innerHeight;
+            if (max400.matches) {
+                $("body").css({"height": `${winHeight}px`});
+                $(".fixed-left").css({"height": `${winHeight}px`});
+                $(".small-side-bar").css({"height": `${winHeight}px`});
+                $(".odds-page").css({"height": `${winHeight}px`});
+                $(".obe-container").css({"height": `${winHeight}px`});
+                $(".popup-background").css({"height": `${winHeight}px`});
+                $(".cashier").css({"height": `${winHeight}px`});
+                $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+                $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
+            } else {
+                $("body").css({"height": "100vh"});
+                $(".fixed-left").css({"height": "100vh"});
+                $(".small-side-bar").css({"height": "100vh"});
+                $(".odds-page").css({"height": "100vh"});
+                $(".obe-container").css({"height": "100vh"});
+                $(".popup-background").css({"height": "100vh"});
+                $(".cashier").css({"height": "100vh"});
+                $(".games-booked").css({"height": "calc(100vh - 300px)"});
+                $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
+            }
+        };
+        window400();
 
         // Showing a Dark Background to cover the Main Page any time the Detailed Side Menu is in View 
         function responsiveDarkBG() {
@@ -1897,20 +1926,7 @@ $(document).ready(function(){
 
 
         window.addEventListener("resize", () => {
-            // Ressetting Height to prevents distortion when switching in and out of full screen on mobile devices
-            function elementHeight() {
-                $("body").css({"height": "100vh"});
-                $(".fixed-left").css({"height": "100vh"});
-                $(".small-side-bar").css({"height": "100vh"});
-                $(".odds-page").css({"height": "100vh"});
-                $(".obe-container").css({"height": "100vh"});
-                $(".popup-background").css({"height": "100vh"});
-                $(".cashier").css({"height": "100vh"});
-                // $(".games-booked").css({"height": "calc(100vh - 300px)"});
-                // $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
-            };
-            elementHeight();
-            
+
             if (max1300.matches) {
                 // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
                 if (!cashierSection.classList.contains("minimize-cashier") 
@@ -2072,6 +2088,8 @@ $(document).ready(function(){
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
                 $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
             };
+            
+            window400();
         });
 
 
