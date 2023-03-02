@@ -2090,28 +2090,36 @@ $(document).ready(function(){
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
                 $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
             };
+        });
 
-            document.addEventListener("fullscreenchange", () => {
-                window640();
+        document.addEventListener("fullscreenchange", () => {
+            $("body").css({"height": `${winHeight}px`});
+            $(".fixed-left").css({"height": `${winHeight}px`});
+            $(".small-side-bar").css({"height": `${winHeight}px`});
+            $(".odds-page").css({"height": `${winHeight}px`});
+            $(".obe-container").css({"height": `${winHeight}px`});
+            $(".popup-background").css({"height": `${winHeight}px`});
+            $(".cashier").css({"height": `${winHeight}px`});
+            $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+            $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
 
-                $(".tablet-mobile-menu").css({"bottom": "-2px"});
+            $(".tablet-mobile-menu").css({"bottom": "-2px"});
 
-                // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
-                const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
-                aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
-                multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
-                gamesBooked = document.querySelector(".games-booked");
+            // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
+            const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
+            aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
+            multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
+            gamesBooked = document.querySelector(".games-booked");
 
-                if (aboveBalanceSingles.classList.contains("visible-warning")) {
-                    gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
-                }
-                if (aboveBalanceMulti.classList.contains("visible-warning")) {
-                    gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
-                }
-                if (multipleSelections.classList.contains("visible-warning")) {
-                    gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
-                }
-            });
+            if (aboveBalanceSingles.classList.contains("visible-warning")) {
+                gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
+            }
+            if (aboveBalanceMulti.classList.contains("visible-warning")) {
+                gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
+            }
+            if (multipleSelections.classList.contains("visible-warning")) {
+                gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
+            }
         });
 
 
