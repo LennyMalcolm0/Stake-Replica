@@ -2082,11 +2082,17 @@ $(document).ready(function(){
                     })
                 });
             };
-            
-            window640();
 
             if (max640.matches) {
                 verticalMatchDay();
+            } else if (!max640.matches && max700.matches) {
+                horizontalMatchDay();
+                $(".bs-menu2").css({"display": "block", "width": "fit-content"});
+                $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
+            };
+
+            document.addEventListener("fullscreenchange", () => {
+                window640();
 
                 $(".tablet-mobile-menu").css({"bottom": "-2px"});
 
@@ -2105,12 +2111,7 @@ $(document).ready(function(){
                 if (multipleSelections.classList.contains("visible-warning")) {
                     gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
                 }
-
-            } else if (!max640.matches && max700.matches) {
-                horizontalMatchDay();
-                $(".bs-menu2").css({"display": "block", "width": "fit-content"});
-                $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
-            };
+            });
         });
 
 
