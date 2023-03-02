@@ -2088,6 +2088,8 @@ $(document).ready(function(){
             if (max640.matches) {
                 verticalMatchDay();
 
+                $(".tablet-mobile-menu").css({"bottom": "-2px"});
+
                 // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
                 const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
                 aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
