@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
     // Reusable Codes
+    
+        const winHeight = window.innerHeight;
 
         // Changing Stake Logo Image and removing Search Text to free up space at the Top Section of the Stake Main Page
         const cashierSection = document.querySelector(".cashier"),
@@ -66,6 +68,7 @@ $(document).ready(function(){
             if (totalStakeAmount > currentCryptoBalance) {
                 // Display warning
                 aboveBalance.style.display = "block";
+                aboveBalance.classList.add("visible-warning");
 
                 // Decreasing button opacity & changing cursor type
                 placeSinglesBet.style.opacity = 0.5;
@@ -73,10 +76,11 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutSingles.style.height = "150px";
-                gamesBooked.style.height = "calc(100vh - 320px)";
+                gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
             } else if (totalStakeAmount <= currentCryptoBalance && totalStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
+                aboveBalance.classList.remove("visible-warning");
                 
                 // Increasing button opacity & changing cursor type
                 placeSinglesBet.style.opacity = 1;
@@ -84,10 +88,11 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100vh - 300px)";
+                gamesBooked.style.height = `calc(${winHeight}px - 300px)`;
             } else if (totalStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
+                aboveBalance.classList.remove("visible-warning");
 
                 // Decreasing button opacity & changing cursor type
                 placeSinglesBet.style.opacity = 0.5;
@@ -95,7 +100,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutSingles.style.height = "130px";
-                gamesBooked.style.height = "calc(100vh - 300px)";
+                gamesBooked.style.height = `calc(${winHeight}px - 300px)`;
             };
         };
 
@@ -116,6 +121,7 @@ $(document).ready(function(){
             if (multiStakeAmount > currentCryptoBalance) {
                 // Display warning
                 aboveBalance.style.display = "block";
+                aboveBalance.classList.add("visible-warning");
 
                 // Decreasing button opacity & changing cursor type
                 placeMultiBet.style.opacity = 0.5;
@@ -123,10 +129,11 @@ $(document).ready(function(){
 
                 // Adjusting height
                 checkOutMulti.style.height = "190px";
-                gamesBooked.style.height = "calc(100vh - 360px)";
+                gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
             } else if (multiStakeAmount < currentCryptoBalance && multiStakeAmount > 0) {
                 // Remove warning
                 aboveBalance.style.display = "none";
+                aboveBalance.classList.remove("visible-warning");
                 
                 // Increasing button opacity & changing cursor type
                 placeMultiBet.style.opacity = 1;
@@ -134,10 +141,11 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100vh - 340px)";
+                gamesBooked.style.height = `calc(${winHeight}px - 340px)`;
             } else if (multiStakeAmount == 0.00) {
                 // Remove warning
                 aboveBalance.style.display = "none";
+                aboveBalance.classList.remove("visible-warning");
 
                 // Decreasing button opacity & changing cursor type
                 placeMultiBet.style.opacity = 0.5;
@@ -145,7 +153,7 @@ $(document).ready(function(){
 
                 // Returning height
                 checkOutMulti.style.height = "170px";
-                gamesBooked.style.height = "calc(100vh - 340px)";
+                gamesBooked.style.height = `calc(${winHeight}px - 340px)`;
             };
         };
 
@@ -803,7 +811,9 @@ $(document).ready(function(){
                                 if (mspCount > 0) {
                                     // Display warning
                                     aboveBalance.style.display = "none";
+                                    aboveBalance.classList.remove("visible-warning");
                                     multipleSelections.style.display = "block";
+                                    multipleSelections.classList.add("visible-warning");
                     
                                     // Decreasing button opacity & changing cursor type
                                     placeMultiBet.style.opacity = 0.5;
@@ -811,10 +821,11 @@ $(document).ready(function(){
                     
                                     // Adjusting height
                                     checkOutMulti.style.height = "210px";
-                                    gamesBooked.style.height = "calc(100vh - 380px)";
+                                    gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
                                 } else {
                                     // Remove warning
                                     multipleSelections.style.display = "none";
+                                    multipleSelections.classList.remove("visible-warning");
                                     
                                     eligibleMultiBalance();
                                 };
@@ -827,7 +838,7 @@ $(document).ready(function(){
 
                             // Returning width of Gamebooked in Singles section
                             const gamesBooked = document.querySelector(".games-booked");
-                            gamesBooked.style.height = "calc(100vh - 300px)";
+                            gamesBooked.style.height = `calc(${winHeight}px - 300px)`;
                         };
                     };
                     sameMatch();
@@ -1470,7 +1481,7 @@ $(document).ready(function(){
                             eligibleMultiBalance();
 
                             // Correcting width of Gamebooked in Singles section
-                            gamesBooked.style.height = "calc(100vh - 300px)";
+                            gamesBooked.style.height = `calc(${winHeight}px - 300px)`;
                             
                             // Clearing all match/odds selected
                             const clearAll = document.querySelector(".alter-bl .clear-bl");
@@ -1780,8 +1791,7 @@ $(document).ready(function(){
         max1050 = window.matchMedia("(max-width: 1050px) and (min-width: 760px)"),
         max760 = window.matchMedia("(max-width: 760px)"),
         max700 = window.matchMedia("(max-width: 700px)"),
-        max640 = window.matchMedia("(max-width: 640px)"),
-        max400 = window.matchMedia("(max-width: 400px)");
+        max640 = window.matchMedia("(max-width: 640px)");
         
         function resOnload() {
             if (max1150.matches) {
@@ -1794,11 +1804,9 @@ $(document).ready(function(){
 
             if (max760.matches) {
                 $(".footer").css({"padding-bottom": "100px"});
-                $(".cashier").css({"display": "none"});
             } else {
                 $(".footer").css({"padding-bottom": "40px"});
             };
-
 
             const mainPageMenu = document.querySelector(".scroll-menu"),
             mainPageContainer = document.querySelector(".bs-container");
@@ -1828,9 +1836,8 @@ $(document).ready(function(){
         };
 
         // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
-        function window400() {
-            const winHeight = window.innerHeight;
-            if (max400.matches) {
+        function window640() {
+            if (max640.matches) {
                 $("body").css({"height": `${winHeight}px`});
                 $(".fixed-left").css({"height": `${winHeight}px`});
                 $(".small-side-bar").css({"height": `${winHeight}px`});
@@ -1852,7 +1859,7 @@ $(document).ready(function(){
                 $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
             }
         };
-        window400();
+        window640();
 
         // Showing a Dark Background to cover the Main Page any time the Detailed Side Menu is in View 
         function responsiveDarkBG() {
@@ -1926,7 +1933,6 @@ $(document).ready(function(){
 
 
         window.addEventListener("resize", () => {
-
             if (max1300.matches) {
                 // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
                 if (!cashierSection.classList.contains("minimize-cashier") 
@@ -1989,12 +1995,8 @@ $(document).ready(function(){
                 $(".tablet-dark-bg").css({"display": "none"});
 
                 if (!cashierSection.classList.contains("minimize-cashier")) {
-                    $(".cashier").css({"display": "block"});
                     $(".cashier").addClass("show-cashier");
-                } else {
-                    $(".cashier").css({"display": "none"});
-                    $(".cashier").addClass("minimize-cashier");
-                };
+                }
                 
                 if (!leftSideMenu.classList.contains("minimize")) {
                     $(".stake-side-bar").css({"display": "block"});
@@ -2080,59 +2082,85 @@ $(document).ready(function(){
                     })
                 });
             };
+            
+            window640();
 
             if (max640.matches) {
                 verticalMatchDay();
+
+                // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
+                const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
+                aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
+                multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
+                gamesBooked = document.querySelector(".games-booked");
+
+                if (aboveBalanceSingles.classList.contains("visible-warning")) {
+                    gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
+                }
+                if (aboveBalanceMulti.classList.contains("visible-warning")) {
+                    gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
+                }
+                if (multipleSelections.classList.contains("visible-warning")) {
+                    gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
+                }
+
             } else if (!max640.matches && max700.matches) {
                 horizontalMatchDay();
                 $(".bs-menu2").css({"display": "block", "width": "fit-content"});
                 $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
             };
-            
-            window400();
         });
 
 
-        // Adjustments to Elements when a Match Odd is Clicked and both Detailed Side Menu and Cashier Section are Visible
+        function resAddMatchCard() {
+            if (max1300.matches) {
+                if (!cashierSection.classList.contains("minimize-cashier") 
+                && !leftSideMenu.classList.contains("minimize")) {
+                    verticalMatchDay();
+                } else {
+                    horizontalMatchDay();
+                };
+
+                clearTopSpace2();
+
+                $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
+            };
+
+            if (max1150.matches) {
+                responsiveDarkBG();
+                horizontalMatchDay();
+            };
+
+            if (max1050.matches) {
+                if (!cashierSection.classList.contains("minimize-cashier")) {
+                    verticalMatchDay();
+                    $(".sw-image").css({"display": "flex"});
+                    $(".sw-text").css({"display": "none"});
+                    $(".ft-search").children("span").css({"display": "none"});
+                } else {
+                    horizontalMatchDay();
+                }
+            };
+
+            window820();
+
+            if (max760.matches) {
+                $(".cashier").addClass("minimize-cashier");
+            };
+        };
+
+
+        // Adjustments to Elements when a Match Card is added to the Bet Slip
         matchOdd.forEach(mo => {
             mo.addEventListener("click", () => {
                 if (mo.classList.contains("md-active")) {
-                    if (max1300.matches) {
-                        if (!cashierSection.classList.contains("minimize-cashier") 
-                        && !leftSideMenu.classList.contains("minimize")) {
-                            verticalMatchDay();
-                        } else {
-                            horizontalMatchDay();
-                        };
-
-                        clearTopSpace2();
-
-                        $(".md-body").children(".extra-odds").css({"margin-left": "1%"});
-                    };
-    
-                    if (max1150.matches) {
-                        responsiveDarkBG();
-                        horizontalMatchDay();
-                    };
-
-                    if (max1050.matches) {
-                        if (!cashierSection.classList.contains("minimize-cashier")) {
-                            verticalMatchDay();
-                            $(".sw-image").css({"display": "flex"});
-                            $(".sw-text").css({"display": "none"});
-                            $(".ft-search").children("span").css({"display": "none"});
-                        } else {
-                            horizontalMatchDay();
-                        }
-                    };
-
-                    window820();
-
-                    if (max760.matches) {
-                        $(".cashier").addClass("minimize-cashier");
-                    };
+                    resAddMatchCard();
                 };
             });
+        });
+
+        $(".add-mc").click(function() {
+            resAddMatchCard();
         });
 
         // Adjustments to Elements when a Minimize Side Menu is Clicked
@@ -2225,6 +2253,7 @@ $(document).ready(function(){
                 $(".stake-side-bar").css({"display": "block"});
                 $(".stake-side-bar").addClass("res-stake-lb");
                 $(".stake-side-bar").removeClass("minimize");
+                $(".stake-side-bar").addClass("mobile");
             });
 
             $(".close-menu-image").mouseover(function() {
@@ -2238,10 +2267,10 @@ $(document).ready(function(){
                 $(".stake-side-bar").css({"display": "none"});
                 $(".stake-side-bar").removeClass("res-stake-lb");
                 $(".stake-side-bar").addClass("minimize");
+                $(".stake-side-bar").removeClass("mobile");
             });
 
             $(".tmm-betslip").click(function() {
-                $(".cashier").css({"display": "block"});
                 $(".cashier").removeClass("minimize-cashier");
                 $(".cashier").addClass("show-cashier");
             });
