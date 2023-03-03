@@ -73,6 +73,7 @@
 }
 
 .tablet-dark-bg {
+    height: 100%;
     position: absolute;
     top: 0;
     left: 240px;
@@ -80,7 +81,7 @@
 }
 
 .tablet-dark-bg .popup-background {
-    /* height: 100vh; */
+    height: 100%;
     width: calc(100vw - 240px);
     background-color: #161d2c;
     opacity: 0.6;

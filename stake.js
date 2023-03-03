@@ -886,11 +886,6 @@ $(document).ready(function(){
                 });
 
             });
-
-            // Setting height of Dark Backgrounds as 100% height distorted them
-            const winHeight = window.innerHeight;
-            $(".obe-container").css({"height": `${winHeight}px`});
-            $(".popup-background").css({"height": `${winHeight}px`});
         };
         competitionXbetslip();
     };
@@ -2138,6 +2133,26 @@ $(document).ready(function(){
                 //         }
                 //     }
                 // });
+                
+                $("body").css({"height": "100%"});
+                $(".fixed-left").css({"height": "100%"});
+                $(".small-side-bar").css({"height": "100%"});
+                $(".odds-page").css({"height": "100%"});
+                $(".obe-container").css({"height": "100%"});
+                $(".popup-background").css({"height": "100%"});
+                $(".cashier").css({"height": "100%"});
+                $(".games-booked").css({"height": "calc(100% - 300px)"});
+                $(".games-booked-multi").css({"height": "calc(100% - 340px)"});
+
+                if (aboveBalanceSingles.classList.contains("visible-warning")) {
+                    gamesBooked.style.height = "calc(100% - 320px)";
+                }
+                if (aboveBalanceMulti.classList.contains("visible-warning")) {
+                    gamesBooked.style.height = "calc(100% - 360px)";
+                }
+                if (multipleSelections.classList.contains("visible-warning")) {
+                    gamesBooked.style.height = "calc(100% - 380px)";
+                }
 
             } else if (!max640.matches && max700.matches) {
                 horizontalMatchDay();

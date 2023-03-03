@@ -1348,6 +1348,8 @@ tbody .mc-event span {
 /* Random Bets Popup */
 
 .view-open-bets {
+    height: 100%;
+    width: 100vw;
     display: none;
     position: absolute;
     left: 0;
@@ -1360,8 +1362,8 @@ tbody .mc-event span {
 }
 
 .view-open-bets .popup-background {
-    width: 100vw;
-    /* height: 100%; */
+    width: 100%;
+    height: 100%;
     background-color: #161d2c;
     opacity: 0.6;
 }
@@ -1369,8 +1371,8 @@ tbody .mc-event span {
 .obe-container { 
     position: absolute;
     top: 0;
-    width: 100vw;
-    /* height: 100vh; */
+    width: 100%;
+    height: 100%;
 }
 
 .open-bet-event {
