@@ -2093,7 +2093,7 @@ $(document).ready(function(){
                     multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
                     gamesBooked = document.querySelector(".games-booked");
 
-                    if (document.fullscreenElement) {
+                    if (!document.fullscreenEnabled) {
                         $("body").css({"height": `${winHeight}px`});
                         $(".fixed-left").css({"height": `${winHeight}px`});
                         $(".small-side-bar").css({"height": `${winHeight}px`});
