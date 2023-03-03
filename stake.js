@@ -2,8 +2,6 @@ $(document).ready(function(){
 
     // Reusable Codes
     
-        const winHeight = window.innerHeight;
-
         // Changing Stake Logo Image and removing Search Text to free up space at the Top Section of the Stake Main Page
         const cashierSection = document.querySelector(".cashier"),
         leftSideMenu = document.querySelector(".stake-side-bar");
@@ -888,6 +886,11 @@ $(document).ready(function(){
                 });
 
             });
+
+            // Setting height of Dark Backgrounds as 100% height distorted them
+            const winHeight = window.innerHeight;
+            $(".obe-container").css({"height": `${winHeight}px`});
+            $(".popup-background").css({"height": `${winHeight}px`});
         };
         competitionXbetslip();
     };
@@ -1836,30 +1839,30 @@ $(document).ready(function(){
         };
 
         // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
-        function window640() {
-            if (max640.matches) {
-                $("body").css({"height": `${winHeight}px`});
-                $(".fixed-left").css({"height": `${winHeight}px`});
-                $(".small-side-bar").css({"height": `${winHeight}px`});
-                $(".odds-page").css({"height": `${winHeight}px`});
-                $(".obe-container").css({"height": `${winHeight}px`});
-                $(".popup-background").css({"height": `${winHeight}px`});
-                $(".cashier").css({"height": `${winHeight}px`});
-                $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
-                $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
-            } else {
-                $("body").css({"height": "100vh"});
-                $(".fixed-left").css({"height": "100vh"});
-                $(".small-side-bar").css({"height": "100vh"});
-                $(".odds-page").css({"height": "100vh"});
-                $(".obe-container").css({"height": "100vh"});
-                $(".popup-background").css({"height": "100vh"});
-                $(".cashier").css({"height": "100vh"});
-                $(".games-booked").css({"height": "calc(100vh - 300px)"});
-                $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
-            }
-        };
-        window640();
+        // function window640() {
+        //     if (max640.matches) {
+        //         $("body").css({"height": `${winHeight}px`});
+        //         $(".fixed-left").css({"height": `${winHeight}px`});
+        //         $(".small-side-bar").css({"height": `${winHeight}px`});
+        //         $(".odds-page").css({"height": `${winHeight}px`});
+        //         $(".obe-container").css({"height": `${winHeight}px`});
+        //         $(".popup-background").css({"height": `${winHeight}px`});
+        //         $(".cashier").css({"height": `${winHeight}px`});
+        //         $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+        //         $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
+        //     } else {
+        //         $("body").css({"height": "100vh"});
+        //         $(".fixed-left").css({"height": "100vh"});
+        //         $(".small-side-bar").css({"height": "100vh"});
+        //         $(".odds-page").css({"height": "100vh"});
+        //         $(".obe-container").css({"height": "100vh"});
+        //         $(".popup-background").css({"height": "100vh"});
+        //         $(".cashier").css({"height": "100vh"});
+        //         $(".games-booked").css({"height": "calc(100vh - 300px)"});
+        //         $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
+        //     }
+        // };
+        // window640();
 
         // Showing a Dark Background to cover the Main Page any time the Detailed Side Menu is in View 
         function responsiveDarkBG() {
@@ -2087,54 +2090,54 @@ $(document).ready(function(){
                 verticalMatchDay();
     
                 // Ressetting Height to prevent distortion when switching in and out of full screen on mobile devices
-                document.addEventListener('fullscreenchange', () => {
-                    const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
-                    aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
-                    multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
-                    gamesBooked = document.querySelector(".games-booked");
+                // document.addEventListener('fullscreenchange', () => {
+                //     const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
+                //     aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
+                //     multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
+                //     gamesBooked = document.querySelector(".games-booked");
 
-                    if (!document.fullscreenEnabled) {
-                        $("body").css({"height": `${winHeight}px`});
-                        $(".fixed-left").css({"height": `${winHeight}px`});
-                        $(".small-side-bar").css({"height": `${winHeight}px`});
-                        $(".odds-page").css({"height": `${winHeight}px`});
-                        $(".obe-container").css({"height": `${winHeight}px`});
-                        $(".popup-background").css({"height": `${winHeight}px`});
-                        $(".cashier").css({"height": `${winHeight}px`});
-                        $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
-                        $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
+                //     if (!document.fullscreenEnabled) {
+                //         $("body").css({"height": `${winHeight}px`});
+                //         $(".fixed-left").css({"height": `${winHeight}px`});
+                //         $(".small-side-bar").css({"height": `${winHeight}px`});
+                //         $(".odds-page").css({"height": `${winHeight}px`});
+                //         $(".obe-container").css({"height": `${winHeight}px`});
+                //         $(".popup-background").css({"height": `${winHeight}px`});
+                //         $(".cashier").css({"height": `${winHeight}px`});
+                //         $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+                //         $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
         
-                        if (aboveBalanceSingles.classList.contains("visible-warning")) {
-                            gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
-                        }
-                        if (aboveBalanceMulti.classList.contains("visible-warning")) {
-                            gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
-                        }
-                        if (multipleSelections.classList.contains("visible-warning")) {
-                            gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
-                        }
-                    } else {
-                        $("body").css({"height": "100vh"});
-                        $(".fixed-left").css({"height": "100vh"});
-                        $(".small-side-bar").css({"height": "100vh"});
-                        $(".odds-page").css({"height": "100vh"});
-                        $(".obe-container").css({"height": "100vh"});
-                        $(".popup-background").css({"height": "100vh"});
-                        $(".cashier").css({"height": "100vh"});
-                        $(".games-booked").css({"height": "calc(100vh - 300px)"});
-                        $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
+                //         if (aboveBalanceSingles.classList.contains("visible-warning")) {
+                //             gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
+                //         }
+                //         if (aboveBalanceMulti.classList.contains("visible-warning")) {
+                //             gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
+                //         }
+                //         if (multipleSelections.classList.contains("visible-warning")) {
+                //             gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
+                //         }
+                //     } else {
+                //         $("body").css({"height": "100vh"});
+                //         $(".fixed-left").css({"height": "100vh"});
+                //         $(".small-side-bar").css({"height": "100vh"});
+                //         $(".odds-page").css({"height": "100vh"});
+                //         $(".obe-container").css({"height": "100vh"});
+                //         $(".popup-background").css({"height": "100vh"});
+                //         $(".cashier").css({"height": "100vh"});
+                //         $(".games-booked").css({"height": "calc(100vh - 300px)"});
+                //         $(".games-booked-multi").css({"height": "calc(100vh - 340px)"});
         
-                        if (aboveBalanceSingles.classList.contains("visible-warning")) {
-                            gamesBooked.style.height = "calc(100vh - 320px)";
-                        }
-                        if (aboveBalanceMulti.classList.contains("visible-warning")) {
-                            gamesBooked.style.height = "calc(100vh - 360px)";
-                        }
-                        if (multipleSelections.classList.contains("visible-warning")) {
-                            gamesBooked.style.height = "calc(100vh - 380px)";
-                        }
-                    }
-                });
+                //         if (aboveBalanceSingles.classList.contains("visible-warning")) {
+                //             gamesBooked.style.height = "calc(100vh - 320px)";
+                //         }
+                //         if (aboveBalanceMulti.classList.contains("visible-warning")) {
+                //             gamesBooked.style.height = "calc(100vh - 360px)";
+                //         }
+                //         if (multipleSelections.classList.contains("visible-warning")) {
+                //             gamesBooked.style.height = "calc(100vh - 380px)";
+                //         }
+                //     }
+                // });
 
             } else if (!max640.matches && max700.matches) {
                 horizontalMatchDay();
