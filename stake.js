@@ -3,6 +3,14 @@ $(document).ready(function(){
     const winHeight = window.innerHeight;
     $("body").css({"height": `${winHeight}px`});
     $(".popup-background").css({"height": `${winHeight}px`});
+    $(".fixed-left").css({"height": `${winHeight}px`});
+    $(".small-side-bar").css({"height": `${winHeight}px`});
+    $(".odds-page").css({"height": `${winHeight}px`});
+    $(".obe-container").css({"height": `${winHeight}px`});
+    $(".popup-background").css({"height": `${winHeight}px`});
+    $(".cashier").css({"height": `${winHeight}px`});
+    $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+    $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
 
     // Reusable Codes
     
@@ -1937,7 +1945,29 @@ $(document).ready(function(){
         window.addEventListener("resize", () => {
             const winHeight = window.innerHeight;
             $("body").css({"height": `${winHeight}px`});
+            $(".popup-background").css({"height": `${winHeight}px`});    
+            $(".fixed-left").css({"height": `${winHeight}px`});
+            $(".small-side-bar").css({"height": `${winHeight}px`});
+            $(".odds-page").css({"height": `${winHeight}px`});
+            $(".obe-container").css({"height": `${winHeight}px`});
             $(".popup-background").css({"height": `${winHeight}px`});
+            $(".cashier").css({"height": `${winHeight}px`});
+            $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+            $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
+
+            const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
+            aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
+            multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
+            gamesBooked = document.querySelector(".games-booked");
+            if (aboveBalanceSingles.classList.contains("visible-warning")) {
+                gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
+            }
+            if (aboveBalanceMulti.classList.contains("visible-warning")) {
+                gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
+            }
+            if (multipleSelections.classList.contains("visible-warning")) {
+                gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
+            }
 
             if (max1300.matches) {
                 // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
