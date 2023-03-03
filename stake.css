@@ -820,7 +820,6 @@ i {
     width: 92%;
     max-width: 1200px;
     height: calc(100% - 60px);
-    overflow: hidden;
 }
 
 .bs-menu1 {
@@ -931,7 +930,7 @@ i {
     background-color: white;
     color: #0F212E;
     border-radius: 5px;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .menu2-popup span {

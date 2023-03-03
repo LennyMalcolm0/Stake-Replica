@@ -93,7 +93,7 @@
 
 
 @media screen and (max-width: 760px) {
-    .stake-side-bar, .small-side-bar, .tablet-dark-bg {
+    .small-side-bar, .tablet-dark-bg {
         display: none;
     }
     .ft-search, .chat-icon, .fl-image-container {

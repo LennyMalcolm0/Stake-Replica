@@ -266,6 +266,9 @@ $(document).ready(function(){
             minimizeMenu.addEventListener("mouseout", function() {
                 document.querySelector(".fl-head-tooltip").style.display = "none";
             });
+            minimizeMenu.addEventListener("touchstart", function() {
+                document.querySelector(".fl-head-tooltip").style.display = "none";
+            });
             // Click Effect for Expand button
             minimizeMenu.addEventListener("click", function() {
                 document.querySelector(".stake-side-bar").classList.add("minimize");
@@ -354,6 +357,9 @@ $(document).ready(function(){
             expandMenu.addEventListener("mouseout", function() {
                 document.querySelector(".ssb-head-tooltip").style.display = "none";
             });
+            expandMenu.addEventListener("touchstart", function() {
+                document.querySelector(".ssb-head-tooltip").style.display = "none";
+            });
             
             // Click Effect for Expand button
             expandMenu.addEventListener("click", function() {
@@ -380,6 +386,9 @@ $(document).ready(function(){
                     item.nextElementSibling.style.display = "flex";
                 })
                 item.addEventListener("mouseout", function() {
+                    item.nextElementSibling.style.display = "none";
+                })
+                item.addEventListener("touchstart", function() {
                     item.nextElementSibling.style.display = "none";
                 })
             });
@@ -496,22 +505,24 @@ $(document).ready(function(){
         // Code for Odds Type
         function oddsType() {
             // Hover effect for Odds Type images
-            const min700 = window.matchMedia("(min-width: 700px)");
-            if (min700.matches) {
-                const bsPopup = document.querySelectorAll(".menu2-right img"),
-                popupItem = document.querySelector(".menu2-right");
-    
-                bsPopup.forEach(img => {
-                    img.addEventListener("mouseover", function() {
-                        popupItem.classList.add("popup-hover");
-                    })
-                });
-                bsPopup.forEach(img => {
-                    img.addEventListener("mouseout", function() {
-                        popupItem.classList.remove("popup-hover");
-                    })
-                });
-            };
+            const bsPopup = document.querySelectorAll(".menu2-right img"),
+            popupItem = document.querySelector(".menu2-right");
+
+            bsPopup.forEach(img => {
+                img.addEventListener("mouseover", function() {
+                    popupItem.classList.add("popup-hover");
+                })
+            });
+            bsPopup.forEach(img => {
+                img.addEventListener("mouseout", function() {
+                    popupItem.classList.remove("popup-hover");
+                })
+            });
+            bsPopup.forEach(img => {
+                img.addEventListener("touchstart", function() {
+                    popupItem.classList.remove("popup-hover");
+                })
+            });
     
 
             // Switching Odds Type
@@ -1628,6 +1639,9 @@ $(document).ready(function(){
         collapseBetslip.addEventListener("mouseout", function() {
             document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
         });
+        collapseBetslip.addEventListener("touchstart", function() {
+            document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
+        });
         collapseBetslip.addEventListener("click", () => {
             document.querySelector(".cashier").classList.add("minimize-cashier");
 
@@ -1810,8 +1824,44 @@ $(document).ready(function(){
             };
 
             if (max760.matches) {
+                $(".stake-side-bar").addClass("minimize");
                 $(".footer").css({"padding-bottom": "100px"});
+                
+                window.addEventListener("resize", () => {
+                    if (!max760.matches) {
+                        
+                        if (max1150.matches) {
+                            if (!leftSideMenu.classList.contains("mobile")
+                            && !leftSideMenu.classList.contains("res-stake-lb")) {
+                                $(".small-side-bar").css({"display": "block"});
+                                $(".stake-side-bar").addClass("minimize");
+                                removeDarkBG();
+                            } else if (leftSideMenu.classList.contains("mobile")
+                            && leftSideMenu.classList.contains("res-stake-lb")) {
+                                $(".stake-side-bar").removeClass("minimize");
+                                $(".small-side-bar").css({"display": "block"});
+                                responsiveDarkBG();
+                            }
+                        } else {
+                            $(".stake-side-bar").removeClass("res-stake-lb");
+                            
+                            if (!leftSideMenu.classList.contains("mobile")) {
+                                $(".small-side-bar").css({"display": "block"});
+                                $(".stake-side-bar").addClass("minimize");
+                            } else {
+                                $(".stake-side-bar").removeClass("minimize");
+                                $(".small-side-bar").css({"display": "none"});
+                            }
+                        }
+
+                        if (cashierSection.classList.contains("show-cashier")) {
+                            $(".cashier").removeClass("minimize-cashier");
+                            $(".cashier").removeClass("show-cashier");
+                        };
+                    }
+                });
             } else {
+                $(".stake-side-bar").removeClass("minimize");
                 $(".footer").css({"padding-bottom": "40px"});
             };
 
@@ -1997,7 +2047,6 @@ $(document).ready(function(){
             window820();
 
             if (max760.matches) {
-                $(".stake-side-bar").addClass("res-stake-lb");
                 $(".small-side-bar").css({"display": "none"});
                 $(".tablet-dark-bg").css({"display": "none"});
 
@@ -2006,37 +2055,40 @@ $(document).ready(function(){
                 }
                 
                 if (!leftSideMenu.classList.contains("minimize")) {
-                    $(".stake-side-bar").css({"display": "block"});
+                    $(".stake-side-bar").addClass("res-stake-lb");
+                    $(".stake-side-bar").addClass("mobile");
                 } else {
-                    $(".stake-side-bar").css({"display": "none"});
+                    $(".stake-side-bar").removeClass("mobile");
                 }
 
                 $(".footer").css({"padding-bottom": "100px"});
 
                 window.addEventListener("resize", () => {
                     if (!max760.matches) {
-                        $(".stake-side-bar").css({"display": "block"});
-
+                        
                         if (max1150.matches) {
-                            if (!leftSideMenu.classList.contains("res-stake-lb")) {
+                            if (!leftSideMenu.classList.contains("mobile")
+                            && !leftSideMenu.classList.contains("res-stake-lb")) {
                                 $(".small-side-bar").css({"display": "block"});
                                 $(".stake-side-bar").addClass("minimize");
                                 removeDarkBG();
-                            } else {
-                                $(".small-side-bar").css({"display": "block"});
+                            } else if (leftSideMenu.classList.contains("mobile")
+                            && leftSideMenu.classList.contains("res-stake-lb")) {
                                 $(".stake-side-bar").removeClass("minimize");
+                                $(".small-side-bar").css({"display": "block"});
                                 responsiveDarkBG();
-                            };
+                            }
                         } else {
-                            if (!leftSideMenu.classList.contains("res-stake-lb")) {
+                            $(".stake-side-bar").removeClass("res-stake-lb");
+                            
+                            if (!leftSideMenu.classList.contains("mobile")) {
                                 $(".small-side-bar").css({"display": "block"});
                                 $(".stake-side-bar").addClass("minimize");
                             } else {
-                                $(".small-side-bar").css({"display": "none"});
                                 $(".stake-side-bar").removeClass("minimize");
-                                $(".stake-side-bar").removeClass("res-stake-lb");
+                                $(".small-side-bar").css({"display": "none"});
                             }
-                        };
+                        }
 
                         if (cashierSection.classList.contains("show-cashier")) {
                             $(".cashier").removeClass("minimize-cashier");
@@ -2056,38 +2108,11 @@ $(document).ready(function(){
 
                 // Adjusting Menu width to make it Scrollable
                 mainPageMenu.style.width = `${mainPageContainer.offsetWidth}px`;
-
-                // Removing Standard and Threeway Hover Effect
-                const bsPopup = document.querySelectorAll(".menu2-right img"),
-                popupItem = document.querySelector(".menu2-right");
-                bsPopup.forEach(img => {
-                    img.addEventListener("mouseover", function() {
-                        popupItem.classList.remove("popup-hover");
-                    })
-                });
-                bsPopup.forEach(img => {
-                    img.addEventListener("mouseout", function() {
-                        popupItem.classList.remove("popup-hover");
-                    })
-                });
             } else {
                 $(".bs-menu2").css({"display": "flex", "width": "100%"});
                 $(".menu2-right").css({"margin": "0"});
-                mainPageMenu.style.width = "fit-content";
 
-                // Adding Standard and Threeway Hover Effect back
-                const bsPopup = document.querySelectorAll(".menu2-right img"),
-                popupItem = document.querySelector(".menu2-right");
-                bsPopup.forEach(img => {
-                    img.addEventListener("mouseover", function() {
-                        popupItem.classList.add("popup-hover");
-                    })
-                });
-                bsPopup.forEach(img => {
-                    img.addEventListener("mouseout", function() {
-                        popupItem.classList.remove("popup-hover");
-                    })
-                });
+                mainPageMenu.style.width = "fit-content";
             };
 
             if (max640.matches) {
@@ -2101,6 +2126,7 @@ $(document).ready(function(){
         });
 
 
+        // Adjustments to Elements when a Match Card is added to the Bet Slip
         function resAddMatchCard() {
             if (max1300.matches) {
                 if (!cashierSection.classList.contains("minimize-cashier") 
@@ -2138,8 +2164,6 @@ $(document).ready(function(){
             };
         };
 
-
-        // Adjustments to Elements when a Match Card is added to the Bet Slip
         matchOdd.forEach(mo => {
             mo.addEventListener("click", () => {
                 if (mo.classList.contains("md-active")) {
@@ -2239,7 +2263,6 @@ $(document).ready(function(){
         // Opening Side Menu and Bet Slip on Tablets/Mobile devices
         function mobileTablet() {
             $(".tmm-menu").click(function() {
-                $(".stake-side-bar").css({"display": "block"});
                 $(".stake-side-bar").addClass("res-stake-lb");
                 $(".stake-side-bar").removeClass("minimize");
                 $(".stake-side-bar").addClass("mobile");
@@ -2251,9 +2274,12 @@ $(document).ready(function(){
             $(".close-menu-image").mouseout(function() {
                 $(".close-menu-tooltip").css({"display": "none"});
             });
+            const closeMenu = document.querySelector(".close-menu-image");
+            closeMenu.addEventListener("touchstart", () => {
+                $(".close-menu-tooltip").css({"display": "none"});
+            });
 
             $(".close-menu-image").click(function() {
-                $(".stake-side-bar").css({"display": "none"});
                 $(".stake-side-bar").removeClass("res-stake-lb");
                 $(".stake-side-bar").addClass("minimize");
                 $(".stake-side-bar").removeClass("mobile");
