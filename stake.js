@@ -1,3 +1,19 @@
+const intro = document.querySelector(".intro");
+setInterval(() => {
+    intro.style.display = "none";
+    $(".odds-page").css({"display": "block"});
+
+    // Resetting width to avoid display errors 
+    const mainPageMenu = document.querySelector(".scroll-menu"),
+    mainPageContainer = document.querySelector(".bs-container"),
+    max700 = window.matchMedia("(max-width: 700px)");
+    if (max700.matches) {
+        mainPageMenu.style.width = `${mainPageContainer.offsetWidth}px`;
+    } else {
+        mainPageMenu.style.width = "fit-content";
+    };
+}, 2000);
+
 $(document).ready(function(){
 
     const winHeight = window.innerHeight;
@@ -10,11 +26,6 @@ $(document).ready(function(){
     $(".cashier").css({"height": `${winHeight}px`});
     $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
     $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
-
-    setInterval(() => {
-        $(".intro").css({"display": "none"})
-        $(".odds-page").css({"display": "block"})
-    }, 2000);
 
     // Reusable Codes
     
@@ -270,12 +281,6 @@ $(document).ready(function(){
             minimizeMenu.addEventListener("mouseout", function() {
                 document.querySelector(".fl-head-tooltip").style.display = "none";
             });
-            minimizeMenu.addEventListener("touchstart", function() {
-                document.querySelector(".fl-head-tooltip").style.display = "none";
-            });
-            minimizeMenu.addEventListener("touchend", function() {
-                document.querySelector(".fl-head-tooltip").style.display = "none";
-            });
             // Click Effect for Expand button
             minimizeMenu.addEventListener("click", function() {
                 document.querySelector(".stake-side-bar").classList.add("minimize");
@@ -364,12 +369,6 @@ $(document).ready(function(){
             expandMenu.addEventListener("mouseout", function() {
                 document.querySelector(".ssb-head-tooltip").style.display = "none";
             });
-            expandMenu.addEventListener("touchstart", function() {
-                document.querySelector(".ssb-head-tooltip").style.display = "none";
-            });
-            expandMenu.addEventListener("touchend", function() {
-                document.querySelector(".ssb-head-tooltip").style.display = "none";
-            });
             
             // Click Effect for Expand button
             expandMenu.addEventListener("click", function() {
@@ -396,12 +395,6 @@ $(document).ready(function(){
                     item.nextElementSibling.style.display = "flex";
                 })
                 item.addEventListener("mouseout", function() {
-                    item.nextElementSibling.style.display = "none";
-                })
-                item.addEventListener("touchstart", function() {
-                    item.nextElementSibling.style.display = "none";
-                })
-                item.addEventListener("touchend", function() {
                     item.nextElementSibling.style.display = "none";
                 })
             });
@@ -528,16 +521,6 @@ $(document).ready(function(){
             });
             bsPopup.forEach(img => {
                 img.addEventListener("mouseout", function() {
-                    popupItem.classList.remove("popup-hover");
-                })
-            });
-            bsPopup.forEach(img => {
-                img.addEventListener("touchstart", function() {
-                    popupItem.classList.remove("popup-hover");
-                })
-            });
-            bsPopup.forEach(img => {
-                img.addEventListener("touchend", function() {
                     popupItem.classList.remove("popup-hover");
                 })
             });
@@ -1658,12 +1641,6 @@ $(document).ready(function(){
             document.querySelector(".collapse-betslip .cb-hover").style.display = "flex";
         });
         collapseBetslip.addEventListener("mouseout", function() {
-            document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
-        });
-        collapseBetslip.addEventListener("touchstart", function() {
-            document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
-        });
-        collapseBetslip.addEventListener("touchend", function() {
             document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
         });
         collapseBetslip.addEventListener("click", () => {
