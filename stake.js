@@ -2,7 +2,6 @@ $(document).ready(function(){
 
     const winHeight = window.innerHeight;
     $("body").css({"height": `${winHeight}px`});
-    $(".popup-background").css({"height": `${winHeight}px`});
     $(".fixed-left").css({"height": `${winHeight}px`});
     $(".small-side-bar").css({"height": `${winHeight}px`});
     $(".odds-page").css({"height": `${winHeight}px`});
@@ -11,6 +10,11 @@ $(document).ready(function(){
     $(".cashier").css({"height": `${winHeight}px`});
     $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
     $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
+
+    setInterval(() => {
+        $(".intro").css({"display": "none"})
+        $(".odds-page").css({"display": "block"})
+    }, 2000);
 
     // Reusable Codes
     
@@ -269,6 +273,9 @@ $(document).ready(function(){
             minimizeMenu.addEventListener("touchstart", function() {
                 document.querySelector(".fl-head-tooltip").style.display = "none";
             });
+            minimizeMenu.addEventListener("touchend", function() {
+                document.querySelector(".fl-head-tooltip").style.display = "none";
+            });
             // Click Effect for Expand button
             minimizeMenu.addEventListener("click", function() {
                 document.querySelector(".stake-side-bar").classList.add("minimize");
@@ -360,6 +367,9 @@ $(document).ready(function(){
             expandMenu.addEventListener("touchstart", function() {
                 document.querySelector(".ssb-head-tooltip").style.display = "none";
             });
+            expandMenu.addEventListener("touchend", function() {
+                document.querySelector(".ssb-head-tooltip").style.display = "none";
+            });
             
             // Click Effect for Expand button
             expandMenu.addEventListener("click", function() {
@@ -389,6 +399,9 @@ $(document).ready(function(){
                     item.nextElementSibling.style.display = "none";
                 })
                 item.addEventListener("touchstart", function() {
+                    item.nextElementSibling.style.display = "none";
+                })
+                item.addEventListener("touchend", function() {
                     item.nextElementSibling.style.display = "none";
                 })
             });
@@ -520,6 +533,11 @@ $(document).ready(function(){
             });
             bsPopup.forEach(img => {
                 img.addEventListener("touchstart", function() {
+                    popupItem.classList.remove("popup-hover");
+                })
+            });
+            bsPopup.forEach(img => {
+                img.addEventListener("touchend", function() {
                     popupItem.classList.remove("popup-hover");
                 })
             });
@@ -659,8 +677,11 @@ $(document).ready(function(){
                             mcContainer.appendChild(newEntry);
 
                             // Adding Animation to Match Card and scrolling Match Card Container to show new Match Card that was added
-                            mcContainer.scrollIntoView(false);
-                            newEntry.style = "animation: matchCard 0.5s ease 0s 1";
+                            const max760 = window.matchMedia("(max-width: 760px)");
+                            if (!max760.matches) {
+                                mcContainer.scrollIntoView(false);
+                                newEntry.style = "animation: matchCard 0.5s ease 0s 1";
+                            };
 
                             newEntry.classList.add(`${mo.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("") 
                             + mo.parentElement.firstElementChild.firstElementChild.innerHTML.split(" ").join("")}`
@@ -1642,12 +1663,13 @@ $(document).ready(function(){
         collapseBetslip.addEventListener("touchstart", function() {
             document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
         });
+        collapseBetslip.addEventListener("touchend", function() {
+            document.querySelector(".collapse-betslip .cb-hover").style.display = "none";
+        });
         collapseBetslip.addEventListener("click", () => {
             document.querySelector(".cashier").classList.add("minimize-cashier");
 
-            $(".mc-user").css({"display": ""});
-            $(".mc-time").css({"display": ""});
-            $(".mc-odd").css({"display": ""});
+            viewHighRollers();
             
             clearTopSpace();
             
@@ -1754,7 +1776,7 @@ $(document).ready(function(){
     function responsiveCode() {
         // Changing the look of each Match Day
 
-        // Shorter Width Match Day
+        // Shorter Width Match Day for smaller screen sizes
         function verticalMatchDay() {
             $(".stake-mini-logo").css({"display": "block"});
             $(".stake-big-logo").css({"display": "none"});
@@ -1778,7 +1800,7 @@ $(document).ready(function(){
             $(".res-match-line").css({"display": "block"});
         };
 
-        // Longer Width Match Day
+        // Longer Width Match Day for bigger screen sizes
         function horizontalMatchDay() {
             $(".stake-mini-logo").css({"display": "none"});
             $(".stake-big-logo").css({"display": "block"});
@@ -1965,30 +1987,32 @@ $(document).ready(function(){
 
         window.addEventListener("resize", () => {
             // Resetting heights to prevent distortion in mobile devices
-            const winHeight = window.innerHeight;
-            $("body").css({"height": `${winHeight}px`});
-            $(".popup-background").css({"height": `${winHeight}px`});    
-            $(".fixed-left").css({"height": `${winHeight}px`});
-            $(".small-side-bar").css({"height": `${winHeight}px`});
-            $(".odds-page").css({"height": `${winHeight}px`});
-            $(".obe-container").css({"height": `${winHeight}px`});
-            $(".popup-background").css({"height": `${winHeight}px`});
-            $(".cashier").css({"height": `${winHeight}px`});
-            $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+            setInterval(() => {
+                const winHeight = window.innerHeight;
+                $("body").css({"height": `${winHeight}px`});
+                $(".fixed-left").css({"height": `${winHeight}px`});
+                $(".small-side-bar").css({"height": `${winHeight}px`});
+                $(".odds-page").css({"height": `${winHeight}px`});
+                $(".obe-container").css({"height": `${winHeight}px`});
+                $(".popup-background").css({"height": `${winHeight}px`});
+                $(".cashier").css({"height": `${winHeight}px`});
+                $(".games-booked").css({"height": `calc(${winHeight}px - 300px)`});
+                $(".games-booked-multi").css({"height": `calc(${winHeight}px - 340px)`});
+    
+                const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
+                aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
+                multipleSelections = document.querySelector(".check-out-multi .multiple-selections");
+                if (aboveBalanceSingles.classList.contains("visible-warning")) {
+                    $(".games-booked").css({"height": `calc(${winHeight}px - 320px)`});
+                }
+                if (aboveBalanceMulti.classList.contains("visible-warning")) {
+                    $(".games-booked-multi").css({"height": `calc(${winHeight}px - 360px)`});
+                }
+                if (multipleSelections.classList.contains("visible-warning")) {
+                    $(".games-booked-multi").css({"height": `calc(${winHeight}px - 380px)`});
+                }
+            }, 10);
 
-            const aboveBalanceSingles = document.querySelector(".check-out-singles .above-balance"),
-            aboveBalanceMulti = document.querySelector(".check-out-multi .above-balance"),
-            multipleSelections = document.querySelector(".check-out-multi .multiple-selections"),
-            gamesBooked = document.querySelector(".games-booked");
-            if (aboveBalanceSingles.classList.contains("visible-warning")) {
-                gamesBooked.style.height = `calc(${winHeight}px - 320px)`;
-            }
-            if (aboveBalanceMulti.classList.contains("visible-warning")) {
-                gamesBooked.style.height = `calc(${winHeight}px - 360px)`;
-            }
-            if (multipleSelections.classList.contains("visible-warning")) {
-                gamesBooked.style.height = `calc(${winHeight}px - 380px)`;
-            }
 
             if (max1300.matches) {
                 // if Detailed(Bigger) Side Menu and Cashier Section are Visible and width is 1300px or less
@@ -2100,18 +2124,12 @@ $(document).ready(function(){
                 $(".footer").css({"padding-bottom": "40px"});
             }
 
+            // Adjusting Odds Page Menu width to make it Scrollable
             const mainPageMenu = document.querySelector(".scroll-menu"),
             mainPageContainer = document.querySelector(".bs-container");
             if (max700.matches) {
-                $(".bs-menu2").css({"display": "block", "width": "fit-content"});
-                $(".menu2-right").css({"margin-top": "30px", "margin-left": "20px"});
-
-                // Adjusting Menu width to make it Scrollable
                 mainPageMenu.style.width = `${mainPageContainer.offsetWidth}px`;
             } else {
-                $(".bs-menu2").css({"display": "flex", "width": "100%"});
-                $(".menu2-right").css({"margin": "0"});
-
                 mainPageMenu.style.width = "fit-content";
             };
 
