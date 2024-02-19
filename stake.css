@@ -89,7 +89,7 @@ i {
 /* INTRO */
 
 .intro {
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     position: absolute;
     top: 0;
@@ -1362,11 +1362,11 @@ tr:nth-child(even) {
 }
 
 table, th, td {
-    border:none;
+    border: none;
     border-collapse: collapse;
 }
 
-td {
+.ob-contents tbody td {
     width: 20%;
     white-space: nowrap;
     border: none;
@@ -1456,6 +1456,10 @@ tbody .mc-event span {
     font-size: 16px;
     font-weight: 600;
     border-radius: 10px 10px 0 0;
+}
+
+.obe-header .close-open-bet {
+    cursor: pointer;
 }
 
 .obe-header img {
